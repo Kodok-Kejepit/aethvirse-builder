@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_j06w6"]
+
+[resource]
+script = ExtResource("1_j06w6")
+id = &"weapon_spear_frostleaf"
+mesh_path = "res://assets/props/weapon_spear_frostleaf/weapon_spear_frostleaf.res"
+albedo_path = "res://assets/props/weapon_spear_frostleaf/weapon_spear_frostleaf_albedo.jpg"
+size = Vector3(3.6458898, 2, 0.21434724)
+collision = 0

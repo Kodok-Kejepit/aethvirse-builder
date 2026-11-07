@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_uhfpt"]
+
+[resource]
+script = ExtResource("1_uhfpt")
+id = &"mob_rift_devourer"
+mesh_path = "res://assets/props/mob_rift_devourer/mob_rift_devourer.res"
+albedo_path = "res://assets/props/mob_rift_devourer/mob_rift_devourer_albedo.jpg"
+size = Vector3(2.4895916, 3.0000002, 3.4962835)
+collision = 0

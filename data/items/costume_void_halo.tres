@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"costume_void_halo"
+display_name = "Halo of the Unwritten"
+description = "A white ring that hums with an unfinished word. Purely for show."
+kind = 9
+rarity = 5
+max_stack = 1
+sell_price = 0
+can_sell = false
+slot = 11
+visual_joint = &"head"
+visual_offset = Vector3(0, 0, 0)
+visual_style = &"halo"

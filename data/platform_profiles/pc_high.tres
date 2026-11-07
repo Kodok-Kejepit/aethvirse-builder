@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlatformProfile" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/platform_profile.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "PC High"
+target_fps = 0
+render_scale = 1.0
+shadow_quality = 3
+foliage_density = 1.0
+view_distance_m = 1000.0
+chunk_load_radius = 3
+contact_shadows = false
+volumetric_fog = false
+ssr = false
+global_illumination = false

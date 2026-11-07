@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+id = &"shadow_step"
+display_name = "Shadow Step"
+damage_multiplier = 1
+is_heavy = true
+element = 6
+startup_s = 0.04
+active_s = 0.22
+recovery_s = 0.2
+combo_window_s = 0.33
+dodge_cancel_s = 0.26
+hitbox_size = Vector3(1.6, 1.6, 1.8)
+hitbox_offset = Vector3(0, 1, -0.6)
+knockback = 2.0
+stagger = 20.0
+hit_stop_s = 0.05
+lunge_speed = 24.0
+swing = 3
+
+[resource]
+script = ExtResource("e1")
+id = &"shadow_step"
+display_name = "Shadow Step"
+description = "Slip through the shadows behind your foe."
+kind = 1
+is_ultimate = false
+icon_color = Color(0.55, 0.35, 0.9, 1)
+unlock_level = 1
+mp_cost = 12
+cooldown_s = 5.0
+attack = SubResource("s1")
+damage_multiplier = 1.4
+multiplier_per_level = 0.1

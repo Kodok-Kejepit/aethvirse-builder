@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"silver_band"
+display_name = "Silver Band"
+description = "A plain ring that sharpens your eye."
+kind = 3
+rarity = 2
+max_stack = 1
+sell_price = 40
+can_sell = true
+slot = 7
+attack = 0.0
+attack_per_level = 0.0
+stat_bonuses = Dictionary[StringName, float]({&"crit": 0.03, &"sen": 2.0})

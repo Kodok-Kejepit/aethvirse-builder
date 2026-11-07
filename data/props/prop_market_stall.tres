@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_4vkmv"]
+
+[resource]
+script = ExtResource("1_4vkmv")
+id = &"prop_market_stall"
+mesh_path = "res://assets/props/prop_market_stall/prop_market_stall.res"
+albedo_path = "res://assets/props/prop_market_stall/prop_market_stall_albedo.jpg"
+size = Vector3(3.6664808, 3.2, 1.7424917)

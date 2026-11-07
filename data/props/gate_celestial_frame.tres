@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_nirfe"]
+
+[resource]
+script = ExtResource("1_nirfe")
+id = &"gate_celestial_frame"
+mesh_path = "res://assets/props/gate_celestial_frame/gate_celestial_frame.res"
+albedo_path = "res://assets/props/gate_celestial_frame/gate_celestial_frame_albedo.jpg"
+size = Vector3(5.7675786, 6.0000005, 2.6498563)
+collision = 0

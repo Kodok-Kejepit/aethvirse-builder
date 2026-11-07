@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_ot26d"]
+
+[resource]
+script = ExtResource("1_ot26d")
+id = &"wall_mossy_stone"
+mesh_path = "res://assets/props/wall_mossy_stone/wall_mossy_stone.res"
+albedo_path = "res://assets/props/wall_mossy_stone/wall_mossy_stone_albedo.jpg"
+size = Vector3(6.041089, 3.5000002, 1.108681)

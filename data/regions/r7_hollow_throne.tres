@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RegionData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/region_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/weather_table.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="4"]
+[ext_resource type="Resource" path="res://data/gates/gate_r6_s_red_rift.tres" id="g0"]
+[ext_resource type="Resource" path="res://data/enemies/hollow_echo.tres" id="b0"]
+
+[sub_resource type="Resource" id="weather"]
+script = ExtResource("2")
+weights = Dictionary[StringName, float]({&"clear": 70.0, &"fog": 30.0})
+min_duration_minutes = 90.0
+max_duration_minutes = 240.0
+
+[resource]
+script = ExtResource("1")
+id = &"r7_hollow_throne"
+display_name = &"REGION_R7"
+level_min = 90
+level_max = 100
+secret_total = 22
+mission_total = 6
+weather = SubResource("weather")
+scene_path = "res://scenes/world/regions/hollow_throne.tscn"
+spawn = Vector3(0, 0.3, 30)
+waystones = Dictionary[StringName, Vector3]({&"r7_throne": Vector3(0, 0, 34)})
+gate_table = Array[ExtResource("3")]([ExtResource("g0")])
+gate_points = PackedVector3Array(-128, 0, 128)
+max_world_gates = 0
+break_pool = Array[ExtResource("4")]([ExtResource("b0")])

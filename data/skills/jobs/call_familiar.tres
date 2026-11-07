@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Resource" path="res://data/summons/familiar_wisp.tres" id="e2"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"call_familiar"
+display_name = "Call Familiar"
+description = "Call a familiar wisp. Two at skill Lv 5."
+kind = 6
+is_ultimate = false
+icon_color = Color(0.55, 0.85, 1, 1)
+unlock_level = 30
+mp_cost = 40
+cooldown_s = 6.0
+multiplier_per_level = 0.08
+max_summons = 1
+extra_summon_every = 5
+summon = ExtResource("e2")

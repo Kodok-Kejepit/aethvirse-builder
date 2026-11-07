@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_hadk6"]
+
+[resource]
+script = ExtResource("1_hadk6")
+id = &"mob_void_hollow"
+mesh_path = "res://assets/props/mob_void_hollow/mob_void_hollow.res"
+albedo_path = "res://assets/props/mob_void_hollow/mob_void_hollow_albedo.jpg"
+size = Vector3(1.4962342, 2.2, 1.0832161)
+collision = 0

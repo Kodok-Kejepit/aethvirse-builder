@@ -1,0 +1,130 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_area.gd" id="area"]
+[ext_resource type="Resource" path="res://data/enemies/captain_ink.tres" id="d_captain_ink"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/flag_door.gd" id="flagdoor"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_marker.gd" id="marker"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/hint_sign.tscn" id="sign"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+
+[sub_resource type="BoxShape3D" id="shape9"]
+size = Vector3(6, 3, 6)
+
+[node name="Chunk_0_-1" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -21)
+script = ExtResource("gb")
+size = Vector3(20, 6, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -5.75, 3, -3)
+script = ExtResource("gb")
+size = Vector3(8.5, 6, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5.75, 3, -3)
+script = ExtResource("gb")
+size = Vector3(8.5, 6, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10, 3, -12)
+script = ExtResource("gb")
+size = Vector3(0.6, 6, 18)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -10, 3, -12)
+script = ExtResource("gb")
+size = Vector3(0.6, 6, 18)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="Flagdoor7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -3)
+script = ExtResource("flagdoor")
+required_flag = &"echo_king_answered"
+size = Vector3(3, 4, 0.6)
+
+[node name="Area8" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 1.5, -16)
+script = ExtResource("area")
+area_id = &"sec_r5_03_archive"
+
+[node name="Shape" type="CollisionShape3D" parent="Area8"]
+shape = SubResource("shape9")
+
+[node name="Marker10" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -16)
+script = ExtResource("marker")
+secret_id = &"SEC-R5-03"
+
+[node name="Sign11" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5, 0, 4)
+text_key = &"HINT_SEC_R5_03_2"
+hint_secret = &"SEC-R5-03"
+hint_key = &"HINT_SEC_R5_03_2"
+
+[node name="B12" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, 30, 1.5, 30)
+script = ExtResource("gb")
+size = Vector3(20, 3, 6)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0.3, 22)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_captain_ink")
+respawn_s = 1800.0
+
+[node name="Label14" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 10, -12)
+billboard = 1
+text = "FORBIDDEN ARCHIVE"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="B15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Outcrop16" type="StaticBody3D" parent="."]
+transform = Transform3D(0.98783, -0, -0.15551, 0, 1, -0, 0.15551, 0, 0.98783, -32.2327, -5.49209, 11.0947)
+script = ExtResource("prop")
+prop_id = &"ground_r1"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.487
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"archive"
+amplitude = 2.0
+seed_value = 505
+flatten = PackedVector3Array(0, -21, 12.5054, -5.75, -3, 5.61269, 5.75, -3, 5.61269, 10, -12, 11.306, -10, -12, 11.306, 0, -16, 4, 5, 4, 4, 30, 30, 13.0284, -81.7511, 39.7072, 6.52056, -78.3144, -40.3598, 4.71989, -77.3248, -7.6178, 5.75582, 0, 80, 21.4, -32.2327, 11.0947, 13.3832)

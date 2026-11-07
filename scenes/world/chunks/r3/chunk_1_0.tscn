@@ -1,0 +1,254 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/enemies/dune_scuttler.tres" id="d_dune_scuttler"]
+[ext_resource type="Resource" path="res://data/gates/gate_r3_c_mirage.tres" id="d_gate_r3_c_mirage"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/lore_pickup.tscn" id="lore"]
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_marker.gd" id="marker"]
+[ext_resource type="PackedScene" path="res://scenes/world/gates/gate_portal.tscn" id="portal"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/hint_sign.tscn" id="sign"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/breakable_wall.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+
+[node name="Chunk_1_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.42, 0.3, 1)
+solid = true
+visible = false
+
+[node name="Prop2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 4, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 6, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 8, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -4, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 10, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 4, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 5, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 7, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 9, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 28, 0, -10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 4, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 4, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 6, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 8, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -4, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 10, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 4, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 5, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 7, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 9, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 28, 0, 10)
+script = ExtResource("prop")
+prop_id = &"pillar_monolith"
+fallback_size = Vector3(2, 4, 2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="B18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 2.5, -43)
+script = ExtResource("gb")
+size = Vector3(18, 5, 0.6)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="B19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -5.25, 2.5, -29)
+script = ExtResource("gb")
+size = Vector3(7.5, 5, 0.6)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="B20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5.25, 2.5, -29)
+script = ExtResource("gb")
+size = Vector3(7.5, 5, 0.6)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="B21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 9, 2.5, -36)
+script = ExtResource("gb")
+size = Vector3(0.6, 5, 14)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="B22" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -9, 2.5, -36)
+script = ExtResource("gb")
+size = Vector3(0.6, 5, 14)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="Wall23" parent="." instance=ExtResource("wall")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -29)
+save_flag = &"r3_tomb_wall_broken"
+
+[node name="Marker24" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -29)
+script = ExtResource("marker")
+secret_id = &"SEC-R3-09"
+
+[node name="Lore25" parent="." instance=ExtResource("lore")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -38)
+lore_id = &"LORE-R3-02"
+
+[node name="Sign26" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 6, 0, -24)
+text_key = &"HINT_SEC_R3_09_2"
+hint_secret = &"SEC-R3-09"
+hint_key = &"HINT_SEC_R3_09_2"
+
+[node name="Waystone27" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 14)
+waystone_id = &"r3_ruins"
+
+[node name="Portal28" parent="." instance=ExtResource("portal")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26, 0, 22)
+gate = ExtResource("d_gate_r3_c_mirage")
+
+[node name="Spawn29" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0.3, 32)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+
+[node name="Spawn30" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30, 0.3, 30)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+
+[node name="Label31" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 16, 0)
+billboard = 1
+text = "SUNKEN COLONNADE"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="B32" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Outcrop33" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.16728, 0, 0.98591, 0, 1, -0, -0.98591, -0, -0.16728, -38.0342, -5.06583, -41.5308)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.502
+fit_height = false
+
+[node name="Outcrop34" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.30063, -0, -0.95374, 0, 1, -0, 0.95374, -0, -0.30063, 16.7289, -6.06445, 49.0787)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 2.003
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"dunes"
+amplitude = 5.0
+seed_value = 303
+flatten = PackedVector3Array(-28, -10, 2.2, -20, -10, 2.2, -12, -10, 2.2, -4, -10, 2.2, 4, -10, 2.2, 12, -10, 2.2, 20, -10, 2.2, 28, -10, 2.2, -28, 10, 2.2, -20, 10, 2.2, -12, 10, 2.2, -4, 10, 2.2, 4, 10, 2.2, 12, 10, 2.2, 20, 10, 2.2, 28, 10, 2.2, 0, -43, 11.306, -5.25, -29, 5.01438, 5.25, -29, 5.01438, 9, -36, 8.90771, -9, -36, 8.90771, 0, -29, 4, 0, -38, 4, 6, -24, 4, 0, 14, 4, 26, 22, 4, -38.0342, -41.5308, 13.5206, 16.7289, 49.0787, 18.0274)

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"mana_shield"
+display_name = "Mana Shield"
+description = "Arcane barrier. Defense up."
+kind = 3
+is_ultimate = false
+icon_color = Color(0.5, 0.6, 1, 1)
+unlock_level = 8
+mp_cost = 22
+cooldown_s = 22.0
+buff_stat = &"defense"
+buff_amount = 0.4
+buff_duration_s = 10.0
+buff_amount_per_level = 0.03

@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/secrets/lore_pickup.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/interaction/interactable.gd" id="i"]
+
+[sub_resource type="StandardMaterial3D" id="M"]
+shading_mode = 0
+albedo_color = Color(0.95, 0.9, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n"]
+material = SubResource("M")
+size = Vector3(0.6, 0.05, 0.45)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_use"]
+radius = 1.5
+
+[node name="LorePickup" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_n")
+
+[node name="Interactable" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("i")
+
+[node name="Shape" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("SphereShape3D_use")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"rusty_pipe"
+display_name = "Rusty Pipe"
+description = "Rusted, bent, and strangely warm."
+kind = 2
+rarity = 0
+max_stack = 1
+sell_price = 1
+can_sell = true
+slot = 1
+attack = 3.0
+attack_per_level = 0.0
+evolve_kills = 300
+evolves_into = &"fanged_pipe"

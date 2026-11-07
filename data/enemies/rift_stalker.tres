@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 5
+
+[resource]
+script = ExtResource("1")
+id = &"rift_stalker"
+display_name = "Rift Stalker"
+level = 80
+stats = SubResource("stats")
+body_color = Color(0.55, 0.4, 0.9, 1)
+tier = 0
+hp_scale = 1.0
+chase_speed = 6.4
+attack_windup_s = 0.5
+attack_multiplier = 1.3

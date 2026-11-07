@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LoreData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/lore_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"LORE-R3-02"
+title = &"LORE_R3_02_T"
+text = &"LORE_R3_02"
+region = &"r3_dunes"

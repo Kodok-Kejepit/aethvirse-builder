@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"hunter_gloves"
+display_name = "Hunter Gloves"
+description = "Grip for heavy swings."
+kind = 4
+rarity = 0
+max_stack = 1
+sell_price = 12
+slot = 5
+defense_per_level = 0.4
+stat_bonuses = Dictionary[StringName, float]({&"str": 1.0})
+is_drop_base = true

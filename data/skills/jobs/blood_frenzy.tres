@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"blood_frenzy"
+display_name = "Blood Frenzy"
+description = "Attack up sharply for a short time."
+kind = 3
+is_ultimate = false
+icon_color = Color(0.95, 0.35, 0.3, 1)
+unlock_level = 30
+mp_cost = 25
+cooldown_s = 24.0
+buff_stat = &"attack"
+buff_amount = 0.35
+buff_duration_s = 8.0
+buff_amount_per_level = 0.02

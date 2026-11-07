@@ -1,0 +1,158 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/enemies/dune_scuttler.tres" id="d_dune_scuttler"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+
+
+[node name="Chunk_-1_1" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.42, 0.3, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12171, 0, 0.99257, 0, 1, -0, -0.99257, 0, 0.12171, 44.245, 1.67723, 23.9899)
+script = ExtResource("gb")
+size = Vector3(15.474820338676423, 3.3544674731518236, 17.54232278678836)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.98423, 0, 0.17689, 0, 1, -0, -0.17689, 0, 0.98423, 14.8975, 1.33203, 40.09)
+script = ExtResource("gb")
+size = Vector3(8.348062739403376, 2.664056635945263, 19.320280603979764)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.94261, 0, 0.3339, 0, 1, -0, -0.3339, 0, 0.94261, 7.39412, 1.05822, -48.6886)
+script = ExtResource("gb")
+size = Vector3(13.628828573385965, 2.1164320815495756, 14.525130310831166)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.97634, 0, 0.21625, 0, 1, -0, -0.21625, 0, 0.97634, -34.0396, 1.89543, 29.7147)
+script = ExtResource("gb")
+size = Vector3(11.353788392133325, 3.7908634295213797, 17.1887054195497)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.94326, 0, 0.33205, 0, 1, -0, -0.33205, 0, 0.94326, 37.1405, 0.908374, -29.0544)
+script = ExtResource("gb")
+size = Vector3(15.4094302455934, 1.8167480813756742, 8.021298346430417)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.48474, 0, 0.87466, 0, 1, -0, -0.87466, 0, 0.48474, 46.1478, 1.84051, 3.92235)
+script = ExtResource("gb")
+size = Vector3(19.789053305911104, 3.6810194135920047, 11.471662012963119)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.89187, 0, 0.45229, 0, 1, -0, -0.45229, 0, 0.89187, 46.6564, 1.92622, 39.3742)
+script = ExtResource("gb")
+size = Vector3(10.457354174405515, 3.8524400027199976, 16.2877032932829)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.58383, 0, 0.81188, 0, 1, -0, -0.81188, 0, 0.58383, -43.486, 0.957445, -19.8641)
+script = ExtResource("gb")
+size = Vector3(12.334279216668609, 1.914890142824364, 9.74842291448819)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(0.72817, 0, 0.6854, 0, 1, -0, -0.6854, 0, 0.72817, -19.0042, 1.59742, 31.8518)
+script = ExtResource("gb")
+size = Vector3(8.04059743249228, 3.194835623869228, 12.054762339534381)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="Spawn11" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14.7366, 0.3, -1.50253)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 16.3735, 0.3, -35.4399)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 38.008, 0.3, -38.1708)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+
+[node name="Tree14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 27.977, 0, 38.6267)
+script = ExtResource("tree")
+kind = &"dead"
+height = 4.05
+seed_value = -250
+snowy = false
+
+[node name="Tree15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 32.2267, 0, -14.9873)
+script = ExtResource("tree")
+kind = &"dead"
+height = 5.74
+seed_value = -249
+snowy = false
+
+[node name="Tree16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -54.9832, 0, -50.7666)
+script = ExtResource("tree")
+kind = &"dead"
+height = 4.54
+seed_value = -248
+snowy = false
+
+[node name="B17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="B18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Outcrop19" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.51795, 0, 0.85541, 0, 1, -0, -0.85541, -0, -0.51795, 11.5342, -6.622, -7.42704)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.735
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"dunes"
+amplitude = 5.0
+seed_value = 303
+flatten = PackedVector3Array(44.245, 23.9899, 14.5354, 14.8975, 40.09, 13.128, 7.39412, -48.6886, 12.4508, -34.0396, 29.7147, 12.86, 37.1405, -29.0544, 10.9233, 46.1478, 3.92235, 14.2242, 46.6564, 39.3742, 12.1135, -43.486, -19.8641, 9.93291, -19.0042, 31.8518, 9.19417, -30.6146, -83.3956, 10.3438, -14.3303, -90.1923, 12.6649, 20.2145, -83, 14.6982, 91.507, -18.7459, 14.5184, 11.5342, -7.42704, 15.6153)

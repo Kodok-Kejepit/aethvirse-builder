@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"sword_starfall"
+display_name = "Starfall, Eye of the Void"
+description = "A blade of night sky held together by gold. The eye on its guard is always looking at something you cannot see."
+kind = 2
+rarity = 5
+max_stack = 1
+sell_price = 0
+can_sell = false
+slot = 1
+attack = 40.0
+attack_per_level = 7.0
+stat_bonuses = Dictionary[StringName, float]({&"str": 12.0, &"sen": 8.0, &"crit": 0.08})
+visual_prop = &"weapon_sword_mythos"
+visual_joint = &"hand_r"
+visual_offset = Vector3(0, -0.06, -0.95)
+visual_rotation_deg = Vector3(90, 0, 0)

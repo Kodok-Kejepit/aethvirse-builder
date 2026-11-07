@@ -1,0 +1,208 @@
+[gd_resource type="Resource" script_class="ComboData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combo_data.gd" id="2"]
+
+[sub_resource type="Resource" id="light_5"]
+script = ExtResource("1")
+id = &"light_5"
+display_name = "Cyclone Finisher"
+damage_multiplier = 1.8
+is_heavy = false
+startup_s = 0.16
+active_s = 0.18
+recovery_s = 0.4
+combo_window_s = 0.4
+dodge_cancel_s = 0.25
+hitbox_size = Vector3(4.2, 1.6, 4.2)
+hitbox_offset = Vector3(0, 1.0, 0)
+knockback = 6.0
+stagger = 30.0
+hit_stop_s = 0.08
+lunge_speed = 2.0
+swing = 2
+
+[sub_resource type="Resource" id="overhead_smash"]
+script = ExtResource("1")
+id = &"overhead_smash"
+display_name = "Overhead Smash"
+damage_multiplier = 2.0
+is_heavy = true
+startup_s = 0.3
+active_s = 0.12
+recovery_s = 0.45
+combo_window_s = 0.4
+dodge_cancel_s = 0.32
+hitbox_size = Vector3(2.0, 2.0, 2.4)
+hitbox_offset = Vector3(0, 1.0, -1.4)
+knockback = 4.5
+stagger = 35.0
+hit_stop_s = 0.09
+lunge_speed = 2.5
+swing = 1
+
+[sub_resource type="Resource" id="rising_cleave"]
+script = ExtResource("1")
+id = &"rising_cleave"
+display_name = "Rising Cleave"
+damage_multiplier = 1.6
+is_heavy = true
+startup_s = 0.2
+active_s = 0.12
+recovery_s = 0.4
+combo_window_s = 0.35
+dodge_cancel_s = 0.25
+hitbox_size = Vector3(2.2, 2.2, 2.2)
+hitbox_offset = Vector3(0, 1.2, -1.2)
+knockback = 3.5
+stagger = 25.0
+hit_stop_s = 0.07
+lunge_speed = 3.0
+swing = 1
+
+[sub_resource type="Resource" id="whirlwind"]
+script = ExtResource("1")
+id = &"whirlwind"
+display_name = "Whirlwind"
+damage_multiplier = 1.4
+is_heavy = true
+startup_s = 0.18
+active_s = 0.3
+recovery_s = 0.4
+combo_window_s = 0.45
+dodge_cancel_s = 0.3
+hitbox_size = Vector3(4.6, 1.6, 4.6)
+hitbox_offset = Vector3(0, 1.0, 0)
+knockback = 4.0
+stagger = 20.0
+hit_stop_s = 0.06
+lunge_speed = 1.0
+swing = 2
+
+[sub_resource type="Resource" id="ground_slam"]
+script = ExtResource("1")
+id = &"ground_slam"
+display_name = "Ground Slam"
+damage_multiplier = 2.4
+is_heavy = true
+startup_s = 0.32
+active_s = 0.14
+recovery_s = 0.5
+combo_window_s = 0.5
+dodge_cancel_s = 0.38
+hitbox_size = Vector3(3.6, 1.8, 3.6)
+hitbox_offset = Vector3(0, 0.6, -1.0)
+knockback = 6.0
+stagger = 45.0
+hit_stop_s = 0.11
+lunge_speed = 2.0
+swing = 1
+
+[sub_resource type="Resource" id="piercing_thrust"]
+script = ExtResource("1")
+id = &"piercing_thrust"
+display_name = "Piercing Thrust"
+damage_multiplier = 2.0
+is_heavy = true
+startup_s = 0.22
+active_s = 0.12
+recovery_s = 0.4
+combo_window_s = 0.38
+dodge_cancel_s = 0.28
+hitbox_size = Vector3(1.2, 1.2, 4.0)
+hitbox_offset = Vector3(0, 1.0, -2.2)
+knockback = 5.0
+stagger = 30.0
+hit_stop_s = 0.08
+lunge_speed = 6.0
+swing = 3
+
+[sub_resource type="Resource" id="light_4"]
+script = ExtResource("1")
+id = &"light_4"
+display_name = "Slash IV"
+damage_multiplier = 1.2
+is_heavy = false
+startup_s = 0.1
+active_s = 0.12
+recovery_s = 0.25
+combo_window_s = 0.2
+dodge_cancel_s = 0.15
+hitbox_size = Vector3(2.6, 1.4, 2.0)
+hitbox_offset = Vector3(0, 1.0, -1.2)
+knockback = 2.0
+stagger = 10.0
+hit_stop_s = 0.05
+lunge_speed = 4.0
+swing = 0
+next_light = SubResource("light_5")
+next_heavy = SubResource("piercing_thrust")
+
+[sub_resource type="Resource" id="light_3"]
+script = ExtResource("1")
+id = &"light_3"
+display_name = "Slash III"
+damage_multiplier = 1.1
+is_heavy = false
+startup_s = 0.1
+active_s = 0.1
+recovery_s = 0.25
+combo_window_s = 0.18
+dodge_cancel_s = 0.14
+hitbox_size = Vector3(2.6, 1.4, 2.0)
+hitbox_offset = Vector3(0, 1.0, -1.2)
+knockback = 2.0
+stagger = 10.0
+hit_stop_s = 0.05
+lunge_speed = 4.0
+swing = 1
+next_light = SubResource("light_4")
+next_heavy = SubResource("ground_slam")
+
+[sub_resource type="Resource" id="light_2"]
+script = ExtResource("1")
+id = &"light_2"
+display_name = "Slash II"
+damage_multiplier = 1.0
+is_heavy = false
+startup_s = 0.08
+active_s = 0.1
+recovery_s = 0.22
+combo_window_s = 0.16
+dodge_cancel_s = 0.12
+hitbox_size = Vector3(2.4, 1.4, 1.9)
+hitbox_offset = Vector3(0, 1.0, -1.1)
+knockback = 1.5
+stagger = 8.0
+hit_stop_s = 0.04
+lunge_speed = 3.5
+swing = 0
+next_light = SubResource("light_3")
+next_heavy = SubResource("whirlwind")
+
+[sub_resource type="Resource" id="light_1"]
+script = ExtResource("1")
+id = &"light_1"
+display_name = "Slash I"
+damage_multiplier = 0.9
+is_heavy = false
+startup_s = 0.08
+active_s = 0.1
+recovery_s = 0.22
+combo_window_s = 0.16
+dodge_cancel_s = 0.12
+hitbox_size = Vector3(2.4, 1.4, 1.9)
+hitbox_offset = Vector3(0, 1.0, -1.1)
+knockback = 1.5
+stagger = 8.0
+hit_stop_s = 0.04
+lunge_speed = 3.5
+swing = 0
+next_light = SubResource("light_2")
+next_heavy = SubResource("rising_cleave")
+
+[resource]
+script = ExtResource("2")
+light_start = SubResource("light_1")
+heavy_start = SubResource("overhead_smash")
+chain_grace_s = 0.35

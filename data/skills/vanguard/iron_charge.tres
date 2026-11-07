@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="2"]
+
+[sub_resource type="Resource" id="attack"]
+script = ExtResource("2")
+id = &"iron_charge"
+display_name = "Iron Charge"
+is_heavy = true
+element = 0
+startup_s = 0.08
+active_s = 0.35
+recovery_s = 0.25
+combo_window_s = 0.68
+dodge_cancel_s = 0.43
+hitbox_size = Vector3(1.8, 1.6, 2.0)
+hitbox_offset = Vector3(0, 1.0, -0.8)
+knockback = 6.0
+stagger = 40.0
+hit_stop_s = 0.06
+lunge_speed = 22.0
+swing = 3
+
+[resource]
+script = ExtResource("1")
+id = &"iron_charge"
+display_name = "Iron Charge"
+description = "Dash forward, ramming everything in the way."
+kind = 1
+is_ultimate = false
+icon_color = Color(0.75, 0.8, 0.9, 1)
+unlock_level = 1
+mp_cost = 20
+cooldown_s = 8.0
+attack = SubResource("attack")
+damage_multiplier = 1.6
+multiplier_per_level = 0.1

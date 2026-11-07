@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"potion_small"
+display_name = "Small Potion"
+description = "Restores some HP."
+kind = 0
+rarity = 0
+max_stack = 20
+sell_price = 5
+can_sell = true
+slot = 0
+attack = 0.0
+attack_per_level = 0.0
+heal_amount = 150

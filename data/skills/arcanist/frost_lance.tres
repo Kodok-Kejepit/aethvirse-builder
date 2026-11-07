@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/projectile_data.gd" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e3")
+speed = 40.0
+range_m = 34.0
+radius = 0.35
+pierce = 5
+explode_radius = 0.0
+count = 1
+spread_degrees = 0.0
+homing = false
+lifetime_s = 0.0
+color = Color(0.6, 0.9, 1, 1)
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+id = &"frost_lance"
+display_name = "Frost Lance"
+damage_multiplier = 1
+is_heavy = true
+element = 2
+startup_s = 0.15
+active_s = 0.05
+recovery_s = 0.28
+combo_window_s = 0.298
+dodge_cancel_s = 0.2
+hitbox_size = Vector3(1, 1, 1)
+hitbox_offset = Vector3(0, 1, -1)
+knockback = 2.0
+stagger = 18.0
+hit_stop_s = 0.05
+lunge_speed = 0.0
+swing = 3
+projectile = SubResource("s1")
+
+[resource]
+script = ExtResource("e1")
+id = &"frost_lance"
+display_name = "Frost Lance"
+description = "A piercing spear of ice."
+kind = 4
+is_ultimate = false
+icon_color = Color(0.6, 0.9, 1, 1)
+unlock_level = 1
+mp_cost = 14
+cooldown_s = 5.0
+attack = SubResource("s2")
+damage_multiplier = 1.9
+multiplier_per_level = 0.13

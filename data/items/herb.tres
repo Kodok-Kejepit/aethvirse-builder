@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"herb"
+display_name = "Ashfall Herb"
+description = "Bitter weed that grows where Gates closed."
+kind = 6
+rarity = 0
+max_stack = 99
+sell_price = 2

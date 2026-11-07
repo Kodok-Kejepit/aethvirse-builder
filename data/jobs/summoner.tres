@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="JobData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/job_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://data/skills/jobs/call_familiar.tres" id="e4"]
+[ext_resource type="Resource" path="res://data/skills/jobs/spirit_tether.tres" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+strength = 0.0
+agility = 0.0
+intelligence = 4.0
+vitality = 0.0
+sense = 2.0
+
+[resource]
+script = ExtResource("e1")
+id = &"summoner"
+display_name = "Summoner"
+description = "Calls small familiars to fight. Weak and mana-hungry... at first."
+base_class = &""
+tier = 1
+required_level = 30
+parent = &""
+hidden = false
+required_flag = &""
+stat_bonus = SubResource("s1")
+attack_bonus = -0.1
+defense_bonus = 0.0
+hp_bonus = 0.0
+mp_cost_multiplier = 1.5
+skills = Array[ExtResource("e3")]([ExtResource("e4"), ExtResource("e5")])
+shadow_army = false

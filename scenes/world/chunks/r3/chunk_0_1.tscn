@@ -1,0 +1,145 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/enemies/sand_wraith.tres" id="d_sand_wraith"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+
+
+[node name="Chunk_0_1" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.42, 0.3, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.83168, 0, 0.55525, 0, 1, -0, -0.55525, 0, 0.83168, -35.74, 1.57184, -48.914)
+script = ExtResource("gb")
+size = Vector3(13.694848144262577, 3.1436812566431382, 15.996925653498057)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99573, 0, 0.09227, 0, 1, -0, -0.09227, 0, 0.99573, -33.7733, 0.931628, 40.5973)
+script = ExtResource("gb")
+size = Vector3(15.935853030464012, 1.8632569867752575, 13.280657503097238)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.24503, 0, 0.96952, 0, 1, -0, -0.96952, 0, 0.24503, -16.3, 0.843262, -9.53857)
+script = ExtResource("gb")
+size = Vector3(17.825841534104963, 1.6865240840896938, 16.2433460491225)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.020209, 0, 0.9998, 0, 1, -0, -0.9998, 0, 0.020209, 0.892592, 0.825981, -40.9022)
+script = ExtResource("gb")
+size = Vector3(8.223251603744034, 1.651961740472422, 18.980403720919362)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5602, 0, 0.82836, 0, 1, -0, -0.82836, 0, 0.5602, -36.493, 0.89066, -18.7459)
+script = ExtResource("gb")
+size = Vector3(19.360556224919247, 1.7813190903675662, 13.078479347049123)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.80854, 0, 0.58844, 0, 1, -0, -0.58844, 0, 0.80854, -32.8786, 1.62104, 31.5698)
+script = ExtResource("gb")
+size = Vector3(9.962289539827776, 3.242086222126614, 8.616239805980058)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.41677, 0, 0.90901, 0, 1, -0, -0.90901, 0, 0.41677, -11.5419, 1.49496, -46.9506)
+script = ExtResource("gb")
+size = Vector3(13.026082545651398, 2.989927442177946, 13.721218938466585)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.46777, 0, 0.88385, 0, 1, -0, -0.88385, 0, 0.46777, -14.3655, 1.97038, -13.6871)
+script = ExtResource("gb")
+size = Vector3(19.609506594407534, 3.9407594238837333, 15.963152521392441)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="Spawn10" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13.9018, 0.3, -30.8934)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_sand_wraith")
+respawn_s = 20.0
+
+[node name="Spawn11" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -21.2022, 0.3, -10.9342)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_sand_wraith")
+respawn_s = 20.0
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0.90804, 0.3, 24.8086)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_sand_wraith")
+respawn_s = 20.0
+
+[node name="Tree13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0.00135782, 0, -52.848)
+script = ExtResource("tree")
+kind = &"dead"
+height = 6.47
+seed_value = 600
+snowy = false
+
+[node name="Tree14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -31.1172, 0, -8.14878)
+script = ExtResource("tree")
+kind = &"dead"
+height = 5.16
+seed_value = 602
+snowy = false
+
+[node name="B15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Outcrop16" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.96574, -0, -0.25951, 0, 1, -0, 0.25951, -0, -0.96574, 47.5837, -7.25041, -6.07212)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.762
+fit_height = false
+
+[node name="Outcrop17" type="StaticBody3D" parent="."]
+transform = Transform3D(0.96462, -0, -0.26365, 0, 1, -0, 0.26365, 0, 0.96462, 9.66442, -4.6294, 27.0636)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.353
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"dunes"
+amplitude = 5.0
+seed_value = 303
+flatten = PackedVector3Array(-35.74, -48.914, 13.135, -33.7733, 40.5973, 12.9466, -16.3, -9.53857, 14.9699, 0.892592, -40.9022, 12.9111, -36.493, -18.7459, 14.5184, -32.8786, 31.5698, 8.40286, -11.5419, -46.9506, 11.8518, -14.3655, -13.6871, 15.6713, -83.755, 23.9899, 14.5354, -81.8522, 3.92235, 14.2242, -81.3436, 39.3742, 12.1135, 47.5837, -6.07212, 15.861, 9.66442, 27.0636, 12.1778)

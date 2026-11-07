@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_57vfn"]
+
+[resource]
+script = ExtResource("1_57vfn")
+id = &"landmark_dark_grove"
+mesh_path = "res://assets/props/landmark_dark_grove/landmark_dark_grove.res"
+albedo_path = "res://assets/props/landmark_dark_grove/landmark_dark_grove_albedo.jpg"
+size = Vector3(16.120962, 14.000001, 21.963781)
+collision = 2

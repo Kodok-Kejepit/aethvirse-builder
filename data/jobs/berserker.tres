@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="JobData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/job_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://data/skills/jobs/blood_frenzy.tres" id="e4"]
+[ext_resource type="Resource" path="res://data/skills/jobs/rampage.tres" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+strength = 6.0
+agility = 2.0
+intelligence = 0.0
+vitality = 0.0
+sense = 0.0
+
+[resource]
+script = ExtResource("e1")
+id = &"berserker"
+display_name = "Berserker"
+description = "Rage-fuelled destroyer. Attack up, defense down."
+base_class = &"vanguard"
+tier = 1
+required_level = 30
+parent = &""
+hidden = false
+required_flag = &""
+stat_bonus = SubResource("s1")
+attack_bonus = 0.12
+defense_bonus = -0.05
+hp_bonus = 0.0
+mp_cost_multiplier = 1.0
+skills = Array[ExtResource("e3")]([ExtResource("e4"), ExtResource("e5")])
+shadow_army = false

@@ -1,0 +1,495 @@
+keys,en,id
+GAME_TITLE,ASCENDANT,ASCENDANT
+HUD_HITS,HITS,HIT
+HUD_PERFECT_DODGE,PERFECT DODGE,HINDARAN SEMPURNA
+HUD_DOWN,DOWN,TUMBANG
+HUD_LEVEL_UP,LEVEL UP,NAIK LEVEL
+STATUS_TITLE,STATUS,STATUS
+STATUS_LEVEL,Level,Level
+STATUS_POINTS,Stat points,Poin stat
+STATUS_SKILL_POINTS,Skill points,Poin skill
+STATUS_SKILLS,Skills,Skill
+STATUS_CLOSE,Close,Tutup
+STATUS_LOCKED,Unlocks at Lv %d,Terbuka di Lv %d
+CODEX_TITLE,THE CODEX,THE CODEX
+CODEX_TAB_STATUS,Status,Status
+CODEX_TAB_LOG,Log,Log
+CODEX_TAB_QUESTS,Quests,Misi
+CODEX_TAB_INVENTORY,Inventory,Inventori
+CODEX_TAB_MAP,Map,Peta
+CODEX_TAB_SHADOWS,Shadow Army,Pasukan Bayangan
+CODEX_TAB_LORE,Lore,Lore
+CODEX_TAB_ACHIEVEMENTS,Achievements,Pencapaian
+CODEX_TAB_JOURNAL,Mystery Journal,Jurnal Misteri
+CODEX_SEALED,[ SEALED ]  This section of the Codex has not opened to you yet.,[ TERSEGEL ]  Bagian Codex ini belum terbuka untukmu.
+CODEX_LOG_EMPTY,No messages yet.,Belum ada pesan.
+CODEX_MSG_LEVEL_UP,Level up. You are now Lv %d.,Naik level. Sekarang kamu Lv %d.
+CODEX_MSG_SAVED,Progress recorded.,Progres tercatat.
+CODEX_TAB_SYSTEM,System,Sistem
+SAVE_SLOT,Slot %d,Slot %d
+SAVE_AUTOSAVE,Autosave,Autosave
+SAVE_EMPTY,— empty —,— kosong —
+SAVE_INFO,%s  Lv %d  ·  %s played,%s  Lv %d  ·  main %s
+SAVE_SAVE,Save,Simpan
+SAVE_LOAD,Load,Muat
+HUD_DAY,Day,Hari
+WEATHER_CLEAR,Clear,Cerah
+WEATHER_RAIN,Rain,Hujan
+WEATHER_FOG,Fog,Kabut
+WEATHER_STORM,Storm,Badai
+PROMPT_INTERACT,Interact,Interaksi
+PROMPT_TALK,Talk to,Bicara dengan
+PROMPT_READ,Read,Baca
+PROMPT_OPEN,Open,Buka
+PROMPT_TAKE,Take,Ambil
+PROMPT_ENTER,Enter,Masuk
+CODEX_MSG_NOTHING_TO_IDENTIFY,Nothing to identify.,Tidak ada yang perlu diidentifikasi.
+CODEX_MSG_IDENTIFIED,Identified: %s,Teridentifikasi: %s
+CODEX_MSG_EVOLVED,%s has changed. It is now %s.,%s telah berubah. Sekarang menjadi %s.
+INV_EQUIPPED,Equipped,Terpasang
+INV_BAG,Bag (%d/%d),Tas (%d/%d)
+INV_GOLD,Gold: %d,Gold: %d
+INV_USE,Use,Pakai
+INV_EQUIP,Equip,Pasang
+INV_UNEQUIP,Remove,Lepas
+INV_CURSED,Cursed — cannot be removed.,Terkutuk — tidak bisa dilepas.
+INV_EMPTY_SLOT,— empty —,— kosong —
+SLOT_WEAPON,Weapon,Senjata
+SLOT_RING,Ring,Cincin
+SLOT_NECKLACE,Necklace,Kalung
+CODEX_MSG_SEALED_MISSION,[ ??? ] Sealed mission detected.,[ ??? ] Misi tersegel terdeteksi.
+CODEX_MSG_SECRET_FOUND,Something hidden has been found.,Sesuatu yang tersembunyi telah ditemukan.
+CODEX_MSG_RECEIVED,Received: %s ×%d,Diterima: %s ×%d
+CODEX_MSG_TITLE,Title acquired: %s,Title didapat: %s
+CODEX_MSG_LORE,A fragment has been recorded in the Codex.,Sebuah fragmen tercatat di Codex.
+SECRET_SEC_R1_01,The Breathing Culvert,Gorong-gorong yang Bernapas
+HINT_SEC_R1_01_1,"A camp kid: ""When it rains, that culvert sounds like someone breathing.""","Anak di kamp: ""Kalau hujan, gorong-gorong itu bunyi kayak orang napas."""
+HINT_SEC_R1_01_2,"In the rain, steam and a slow breathing sound come out of the culvert grate.","Saat hujan, uap dan suara napas pelan keluar dari teralis gorong-gorong."
+SECRET_SEC_R1_02,Apartment 404,Apartemen 404
+HINT_SEC_R1_02_1,The lobby mailboxes have a slot labelled 404. There is no door 404.,Kotak surat di lobi punya label 404. Tidak ada pintu 404.
+HINT_SEC_R1_02_2,Between 403 and 405 the cracked wall shimmers faintly to sharp senses.,"Di antara 403 dan 405, dinding retak berpendar samar bagi indra yang tajam."
+SECRET_MC_R1_01,The Patient Chest,Peti Penyabar
+HINT_MC_R1_01_1,"The seal reads: ""For those who are not in a hurry.""","Segelnya bertuliskan: ""Untuk yang tidak terburu-buru."""
+HINT_MC_R1_01_2,The seal hums softer every second you stand still beside it.,Segel itu berdengung makin pelan setiap detik kamu diam di sampingnya.
+SECRET_MC_R1_02,The Too-Tidy Chest,Peti Terlalu Rapi
+HINT_MC_R1_02_1,Everything in apartment 404 is dusty. Except that chest.,Semua di apartemen 404 berdebu. Kecuali peti itu.
+HINT_MC_R1_02_2,"Stare at the chest long enough and it shifts, just a little.","Tatap peti itu cukup lama, dan ia bergeser sedikit."
+SECRET_SM_R1_01,The Beggar Who Was Never Hungry,Pengemis yang Tidak Pernah Lapar
+HINT_SM_R1_01_1,"The bread seller: ""The old man never asks. But he always waits there.""","Penjual roti: ""Pak tua itu nggak pernah minta, tapi selalu nunggu di situ."""
+HINT_SM_R1_01_2,Old Marrow says something different to you every day.,Old Marrow mengatakan hal yang berbeda kepadamu setiap hari.
+HINT_SM_R1_01_3,"Marrow: ""Not here. Not while the sun is watching.""","Marrow: ""Jangan di sini. Jangan selagi matahari mengawasi."""
+HINT_SM_R1_01_4,The camp kids say the old man talks to someone at night.,Anak-anak kamp bilang pak tua itu bicara dengan seseorang di malam hari.
+ANOMALY_MM_01,NOT THE FIRST,BUKAN YANG PERTAMA
+HINT_SM_R1_01_5,"Marrow: ""Don't show it to the voice. Find someone with honest eyes.""","Marrow: ""Jangan tunjukkan ke suara itu. Cari orang yang matanya jujur."""
+HINT_SM_R1_01_6,"A sign in the camp: ""Honest appraisals. No Systems allowed.""","Papan di kamp: ""Penilaian jujur. Dilarang membawa Sistem."""
+SECRET_SM_R1_02,Whispers of the Rain,Bisikan Hujan
+ANOMALY_SM_R1_02,EXNDQ BDQJ SHUWDPD,EXNDQ BDQJ SHUWDPD
+HINT_SM_R1_02_1,A worker's note: a small Gate appeared here eight years ago and vanished by itself.,Catatan pekerja: Gate kecil muncul di sini delapan tahun lalu dan hilang sendiri.
+HINT_SM_R1_02_2,"When you move in the pump room during rain, the Codex flickers for a moment.","Saat kamu bergerak di ruang pompa ketika hujan, Codex berkedip sesaat."
+ANOMALY_HOST_7,HOST #7,HOST #7
+SECRET_SI_R1_01,The Rusty Pipe,Pipa Berkarat
+HINT_SI_R1_01_1,"The pipe's description: ""Rusted, bent, and strangely warm.""","Deskripsi pipa: ""Berkarat, bengkok, dan anehnya, hangat."""
+HINT_SI_R1_01_2,"Marrow: ""Keep that pipe. Something is sleeping in it.""","Marrow: ""Simpan pipa itu. Ada yang tidur di dalamnya."""
+SECRET_SI_R1_02,The Rusted Hunter License,Lisensi Hunter yang Berkarat
+HINT_SI_R1_02_2,"""The metal is too heavy for an ordinary license.""","""Logamnya terlalu berat untuk lisensi biasa."""
+SECRET_SI_R1_03,The Gravedigger's Fang,Taring Penggali Kubur
+TITLE_MISSING_TENANT,The Missing Tenant,Penghuni yang Hilang
+TITLE_LISTENER,The Listener,Pendengar
+LORE_R1_01_T,Pump Room Worker's Note,Catatan Pekerja Ruang Pompa
+LORE_R1_01,"Day 3 of repairs. A small Gate opened right here, eight years back, then vanished on its own. Gates do not vanish on their own. I have stopped telling people.","Hari ke-3 perbaikan. Gate kecil terbuka tepat di sini, delapan tahun lalu, lalu hilang sendiri. Gate tidak pernah hilang sendiri. Aku berhenti menceritakannya."
+LORE_R1_02_T,Diary from Apartment 404,Buku Harian Apartemen 404
+LORE_R1_02,He keeps hearing a blue voice. He says it chose him. This morning his coat was gone and the radio said the Gate on 7th street had closed by itself.,"Dia terus mendengar suara biru. Katanya suara itu memilihnya. Pagi ini mantelnya hilang, dan radio bilang Gate di jalan ke-7 tertutup sendiri."
+REGION_R1,Ashfall Outskirts,Ashfall Outskirts
+JOURNAL_TRACKER,%s — Secrets %d/%d · Sealed missions %d/%d,%s — Rahasia %d/%d · Misi tersegel %d/%d
+JOURNAL_UNKNOWN,[ ??? ],[ ??? ]
+JOURNAL_SOLVED,[ solved ],[ terpecahkan ]
+JOURNAL_NO_HINTS,No clues yet. Keep your eyes open.,Belum ada petunjuk. Tetap waspada.
+JOURNAL_NOTES,Your notes,Catatanmu
+LORE_EMPTY,No fragments recorded yet.,Belum ada fragmen tercatat.
+DIALOG_LEAVE,Leave,Pergi
+NPC_MARROW,Old Marrow,Old Marrow
+DLG_MARROW_S2_1,"You hear that ""ding"" too, don't you?","Kamu dengar suara ""ding"" itu juga, ya?"
+DLG_MARROW_S2_2,Take this. It used to be mine. Don't show it to the voice. Find someone with honest eyes.,Ambil ini. Dulu punyaku. Jangan tunjukkan ke suara itu. Cari orang yang matanya jujur.
+DLG_MARROW_S1_1,You hear it too. The ding.,Kamu dengar juga. Bunyi ding itu.
+DLG_MARROW_AFTER,Did they read it right? Then you know my name. Keep it quiet.,Sudah dibaca dengan benar? Berarti kamu tahu namaku. Simpan baik-baik.
+DLG_MARROW_D1,The bridge keeps the rain off. Mostly.,Jembatan ini menahan hujan. Kebanyakan.
+DLG_MARROW_D2,You walk like someone who was told where to go.,Caramu berjalan seperti orang yang selalu diberi tahu harus ke mana.
+DLG_MARROW_D3,Keep that pipe. Something is sleeping in it.,Simpan pipa itu. Ada yang tidur di dalamnya.
+DLG_CHOICE_GIVE_BREAD,Give him bread,Beri dia roti
+DLG_MARROW_THANKS,"...He takes it without a word, and watches you leave.","...Dia menerimanya tanpa sepatah kata, lalu memperhatikanmu pergi."
+NPC_KID,Camp Kid,Anak Kamp
+NPC_BREAD,Bread Seller,Penjual Roti
+DLG_CHOICE_BUY_BREAD,Buy bread,Beli roti
+DLG_BREAD_THANKS,"Fresh-ish. Thanks, Hunter.","Lumayan segar. Makasih, Hunter."
+NPC_APPRAISER,Honest Appraiser,Penilai Jujur
+DLG_CHOICE_APPRAISE,Appraise the heavy license,Nilai lisensi yang berat itu
+DLG_APPRAISER_LICENSE,Rank S. Marrow Kessick. ...I knew that name once. Everyone did.,Rank S. Marrow Kessick. ...Dulu aku kenal nama itu. Semua orang kenal.
+CODEX_MSG_BOSS_PHASE,Threat level rising. Phase %d.,Tingkat ancaman meningkat. Fase %d.
+CODEX_MSG_GATE_ENTERED,Rank %s Gate entered: %s.,Gate rank %s dimasuki: %s.
+CODEX_MSG_GATE_CLEARED,Gate cleared. The rift is closing.,Gate dibersihkan. Retakan menutup.
+GATE_RULE_NO_SKILLS,Rule: skills do not exist here.,Aturan: skill tidak berlaku di sini.
+GATE_RULE_NO_POTIONS,Rule: potions do not exist here.,Aturan: potion tidak berlaku di sini.
+PROMPT_LEAVE_GATE,Leave the Gate,Keluar dari Gate
+GATE_HIDDEN_R1,???,???
+GATE_R1_E_OVERPASS,Overpass Rift,Retakan Jalan Layang
+CHEST_PATIENCE_SEAL,For those who are not in a hurry.,Untuk yang tidak terburu-buru.
+SIGN_MAILBOX_404,Mailbox: 401 · 402 · 403 · 404 · 405 · 406,Kotak surat: 401 · 402 · 403 · 404 · 405 · 406
+CODEX_MSG_REGION,Region: %s (Lv %d–%d),Region: %s (Lv %d–%d)
+QUEST_R1_OVERPASS,The Overpass Rift,Retakan Jalan Layang
+QUEST_R1_OVERPASS_D,A rank E Gate opened under the collapsed overpass. The camp wants it closed before it breaks.,Gate rank E terbuka di bawah jalan layang yang runtuh. Kamp ingin Gate itu ditutup sebelum jebol.
+QO_TALK_BREAD,Ask the bread seller about the overpass,Tanya penjual roti soal jalan layang
+QO_KILL_HOUNDS,Thin out the Ash Hounds near the Gate,Kurangi Ash Hound di sekitar Gate
+QO_CLEAR_OVERPASS,Clear the Overpass Rift,Bersihkan Retakan Jalan Layang
+QUEST_R1_SAFE_ROAD,A Safe Road Home,Jalan Aman ke Kamp
+QUEST_R1_SAFE_ROAD_D,Husks keep wandering toward the camp. Push them back.,Husk terus berkeliaran ke arah kamp. Usir mereka.
+QO_KILL_HUSKS,Defeat Gate Husks,Kalahkan Gate Husk
+QO_TALK_KID,Tell the camp kid the road is safe,Beri tahu anak kamp jalannya sudah aman
+CODEX_MSG_QUEST_STARTED,New quest: %s,Misi baru: %s
+CODEX_MSG_QUEST_STEP,Next: %s,Selanjutnya: %s
+CODEX_MSG_QUEST_DONE,Quest complete: %s,Misi selesai: %s
+QUESTS_ACTIVE,Active,Aktif
+QUESTS_DONE,Completed,Selesai
+QUESTS_NONE,No quests.,Tidak ada misi.
+MENU_CONTINUE,Continue,Lanjutkan
+MENU_NEW_GAME,New Game,Game Baru
+MENU_CONTINUE_INFO,%s  Lv %d,%s  Lv %d
+CODEX_MSG_LOAD_FAILED,The record could not be read. A new path begins.,Catatan tidak bisa dibaca. Jalan baru dimulai.
+CODEX_MSG_PICKED,Picked up: %s ×%d,Diambil: %s ×%d
+CODEX_MSG_BOX,Mystery Box: %s — %s,Mystery Box: %s — %s
+RARITY_0,Common,Biasa
+RARITY_1,Uncommon,Tak Biasa
+RARITY_2,Rare,Langka
+RARITY_3,Epic,Epik
+RARITY_4,Legendary,Legenda
+RARITY_5,Mythic,Mitos
+RARITY_6,???,???
+INV_CRAFTING,Crafting,Kerajinan
+INV_CRAFT,Craft,Buat
+INV_SELL,Sell,Jual
+INV_SALVAGE,Salvage,Hancurkan
+SLOT_OFF_HAND,Off-hand,Tangan kiri
+SLOT_HELM,Helm,Helm
+SLOT_ARMOR,Armor,Zirah
+SLOT_GLOVES,Gloves,Sarung tangan
+SLOT_BOOTS,Boots,Sepatu
+SLOT_RUNE_CORE,Rune Core,Inti Rune
+UPGRADE_RESULT_0,Upgrade succeeded: %s,Upgrade berhasil: %s
+UPGRADE_RESULT_1,Upgrade failed: %s,Upgrade gagal: %s
+UPGRADE_RESULT_2,Upgrade failed and the item weakened: %s,Upgrade gagal dan item melemah: %s
+UPGRADE_RESULT_3,Already at maximum: %s,Sudah maksimal: %s
+UPGRADE_RESULT_4,Not enough gold for %s,Gold tidak cukup untuk %s
+UPGRADE_RESULT_5,Cannot upgrade %s,Tidak bisa di-upgrade: %s
+NPC_QUARTERMASTER,Quartermaster,Quartermaster
+DLG_QM_HELLO,"Guild supplies. Cash only, no questions.","Perlengkapan guild. Bayar tunai, tanpa pertanyaan."
+DLG_QM_THANKS,Pleasure doing business.,Senang berbisnis denganmu.
+DLG_BUY_POTION,Buy Small Potion,Beli Small Potion
+DLG_BUY_POTION_L,Buy Large Potion,Beli Large Potion
+DLG_BUY_HERB,Buy Ashfall Herb,Beli Ashfall Herb
+DLG_BUY_BOX,Buy Mystery Box,Beli Mystery Box
+QUEST_OPTIONAL,optional,opsional
+CODEX_MSG_QUEST_FAILED,Quest failed: %s,Misi gagal: %s
+CODEX_MSG_GUILD_RANK,Guild rank raised to %s.,Rank guild naik menjadi %s.
+DAILY_TITLE,Daily Quest: Preparation,Misi Harian: Persiapan
+DAILY_DESC,The Codex requires daily training. Failure has consequences.,Codex mewajibkan latihan harian. Kegagalan ada konsekuensinya.
+DAILY_ATTACKS,Attacks,Serangan
+DAILY_DODGES,Dodges,Menghindar
+DAILY_RUN,Run (meters),Lari (meter)
+DAILY_KILLS,Defeat enemies,Kalahkan musuh
+EMERGENCY_TITLE,Emergency Quest,Misi Darurat
+EMERGENCY_DESC,Monsters are gathering nearby. Thin them out before it is too late.,Monster berkumpul di dekat sini. Kurangi jumlahnya sebelum terlambat.
+EMERGENCY_KILLS,Defeat nearby monsters,Kalahkan monster di sekitar
+CODEX_MSG_EMERGENCY,Emergency quest issued. Time is limited.,Misi darurat dikeluarkan. Waktu terbatas.
+CODEX_MSG_CODEX_POINTS,Codex Points +%d,Codex Point +%d
+CODEX_MSG_PENALTY,Daily quest ignored. Penalty Zone in 10 seconds.,Misi harian diabaikan. Penalty Zone dalam 10 detik.
+CODEX_MSG_PENALTY_START,Penalty Zone. Survive.,Penalty Zone. Bertahan hidup.
+CODEX_MSG_PENALTY_DONE,Penalty complete. Do not ignore the Codex again.,Hukuman selesai. Jangan abaikan Codex lagi.
+PENALTY_SURVIVE,SURVIVE,BERTAHAN
+PENALTY_DONE,The penalty is over.,Hukuman selesai.
+STATUS_GUILD_RANK,Guild rank,Rank guild
+CODEX_MSG_RANK_TOO_LOW,This Gate requires guild rank %s.,Gate ini butuh rank guild %s.
+CODEX_MSG_FELL,You fell. The Codex pulled you back.,Kamu terjatuh. Codex menarikmu kembali.
+SET_TITLE,Settings,Pengaturan
+SET_GRAPHICS,Graphics,Grafis
+SET_PRESET,Quality,Kualitas
+SET_PRESET_AUTO,Auto (%s),Otomatis (%s)
+SET_FPS,Frame rate,Frame rate
+SET_FPS_PRESET,Preset default,Bawaan preset
+SET_AUDIO,Audio,Audio
+SET_VOL_MASTER,Master volume,Volume utama
+SET_VOL_BGM,Music,Musik
+SET_VOL_SFX,Effects,Efek
+SET_VOL_VOICE,Voice,Suara
+SET_VOL_UI,Interface,Antarmuka
+SET_CONTROLS,Controls,Kontrol
+SET_SENSITIVITY,Camera sensitivity,Sensitivitas kamera
+SET_INVERT_Y,Invert camera Y,Balik sumbu Y kamera
+SET_CAMERA_DISTANCE,Camera distance,Jarak kamera
+SET_TOUCH_SCALE,Touch button size,Ukuran tombol sentuh
+SET_TOUCH_OPACITY,Touch button opacity,Transparansi tombol sentuh
+SET_GAME,Game,Game
+SET_LANGUAGE,Language,Bahasa
+SET_LANG_AUTO,Device language,Bahasa perangkat
+SET_LANG_EN,English,English
+SET_LANG_ID,Bahasa Indonesia,Bahasa Indonesia
+SET_DAMAGE_NUMBERS,Damage numbers,Angka damage
+MENU_SETTINGS,Settings,Pengaturan
+SET_ON,ON,AKTIF
+SET_OFF,OFF,MATI
+DAILY_SKILLS,Use skills,Gunakan skill
+DAILY_GATE,Close a Gate,Tutup sebuah Gate
+DAILY_PICKUPS,Pick up items,Pungut item
+DAILY_HERBS,Gather herbs,Kumpulkan herba
+DAILY_CRAFT,Craft items (Bag → Crafting),Buat item (Tas → Kerajinan)
+DAILY_USE_ITEMS,Use consumables,Gunakan item konsumsi
+GATE_DOUBLE,Double Gate,Double Gate
+GATE_RULE_DOUBLE,A Gate inside a Gate. The rules here are not the same.,Gate di dalam Gate. Aturan di sini tidak sama.
+PROMPT_ENTER_DOUBLE,Step through the second Gate,Masuki Gate kedua
+CODEX_MSG_DOUBLE_HUM,…something hums behind these walls.,…ada yang berdengung di balik dinding ini.
+SECRET_SM_JOB_01,The Ones Who Stay,Mereka yang Tinggal
+HINT_SM_JOB_01_1,Codex: Little lights grow brave when they have fed. Let them finish what you start.,Codex: Cahaya kecil menjadi berani setelah kenyang. Biarkan mereka menuntaskan yang kamu mulai.
+HINT_SM_JOB_01_2,"Codex: A Gate behind a Gate, under the night sky. The fallen there are listening.","Codex: Gate di balik Gate, di bawah langit malam. Yang gugur di sana sedang mendengarkan."
+ANOMALY_SM_JOB_01,FIFTY FELL TO YOUR LIGHTS. NONE OF THEM LEFT.,LIMA PULUH GUGUR OLEH CAHAYAMU. TAK SATU PUN PERGI.
+ANOMALY_SM_JOB_01_DONE,SOMETHING ANSWERED. IT WAS NOT A FAMILIAR.,SESUATU MENJAWAB. ITU BUKAN FAMILIAR.
+JOB_HIDDEN_AVAILABLE,A hidden job change is available. (Codex → Status),Job change tersembunyi tersedia. (Codex → Status)
+SHADOW_NO_CORPSE,No fallen enemy close enough to bind.,Tidak ada musuh gugur yang cukup dekat untuk diikat.
+SHADOW_FULL,Shadow army is full (%d). Release a soldier in Codex → Shadow Army.,Pasukan bayangan penuh (%d). Lepaskan prajurit di Codex → Pasukan Bayangan.
+SHADOW_BIND_FAILED,%s resisted the binding.,%s menolak diikat.
+SHADOW_BOUND,"Rise, Echo. %s joins your shadow army.","Bangkitlah, Gema. %s bergabung ke pasukan bayanganmu."
+SHADOW_EMPTY,Your shadow army is empty.,Pasukan bayanganmu masih kosong.
+SHADOW_CALLED,Answer me.,Jawab aku.
+SHADOW_HEADER,Shadow Army  %d / %d,Pasukan Bayangan  %d / %d
+SHADOW_RELEASE,Release,Lepaskan
+SHADOW_TIER_0,Soldier,Prajurit
+SHADOW_TIER_1,Knight,Ksatria
+SHADOW_TIER_2,Marshal,Marsekal
+JOB_LABEL,Job: %s,Job: %s
+JOB_NONE,(none yet — Job Change at Lv 30),(belum ada — Job Change di Lv 30)
+JOB_CHANGE_TITLE,Job Change available,Job Change tersedia
+JOB_CHANGE_TO,Become %s,Menjadi %s
+JOB_CHANGED,Job Change: you are now a %s.,Job Change: kamu sekarang %s.
+SKILL_SLOT_BUTTON,Slot %d,Slot %d
+JOB_CHANGE_SOON,Job Change unlocks at Lv %d.,Job Change terbuka di Lv %d.
+MENU_PICK_HERO,Choose your character,Pilih karaktermu
+HERO_DRAGON_MAIDEN,Starry Dragon Maiden,Gadis Naga Berbintang
+HERO_DRAGON_MAIDEN_DESC,Long hair. A spirit dragon answers every skill.,Rambut panjang. Naga roh muncul di setiap skill.
+HERO_STARBLADE,Violet Starblade,Pedang Bintang Ungu
+HERO_STARBLADE_DESC,Short hair. Swift and clean — no dragon.,Rambut pendek. Gesit dan bersih — tanpa naga.
+PROMPT_WAYSTONE,Waystone,Waystone
+PROMPT_TRAVEL,Travel to,Pergi ke
+TRAVEL_TITLE,Fast Travel,Perjalanan Cepat
+CODEX_MSG_WAYSTONE,Waystone attuned: %s,Waystone terhubung: %s
+CODEX_MSG_ROAD_DANGER,%s is dangerous (Lv %d+). Proceed with care.,%s berbahaya (Lv %d+). Hati-hati.
+WAYSTONE_R1_CAMP,Refugee Camp,Kamp Pengungsi
+WAYSTONE_R1_OVERPASS,Broken Overpass,Jalan Layang Runtuh
+WAYSTONE_R2_GLADE,Mossgate Glade,Lapangan Mossgate
+WAYSTONE_R2_ROOTS,Root Shrine,Kuil Akar
+WAYSTONE_R3_OASIS,Red Oasis,Oasis Merah
+WAYSTONE_R3_RUINS,Sunken Colonnade,Tiang Tenggelam
+REGION_R2,Verdant Hollow,Verdant Hollow
+REGION_R3,Crimson Dunes,Crimson Dunes
+GATE_R1_E_CULVERT,Culvert Gate,Gerbang Gorong-gorong
+GATE_R2_D_THICKET,Thicket Gate,Gerbang Semak
+GATE_R2_C_ROOTHEART,Rootheart Gate,Gerbang Jantung Akar
+GATE_R3_C_MIRAGE,Mirage Gate,Gerbang Fatamorgana
+GATE_R3_B_TOMB,Tomb Gate,Gerbang Makam
+NPC_SELA,Warden Sela,Penjaga Sela
+NPC_ROOT_MONK,Root Monk,Biksu Akar
+NPC_KADIR,Kadir the Trader,Kadir si Pedagang
+NPC_CARTOGRAPHER,Dune Cartographer,Kartografer Gurun
+DLG_SELA_1,"The forest remembers every hunter who passes. Most it forgets on purpose.","Hutan mengingat setiap pemburu yang lewat. Sebagian besar sengaja ia lupakan."
+DLG_MONK_1,"The roots grew around this shrine, not over it. Something asked them to.","Akar-akar ini tumbuh mengitari kuil, bukan menimpanya. Ada yang meminta mereka begitu."
+DLG_KADIR_1,"Water, potions, rumours. The rumours cost extra.","Air, ramuan, kabar burung. Kabar burung lebih mahal."
+DLG_CARTO_1,"My maps never match twice. The dunes walk at night.","Petaku tak pernah sama dua kali. Bukit pasir berjalan di malam hari."
+SIGN_R2_ROAD,"Road to Ashfall. Hunters below Lv 10, turn back.","Jalan ke Ashfall. Hunter di bawah Lv 10, putar balik."
+HINT_SEC_R2_07_1,"Listen at the back of the shrine. The wall there is thinner than prayer.","Dengarkan di belakang kuil. Dindingnya lebih tipis dari doa."
+HINT_SEC_R2_07_2,"Carved: 'Strike once with all your weight, and the roots will make way.'","Terukir: 'Pukul sekali dengan seluruh berat badanmu, dan akar akan memberi jalan.'"
+HINT_SEC_R2_06_1,"On foggy nights, someone stands on the old jetty in Mistlake. Nobody sees them leave.","Di malam berkabut, ada yang berdiri di dermaga tua Mistlake. Tak ada yang melihatnya pergi."
+HINT_SEC_R2_06_2,"A soaked page: '...the end of the jetty, at night, when the fog is thick enough to hold...'","Halaman basah: '...ujung dermaga, malam hari, saat kabut cukup tebal untuk digenggam...'"
+HINT_SEC_R3_01_1,"The lone gateway in the dunes? Only a fool walks through it. Unless the sand is screaming.","Gapura sepi di tengah gurun? Hanya orang bodoh yang melewatinya. Kecuali pasir sedang menjerit."
+HINT_SEC_R3_01_2,"Scratched on the post: 'Through the gate, in the storm.'","Tergores di tiang: 'Lewati gerbang itu, saat badai.'"
+HINT_SEC_R3_09_1,"The tomb under the colonnade was sealed from the inside. Its door is just sand and pride.","Makam di bawah tiang-tiang itu disegel dari dalam. Pintunya cuma pasir dan gengsi."
+HINT_SEC_R3_09_2,"A warning: 'Do not wake the tomb.' Someone added below: 'hit it harder.'","Peringatan: 'Jangan bangunkan makam.' Ada yang menambahkan di bawahnya: 'pukul lebih keras.'"
+SECRET_SEC_R2_07,Behind the Shrine,Di Balik Kuil
+SECRET_SEC_R2_06,The Watcher on the Jetty,Penunggu Dermaga
+SECRET_SEC_R3_01,Gateway of the Storm,Gerbang Badai
+SECRET_SEC_R3_09,The Sealed Tomb,Makam Tersegel
+LORE_R2_01_T,Root Ledger,Catatan Akar
+LORE_R2_01,"Day 9 of the first Gate. The trees bent toward it like they were listening. We cut our names into the bark so the forest would remember us. It did not.","Hari ke-9 Gate pertama. Pepohonan membungkuk ke arahnya seakan mendengarkan. Kami menggoreskan nama di kulit kayu agar hutan mengingat kami. Ia tidak mengingat."
+LORE_R2_02_T,Jetty Note,Catatan Dermaga
+LORE_R2_02,"I saw the blue light again tonight, over the water. It wrote a word I didn't know, then erased it as if it had made a mistake.","Aku melihat cahaya biru itu lagi malam ini, di atas air. Ia menulis kata yang tak kukenal, lalu menghapusnya seolah keliru."
+LORE_R3_01_T,Storm Tablet,Lempeng Badai
+LORE_R3_01,"Those who walked through in the storm came back with a voice in their ear that only they could hear. The elders called it a blessing. The children called it a list.","Mereka yang melewatinya saat badai pulang dengan suara di telinga yang hanya bisa mereka dengar. Para tetua menyebutnya berkah. Anak-anak menyebutnya daftar."
+LORE_R3_02_T,Tomb Inscription,Prasasti Makam
+LORE_R3_02,"Here lies the first who was chosen. It chose again after him. It always chooses again.","Di sini berbaring yang pertama dipilih. Ia memilih lagi setelahnya. Ia selalu memilih lagi."
+CODEX_MSG_GATE_OPENED,A Gate has opened nearby: %s [%s],Gate terbuka di sekitar: %s [%s]
+CODEX_MSG_DUNGEON_BREAK,DUNGEON BREAK — monsters are pouring out of %s!,DUNGEON BREAK — monster keluar dari %s!
+CODEX_MSG_BREAK_REPELLED,Dungeon Break repelled. The Gate collapses.,Dungeon Break berhasil ditahan. Gate runtuh.
+SHADOW_RANK_0,Soldier,Prajurit
+SHADOW_RANK_1,Knight,Ksatria
+SHADOW_RANK_2,Elite,Elit
+SHADOW_RANK_3,Commander,Komandan
+SHADOW_RANK_4,Marshal,Marsekal
+SHADOW_RANK_UP,%s rises to %s.,%s naik pangkat: %s.
+GATE_TRIAL_1,Trial of the First Change,Ujian Perubahan Pertama
+GATE_TRIAL_2,Trial of the Second Change,Ujian Perubahan Kedua
+JOB_TRIAL_START,Take the trial: %s,Ikuti ujian: %s
+JOB_TRIAL_HINT,Defeat the trial guardian to earn this job. Dying just restarts the trial.,Kalahkan penjaga ujian untuk mendapat job ini. Mati hanya mengulang ujian.
+JOB_TRIAL_BEGIN,The Codex opens a trial for %s.,Codex membuka ujian untuk %s.
+JOB_TRIAL_PASSED,Trial passed. You are now %s.,Ujian lulus. Kamu sekarang %s.
+JOB_TRIAL_NOT_IN_GATE,Finish this Gate first.,Selesaikan Gate ini dulu.
+REGION_R4,Frostveil Peaks,Frostveil Peaks
+REGION_R5,Sunken Archive,Sunken Archive
+REGION_R6,The Fracture,The Fracture
+REGION_R7,Hollow Throne,Hollow Throne
+WAYSTONE_R4_LODGE,Hunter's Lodge,Pondok Pemburu
+WAYSTONE_R4_TEMPLE,Mirror Temple,Kuil Cermin
+WAYSTONE_R5_VILLAGE,Fisher Village,Desa Nelayan
+WAYSTONE_R5_LIBRARY,Great Library,Perpustakaan Agung
+WAYSTONE_R6_EDGE,Rift Edge,Tepi Retakan
+WAYSTONE_R6_TOWER,Inverted Tower,Menara Terbalik
+WAYSTONE_R7_THRONE,The Seventh Chair,Kursi Ketujuh
+GATE_R4_B_ICECAVE,Ice Cave Gate,Gerbang Gua Es
+GATE_R4_A_MIRROR,Mirror Gate,Gerbang Cermin
+GATE_R5_A_TIDAL,Tidal Gate,Gerbang Pasang
+GATE_R5_A_RED_LIBRARY,Red Library Gate,Gerbang Merah Perpustakaan
+GATE_R6_S_FRACTURE,Fracture Gate,Gerbang Retakan
+GATE_R6_S_RED_RIFT,Red Rift Gate,Gerbang Merah Celah
+NPC_ICE_HUNTER,Old Ice Hunter,Pemburu Es Tua
+NPC_ARCHIVE_NUN,Archive Nun,Biarawati Arsip
+NPC_RIFT_WATCHER,Rift Watcher,Penjaga Retakan
+DLG_ICE_HUNTER_1,"Unit 7 went up that mountain and never came down. The radio still plays at night.","Unit 7 naik ke gunung itu dan tak pernah turun. Radionya masih berbunyi di malam hari."
+DLG_NUN_1,"Every book here was written twice. Once by a hand, once by the tide.","Setiap buku di sini ditulis dua kali. Sekali oleh tangan, sekali oleh pasang."
+DLG_WATCHER_1,"The sky broke where someone tried to erase a word. It is still trying.","Langit retak di tempat seseorang mencoba menghapus satu kata. Ia masih mencoba."
+HINT_SEC_R4_03_1,"The summit flag only shows when the snowstorm hides everything else.","Bendera di puncak hanya terlihat saat badai salju menyembunyikan segalanya."
+HINT_SEC_R4_03_2,"A frozen page: 'Climb when the white wind blows. Light no fire.'","Halaman beku: 'Mendakilah saat angin putih bertiup. Jangan nyalakan api.'"
+HINT_SEC_R4_08_1,"Behind the mirror temple, a voice says 'answer me' to anyone who strikes the glass hard enough.","Di balik kuil cermin, sebuah suara berkata 'jawab aku' pada siapa pun yang memukul kacanya cukup keras."
+HINT_SEC_R4_08_2,"Cracked inscription: 'The king of echoes sits where your reflection goes when you look away.'","Prasasti retak: 'Raja gema duduk di tempat bayanganmu pergi saat kau berpaling.'"
+HINT_SEC_R5_01_1,"When the tide goes out in the afternoon, the city breathes. The lower stacks open.","Saat air surut di siang hari, kota ini bernapas. Rak bawah terbuka."
+HINT_SEC_R5_01_2,"Water line on the wall. Below it, someone scratched: 'noon to dusk'.","Garis air di dinding. Di bawahnya ada goresan: 'siang sampai senja'."
+HINT_SEC_R5_03_1,"The Forbidden Archive has no hinges. The nuns say only an answered echo can open it.","Arsip Terlarang tak punya engsel. Para biarawati bilang hanya gema yang terjawab yang bisa membukanya."
+HINT_SEC_R5_03_2,"Seven holes in a door, and one word carved under them: KING.","Tujuh lubang di sebuah pintu, dan satu kata terukir di bawahnya: RAJA."
+HINT_SEC_R6_02_1,"In the erased city, one house still casts a shadow. Stand where it should be.","Di kota yang terhapus, satu rumah masih punya bayangan. Berdirilah di tempat ia seharusnya berada."
+HINT_SEC_R6_02_2,"A note in white ink: 'the middle of nothing is still somewhere'.","Catatan bertinta putih: 'tengah-tengah ketiadaan tetaplah suatu tempat'."
+HINT_SEC_R6_04_1,"Near the tower the ground lets go of you. Climb the floating stones to its crown.","Di dekat menara, tanah melepaskanmu. Panjat batu-batu melayang sampai ke puncaknya."
+HINT_SEC_R6_04_2,"The tower hangs where the Fracture's heart beats loudest.","Menara itu tergantung di tempat jantung Fracture berdetak paling keras."
+HINT_HOLLOW_1,"Three keys: an echo that answered, a book no one may read, a heart in the sky. Then return to where you first died, at the hour that has three threes.","Tiga kunci: gema yang menjawab, buku yang tak boleh dibaca, jantung di langit. Lalu kembalilah ke tempat kau pertama mati, pada jam yang punya tiga angka tiga."
+SECRET_SEC_R4_03,Summit of the White Wind,Puncak Angin Putih
+SECRET_SEC_R4_08,Arena of Echoes,Arena Gema
+SECRET_SEC_R5_01,The Lower Stacks,Rak Bawah
+SECRET_SEC_R5_03,The Forbidden Archive,Arsip Terlarang
+SECRET_SEC_R6_02,The Last House,Rumah Terakhir
+SECRET_SEC_R6_04,Crown of the Inverted Tower,Mahkota Menara Terbalik
+LORE_R4_03_T,Unit 7 Flag,Bendera Unit 7
+LORE_R4_03,"Unit 7 reached the top. The radio log ends with a single word repeated: 'chosen, chosen, chosen.'","Unit 7 mencapai puncak. Log radionya berakhir dengan satu kata berulang: 'terpilih, terpilih, terpilih.'"
+LORE_R4_08_T,The Echo King,Raja Gema
+LORE_R4_08,"It was the first who refused the Codex. It became an echo of every hunter who obeyed.","Dialah yang pertama menolak Codex. Ia menjadi gema dari setiap hunter yang patuh."
+LORE_R5_01_T,Tide Ledger,Buku Pasang
+LORE_R5_01,"Aelra sank on purpose. Water keeps secrets better than locks.","Aelra sengaja ditenggelamkan. Air menyimpan rahasia lebih baik daripada kunci."
+LORE_R5_UMBRA_T,Codex Umbra,Codex Umbra
+LORE_R5_UMBRA,"'I do not need an heir who obeys. I need one who chooses.' — V.  The pages darken in your hands. The shadows you carry lean closer to read.","'Aku tidak butuh pewaris yang patuh. Aku butuh yang memilih.' — V.  Halaman-halaman menggelap di tanganmu. Bayangan yang kau bawa mendekat untuk ikut membaca."
+LORE_R6_02_T,The Last House,Rumah Terakhir
+LORE_R6_02,"Someone erased this city to hide one name. They missed the house where it was written on the door.","Seseorang menghapus kota ini untuk menyembunyikan satu nama. Ia melewatkan rumah yang menuliskannya di pintu."
+LORE_R6_03_T,Heart of the Fracture,Jantung Fracture
+LORE_R6_03,"The sky is not broken. It is a page torn out — and you are standing on the edge of the tear.","Langit tidak rusak. Ia adalah halaman yang dirobek — dan kau berdiri di tepi sobekannya."
+LORE_HT_04_T,The Unwritten,The Unwritten
+LORE_HT_04,"A page written without a writer. It wants a hand. It has been trying yours for size.","Halaman yang ditulis tanpa penulis. Ia menginginkan tangan. Ia sudah mencoba ukuran tanganmu."
+SHADOW_ECHO_KING,Echo King,Raja Gema
+CODEX_MSG_ECHO_KING_ANSWERS,"«Answer me.» — It answers. The Echo King kneels in your shadow.","«Jawab aku.» — Ia menjawab. Raja Gema berlutut di bayanganmu."
+CODEX_MSG_GRAVITY_LIGHT,Gravity weakens here.,Gravitasi melemah di sini.
+CODEX_MSG_GRAVITY_HEAVY,Gravity crushes down here.,Gravitasi menekan di sini.
+CODEX_MSG_SEAL_OPENS,A seal dissolves somewhere nearby.,Sebuah segel larut di dekat sini.
+HOLLOW_GATE_OPEN,Hollow Throne,Hollow Throne
+CODEX_MSG_HOLLOW_ENTER,"ACCESS GRANTED. WELCOME BACK, SEVENTH.","AKSES DIBERIKAN. SELAMAT DATANG KEMBALI, YANG KETUJUH."
+QUEST_MAIN_2,Chapter 2: The Forest That Remembers,Bab 2: Hutan yang Mengingat
+QUEST_MAIN_2_D,"The Codex points north-west, past Ashfall's broken roads.","Codex menunjuk ke barat laut, melewati jalan rusak Ashfall."
+QO_MAIN_2_REACH,Reach Mossgate Glade,Capai Lapangan Mossgate
+QO_MAIN_2_BOSS,Defeat the Rootheart Elder,Kalahkan Rootheart Elder
+QUEST_MAIN_3,Chapter 3: Red Sand,Bab 3: Pasir Merah
+QUEST_MAIN_3_D,Something under the dunes is calling your name.,Sesuatu di bawah bukit pasir memanggil namamu.
+QO_MAIN_3_REACH,Reach the Red Oasis,Capai Oasis Merah
+QO_MAIN_3_BOSS,Defeat the Crimson Burrower,Kalahkan Crimson Burrower
+QUEST_MAIN_4,Chapter 4: White Wind,Bab 4: Angin Putih
+QUEST_MAIN_4_D,Unit 7's radio is still broadcasting from Frostveil.,Radio Unit 7 masih menyiarkan dari Frostveil.
+QO_MAIN_4_REACH,Reach the Hunter's Lodge,Capai Pondok Pemburu
+QO_MAIN_4_BOSS,Defeat the Glacier Colossus,Kalahkan Glacier Colossus
+QUEST_MAIN_5,Chapter 5: The Drowned Library,Bab 5: Perpustakaan Tenggelam
+QUEST_MAIN_5_D,Aelra sank with the answers. Go and read them.,Aelra tenggelam bersama jawabannya. Pergilah dan baca.
+QO_MAIN_5_REACH,Reach the Fisher Village,Capai Desa Nelayan
+QO_MAIN_5_BOSS,Defeat Captain Ink,Kalahkan Kapten Tinta
+QUEST_MAIN_6,Chapter 6: The Torn Sky,Bab 6: Langit yang Sobek
+QUEST_MAIN_6_D,The Fracture is where the world was edited.,Fracture adalah tempat dunia pernah disunting.
+QO_MAIN_6_REACH,Reach the Rift Edge,Capai Tepi Retakan
+QO_MAIN_6_BOSS,Defeat the Rift Devourer,Kalahkan Rift Devourer
+QUEST_MAIN_7,Chapter 7: The Seventh Chair,Bab 7: Kursi Ketujuh
+QUEST_MAIN_7_D,Find the Hollow Throne. Someone kept a chair for you.,Temukan Hollow Throne. Seseorang menyiapkan kursi untukmu.
+QO_MAIN_7_REACH,Enter the Hollow Throne,Masuki Hollow Throne
+QO_MAIN_7_BOSS,Defeat The Unwritten,Kalahkan The Unwritten
+ENDING_TITLE,The Last Question,Pertanyaan Terakhir
+ENDING_VAEL_ASKS,"The Codex goes quiet. Then, for the first time, it speaks with a voice: «Why were you the one who was chosen?»","Codex hening. Lalu, untuk pertama kalinya, ia bicara dengan suara: «Kenapa kamu yang dipilih?»"
+ENDING_CHOICE_1,Because I am the strongest.,Karena aku yang terkuat.
+ENDING_CHOICE_2,Because I died in the right place.,Karena aku mati di tempat yang tepat.
+ENDING_CHOICE_3,Because you need a weapon.,Karena kamu butuh senjata.
+ENDING_CHOICE_4,I wasn't chosen. I chose.,Aku tidak dipilih. Aku memilih.
+ENDING_GLITCH,[the words won't hold],[kata-katanya tak mau bertahan]
+ENDING_A_TITLE,Ending A — The Obedient Heir,Ending A — Pewaris yang Patuh
+ENDING_A_TEXT,"«Then you will do.» The Codex closes around you like a coat. Gates keep opening; you keep closing them. Somewhere, a seventh chair is dusted for the next one.","«Kalau begitu, kau cukup.» Codex menutup di sekelilingmu seperti mantel. Gate terus terbuka; kau terus menutupnya. Di suatu tempat, kursi ketujuh dibersihkan untuk yang berikutnya."
+ENDING_B_TITLE,Ending B — The Shadow Crown,Ending B — Mahkota Bayangan
+ENDING_B_TEXT,"Your army answers before Vael can. The throne is yours, and so is the hollow. The Gates stop opening — they have nowhere left to go but you.","Pasukanmu menjawab sebelum Vael sempat. Singgasana jadi milikmu, begitu pula kehampaannya. Gate berhenti terbuka — tak ada tempat lagi yang bisa mereka tuju selain dirimu."
+ENDING_C_TITLE,Ending C — The Writer,Ending C — Sang Penulis
+ENDING_C_TEXT,"«Finally.» Vael smiles and lets go of the pen. You rewrite one line of the Codex: Gates become doors you may choose to open. Marrow laughs somewhere in Ashfall. The blue window asks what you want to do next.","«Akhirnya.» Vael tersenyum dan melepas penanya. Kau menulis ulang satu baris Codex: Gate menjadi pintu yang boleh kau pilih untuk dibuka. Marrow tertawa di suatu tempat di Ashfall. Jendela biru bertanya apa yang ingin kau lakukan selanjutnya."
+ENDING_RETURN,Return to Ashfall,Kembali ke Ashfall
+PAUSE_TITLE,Paused,Jeda
+PAUSE_RESUME,Resume,Lanjut
+PAUSE_SAVE,Save,Simpan
+PAUSE_LOAD,Load,Muat
+PAUSE_BACK,Back,Kembali
+PAUSE_TITLE_SCREEN,Return to title,Kembali ke judul
+PAUSE_QUIT,Quit game,Keluar game
+PAUSE_SLOT_1,Slot 1,Slot 1
+PAUSE_SLOT_2,Slot 2,Slot 2
+PAUSE_SLOT_3,Slot 3,Slot 3
+PAUSE_SLOT_AUTO,Autosave,Autosave
+PAUSE_SLOT_EMPTY,empty,kosong
+INV_SELECT_HINT,Select an item to see its details.,Pilih item untuk melihat detailnya.
+MAP_NO_REGION,No map here.,Tidak ada peta di sini.
+MAP_EXPLORED,Explored %d%%,Dijelajahi %d%%
+MAP_LEGEND,"◆ waystone · ◯ Gate (red = Red Gate) · ● person · ▲ you. Unexplored areas stay dark.","◆ waystone · ◯ Gate (merah = Red Gate) · ● orang · ▲ kamu. Area yang belum dijelajahi tetap gelap."
+SLOT_COSTUME,Costume,Kostum
+SET_AIM,Attack aim,Arah serangan
+SET_AIM_CAMERA,Camera / cursor,Kamera / kursor
+SET_AIM_MOVE,Movement direction,Arah gerak
+STATUS_STATS,Attributes,Atribut
+STATUS_DERIVED,Combat stats,Statistik tempur
+STATUS_PASSIVE,Passive,Pasif
+STAT_STR_NAME,Strength,Kekuatan
+STAT_AGI_NAME,Agility,Kelincahan
+STAT_INT_NAME,Intelligence,Kecerdasan
+STAT_VIT_NAME,Vitality,Vitalitas
+STAT_SEN_NAME,Sense,Indra
+MENU_CREATE_TITLE,Create your Hunter,Buat Hunter-mu
+MENU_PICK_CLASS,Class,Kelas
+MENU_START,Begin,Mulai
+SET_MOUSE_ATTACK,Basic attack on mouse click,Serangan dasar pakai klik mouse
+SET_KEYS,Key bindings,Atur tombol
+SET_KEYS_RESET,Reset keys to default,Kembalikan tombol default
+SET_KEYS_PRESS,"Press a key… (Esc cancel, Backspace clear)","Tekan tombol… (Esc batal, Backspace hapus)"
+ACT_MOVE_FORWARD,Move forward,Maju
+ACT_MOVE_BACK,Move back,Mundur
+ACT_MOVE_LEFT,Move left,Kiri
+ACT_MOVE_RIGHT,Move right,Kanan
+ACT_JUMP,Jump,Lompat
+ACT_SPRINT,Sprint (hold),Sprint (tahan)
+ACT_DODGE,Dash / dodge,Dash / menghindar
+ACT_ATTACK_LIGHT,Basic attack,Serangan dasar
+ACT_ATTACK_HEAVY,Heavy attack,Serangan berat
+ACT_SKILL_1,Skill 1,Skill 1
+ACT_SKILL_2,Skill 2,Skill 2
+ACT_SKILL_3,Skill 3,Skill 3
+ACT_SKILL_4,Skill 4,Skill 4
+ACT_ULTIMATE,Ultimate,Ultimate
+ACT_LOCK_ON,Lock on,Kunci target
+ACT_INTERACT,Interact,Interaksi
+ACT_USE_POTION,Use potion,Pakai ramuan
+ACT_CODEX,Codex,Codex
+ACT_INVENTORY,Inventory,Inventaris
+STATUS_PREVIEW,Preview the skill,Lihat preview skill

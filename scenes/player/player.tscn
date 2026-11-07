@@ -1,0 +1,260 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/player/player.gd" id="1"]
+[ext_resource type="Resource" path="res://data/player/default_movement.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/components/stamina_component.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/components/state_machine.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/idle_state.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/move_state.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/air_state.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/dodge_state.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/systems/camera/third_person_camera.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/attack_state.gd" id="10"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/hurt_state.gd" id="11"]
+[ext_resource type="Script" path="res://scripts/systems/player/states/dead_state.gd" id="12"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="13"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="14"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="15"]
+[ext_resource type="Script" path="res://scripts/systems/combat/player_combat.gd" id="16"]
+[ext_resource type="Script" path="res://scripts/systems/combat/lock_on_targeter.gd" id="17"]
+[ext_resource type="Resource" path="res://data/combat/greatsword_combo.tres" id="18"]
+[ext_resource type="Resource" path="res://data/combat/player_base_stats.tres" id="19"]
+[ext_resource type="Script" path="res://scripts/components/stats_component.gd" id="20"]
+[ext_resource type="Script" path="res://scripts/components/mana_component.gd" id="21"]
+[ext_resource type="Script" path="res://scripts/systems/skills/skill_caster.gd" id="22"]
+[ext_resource type="Resource" path="res://data/classes/vanguard.tres" id="23"]
+[ext_resource type="Resource" path="res://data/balancing/stat_tuning.tres" id="24"]
+[ext_resource type="Script" path="res://scripts/systems/interaction/interaction_detector.gd" id="25"]
+[ext_resource type="Script" path="res://scripts/systems/inventory/player_items.gd" id="26"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.22, 0.45, 0.85, 1)
+roughness = 0.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
+material = SubResource("StandardMaterial3D_body")
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_visor"]
+albedo_color = Color(0.5, 0.9, 1, 1)
+emission_enabled = true
+emission = Color(0.3, 0.8, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_visor"]
+material = SubResource("StandardMaterial3D_visor")
+size = Vector3(0.4, 0.12, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blade"]
+albedo_color = Color(0.85, 0.9, 1, 1)
+metallic = 0.6
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.3, 0.6, 1, 1)
+emission_energy_multiplier = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_blade"]
+material = SubResource("StandardMaterial3D_blade")
+size = Vector3(0.12, 0.05, 1.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hurt"]
+radius = 0.45
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hit"]
+size = Vector3(2.2, 1.4, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hitdebug"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.3, 0.2, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hitdebug"]
+material = SubResource("StandardMaterial3D_hitdebug")
+size = Vector3(2.2, 1.4, 1.8)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_arm"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
+shading_mode = 0
+albedo_color = Color(1, 0.25, 0.3, 1)
+no_depth_test = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_marker"]
+material = SubResource("StandardMaterial3D_marker")
+size = Vector3(0.3, 0.3, 0.05)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 2.2
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera_rig")]
+collision_layer = 2
+collision_mask = 5
+floor_snap_length = 0.3
+script = ExtResource("1")
+movement = ExtResource("2")
+camera_rig = NodePath("CameraRig")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Visual" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Body" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_body")
+
+[node name="Visor" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.3)
+mesh = SubResource("BoxMesh_visor")
+
+[node name="WeaponPivot" type="Node3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Blade" type="MeshInstance3D" parent="Visual/WeaponPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, -0.85)
+mesh = SubResource("BoxMesh_blade")
+
+[node name="Hitbox" type="Area3D" parent="Visual" node_paths=PackedStringArray("debug_mesh")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("15")
+debug_mesh = NodePath("DebugMesh")
+
+[node name="HitboxShape" type="CollisionShape3D" parent="Visual/Hitbox"]
+shape = SubResource("BoxShape3D_hit")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="Visual/Hitbox"]
+mesh = SubResource("BoxMesh_hitdebug")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health", "body")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("14")
+health = NodePath("../Health")
+stats = ExtResource("19")
+body = NodePath("..")
+
+[node name="HurtShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_hurt")
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("13")
+max_health = 300
+
+[node name="Stamina" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3")
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("player", "hitbox", "hitbox_shape", "weapon_pivot")]
+unique_name_in_owner = true
+script = ExtResource("16")
+player = NodePath("..")
+combo = ExtResource("18")
+stats = ExtResource("19")
+hitbox = NodePath("../Visual/Hitbox")
+hitbox_shape = NodePath("../Visual/Hitbox/HitboxShape")
+weapon_pivot = NodePath("../Visual/WeaponPivot")
+
+[node name="Mana" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("21")
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("player", "health", "mana", "combat", "hurtbox")]
+unique_name_in_owner = true
+script = ExtResource("20")
+class_data = ExtResource("23")
+tuning = ExtResource("24")
+player = NodePath("..")
+health = NodePath("../Health")
+mana = NodePath("../Mana")
+combat = NodePath("../Combat")
+hurtbox = NodePath("../Hurtbox")
+
+[node name="Skills" type="Node" parent="." node_paths=PackedStringArray("player", "stats", "mana", "combat")]
+unique_name_in_owner = true
+script = ExtResource("22")
+player = NodePath("..")
+stats = NodePath("../Stats")
+mana = NodePath("../Mana")
+combat = NodePath("../Combat")
+
+[node name="Items" type="Node" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("26")
+player = NodePath("..")
+
+[node name="InteractionDetector" type="Area3D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("25")
+player = NodePath("..")
+
+[node name="InteractShape" type="CollisionShape3D" parent="InteractionDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="LockOn" type="Node" parent="." node_paths=PackedStringArray("player", "camera", "marker")]
+unique_name_in_owner = true
+script = ExtResource("17")
+player = NodePath("..")
+camera = NodePath("../CameraRig")
+marker = NodePath("../LockMarker")
+
+[node name="LockMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PrismMesh_marker")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("4")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("6")
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource("7")
+
+[node name="Dodge" type="Node" parent="StateMachine"]
+script = ExtResource("8")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("10")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("11")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("12")
+
+[node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+top_level = true
+script = ExtResource("9")
+target = NodePath("..")
+
+[node name="Pivot" type="Node3D" parent="CameraRig"]
+unique_name_in_owner = true
+
+[node name="SpringArm" type="SpringArm3D" parent="CameraRig/Pivot"]
+unique_name_in_owner = true
+collision_mask = 1
+shape = SubResource("SphereShape3D_arm")
+spring_length = 4.5
+margin = 0.2
+
+[node name="Camera" type="Camera3D" parent="CameraRig/Pivot/SpringArm"]
+unique_name_in_owner = true
+current = true
+fov = 70.0

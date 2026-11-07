@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_xmjwe"]
+
+[resource]
+script = ExtResource("1_xmjwe")
+id = &"mob_thorn_stalker"
+mesh_path = "res://assets/props/mob_thorn_stalker/mob_thorn_stalker.res"
+albedo_path = "res://assets/props/mob_thorn_stalker/mob_thorn_stalker_albedo.jpg"
+size = Vector3(1.2937747, 1.8000001, 1.848994)
+collision = 0

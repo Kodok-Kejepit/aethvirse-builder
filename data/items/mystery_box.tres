@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mystery_box"
+display_name = "Mystery Box"
+description = "Something rattles inside. The Codex will not say what."
+kind = 0
+rarity = 6
+max_stack = 20
+sell_price = 50
+opens_mystery_box = true

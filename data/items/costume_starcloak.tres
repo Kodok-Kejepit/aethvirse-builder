@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"costume_starcloak"
+display_name = "Starcloak"
+description = "A cape woven from a clear night. Purely for show."
+kind = 9
+rarity = 3
+max_stack = 1
+sell_price = 0
+can_sell = false
+slot = 11
+visual_joint = &"chest"
+visual_offset = Vector3(0, 0, 0)
+visual_style = &"cape"

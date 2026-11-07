@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_nicbw"]
+
+[resource]
+script = ExtResource("1_nicbw")
+id = &"landmark_ritual_circle"
+mesh_path = "res://assets/props/landmark_ritual_circle/landmark_ritual_circle.res"
+albedo_path = "res://assets/props/landmark_ritual_circle/landmark_ritual_circle_albedo.jpg"
+size = Vector3(5.852387, 3.4999998, 5.934272)

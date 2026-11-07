@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_ed08s"]
+
+[resource]
+script = ExtResource("1_ed08s")
+id = &"landmark_beach_isle"
+mesh_path = "res://assets/props/landmark_beach_isle/landmark_beach_isle.res"
+albedo_path = "res://assets/props/landmark_beach_isle/landmark_beach_isle_albedo.jpg"
+size = Vector3(40.467724, 4, 41.044342)
+collision = 0

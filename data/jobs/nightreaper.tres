@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="JobData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/job_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://data/skills/jobs/final_hour.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+strength = 4.0
+agility = 10.0
+intelligence = 0.0
+vitality = 0.0
+sense = 4.0
+
+[resource]
+script = ExtResource("e1")
+id = &"nightreaper"
+display_name = "Nightreaper"
+description = "Shadowblade who ends fights in a breath."
+base_class = &"phantom"
+tier = 2
+required_level = 60
+parent = &"shadowblade"
+hidden = false
+required_flag = &""
+stat_bonus = SubResource("s1")
+attack_bonus = 0.12
+defense_bonus = 0.0
+hp_bonus = 0.0
+mp_cost_multiplier = 1.0
+skills = Array[ExtResource("e3")]([ExtResource("e4")])
+shadow_army = false

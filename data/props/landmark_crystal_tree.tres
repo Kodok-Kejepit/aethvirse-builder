@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_5n8s8"]
+
+[resource]
+script = ExtResource("1_5n8s8")
+id = &"landmark_crystal_tree"
+mesh_path = "res://assets/props/landmark_crystal_tree/landmark_crystal_tree.res"
+albedo_path = "res://assets/props/landmark_crystal_tree/landmark_crystal_tree_albedo.jpg"
+size = Vector3(15.217426, 18, 18.530806)
+collision = 2

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"slipstream"
+display_name = "Slipstream"
+description = "Passive. Move speed up."
+kind = 5
+is_ultimate = false
+icon_color = Color(0.5, 0.9, 0.5, 1)
+unlock_level = 30
+mp_cost = 0
+cooldown_s = 1.0
+buff_stat = &"mspd"
+buff_amount = 0.06
+buff_duration_s = 10.0
+buff_amount_per_level = 0.008

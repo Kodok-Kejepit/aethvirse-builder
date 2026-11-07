@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/projectile_data.gd" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e3")
+speed = 36.0
+range_m = 60.0
+radius = 0.5
+pierce = 3
+explode_radius = 3.0
+count = 1
+spread_degrees = 0.0
+homing = true
+lifetime_s = 0.0
+color = Color(1, 0.95, 0.6, 1)
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+id = &"heartseeker"
+display_name = "Heartseeker"
+damage_multiplier = 1
+is_heavy = true
+element = 7
+startup_s = 0.18
+active_s = 0.15
+recovery_s = 0.3
+combo_window_s = 0.435
+dodge_cancel_s = 0.33
+hitbox_size = Vector3(3.0, 2.0, 3.0)
+hitbox_offset = Vector3(0, 1, -1.5)
+knockback = 4.0
+stagger = 30.0
+hit_stop_s = 0.07
+lunge_speed = 0.0
+swing = 0
+projectile = SubResource("s1")
+
+[resource]
+script = ExtResource("e1")
+id = &"heartseeker"
+display_name = "Heartseeker"
+description = "Ultimate. A homing arrow of light."
+kind = 4
+is_ultimate = true
+icon_color = Color(1, 0.85, 0.35, 1)
+unlock_level = 60
+mp_cost = 80
+cooldown_s = 50.0
+attack = SubResource("s2")
+damage_multiplier = 9.0
+multiplier_per_level = 0.15

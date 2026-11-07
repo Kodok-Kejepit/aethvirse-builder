@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_raxdx"]
+
+[resource]
+script = ExtResource("1_raxdx")
+id = &"tree_dead"
+mesh_path = "res://assets/props/tree_dead/tree_dead.res"
+albedo_path = "res://assets/props/tree_dead/tree_dead_albedo.jpg"
+size = Vector3(5.859311, 8, 5.9749346)
+collision = 0

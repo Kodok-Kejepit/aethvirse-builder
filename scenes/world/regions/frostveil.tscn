@@ -1,0 +1,80 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/world/region_controller.gd" id="1"]
+[ext_resource type="Resource" path="res://data/regions/r4_frostveil.tres" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/main/game_shell.tscn" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/world/environment_controller.gd" id="5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="Sky_mat"]
+sky_top_color = Color(0.55, 0.65, 0.8, 1)
+sky_horizon_color = Color(0.82, 0.87, 0.93, 1)
+ground_horizon_color = Color(0.82, 0.87, 0.93, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("Sky_mat")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 3
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.82, 0.87, 0.93, 1)
+fog_density = 0.01
+
+[sub_resource type="ParticleProcessMaterial" id="PPM_rain"]
+emission_shape = 3
+emission_box_extents = Vector3(18, 1, 18)
+direction = Vector3(0, -1, 0)
+spread = 3.0
+initial_velocity_min = 22.0
+initial_velocity_max = 26.0
+
+[sub_resource type="StandardMaterial3D" id="M_rain"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.7, 0.8, 1, 0.45)
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="Q_rain"]
+material = SubResource("M_rain")
+size = Vector2(0.02, 0.5)
+
+[node name="Frostveil" type="Node3D"]
+script = ExtResource("1")
+region = ExtResource("2")
+chunk_dir = "res://scenes/world/chunks/r4"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 20, 0)
+light_color = Color(0.9, 0.95, 1, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 120.0
+
+[node name="Environment" type="Node" parent="." node_paths=PackedStringArray("sun", "world_environment", "rain")]
+script = ExtResource("5")
+sun = NodePath("../Sun")
+world_environment = NodePath("../WorldEnvironment")
+rain = NodePath("../Rain")
+day_fog_color = Color(0.82, 0.87, 0.93, 1)
+
+[node name="Rain" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1500
+lifetime = 1.2
+visibility_aabb = AABB(-20, -30, -20, 40, 32, 40)
+process_material = SubResource("PPM_rain")
+draw_pass_1 = SubResource("Q_rain")
+
+[node name="Chunks" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("3")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 10)
+
+[node name="GameShell" parent="." instance=ExtResource("4")]

@@ -1,0 +1,168 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/dialogs/rift_watcher.tres" id="d_rift_watcher"]
+[ext_resource type="Script" path="res://scripts/systems/world/decor_prop.gd" id="decor"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="PackedScene" path="res://scenes/npc/npc.tscn" id="npc"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+
+[node name="Chunk_0_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.35, 0.25, 0.5, 1)
+solid = true
+visible = false
+
+[node name="Decor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, 0)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.75, 0.55, 1, 1)
+seed_value = 150
+
+[node name="Decor3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 8, 0, 0)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.75, 0.55, 1, 1)
+seed_value = 151
+
+[node name="Decor4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -14)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.75, 0.55, 1, 1)
+seed_value = 152
+
+[node name="Waystone5" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 6)
+waystone_id = &"r6_edge"
+
+[node name="Waystone6" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, 24)
+road_to = &"r5_village"
+
+[node name="Npc_rift_watcher" parent="." instance=ExtResource("npc")]
+transform = Transform3D(-0.93969, -0, -0.34202, 0, 1, -0, 0.34202, -0, -0.93969, 6, 0, -2)
+data = ExtResource("d_rift_watcher")
+
+[node name="Prop7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -22)
+script = ExtResource("prop")
+prop_id = &"landmark_nexus_altar"
+fallback_size = Vector3(6.9, 4.0, 6.9)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26, 0, -6)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 6, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13, 0, 16.5167)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 8, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -13, 0, 16.5167)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 10, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -26, 0, -6)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 6, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -13, 0, -28.5167)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 8, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13, 0, -28.5167)
+script = ExtResource("prop")
+prop_id = &"pillar_obsidian"
+fallback_size = Vector3(1.7, 10, 1.7)
+fallback_color = Color(0.2, 0.18, 0.24, 1)
+
+[node name="Prop14" type="StaticBody3D" parent="."]
+transform = Transform3D(0.65646, -0, -0.75436, 0, 1, -0, 0.75436, 0, 0.65646, 56.9593, 0, -50.0008)
+script = ExtResource("prop")
+prop_id = &"rock_isle_dark"
+fallback_size = Vector3(12.114822294469077, 3.4613777984197363, 12.980166744074012)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop15" type="StaticBody3D" parent="."]
+transform = Transform3D(0.099688, -0, -0.99502, 0, 1, -0, 0.99502, 0, 0.099688, 56.6663, 0, 42.5975)
+script = ExtResource("prop")
+prop_id = &"rock_spire"
+fallback_size = Vector3(7.446859030546682, 7.703647272979327, 6.162917818383462)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop16" type="StaticBody3D" parent="."]
+transform = Transform3D(0.54355, -0, -0.83938, 0, 1, -0, 0.83938, 0, 0.54355, -39.2493, 0, -28.6596)
+script = ExtResource("prop")
+prop_id = &"rock_spire"
+fallback_size = Vector3(10.161647116396416, 10.512048741099742, 8.409638992879794)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop17" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.92668, 0, 0.37584, 0, 1, -0, -0.37584, -0, -0.92668, -19.6698, 0, -53.0805)
+script = ExtResource("prop")
+prop_id = &"rock_isle_dark"
+fallback_size = Vector3(11.675575050683314, 3.3358785859095184, 12.509544697160694)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop18" type="StaticBody3D" parent="."]
+transform = Transform3D(0.9674, 0, 0.25324, 0, 1, -0, -0.25324, 0, 0.9674, -5.73342, 0, 42.9251)
+script = ExtResource("prop")
+prop_id = &"rock_isle_dark"
+fallback_size = Vector3(16.354253956678246, 4.672643987622356, 17.522414953583837)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop19" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.76604, 0, 0.64279, 0, 1, -0, -0.64279, -0, -0.76604, -30, 36, 40)
+script = ExtResource("prop")
+prop_id = &"landmark_sky_isle"
+fallback_size = Vector3(19.200000000000003, 11.200000000000001, 19.200000000000003)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Label20" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 9, -20)
+billboard = 1
+text = "RIFT EDGE"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="Outcrop21" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.32562, -0, -0.9455, 0, 1, -0, 0.9455, -0, -0.32562, 48.8846, -5.92809, 13.8385)
+script = ExtResource("prop")
+prop_id = &"ground_r7"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.448
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"fracture"
+amplitude = 3.0
+seed_value = 606
+flatten = PackedVector3Array(-8, 0, 1.5, 8, 0, 1.5, 0, -14, 1.5, 0, 6, 4, -8, 24, 4, 6, -2, 4, 0, -22, 5.14, 26, -6, 2.02, 13, 16.5167, 2.02, -13, 16.5167, 2.02, -26, -6, 2.02, -13, -28.5167, 2.02, 13, -28.5167, 2.02, 56.9593, -50.0008, 8.7881, 56.6663, 42.5975, 5.46812, -39.2493, -28.6596, 7.09699, -19.6698, -53.0805, 8.50573, -5.73342, 42.9251, 11.5134, -30, 40, 12.52, -77.2254, -16.0012, 7.34791, -80.907, 80.6339, 5.90005, 48.8846, 13.8385, 13.0338)

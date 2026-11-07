@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CombatStats" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack = 24.0
+defense = 6.0
+crit_chance = 0.15
+crit_damage = 1.6

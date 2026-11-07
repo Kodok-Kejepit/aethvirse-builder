@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/projectile_data.gd" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e3")
+speed = 0.0
+range_m = 0.0
+radius = 1.4
+pierce = 0
+explode_radius = 3.5
+count = 1
+spread_degrees = 0.0
+homing = false
+lifetime_s = 12.0
+color = Color(0.75, 0.55, 0.3, 1)
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+id = &"snare_trap"
+display_name = "Snare Trap"
+damage_multiplier = 1
+is_heavy = true
+element = 4
+startup_s = 0.2
+active_s = 0.04
+recovery_s = 0.25
+combo_window_s = 0.328
+dodge_cancel_s = 0.24
+hitbox_size = Vector3(1, 1, 1)
+hitbox_offset = Vector3(0, 1, -1)
+knockback = 5.0
+stagger = 40.0
+hit_stop_s = 0.06
+lunge_speed = 0.0
+swing = 1
+projectile = SubResource("s1")
+
+[resource]
+script = ExtResource("e1")
+id = &"snare_trap"
+display_name = "Snare Trap"
+description = "Place a trap that bursts when an enemy steps on it."
+kind = 4
+is_ultimate = false
+icon_color = Color(0.75, 0.55, 0.3, 1)
+unlock_level = 3
+mp_cost = 18
+cooldown_s = 10.0
+attack = SubResource("s2")
+damage_multiplier = 2.0
+multiplier_per_level = 0.14

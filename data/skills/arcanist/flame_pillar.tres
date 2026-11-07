@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+id = &"flame_pillar"
+display_name = "Flame Pillar"
+damage_multiplier = 1
+is_heavy = true
+element = 1
+startup_s = 0.3
+active_s = 0.3
+recovery_s = 0.35
+combo_window_s = 0.722
+dodge_cancel_s = 0.6
+hitbox_size = Vector3(6.0, 3.0, 6.0)
+hitbox_offset = Vector3(0, 1, 0)
+knockback = 5.0
+stagger = 30.0
+hit_stop_s = 0.08
+lunge_speed = 0.0
+swing = 1
+
+[resource]
+script = ExtResource("e1")
+id = &"flame_pillar"
+display_name = "Flame Pillar"
+description = "Fire erupts all around you."
+kind = 2
+is_ultimate = false
+icon_color = Color(1, 0.35, 0.1, 1)
+unlock_level = 5
+mp_cost = 26
+cooldown_s = 10.0
+attack = SubResource("s1")
+damage_multiplier = 2.4
+multiplier_per_level = 0.16

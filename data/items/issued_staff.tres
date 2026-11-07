@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"issued_staff"
+display_name = "Issued Focus Staff"
+description = "A guild staff with a cheap crystal."
+kind = 2
+slot = 1
+attack_per_level = 3.8
+sell_price = 5

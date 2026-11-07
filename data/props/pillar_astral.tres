@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_py5mx"]
+
+[resource]
+script = ExtResource("1_py5mx")
+id = &"pillar_astral"
+mesh_path = "res://assets/props/pillar_astral/pillar_astral.res"
+albedo_path = "res://assets/props/pillar_astral/pillar_astral_albedo.jpg"
+size = Vector3(2.3529012, 6, 2.3610141)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/loot_table.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mimic_r1"
+entries = Array[Dictionary]([{"id": "silver_band", "weight": 60.0, "min": 1, "max": 1}, {"id": "ember_charm", "weight": 40.0, "min": 1, "max": 1}])
+rolls = 1
+gold_min = 30
+gold_max = 80

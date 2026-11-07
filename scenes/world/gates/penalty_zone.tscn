@@ -1,0 +1,82 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/quest/penalty_zone.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/main/game_shell.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="5"]
+[ext_resource type="Resource" path="res://data/enemies/gate_husk.tres" id="6"]
+[ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="7"]
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.12, 0.0, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.8, 0.3, 0.3, 1)
+ambient_light_energy = 0.7
+fog_enabled = true
+fog_light_color = Color(0.25, 0.02, 0.05, 1)
+fog_density = 0.03
+
+[node name="PenaltyZone" type="Node3D"]
+script = ExtResource("1")
+enemy_data = Array[ExtResource("5")]([ExtResource("6"), ExtResource("7")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
+light_color = Color(1, 0.5, 0.5, 1)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = ExtResource("4")
+size = Vector3(40, 1, 40)
+color = Color(0.25, 0.08, 0.1, 1)
+
+[node name="WallN" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -20)
+script = ExtResource("4")
+size = Vector3(40, 6, 1)
+color = Color(0.3, 0.05, 0.08, 1)
+
+[node name="WallS" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 20)
+script = ExtResource("4")
+size = Vector3(40, 6, 1)
+color = Color(0.3, 0.05, 0.08, 1)
+
+[node name="WallW" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 0)
+script = ExtResource("4")
+size = Vector3(1, 6, 40)
+color = Color(0.3, 0.05, 0.08, 1)
+
+[node name="WallE" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 0)
+script = ExtResource("4")
+size = Vector3(1, 6, 40)
+color = Color(0.3, 0.05, 0.08, 1)
+
+[node name="Player" parent="." instance=ExtResource("2")]
+unique_name_in_owner = true
+
+[node name="GameShell" parent="." instance=ExtResource("3")]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="Overlay"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 170.0
+offset_right = 400.0
+offset_bottom = 230.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1

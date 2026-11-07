@@ -1,0 +1,352 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/dialogs/warden_sela.tres" id="d_warden_sela"]
+[ext_resource type="Script" path="res://scripts/systems/world/decor_prop.gd" id="decor"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/grass_field.gd" id="grass"]
+[ext_resource type="PackedScene" path="res://scenes/npc/npc.tscn" id="npc"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/hint_sign.tscn" id="sign"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+
+[node name="Chunk_0_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.22, 0.38, 0.22, 1)
+solid = true
+visible = false
+
+[node name="Grass2" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
+script = ExtResource("grass")
+area = Vector2(124, 124)
+blades = 40000
+color = Color(0.26, 0.5, 0.26, 1)
+seed_value = 3699
+
+[node name="Prop3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -16, 0, -8)
+script = ExtResource("prop")
+prop_id = &"bld_glade_hut"
+fallback_size = Vector3(6, 5, 6)
+fallback_color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Prop4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, 16, 0, -10)
+script = ExtResource("prop")
+prop_id = &"bld_glade_hut"
+fallback_size = Vector3(6, 5, 6)
+fallback_color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Prop5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0.86603, 0, 1, -0, -0.86603, 0, 0.5, -12, 0, 16)
+script = ExtResource("prop")
+prop_id = &"bld_glade_hut"
+fallback_size = Vector3(6, 5, 6)
+fallback_color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Prop6" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 14, 0, 14)
+script = ExtResource("prop")
+prop_id = &"bld_glade_hut"
+fallback_size = Vector3(6, 5, 6)
+fallback_color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Tree7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -38.8659, 0, 22.013)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.44
+seed_value = 1028860423
+snowy = false
+
+[node name="Tree8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 39.8203, 0, 56.8077)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.32
+seed_value = 394237834
+snowy = false
+
+[node name="Tree9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0.589762, 0, -30.6175)
+script = ExtResource("tree")
+kind = &"oak"
+height = 7.02
+seed_value = 796816700
+snowy = false
+
+[node name="Tree10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 50.2023, 0, -8.32983)
+script = ExtResource("tree")
+kind = &"oak"
+height = 8.01
+seed_value = 498758910
+snowy = false
+
+[node name="Tree11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 48.8934, 0, 22.4945)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.06
+seed_value = 873529950
+snowy = false
+
+[node name="Tree12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13.4433, 0, -54.0479)
+script = ExtResource("tree")
+kind = &"oak"
+height = 9.30
+seed_value = 1068485468
+snowy = false
+
+[node name="Tree13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 50.7976, 0, -55.306)
+script = ExtResource("tree")
+kind = &"oak"
+height = 12.19
+seed_value = 189974779
+snowy = false
+
+[node name="Tree14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -43.5143, 0, 49.6415)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.17
+seed_value = 736418145
+snowy = false
+
+[node name="Tree15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -11.4442, 0, -40.4727)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.66
+seed_value = 1009192787
+snowy = false
+
+[node name="Tree16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 42.4427, 0, -30.7555)
+script = ExtResource("tree")
+kind = &"oak"
+height = 12.46
+seed_value = 447883946
+snowy = false
+
+[node name="Tree17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20.1601, 0, 35.138)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.61
+seed_value = 152314203
+snowy = false
+
+[node name="Tree18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -43.7926, 0, -2.74625)
+script = ExtResource("tree")
+kind = &"oak"
+height = 12.79
+seed_value = 431814776
+snowy = false
+
+[node name="Tree19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -18.4172, 0, -41.0465)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.75
+seed_value = 627037951
+snowy = false
+
+[node name="Decor20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -6)
+script = ExtResource("decor")
+kind = &"campfire"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 1
+
+[node name="Decor21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -10, 0, 0)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.7, 1, 0.6, 1)
+seed_value = 60
+
+[node name="Decor22" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10, 0, 0)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.7, 1, 0.6, 1)
+seed_value = 61
+
+[node name="Decor23" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, -18)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.7, 1, 0.6, 1)
+seed_value = 62
+
+[node name="Decor24" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 8, 0, -18)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.7, 1, 0.6, 1)
+seed_value = 63
+
+[node name="Decor25" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 20)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(0.7, 1, 0.6, 1)
+seed_value = 64
+
+[node name="Decor26" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -22, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 70
+
+[node name="Decor27" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -19, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 71
+
+[node name="Decor28" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -16, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 72
+
+[node name="Decor29" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -13, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 73
+
+[node name="Decor30" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -10, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 74
+
+[node name="Decor31" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7, 0, 30)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 75
+
+[node name="Waystone32" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 6)
+waystone_id = &"r2_glade"
+
+[node name="Waystone33" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, 24)
+road_to = &"r1_camp"
+
+[node name="Npc_warden_sela" parent="." instance=ExtResource("npc")]
+transform = Transform3D(-0.93969, -0, -0.34202, 0, 1, -0, 0.34202, -0, -0.93969, 6, 0, -2)
+data = ExtResource("d_warden_sela")
+
+[node name="Sign34" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -4, 0, 26)
+text_key = &"SIGN_R2_ROAD"
+
+[node name="Prop35" type="StaticBody3D" parent="."]
+transform = Transform3D(0.25882, 0, 0.96593, 0, 1, -0, -0.96593, 0, 0.25882, -36, 0, -8)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_tile"
+fallback_size = Vector3(9.8, 7.5, 9.9)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop36" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, -0, -1, 0, 1, -0, 1, 0, 6.1232e-17, 34, 0, -6)
+script = ExtResource("prop")
+prop_id = &"bld_bakery"
+fallback_size = Vector3(6.3, 8.0, 9.0)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop37" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.5, 0, 0.86603, 0, 1, -0, -0.86603, -0, -0.5, -32, 0, 24)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_slate"
+fallback_size = Vector3(10.2, 6.5, 7.1)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop38" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, -22, 0, 3)
+script = ExtResource("prop")
+prop_id = &"prop_well"
+fallback_size = Vector3(2.9, 3.2, 2.5)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop39" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, -0, -1, 0, 1, -0, 1, 0, 6.1232e-17, 22, 0, 4)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop40" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, -0, -1, 0, 1, -0, 1, 0, 6.1232e-17, 22, 0, 9)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop41" type="StaticBody3D" parent="."]
+transform = Transform3D(0.81915, 0, 0.57358, 0, 1, -0, -0.57358, 0, 0.81915, -42, 0, -42)
+script = ExtResource("prop")
+prop_id = &"landmark_treehouse_village"
+fallback_size = Vector3(18.0, 22.0, 18.0)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop42" type="StaticBody3D" parent="."]
+transform = Transform3D(0.93969, 0, 0.34202, 0, 1, -0, -0.34202, 0, 0.93969, 10, 48, -70)
+script = ExtResource("prop")
+prop_id = &"landmark_sky_isle"
+fallback_size = Vector3(24.0, 14.0, 24.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Label43" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 9, -20)
+billboard = 1
+text = "MOSSGATE GLADE"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="Outcrop44" type="StaticBody3D" parent="."]
+transform = Transform3D(0.29149, 0, 0.95657, 0, 1, -0, -0.95657, 0, 0.29149, 45.3889, -4.68394, 38.9181)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.301
+fit_height = false
+
+[node name="Outcrop45" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.86465, -0, -0.50237, 0, 1, -0, 0.50237, -0, -0.86465, 32.5863, -3.66879, -34.2806)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.352
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"verdant"
+amplitude = 6.0
+seed_value = 202
+flatten = PackedVector3Array(-16, -8, 4.6, 16, -10, 4.6, -12, 16, 4.6, 14, 14, 4.6, 0, -6, 1.5, -10, 0, 1.5, 10, 0, 1.5, -8, -18, 1.5, 8, -18, 1.5, 0, 20, 1.5, -22, 30, 1.5, -19, 30, 1.5, -16, 30, 1.5, -13, 30, 1.5, -10, 30, 1.5, -7, 30, 1.5, 0, 6, 4, -8, 24, 4, 6, -2, 4, -4, 26, 4, -36, -8, 6.94, 34, -6, 6.4, -32, 24, 7.12, -22, 3, 2.74, 22, 4, 3.22, 22, 9, 3.22, -42, -42, 11.8, 10, -70, 15.4, 45.3889, 38.9181, 11.7119, 32.5863, -34.2806, 12.1668)

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="JobData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/job_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://data/skills/jobs/sovereign_aura.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+strength = 4.0
+agility = 4.0
+intelligence = 12.0
+vitality = 4.0
+sense = 6.0
+
+[resource]
+script = ExtResource("e1")
+id = &"shadow_sovereign"
+display_name = "Shadow Sovereign"
+description = "The army answers before you speak."
+base_class = &""
+tier = 3
+required_level = 60
+parent = &"necromancer"
+hidden = true
+required_flag = &"shadow_sovereign_awakened"
+stat_bonus = SubResource("s1")
+attack_bonus = 0.15
+defense_bonus = 0.1
+hp_bonus = 0.0
+mp_cost_multiplier = 1.0
+skills = Array[ExtResource("e3")]([ExtResource("e4")])
+shadow_army = true

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+id = &"thunder_step"
+display_name = "Thunder Step"
+damage_multiplier = 1
+is_heavy = true
+element = 5
+startup_s = 0.04
+active_s = 0.2
+recovery_s = 0.22
+combo_window_s = 0.317
+dodge_cancel_s = 0.24
+hitbox_size = Vector3(2.0, 1.8, 2.0)
+hitbox_offset = Vector3(0, 1, -0.6)
+knockback = 3.0
+stagger = 25.0
+hit_stop_s = 0.05
+lunge_speed = 26.0
+swing = 3
+
+[resource]
+script = ExtResource("e1")
+id = &"thunder_step"
+display_name = "Thunder Step"
+description = "Blink forward as a bolt of lightning."
+kind = 1
+is_ultimate = false
+icon_color = Color(1, 0.95, 0.4, 1)
+unlock_level = 3
+mp_cost = 18
+cooldown_s = 7.0
+attack = SubResource("s1")
+damage_multiplier = 1.5
+multiplier_per_level = 0.1

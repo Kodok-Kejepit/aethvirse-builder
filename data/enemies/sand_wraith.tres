@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 3
+
+[resource]
+script = ExtResource("1")
+id = &"sand_wraith"
+display_name = "Sand Wraith"
+level = 31
+stats = SubResource("stats")
+body_color = Color(0.85, 0.75, 0.6, 1)
+tier = 0
+hp_scale = 1.1
+chase_speed = 4.6
+attack_windup_s = 0.7
+attack_multiplier = 1.2

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 8
+
+[resource]
+script = ExtResource("1")
+id = &"the_unwritten"
+display_name = "The Unwritten — Avatar"
+level = 90
+stats = SubResource("stats")
+body_color = Color(0.98, 0.98, 1, 1)
+tier = 2
+hp_scale = 0.5
+attack_scale = 1.05
+poise = 260.0
+attack_range = 3.6
+attack_windup_s = 0.8
+attack_hitbox_size = Vector3(4.4, 2.4, 3.6)
+telegraph_radius = 3.6
+aggro_radius = 26.0
+leash_radius = 60.0
+death_flag = &"unwritten_defeated"

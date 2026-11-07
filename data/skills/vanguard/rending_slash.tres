@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="2"]
+
+[sub_resource type="Resource" id="attack"]
+script = ExtResource("2")
+id = &"rending_slash"
+display_name = "Rending Slash"
+is_heavy = true
+element = 0
+startup_s = 0.14
+active_s = 0.14
+recovery_s = 0.32
+combo_window_s = 0.6
+dodge_cancel_s = 0.28
+hitbox_size = Vector3(3.2, 1.6, 2.6)
+hitbox_offset = Vector3(0, 1.0, -1.5)
+knockback = 4.0
+stagger = 30.0
+hit_stop_s = 0.08
+lunge_speed = 5.0
+swing = 0
+
+[resource]
+script = ExtResource("1")
+id = &"rending_slash"
+display_name = "Rending Slash"
+description = "A heavy forward cleave that tears through guards."
+kind = 0
+is_ultimate = false
+icon_color = Color(0.45, 0.75, 1, 1)
+unlock_level = 1
+mp_cost = 15
+cooldown_s = 5.0
+attack = SubResource("attack")
+damage_multiplier = 2.2
+multiplier_per_level = 0.15

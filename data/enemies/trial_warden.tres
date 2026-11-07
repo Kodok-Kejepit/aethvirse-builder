@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 7
+
+[resource]
+script = ExtResource("1")
+id = &"trial_warden"
+display_name = "Trial Warden"
+level = 30
+stats = SubResource("stats")
+body_color = Color(0.4, 0.6, 0.95, 1)
+tier = 2
+hp_scale = 0.3
+attack_scale = 0.85
+poise = 150.0
+attack_range = 2.8
+attack_windup_s = 0.85
+attack_hitbox_size = Vector3(3.2, 1.8, 2.8)
+telegraph_radius = 2.8
+aggro_radius = 40.0
+leash_radius = 80.0

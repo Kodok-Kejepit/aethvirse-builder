@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="QuestData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/quest_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/quest_objective.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/reward_data.gd" id="3"]
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2")
+type = 0
+target = &"gate_husk"
+count = 6
+text = &"QO_KILL_HUSKS"
+stage = 0
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2")
+type = 1
+target = &"camp_kid"
+count = 1
+text = &"QO_TALK_KID"
+stage = 1
+
+[sub_resource type="Resource" id="r3"]
+script = ExtResource("3")
+type = 2
+key = &""
+amount = 150
+
+[sub_resource type="Resource" id="r4"]
+script = ExtResource("3")
+type = 0
+key = &"silver_band"
+amount = 1
+
+[resource]
+script = ExtResource("1")
+id = &"q_r1_safe_road"
+title = &"QUEST_R1_SAFE_ROAD"
+description = &"QUEST_R1_SAFE_ROAD_D"
+kind = 1
+auto_start = true
+guild_points = 10
+objectives = Array[ExtResource("2")]([SubResource("o1"), SubResource("o2")])
+rewards = Array[ExtResource("3")]([SubResource("r3"), SubResource("r4")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_5lq2w"]
+
+[resource]
+script = ExtResource("1_5lq2w")
+id = &"tile_dungeon_moss"
+mesh_path = "res://assets/props/tile_dungeon_moss/tile_dungeon_moss.res"
+albedo_path = "res://assets/props/tile_dungeon_moss/tile_dungeon_moss_albedo.jpg"
+size = Vector3(3.0114977, 0.29999998, 2.964612)
+collision = 0

@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="ClassData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/class_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/battle_rhythm.tres" id="p2"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/heavy_hands.tres" id="p1"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/iron_body.tres" id="p0"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_combo_data.gd" id="3"]
+[ext_resource type="Resource" path="res://data/combat/greatsword_combo.tres" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="5"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/rending_slash.tres" id="s0"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/iron_charge.tres" id="s1"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/earthsplitter.tres" id="s2"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/war_cry.tres" id="s3"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/flame_edge.tres" id="s4"]
+[ext_resource type="Resource" path="res://data/skills/vanguard/titans_verdict.tres" id="s5"]
+
+[sub_resource type="Resource" id="base"]
+script = ExtResource("2")
+strength = 12.0
+agility = 6.0
+intelligence = 3.0
+vitality = 11.0
+sense = 4.0
+
+[sub_resource type="Resource" id="growth"]
+script = ExtResource("2")
+strength = 2.0
+agility = 0.6
+intelligence = 0.2
+vitality = 1.8
+sense = 0.4
+
+[sub_resource type="Resource" id="split"]
+script = ExtResource("2")
+strength = 0.5
+agility = 0.1
+intelligence = 0.0
+vitality = 0.35
+sense = 0.05
+
+[sub_resource type="Resource" id="charge_breaker"]
+script = ExtResource("3")
+id = &"charge_breaker"
+display_name = "Breaker"
+first = &"iron_charge"
+second = &"rending_slash"
+window_s = 2.0
+bonus_multiplier = 1.0
+force_crit = true
+extra_stagger = 0.0
+
+[sub_resource type="Resource" id="fury_quake"]
+script = ExtResource("3")
+id = &"fury_quake"
+display_name = "Fury Quake"
+first = &"war_cry"
+second = &"earthsplitter"
+window_s = 4.0
+bonus_multiplier = 1.5
+force_crit = false
+extra_stagger = 0.0
+
+[sub_resource type="Resource" id="molten_rift"]
+script = ExtResource("3")
+id = &"molten_rift"
+display_name = "Molten Rift"
+first = &"flame_edge"
+second = &"earthsplitter"
+window_s = 2.5
+bonus_multiplier = 1.3
+force_crit = false
+extra_stagger = 20.0
+
+[resource]
+script = ExtResource("1")
+id = &"vanguard"
+display_name = "Vanguard"
+description = "Tank / bruiser. Heavy greatsword combos, high HP and DEF."
+magic_damage = false
+base_stats = SubResource("base")
+growth = SubResource("growth")
+recommended_split = SubResource("split")
+combo = ExtResource("4")
+skills = Array[ExtResource("5")]([ExtResource("s0"), ExtResource("s1"), ExtResource("s2"), ExtResource("s3"), ExtResource("s4"), ExtResource("s5"), ExtResource("p0"), ExtResource("p1"), ExtResource("p2")])
+skill_combos = Array[ExtResource("3")]([SubResource("charge_breaker"), SubResource("fury_quake"), SubResource("molten_rift")])

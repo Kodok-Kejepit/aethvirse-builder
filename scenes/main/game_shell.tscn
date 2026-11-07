@@ -1,0 +1,50 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/hud/hud.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/mobile_controls/mobile_controls.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/systems/codex/codex_panel.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/dialog/dialog_box.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_tracker.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/systems/vfx/damage_numbers.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/attack_token_pool.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/systems/quest/quest_system.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/systems/quest/daily_quests.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/systems/ui/inventory_panel.gd" id="10"]
+[ext_resource type="Script" path="res://scripts/systems/ui/settings_panel.gd" id="11"]
+[ext_resource type="Script" path="res://scripts/systems/ui/pause_menu.gd" id="12"]
+
+[node name="GameShell" type="Node"]
+
+[node name="SecretTracker" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="QuestSystem" type="Node" parent="."]
+script = ExtResource("8")
+
+[node name="DailyQuests" type="Node" parent="."]
+script = ExtResource("9")
+
+[node name="AttackTokens" type="Node" parent="."]
+script = ExtResource("7")
+
+[node name="DamageNumbers" type="Node3D" parent="."]
+script = ExtResource("6")
+
+[node name="HUD" parent="." instance=ExtResource("1")]
+
+[node name="MobileControls" parent="." instance=ExtResource("2")]
+
+[node name="DialogBox" type="CanvasLayer" parent="."]
+script = ExtResource("4")
+
+[node name="CodexPanel" type="CanvasLayer" parent="."]
+script = ExtResource("3")
+
+[node name="InventoryPanel" type="CanvasLayer" parent="."]
+script = ExtResource("10")
+
+[node name="SettingsPanel" type="CanvasLayer" parent="."]
+script = ExtResource("11")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+script = ExtResource("12")

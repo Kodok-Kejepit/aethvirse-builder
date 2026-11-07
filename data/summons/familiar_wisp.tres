@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SummonData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/summon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"familiar_wisp"
+display_name = "Familiar Wisp"
+body_color = Color(0.55, 0.85, 1, 0.8)
+height = 0.8
+power = 0.22
+attack_range = 1.6
+attack_interval_s = 1.3
+move_speed = 7.0
+duration_s = 25.0
+element = 3

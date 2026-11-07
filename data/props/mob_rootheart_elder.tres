@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_6dfhy"]
+
+[resource]
+script = ExtResource("1_6dfhy")
+id = &"mob_rootheart_elder"
+mesh_path = "res://assets/props/mob_rootheart_elder/mob_rootheart_elder.res"
+albedo_path = "res://assets/props/mob_rootheart_elder/mob_rootheart_elder_albedo.jpg"
+size = Vector3(2.659956, 3.2, 1.8383167)
+collision = 0

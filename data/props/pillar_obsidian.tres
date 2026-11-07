@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_spew7"]
+
+[resource]
+script = ExtResource("1_spew7")
+id = &"pillar_obsidian"
+mesh_path = "res://assets/props/pillar_obsidian/pillar_obsidian.res"
+albedo_path = "res://assets/props/pillar_obsidian/pillar_obsidian_albedo.jpg"
+size = Vector3(1.7085825, 7, 1.7086886)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_tsv6o"]
+
+[resource]
+script = ExtResource("1_tsv6o")
+id = &"room_gatekeeper"
+mesh_path = "res://assets/props/room_gatekeeper/room_gatekeeper.res"
+albedo_path = "res://assets/props/room_gatekeeper/room_gatekeeper_albedo.jpg"
+size = Vector3(11.426454, 4.9999995, 8.6314125)
+collision = 0

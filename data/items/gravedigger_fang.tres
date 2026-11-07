@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"gravedigger_fang"
+display_name = "Gravedigger's Fang"
+description = "Hungry. Always hungry."
+kind = 2
+rarity = 3
+max_stack = 1
+sell_price = 0
+can_sell = true
+slot = 1
+attack = 0.0
+attack_per_level = 6.0
+stat_bonuses = Dictionary[StringName, float]({&"lifesteal": 0.08})
+cursed = true
+curse_hp_fraction = 0.01
+curse_interval_s = 5.0

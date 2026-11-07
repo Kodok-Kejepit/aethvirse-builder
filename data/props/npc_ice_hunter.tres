@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_7qpkk"]
+
+[resource]
+script = ExtResource("1_7qpkk")
+id = &"npc_ice_hunter"
+mesh_path = "res://assets/props/npc_ice_hunter/npc_ice_hunter.res"
+albedo_path = "res://assets/props/npc_ice_hunter/npc_ice_hunter_albedo.jpg"
+size = Vector3(1.3244478, 1.75, 0.6947773)
+collision = 0

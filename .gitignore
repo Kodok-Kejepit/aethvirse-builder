@@ -1,0 +1,19 @@
+# Godot 4
+.godot/
+.import/
+export.cfg
+export_credentials.cfg
+*.translation
+mono_crash.*.json
+/build/
+/android/build/
+*.keystore
+!debug.keystore
+.godot_log.txt
+# OS
+.DS_Store
+Thumbs.db
+override.cfg
+.godot_log.txt.*
+/android/.build_version
+__pycache__/

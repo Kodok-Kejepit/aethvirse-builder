@@ -1,0 +1,159 @@
+name: Build
+
+# Heavy exports run here instead of on the dev laptop.
+# - Push to main: Android share APK + Windows build, published as the rolling "latest" release.
+# - Actions → Build → Run workflow: pick the target (and any branch).
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**/*.md"]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "What to build"
+        type: choice
+        options: [share-and-windows, share, windows, android-debug, aab]
+        default: share-and-windows
+      publish:
+        description: "Publish as the 'latest' release"
+        type: boolean
+        default: true
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  GODOT_VERSION: "4.7.2"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Godot (cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/godot
+          key: godot-${{ env.GODOT_VERSION }}-editor
+      - name: Install Godot
+        run: |
+          mkdir -p ~/godot
+          if [ ! -x ~/godot/godot ]; then
+            cd ~/godot
+            wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -O g.zip
+            unzip -q g.zip && rm g.zip && mv Godot_v*_linux.x86_64 godot
+          fi
+          sudo ln -sf ~/godot/godot /usr/local/bin/godot
+      - name: Import and run unit tests
+        run: |
+          godot --headless --path . --import > /dev/null 2>&1 || true
+          godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit 2>&1 | tee gut.log
+          grep -q "Failing Tests" gut.log && exit 1 || true
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TARGET: ${{ github.event.inputs.target || 'share-and-windows' }}
+      PUBLISH: ${{ github.event.inputs.publish || 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Godot + export templates (cached)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-templates
+
+      - name: Install Godot and export templates
+        run: |
+          mkdir -p ~/godot
+          if [ ! -x ~/godot/godot ]; then
+            cd ~/godot
+            wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -O g.zip
+            unzip -q g.zip && rm g.zip && mv Godot_v*_linux.x86_64 godot
+          fi
+          sudo ln -sf ~/godot/godot /usr/local/bin/godot
+          TDIR=~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          if [ ! -f "$TDIR/version.txt" ]; then
+            mkdir -p "$TDIR" /tmp/tpz
+            wget -q "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -O /tmp/t.tpz
+            unzip -q /tmp/t.tpz -d /tmp/tpz && mv /tmp/tpz/templates/* "$TDIR"/ && rm -rf /tmp/t.tpz /tmp/tpz
+          fi
+
+      - name: Android signing key and editor settings
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_B64 }}
+        run: |
+          mkdir -p ~/.android ~/.config/godot
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > ~/.android/debug.keystore
+          else
+            keytool -genkeypair -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey \
+              -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          fi
+          cat > ~/.config/godot/editor_settings-${GODOT_VERSION%.*}.tres <<SETTINGS
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "${ANDROID_HOME}"
+          export/android/java_sdk_path = "${JAVA_HOME}"
+          export/android/debug_keystore = "${HOME}/.android/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          SETTINGS
+          sed -i 's/^          //' ~/.config/godot/editor_settings-*.tres
+
+      - name: Build
+        run: |
+          export GODOT=godot
+          case "$TARGET" in
+            share-and-windows) tools/build.sh share; tools/build.sh windows ;;
+            share) tools/build.sh share ;;
+            windows) tools/build.sh windows ;;
+            android-debug) tools/build.sh android debug ;;
+            aab) tools/build.sh aab release ;;
+          esac
+          if [ -f build/windows/ASCENDANT.exe ]; then
+            (cd build/windows && zip -q -9 ../ASCENDANT-windows.zip ./*)
+          fi
+          ls -lh build build/android build/windows 2>/dev/null || true
+
+      - name: Upload build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: ascendant-${{ github.run_number }}
+          retention-days: 5
+          path: |
+            build/android/*.apk
+            build/android/*.aab
+            build/ASCENDANT-windows.zip
+
+      - name: Publish rolling "latest" release
+        if: env.PUBLISH == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          FILES=$(ls build/android/*.apk build/android/*.aab build/ASCENDANT-windows.zip 2>/dev/null || true)
+          [ -z "$FILES" ] && exit 0
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest $FILES --prerelease \
+            --title "Build terbaru — ${GITHUB_REF_NAME} @ ${GITHUB_SHA::7}" \
+            --notes "Build otomatis #${GITHUB_RUN_NUMBER} dari commit ${GITHUB_SHA::7}. Android: ascendant-share.apk (pasang langsung di HP). Windows: ekstrak ASCENDANT-windows.zip lalu jalankan ASCENDANT.exe."

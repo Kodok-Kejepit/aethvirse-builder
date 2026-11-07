@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_j2ulo"]
+
+[resource]
+script = ExtResource("1_j2ulo")
+id = &"prop_treasure_chest"
+mesh_path = "res://assets/props/prop_treasure_chest/prop_treasure_chest.res"
+albedo_path = "res://assets/props/prop_treasure_chest/prop_treasure_chest_albedo.jpg"
+size = Vector3(1.7115294, 1.1, 1.2261002)

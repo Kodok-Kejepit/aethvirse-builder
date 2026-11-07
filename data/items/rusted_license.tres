@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"rusted_license"
+display_name = "Hunter License — Marrow Kessick, Rank S"
+description = "A Rank S license. The photo has been scratched out by its owner."
+kind = 3
+rarity = 2
+max_stack = 1
+sell_price = 0
+can_sell = false
+slot = 8
+attack = 0.0
+attack_per_level = 0.0
+stat_bonuses = Dictionary[StringName, float]({&"sen": 5.0})
+unidentified = true
+unidentified_name = "??? License"
+unidentified_description = "The metal is too heavy for an ordinary license."
+codex_identified_name = "Hunter License — [DATA DELETED]"
+hidden_effect = &"old_eyes"

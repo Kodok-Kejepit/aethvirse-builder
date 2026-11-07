@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="QuestData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/quest_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/quest_objective.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/reward_data.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="4"]
+
+[sub_resource type="Resource" id="c1"]
+script = ExtResource("4")
+type = 0
+key = &"main_ch6_done"
+values = Array[StringName]([])
+value = 0.0
+value2 = 0.0
+negate = false
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2")
+type = 5
+target = &"hollow_throne_entered"
+count = 1
+text = &"QO_MAIN_7_REACH"
+stage = 0
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2")
+type = 0
+target = &"the_unwritten"
+count = 1
+text = &"QO_MAIN_7_BOSS"
+stage = 1
+
+[sub_resource type="Resource" id="r1"]
+script = ExtResource("3")
+type = 2
+key = &""
+amount = 28000
+
+[sub_resource type="Resource" id="r2"]
+script = ExtResource("3")
+type = 3
+key = &"main_ch7_done"
+amount = 1
+
+[resource]
+script = ExtResource("1")
+id = &"q_main_ch7"
+title = &"QUEST_MAIN_7"
+description = &"QUEST_MAIN_7_D"
+kind = 0
+auto_start = true
+start_conditions = Array[ExtResource("4")]([SubResource("c1")])
+guild_points = 105
+objectives = Array[ExtResource("2")]([SubResource("o1"), SubResource("o2")])
+rewards = Array[ExtResource("3")]([SubResource("r1"), SubResource("r2")])

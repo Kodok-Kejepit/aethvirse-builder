@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_m57v5"]
+
+[resource]
+script = ExtResource("1_m57v5")
+id = &"statue_starblade"
+mesh_path = "res://assets/props/statue_starblade/statue_starblade.res"
+albedo_path = "res://assets/props/statue_starblade/statue_starblade_albedo.jpg"
+size = Vector3(2.2224655, 3, 1.1079445)

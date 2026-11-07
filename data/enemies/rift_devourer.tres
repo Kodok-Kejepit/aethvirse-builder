@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 8
+
+[resource]
+script = ExtResource("1")
+id = &"rift_devourer"
+display_name = "Rift Devourer"
+level = 88
+stats = SubResource("stats")
+body_color = Color(0.3, 0.2, 0.45, 1)
+tier = 2
+hp_scale = 0.35
+attack_scale = 1.0
+poise = 220.0
+attack_range = 3.4
+attack_windup_s = 0.9
+attack_hitbox_size = Vector3(4, 2, 3.4)
+telegraph_radius = 3.4
+aggro_radius = 30.0
+leash_radius = 70.0

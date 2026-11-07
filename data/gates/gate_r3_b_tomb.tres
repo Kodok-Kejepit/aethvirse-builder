@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GateData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/enemies/sand_wraith.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/dune_scuttler.tres" id="e1"]
+[ext_resource type="Resource" path="res://data/enemies/crimson_burrower.tres" id="boss"]
+
+[resource]
+script = ExtResource("1")
+id = &"gate_r3_b_tomb"
+display_name = &"GATE_R3_B_TOMB"
+rank = 3
+seed_value = 3177
+room_count = 6
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1")])
+enemies_per_room = 3
+boss = ExtResource("boss")
+rules = Array[StringName]([])
+min_guild_rank = 2
+completes_secret = &""
+reward_gold = 1400
+reward_items = Dictionary[StringName, int]({&"potion_small": 5})

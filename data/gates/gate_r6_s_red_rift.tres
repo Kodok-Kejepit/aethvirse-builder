@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GateData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/enemies/rift_stalker.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/void_hollow.tres" id="e1"]
+[ext_resource type="Resource" path="res://data/enemies/rift_devourer.tres" id="boss"]
+
+[resource]
+script = ExtResource("1")
+id = &"gate_r6_s_red_rift"
+display_name = &"GATE_R6_S_RED_RIFT"
+rank = 5
+seed_value = 7199
+room_count = 8
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1")])
+enemies_per_room = 3
+boss = ExtResource("boss")
+rules = Array[StringName]([&"red", &"no_double"])
+min_guild_rank = 4
+completes_secret = &""
+reward_gold = 5600
+reward_items = Dictionary[StringName, int]({&"potion_small": 10})

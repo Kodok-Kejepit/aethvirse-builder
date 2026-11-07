@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"hunter_greatsword"
+display_name = "Hunter Greatsword"
+description = "A guild-standard blade, retuned for real Gates."
+kind = 2
+rarity = 0
+max_stack = 1
+sell_price = 12
+slot = 1
+attack_per_level = 4.2
+is_drop_base = true

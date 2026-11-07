@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_0giao"]
+
+[resource]
+script = ExtResource("1_0giao")
+id = &"landmark_lantern_temple"
+mesh_path = "res://assets/props/landmark_lantern_temple/landmark_lantern_temple.res"
+albedo_path = "res://assets/props/landmark_lantern_temple/landmark_lantern_temple_albedo.jpg"
+size = Vector3(25.766676, 22, 34.18795)
+collision = 2

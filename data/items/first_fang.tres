@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"first_fang"
+display_name = "First Fang"
+description = "It remembers every hand that held it. It chose yours."
+kind = 2
+rarity = 3
+max_stack = 1
+sell_price = 0
+can_sell = true
+slot = 1
+attack = 0.0
+attack_per_level = 5.5
+hidden_effect = &"higher_rank_bonus"

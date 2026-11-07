@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"issued_daggers"
+display_name = "Issued Twin Daggers"
+description = "Light, fast, and easy to lose."
+kind = 2
+slot = 1
+attack_per_level = 3.6
+sell_price = 5

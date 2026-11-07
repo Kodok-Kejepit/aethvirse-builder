@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+id = &"final_hour"
+display_name = "Final Hour"
+damage_multiplier = 1
+is_heavy = true
+element = 6
+startup_s = 0.18
+active_s = 0.15
+recovery_s = 0.3
+combo_window_s = 0.435
+dodge_cancel_s = 0.33
+hitbox_size = Vector3(3.0, 2.0, 3.0)
+hitbox_offset = Vector3(0, 1, -1.5)
+knockback = 4.0
+stagger = 30.0
+hit_stop_s = 0.07
+lunge_speed = 34.0
+swing = 0
+
+[resource]
+script = ExtResource("e1")
+id = &"final_hour"
+display_name = "Final Hour"
+description = "Ultimate. One cut for every second left."
+kind = 1
+is_ultimate = true
+icon_color = Color(0.6, 0.3, 0.9, 1)
+unlock_level = 60
+mp_cost = 80
+cooldown_s = 55.0
+attack = SubResource("s1")
+damage_multiplier = 9.0
+multiplier_per_level = 0.15

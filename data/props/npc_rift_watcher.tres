@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_y5ehw"]
+
+[resource]
+script = ExtResource("1_y5ehw")
+id = &"npc_rift_watcher"
+mesh_path = "res://assets/props/npc_rift_watcher/npc_rift_watcher.res"
+albedo_path = "res://assets/props/npc_rift_watcher/npc_rift_watcher_albedo.jpg"
+size = Vector3(1.5743964, 1.8000001, 1.1762189)
+collision = 0

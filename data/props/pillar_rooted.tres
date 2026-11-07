@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_4vopx"]
+
+[resource]
+script = ExtResource("1_4vopx")
+id = &"pillar_rooted"
+mesh_path = "res://assets/props/pillar_rooted/pillar_rooted.res"
+albedo_path = "res://assets/props/pillar_rooted/pillar_rooted_albedo.jpg"
+size = Vector3(3.2158551, 6, 3.3468678)

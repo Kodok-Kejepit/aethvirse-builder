@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_f7r1l"]
+
+[resource]
+script = ExtResource("1_f7r1l")
+id = &"landmark_root_shrine"
+mesh_path = "res://assets/props/landmark_root_shrine/landmark_root_shrine.res"
+albedo_path = "res://assets/props/landmark_root_shrine/landmark_root_shrine_albedo.jpg"
+size = Vector3(14.865575, 16, 19.19846)
+collision = 2

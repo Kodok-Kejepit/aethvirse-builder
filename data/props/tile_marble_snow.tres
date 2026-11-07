@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_7ivmv"]
+
+[resource]
+script = ExtResource("1_7ivmv")
+id = &"tile_marble_snow"
+mesh_path = "res://assets/props/tile_marble_snow/tile_marble_snow.res"
+albedo_path = "res://assets/props/tile_marble_snow/tile_marble_snow_albedo.jpg"
+size = Vector3(7.2158737, 0.3, 7.2783732)
+collision = 0

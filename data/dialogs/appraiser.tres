@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="NpcData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_effect.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_choice.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_entry.gd" id="5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("3")
+type = 6
+key = &"SM-R1-01:3"
+amount = 1
+text = &"HINT_SM_R1_01_6"
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("2")
+type = 6
+key = &""
+values = Array[StringName]([&"rusted_license"])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s3"]
+script = ExtResource("2")
+type = 6
+key = &"appraiser"
+values = Array[StringName]([&"rusted_license"])
+value = 0.0
+negate = true
+
+[sub_resource type="Resource" id="s4"]
+script = ExtResource("2")
+type = 6
+key = &"codex"
+values = Array[StringName]([&"rusted_license"])
+value = 0.0
+negate = true
+
+[sub_resource type="Resource" id="s5"]
+script = ExtResource("3")
+type = 8
+key = &"rusted_license"
+amount = 1
+text = &"appraiser"
+
+[sub_resource type="Resource" id="s6"]
+script = ExtResource("4")
+text = &"DLG_CHOICE_APPRAISE"
+conditions = Array[ExtResource("2")]([SubResource("s2"), SubResource("s3"), SubResource("s4")])
+effects = Array[ExtResource("3")]([SubResource("s5")])
+reply = Array[StringName]([&"DLG_APPRAISER_LICENSE"])
+gold_cost = 10
+
+[sub_resource type="Resource" id="s7"]
+script = ExtResource("5")
+id = &"default"
+conditions = Array[ExtResource("2")]([])
+lines = Array[StringName]([&"HINT_SM_R1_01_6"])
+daily_variants = Array[StringName]([])
+on_show = Array[ExtResource("3")]([SubResource("s1")])
+choices = Array[ExtResource("4")]([SubResource("s6")])
+
+[resource]
+script = ExtResource("1")
+id = &"appraiser"
+display_name = &"NPC_APPRAISER"
+body_color = Color(0.5, 0.7, 0.6, 1)
+entries = Array[ExtResource("5")]([SubResource("s7")])
+attacked_flag = &""
+hidden_when_flag = &""
+away_from_hour = 23
+away_to_hour = 8

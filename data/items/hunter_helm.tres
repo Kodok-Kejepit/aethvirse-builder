@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"hunter_helm"
+display_name = "Hunter Helm"
+description = "Dented, but it held."
+kind = 4
+rarity = 0
+max_stack = 1
+sell_price = 12
+slot = 3
+defense_per_level = 0.6
+is_drop_base = true

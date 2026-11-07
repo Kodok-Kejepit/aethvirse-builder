@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_5l37a"]
+
+[resource]
+script = ExtResource("1_5l37a")
+id = &"landmark_wyrm_relic"
+mesh_path = "res://assets/props/landmark_wyrm_relic/landmark_wyrm_relic.res"
+albedo_path = "res://assets/props/landmark_wyrm_relic/landmark_wyrm_relic_albedo.jpg"
+size = Vector3(8.342479, 8, 8.602211)
+collision = 2

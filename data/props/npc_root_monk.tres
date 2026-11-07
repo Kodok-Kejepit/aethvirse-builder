@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_fr67y"]
+
+[resource]
+script = ExtResource("1_fr67y")
+id = &"npc_root_monk"
+mesh_path = "res://assets/props/npc_root_monk/npc_root_monk.res"
+albedo_path = "res://assets/props/npc_root_monk/npc_root_monk_albedo.jpg"
+size = Vector3(0.97952634, 1.7999998, 0.93911624)
+collision = 0

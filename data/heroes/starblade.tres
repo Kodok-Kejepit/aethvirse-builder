@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HeroData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/hero_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"starblade"
+display_name = "HERO_STARBLADE"
+description = "HERO_STARBLADE_DESC"
+mesh_hi = "res://assets/characters/starblade/starblade_hi.res"
+mesh_lo = "res://assets/characters/starblade/starblade_lo.res"
+albedo_hi = "res://assets/characters/starblade/starblade_albedo_hi.jpg"
+albedo_lo = "res://assets/characters/starblade/starblade_albedo_lo.jpg"
+has_dragon = false
+hair = 1
+hair_color = Color(0.72, 0.55, 0.95, 1)
+hair_tip_color = Color(0.45, 0.3, 0.8, 1)

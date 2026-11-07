@@ -1,0 +1,180 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/enemies/echo_king.tres" id="d_echo_king"]
+[ext_resource type="Resource" path="res://data/gates/gate_r4_b_icecave.tres" id="d_gate_r4_b_icecave"]
+[ext_resource type="Resource" path="res://data/enemies/ice_wyvernling.tres" id="d_ice_wyvernling"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_marker.gd" id="marker"]
+[ext_resource type="PackedScene" path="res://scenes/world/gates/gate_portal.tscn" id="portal"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/hint_sign.tscn" id="sign"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/breakable_wall.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+
+[node name="Chunk_1_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.77, 0.85, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -6.75, 3.5, -19)
+script = ExtResource("gb")
+size = Vector3(10.5, 7, 0.6)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 6.75, 3.5, -19)
+script = ExtResource("gb")
+size = Vector3(10.5, 7, 0.6)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7, 3.5, -1)
+script = ExtResource("gb")
+size = Vector3(10.0, 7, 0.6)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7, 3.5, -1)
+script = ExtResource("gb")
+size = Vector3(10.0, 7, 0.6)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 3.5, -10)
+script = ExtResource("gb")
+size = Vector3(0.6, 7, 18)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 3.5, -10)
+script = ExtResource("gb")
+size = Vector3(0.6, 7, 18)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="Wall8" parent="." instance=ExtResource("wall")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -19)
+save_flag = &"r4_mirror_wall_broken"
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3.5, -47)
+script = ExtResource("gb")
+size = Vector3(26, 7, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7.25, 3.5, -21)
+script = ExtResource("gb")
+size = Vector3(11.5, 7, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7.25, 3.5, -21)
+script = ExtResource("gb")
+size = Vector3(11.5, 7, 0.6)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13, 3.5, -34)
+script = ExtResource("gb")
+size = Vector3(0.6, 7, 26)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="B13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -13, 3.5, -34)
+script = ExtResource("gb")
+size = Vector3(0.6, 7, 26)
+color = Color(0.12, 0.1, 0.16, 1)
+solid = true
+
+[node name="Spawn14" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.3, -38)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_echo_king")
+respawn_s = 99999.0
+
+[node name="Marker15" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 4, -34)
+script = ExtResource("marker")
+secret_id = &"SEC-R4-08"
+
+[node name="Sign16" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, -6)
+text_key = &"HINT_SEC_R4_08_2"
+hint_secret = &"SEC-R4-08"
+hint_key = &"HINT_SEC_R4_08_2"
+
+[node name="Waystone17" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 14)
+waystone_id = &"r4_temple"
+
+[node name="Portal18" parent="." instance=ExtResource("portal")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26, 0, 24)
+gate = ExtResource("d_gate_r4_b_icecave")
+
+[node name="Spawn19" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0.3, -30)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ice_wyvernling")
+respawn_s = 20.0
+
+[node name="Label20" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 16, -10)
+billboard = 1
+text = "MIRROR TEMPLE"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="B21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Outcrop22" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.95048, -0, -0.31077, 0, 1, -0, 0.31077, -0, -0.95048, 46.8884, -6.73784, -6.4048)
+script = ExtResource("prop")
+prop_id = &"ground_r4"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.625
+fit_height = false
+
+[node name="Outcrop23" type="StaticBody3D" parent="."]
+transform = Transform3D(0.43405, -0, -0.90089, 0, 1, -0, 0.90089, 0, 0.43405, -37.9328, -8.88137, 49.1125)
+script = ExtResource("prop")
+prop_id = &"ground_r4"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 2.188
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"frost"
+amplitude = 7.0
+seed_value = 404
+flatten = PackedVector3Array(-6.75, -19, 6.81028, 6.75, -19, 6.81028, -7, -1, 6.51079, 7, -1, 6.51079, 12, -10, 11.306, -12, -10, 11.306, 0, -19, 4, 0, -47, 16.1042, -7.25, -21, 7.40938, 7.25, -21, 7.40938, 13, -34, 16.1042, -13, -34, 16.1042, -8, -6, 4, 0, 14, 4, 26, 24, 4, 46.8884, -6.4048, 14.621, -37.9328, 49.1125, 19.6914)

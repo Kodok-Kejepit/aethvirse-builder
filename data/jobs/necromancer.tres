@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="JobData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/job_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://data/skills/jobs/rise_echo.tres" id="e4"]
+[ext_resource type="Resource" path="res://data/skills/jobs/answer_me.tres" id="e5"]
+[ext_resource type="Resource" path="res://data/skills/jobs/grave_chill.tres" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+strength = 2.0
+agility = 2.0
+intelligence = 8.0
+vitality = 2.0
+sense = 4.0
+
+[resource]
+script = ExtResource("e1")
+id = &"necromancer"
+display_name = "Necromancer"
+description = "Binds the fallen as shadow soldiers."
+base_class = &""
+tier = 3
+required_level = 35
+parent = &"summoner"
+hidden = true
+required_flag = &"necromancer_awakened"
+stat_bonus = SubResource("s1")
+attack_bonus = 0.15
+defense_bonus = 0.0
+hp_bonus = 0.0
+mp_cost_multiplier = 1.0
+skills = Array[ExtResource("e3")]([ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
+shadow_army = true

@@ -1,0 +1,119 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_area.gd" id="area"]
+[ext_resource type="Resource" path="res://data/enemies/drowned_scribe.tres" id="d_drowned_scribe"]
+[ext_resource type="Resource" path="res://data/gates/gate_r5_a_tidal.tres" id="d_gate_r5_a_tidal"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/lore_pickup.tscn" id="lore"]
+[ext_resource type="Script" path="res://scripts/systems/secrets/secret_marker.gd" id="marker"]
+[ext_resource type="PackedScene" path="res://scenes/world/gates/gate_portal.tscn" id="portal"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/hint_sign.tscn" id="sign"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/tide_water.gd" id="tide"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+[sub_resource type="BoxShape3D" id="shape9"]
+size = Vector3(8, 3, 6)
+
+[node name="Chunk_1_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -1, -14)
+script = ExtResource("gb")
+size = Vector3(40, 0.5, 30)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -15, 2, -14)
+script = ExtResource("gb")
+size = Vector3(2, 6, 24)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -5, 2, -14)
+script = ExtResource("gb")
+size = Vector3(2, 6, 24)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5, 2, -14)
+script = ExtResource("gb")
+size = Vector3(2, 6, 24)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 15, 2, -14)
+script = ExtResource("gb")
+size = Vector3(2, 6, 24)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="Tide7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -14)
+script = ExtResource("tide")
+size = Vector2(44, 34)
+
+[node name="Area8" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.5, -24)
+script = ExtResource("area")
+area_id = &"sec_r5_01_lower"
+
+[node name="Shape" type="CollisionShape3D" parent="Area8"]
+shape = SubResource("shape9")
+
+[node name="Marker10" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 2, -24)
+script = ExtResource("marker")
+secret_id = &"SEC-R5-01"
+
+[node name="Lore11" parent="." instance=ExtResource("lore")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.7, -26)
+lore_id = &"LORE-R5-01"
+
+[node name="Sign12" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 6, 0, 4)
+text_key = &"HINT_SEC_R5_01_2"
+hint_secret = &"SEC-R5-01"
+hint_key = &"HINT_SEC_R5_01_2"
+
+[node name="Waystone13" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 24)
+waystone_id = &"r5_library"
+
+[node name="Portal14" parent="." instance=ExtResource("portal")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 28, 0, 20)
+gate = ExtResource("d_gate_r5_a_tidal")
+
+[node name="Spawn15" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0.3, -30)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_drowned_scribe")
+respawn_s = 20.0
+
+[node name="Label16" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 14, -14)
+billboard = 1
+text = "GREAT LIBRARY"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="B17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true

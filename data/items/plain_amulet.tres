@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"plain_amulet"
+display_name = "Plain Amulet"
+description = "Warm stone on a cord."
+kind = 3
+rarity = 0
+max_stack = 1
+sell_price = 12
+slot = 8
+stat_bonuses = Dictionary[StringName, float]({&"vit": 1.0})
+is_drop_base = true

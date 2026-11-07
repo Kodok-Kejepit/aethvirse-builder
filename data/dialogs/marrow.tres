@@ -1,0 +1,158 @@
+[gd_resource type="Resource" script_class="NpcData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_effect.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_choice.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_entry.gd" id="5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("2")
+type = 8
+key = &"SM-R1-01:1"
+values = Array[StringName]([])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("2")
+type = 3
+key = &""
+values = Array[StringName]([])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s3"]
+script = ExtResource("2")
+type = 8
+key = &"SM-R1-01:2"
+values = Array[StringName]([])
+value = 0.0
+negate = true
+
+[sub_resource type="Resource" id="s4"]
+script = ExtResource("3")
+type = 5
+key = &"SM-R1-01:2"
+amount = 1
+text = &""
+
+[sub_resource type="Resource" id="s5"]
+script = ExtResource("3")
+type = 6
+key = &"SM-R1-01:3"
+amount = 1
+text = &"HINT_SM_R1_01_5"
+
+[sub_resource type="Resource" id="s6"]
+script = ExtResource("5")
+id = &"stage2_night"
+conditions = Array[ExtResource("2")]([SubResource("s1"), SubResource("s2"), SubResource("s3")])
+lines = Array[StringName]([&"DLG_MARROW_S2_1", &"DLG_MARROW_S2_2"])
+daily_variants = Array[StringName]([])
+on_show = Array[ExtResource("3")]([SubResource("s4"), SubResource("s5")])
+choices = Array[ExtResource("4")]([])
+
+[sub_resource type="Resource" id="s7"]
+script = ExtResource("2")
+type = 8
+key = &"SM-R1-01:1"
+values = Array[StringName]([])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s8"]
+script = ExtResource("2")
+type = 8
+key = &"SM-R1-01:2"
+values = Array[StringName]([])
+value = 0.0
+negate = true
+
+[sub_resource type="Resource" id="s9"]
+script = ExtResource("3")
+type = 6
+key = &"SM-R1-01:2"
+amount = 1
+text = &"HINT_SM_R1_01_3"
+
+[sub_resource type="Resource" id="s10"]
+script = ExtResource("5")
+id = &"stage1_day"
+conditions = Array[ExtResource("2")]([SubResource("s7"), SubResource("s8")])
+lines = Array[StringName]([&"DLG_MARROW_S1_1", &"HINT_SM_R1_01_3"])
+daily_variants = Array[StringName]([])
+on_show = Array[ExtResource("3")]([SubResource("s9")])
+choices = Array[ExtResource("4")]([])
+
+[sub_resource type="Resource" id="s11"]
+script = ExtResource("2")
+type = 8
+key = &"SM-R1-01:2"
+values = Array[StringName]([])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s12"]
+script = ExtResource("5")
+id = &"after_license"
+conditions = Array[ExtResource("2")]([SubResource("s11")])
+lines = Array[StringName]([&"DLG_MARROW_AFTER"])
+daily_variants = Array[StringName]([])
+on_show = Array[ExtResource("3")]([])
+choices = Array[ExtResource("4")]([])
+
+[sub_resource type="Resource" id="s13"]
+script = ExtResource("3")
+type = 6
+key = &"SM-R1-01:1"
+amount = 1
+text = &"HINT_SM_R1_01_2"
+
+[sub_resource type="Resource" id="s14"]
+script = ExtResource("2")
+type = 6
+key = &""
+values = Array[StringName]([&"bread"])
+value = 0.0
+negate = false
+
+[sub_resource type="Resource" id="s15"]
+script = ExtResource("3")
+type = 1
+key = &"bread"
+amount = 1
+text = &""
+
+[sub_resource type="Resource" id="s16"]
+script = ExtResource("3")
+type = 7
+key = &"marrow_fed_streak"
+amount = 1
+text = &""
+
+[sub_resource type="Resource" id="s17"]
+script = ExtResource("4")
+text = &"DLG_CHOICE_GIVE_BREAD"
+conditions = Array[ExtResource("2")]([SubResource("s14")])
+effects = Array[ExtResource("3")]([SubResource("s15"), SubResource("s16")])
+reply = Array[StringName]([&"DLG_MARROW_THANKS"])
+gold_cost = 0
+
+[sub_resource type="Resource" id="s18"]
+script = ExtResource("5")
+id = &"default"
+conditions = Array[ExtResource("2")]([])
+lines = Array[StringName]([])
+daily_variants = Array[StringName]([&"DLG_MARROW_D1", &"DLG_MARROW_D2", &"DLG_MARROW_D3"])
+on_show = Array[ExtResource("3")]([SubResource("s13")])
+choices = Array[ExtResource("4")]([SubResource("s17")])
+
+[resource]
+script = ExtResource("1")
+id = &"marrow"
+display_name = &"NPC_MARROW"
+body_color = Color(0.55, 0.5, 0.42, 1)
+entries = Array[ExtResource("5")]([SubResource("s6"), SubResource("s10"), SubResource("s12"), SubResource("s18")])
+attacked_flag = &"marrow_attacked"
+hidden_when_flag = &"marrow_attacked"

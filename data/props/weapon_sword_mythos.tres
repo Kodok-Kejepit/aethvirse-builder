@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_k4oa2"]
+
+[resource]
+script = ExtResource("1_k4oa2")
+id = &"weapon_sword_mythos"
+mesh_path = "res://assets/props/weapon_sword_mythos/weapon_sword_mythos.res"
+albedo_path = "res://assets/props/weapon_sword_mythos/weapon_sword_mythos_albedo.jpg"
+size = Vector3(0.42011607, 1.25, 0.15134287)
+collision = 0

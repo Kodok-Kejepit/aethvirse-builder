@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="ClassData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/class_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/stat_block.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e3"]
+[ext_resource type="Script" path="res://scripts/resources/skill_combo_data.gd" id="e4"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/fireball.tres" id="e5"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/frost_lance.tres" id="e6"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/thunder_step.tres" id="e7"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/flame_pillar.tres" id="e8"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/mana_shield.tres" id="e9"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/starfall.tres" id="e10"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/arcane_mind.tres" id="e11"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/flow.tres" id="e12"]
+[ext_resource type="Resource" path="res://data/skills/arcanist/ward.tres" id="e13"]
+[ext_resource type="Resource" path="res://data/combat/staff_combo.tres" id="e14"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+id = &"superconduct_step"
+display_name = "Superconduct Step"
+first = &"frost_lance"
+second = &"thunder_step"
+window_s = 2.5
+bonus_multiplier = 1.3
+force_crit = false
+extra_stagger = 10.0
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e4")
+id = &"inferno"
+display_name = "Inferno"
+first = &"fireball"
+second = &"flame_pillar"
+window_s = 3.0
+bonus_multiplier = 1.4
+force_crit = false
+extra_stagger = 0.0
+
+[sub_resource type="Resource" id="s3"]
+script = ExtResource("e4")
+id = &"shielded_star"
+display_name = "Guarded Heavens"
+first = &"mana_shield"
+second = &"starfall"
+window_s = 6.0
+bonus_multiplier = 1.25
+force_crit = false
+extra_stagger = 0.0
+
+[sub_resource type="Resource" id="s4"]
+script = ExtResource("e2")
+strength = 3.0
+agility = 5.0
+intelligence = 14.0
+vitality = 6.0
+sense = 8.0
+
+[sub_resource type="Resource" id="s5"]
+script = ExtResource("e2")
+strength = 0.2
+agility = 0.6
+intelligence = 2.2
+vitality = 0.8
+sense = 1.0
+
+[sub_resource type="Resource" id="s6"]
+script = ExtResource("e2")
+strength = 0.0
+agility = 0.1
+intelligence = 0.6
+vitality = 0.15
+sense = 0.15
+
+[resource]
+script = ExtResource("e1")
+id = &"arcanist"
+display_name = "Arcanist"
+description = "Caster. Elemental bolts and area spells, uses magic attack."
+magic_damage = true
+base_stats = SubResource("s4")
+growth = SubResource("s5")
+recommended_split = SubResource("s6")
+combo = ExtResource("e14")
+skills = Array[ExtResource("e3")]([ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11"), ExtResource("e12"), ExtResource("e13")])
+skill_combos = Array[ExtResource("e4")]([SubResource("s1"), SubResource("s2"), SubResource("s3")])

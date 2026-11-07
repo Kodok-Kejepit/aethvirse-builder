@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="NpcData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_effect.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_choice.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_entry.gd" id="5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("3")
+type = 0
+key = &"potion_small"
+amount = 1
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("4")
+text = &"DLG_BUY_POTION"
+effects = Array[ExtResource("3")]([SubResource("s1")])
+reply = Array[StringName]([&"DLG_QM_THANKS"])
+gold_cost = 25
+
+[sub_resource type="Resource" id="s3"]
+script = ExtResource("3")
+type = 0
+key = &"potion_large"
+amount = 1
+
+[sub_resource type="Resource" id="s4"]
+script = ExtResource("4")
+text = &"DLG_BUY_POTION_L"
+effects = Array[ExtResource("3")]([SubResource("s3")])
+reply = Array[StringName]([&"DLG_QM_THANKS"])
+gold_cost = 80
+
+[sub_resource type="Resource" id="s5"]
+script = ExtResource("3")
+type = 0
+key = &"herb"
+amount = 1
+
+[sub_resource type="Resource" id="s6"]
+script = ExtResource("4")
+text = &"DLG_BUY_HERB"
+effects = Array[ExtResource("3")]([SubResource("s5")])
+reply = Array[StringName]([&"DLG_QM_THANKS"])
+gold_cost = 6
+
+[sub_resource type="Resource" id="s7"]
+script = ExtResource("3")
+type = 0
+key = &"mystery_box"
+amount = 1
+
+[sub_resource type="Resource" id="s8"]
+script = ExtResource("4")
+text = &"DLG_BUY_BOX"
+effects = Array[ExtResource("3")]([SubResource("s7")])
+reply = Array[StringName]([&"DLG_QM_THANKS"])
+gold_cost = 250
+
+[sub_resource type="Resource" id="s9"]
+script = ExtResource("5")
+id = &"default"
+lines = Array[StringName]([&"DLG_QM_HELLO"])
+choices = Array[ExtResource("4")]([SubResource("s2"), SubResource("s4"), SubResource("s6"), SubResource("s8")])
+
+[resource]
+script = ExtResource("1")
+id = &"quartermaster"
+display_name = &"NPC_QUARTERMASTER"
+body_color = Color(0.4, 0.45, 0.7, 1)
+entries = Array[ExtResource("5")]([SubResource("s9")])
+away_from_hour = 22
+away_to_hour = 7

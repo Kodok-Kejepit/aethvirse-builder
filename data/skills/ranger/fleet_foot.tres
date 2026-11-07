@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"fleet_foot"
+display_name = "Fleet Foot"
+description = "Passive. Move speed up."
+kind = 5
+is_ultimate = false
+icon_color = Color(0.55, 0.85, 0.45, 1)
+unlock_level = 4
+mp_cost = 0
+cooldown_s = 1.0
+buff_stat = &"mspd"
+buff_amount = 0.06
+buff_duration_s = 10.0
+buff_amount_per_level = 0.01

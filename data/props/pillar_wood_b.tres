@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_0l1tf"]
+
+[resource]
+script = ExtResource("1_0l1tf")
+id = &"pillar_wood_b"
+mesh_path = "res://assets/props/pillar_wood_b/pillar_wood_b.res"
+albedo_path = "res://assets/props/pillar_wood_b/pillar_wood_b_albedo.jpg"
+size = Vector3(1.0393441, 5, 1.042237)

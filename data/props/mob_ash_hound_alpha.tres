@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_irtm5"]
+
+[resource]
+script = ExtResource("1_irtm5")
+id = &"mob_ash_hound_alpha"
+mesh_path = "res://assets/props/mob_ash_hound_alpha/mob_ash_hound_alpha.res"
+albedo_path = "res://assets/props/mob_ash_hound_alpha/mob_ash_hound_alpha_albedo.jpg"
+size = Vector3(1.4747524, 1.5, 2.3920772)
+collision = 0

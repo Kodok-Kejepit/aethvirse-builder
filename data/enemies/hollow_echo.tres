@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 8
+
+[resource]
+script = ExtResource("1")
+id = &"hollow_echo"
+display_name = "Hollow Echo"
+level = 86
+stats = SubResource("stats")
+body_color = Color(0.8, 0.8, 0.85, 1)
+tier = 1
+hp_scale = 0.8
+chase_speed = 5.4
+attack_windup_s = 0.55

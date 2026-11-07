@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/boot.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/branding/ascendant_logo.png" id="2"]
+[ext_resource type="Shader" path="res://assets/shaders/opening_logo.gdshader" id="3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_art"]
+shader = ExtResource("3")
+shader_parameter/logo_tex = ExtResource("2")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_sparks"]
+offsets = PackedFloat32Array(0, 0.2, 1)
+colors = PackedColorArray(0.4, 0.75, 1, 0, 0.55, 0.85, 1, 0.9, 0.7, 0.5, 1, 0)
+
+[node name="Boot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="OpeningArt" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_art")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sparks" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_add")
+amount = 70
+lifetime = 7.0
+preprocess = 7.0
+emission_shape = 3
+emission_rect_extents = Vector2(960, 4)
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 40.0
+initial_velocity_max = 110.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+scale_amount_min = 1.5
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_sparks")

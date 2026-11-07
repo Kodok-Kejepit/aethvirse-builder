@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="HeroData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/hero_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"dragon_maiden"
+display_name = "HERO_DRAGON_MAIDEN"
+description = "HERO_DRAGON_MAIDEN_DESC"
+mesh_hi = "res://assets/characters/dragon_maiden/dragon_maiden_hi.res"
+mesh_lo = "res://assets/characters/dragon_maiden/dragon_maiden_lo.res"
+albedo_hi = "res://assets/characters/dragon_maiden/dragon_maiden_albedo_hi.jpg"
+albedo_lo = "res://assets/characters/dragon_maiden/dragon_maiden_albedo_lo.jpg"
+normal_hi = "res://assets/characters/dragon_maiden/dragon_maiden_normal_hi.jpg"
+rig_scene = "res://assets/characters/dragon_maiden/rig/dragon_maiden_rig.scn"
+rig_albedo = "res://assets/characters/dragon_maiden/rig/dragon_maiden_rig_albedo.jpg"
+has_dragon = true
+hair = 0

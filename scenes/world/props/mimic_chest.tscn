@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/secrets/mimic_chest.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/interaction/interactable.gd" id="i"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="h"]
+[ext_resource type="Resource" path="res://data/enemies/mimic_r1.tres" id="2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c"]
+size = Vector3(1.4, 1, 0.9)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_use"]
+radius = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hurt"]
+size = Vector3(1.6, 1.2, 1.1)
+
+[sub_resource type="StandardMaterial3D" id="M_box"]
+albedo_color = Color(0.75, 0.6, 0.35, 1)
+roughness = 0.2
+metallic = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_c"]
+material = SubResource("M_box")
+size = Vector3(1.4, 1, 0.9)
+
+[node name="MimicChest" type="StaticBody3D"]
+script = ExtResource("1")
+mimic_data = ExtResource("2")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_c")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_c")
+
+[node name="Interactable" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("i")
+
+[node name="Shape" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("SphereShape3D_use")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("h")
+
+[node name="HurtShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_hurt")

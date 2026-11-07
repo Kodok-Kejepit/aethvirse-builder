@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="QuestData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/quest_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/quest_objective.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/reward_data.gd" id="3"]
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2")
+type = 1
+target = &"bread_seller"
+count = 1
+text = &"QO_TALK_BREAD"
+stage = 0
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2")
+type = 0
+target = &"ash_hound"
+count = 5
+text = &"QO_KILL_HOUNDS"
+stage = 1
+
+[sub_resource type="Resource" id="o3"]
+script = ExtResource("2")
+type = 4
+target = &"gate_r1_e_overpass"
+count = 1
+text = &"QO_CLEAR_OVERPASS"
+stage = 2
+
+[sub_resource type="Resource" id="r4"]
+script = ExtResource("3")
+type = 2
+key = &""
+amount = 300
+
+[sub_resource type="Resource" id="r5"]
+script = ExtResource("3")
+type = 1
+key = &""
+amount = 100
+
+[sub_resource type="Resource" id="r6"]
+script = ExtResource("3")
+type = 0
+key = &"potion_small"
+amount = 2
+
+[sub_resource type="Resource" id="r7"]
+script = ExtResource("3")
+type = 3
+key = &"main_ch1_done"
+amount = 1
+
+[resource]
+script = ExtResource("1")
+id = &"q_r1_overpass"
+title = &"QUEST_R1_OVERPASS"
+description = &"QUEST_R1_OVERPASS_D"
+kind = 0
+auto_start = true
+guild_points = 20
+objectives = Array[ExtResource("2")]([SubResource("o1"), SubResource("o2"), SubResource("o3")])
+rewards = Array[ExtResource("3")]([SubResource("r4"), SubResource("r5"), SubResource("r6"), SubResource("r7")])

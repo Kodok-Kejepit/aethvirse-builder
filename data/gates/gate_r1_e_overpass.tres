@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GateData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/gate_husk.tres" id="e1"]
+[ext_resource type="Resource" path="res://data/enemies/ash_hound_alpha.tres" id="boss"]
+
+[resource]
+script = ExtResource("1")
+id = &"gate_r1_e_overpass"
+display_name = &"GATE_R1_E_OVERPASS"
+rank = 0
+seed_value = 1204
+room_count = 3
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1")])
+enemies_per_room = 3
+boss = ExtResource("boss")
+rules = Array[StringName]([])
+completes_secret = &""
+reward_gold = 120
+reward_items = Dictionary[StringName, int]({&"potion_small": 2})

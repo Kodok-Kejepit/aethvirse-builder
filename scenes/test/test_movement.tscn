@@ -1,0 +1,259 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/main/game_shell.tscn" id="2"]
+[ext_resource type="Shader" path="res://assets/shaders/debug_grid.gdshader" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/training_dummy.tscn" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="7"]
+[ext_resource type="Resource" path="res://data/enemies/gate_husk.tres" id="10"]
+[ext_resource type="Resource" path="res://data/enemies/ember_husk.tres" id="11"]
+[ext_resource type="Script" path="res://scripts/systems/world/environment_controller.gd" id="13"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grid"]
+shader = ExtResource("4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ramp"]
+albedo_color = Color(0.85, 0.55, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_platform"]
+albedo_color = Color(0.35, 0.7, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.55, 0.52, 0.6, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.18, 0.32, 0.6, 1)
+sky_horizon_color = Color(0.6, 0.68, 0.8, 1)
+ground_horizon_color = Color(0.6, 0.68, 0.8, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 3
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.6, 0.68, 0.8, 1)
+fog_density = 0.004
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rain"]
+emission_shape = 3
+emission_box_extents = Vector3(18, 1, 18)
+direction = Vector3(0, -1, 0)
+spread = 3.0
+initial_velocity_min = 22.0
+initial_velocity_max = 26.0
+gravity = Vector3(0, -9.8, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rain"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.7, 0.8, 1, 0.45)
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_rain"]
+material = SubResource("StandardMaterial3D_rain")
+size = Vector2(0.02, 0.5)
+
+[node name="TestMovement" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 20, 0)
+shadow_enabled = true
+
+[node name="Environment" type="Node" parent="." node_paths=PackedStringArray("sun", "world_environment", "rain")]
+script = ExtResource("13")
+sun = NodePath("../Sun")
+world_environment = NodePath("../WorldEnvironment")
+rain = NodePath("../Rain")
+
+[node name="Rain" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1500
+lifetime = 1.2
+visibility_aabb = AABB(-20, -30, -20, 40, 32, 40)
+process_material = SubResource("ParticleProcessMaterial_rain")
+draw_pass_1 = SubResource("QuadMesh_rain")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(200, 1, 200)
+material = SubResource("ShaderMaterial_grid")
+
+[node name="Ramp20" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, -0, 0.34202, 0.939693, 12, 1.7101, -12)
+use_collision = true
+size = Vector3(5, 0.4, 10.0)
+material = SubResource("StandardMaterial3D_ramp")
+
+[node name="Ramp40" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, -0, 0.642788, 0.766044, 20, 3.21394, -12)
+use_collision = true
+size = Vector3(5, 0.4, 10.0)
+material = SubResource("StandardMaterial3D_ramp")
+
+[node name="Ramp55" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 0.573576, -0.819152, -0, 0.819152, 0.573576, 28, 4.09576, -12)
+use_collision = true
+size = Vector3(5, 0.4, 10.0)
+material = SubResource("StandardMaterial3D_ramp")
+
+[node name="Step1" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -10, 0.25, -10)
+use_collision = true
+size = Vector3(3, 0.5, 3)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Step2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14.5, 0.5, -10)
+use_collision = true
+size = Vector3(3, 1.0, 3)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Step3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -19, 0.75, -10)
+use_collision = true
+size = Vector3(3, 1.5, 3)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Step4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -23.5, 1, -10)
+use_collision = true
+size = Vector3(3, 2.0, 3)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Step5" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 1.25, -10)
+use_collision = true
+size = Vector3(3, 2.5, 3)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Gap1" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0.6, 10)
+use_collision = true
+size = Vector3(2.5, 1.2, 2.5)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Gap2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7.75, 0.6, 10)
+use_collision = true
+size = Vector3(2.5, 1.2, 2.5)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Gap3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -2, 0.6, 10)
+use_collision = true
+size = Vector3(2.5, 1.2, 2.5)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="Gap4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5.25, 0.6, 10)
+use_collision = true
+size = Vector3(2.5, 1.2, 2.5)
+material = SubResource("StandardMaterial3D_platform")
+
+[node name="CorridorWallL" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10, 2, 14)
+use_collision = true
+size = Vector3(0.5, 4, 16)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="CorridorWallR" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13, 2, 14)
+use_collision = true
+size = Vector3(0.5, 4, 16)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="CorridorRoof" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 11.5, 4.2, 17)
+use_collision = true
+size = Vector3(3.5, 0.4, 8)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar1" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7, 3, 30)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar2" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 3.5, 3, 36.0622)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar3" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -3.5, 3, 36.0622)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar4" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7, 3, 30)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar5" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -3.5, 3, 23.9378)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Pillar6" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 3.5, 3, 23.9378)
+use_collision = true
+size = Vector3(1.2, 6, 1.2)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="BigWall" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 4, -30)
+use_collision = true
+size = Vector3(30, 8, 1)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Arena" type="Node3D" parent="."]
+
+[node name="Dummy1" parent="Arena" instance=ExtResource("6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+
+[node name="Dummy2" parent="Arena" instance=ExtResource("6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -2)
+
+[node name="HuskSpawnA" type="Marker3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.2, 30)
+script = ExtResource("7")
+enemy_scene = ExtResource("5")
+enemy_data = ExtResource("10")
+
+[node name="HuskSpawnB" type="Marker3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.2, 36)
+script = ExtResource("7")
+enemy_scene = ExtResource("5")
+enemy_data = ExtResource("10")
+
+[node name="HuskSpawnC" type="Marker3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.2, 36)
+script = ExtResource("7")
+enemy_scene = ExtResource("5")
+enemy_data = ExtResource("10")
+
+[node name="EmberSpawn" type="Marker3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0.2, 44)
+script = ExtResource("7")
+enemy_scene = ExtResource("5")
+enemy_data = ExtResource("11")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 4)
+
+[node name="GameShell" parent="." instance=ExtResource("2")]

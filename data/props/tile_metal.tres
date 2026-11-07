@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_lav87"]
+
+[resource]
+script = ExtResource("1_lav87")
+id = &"tile_metal"
+mesh_path = "res://assets/props/tile_metal/tile_metal.res"
+albedo_path = "res://assets/props/tile_metal/tile_metal_albedo.jpg"
+size = Vector3(7.388992, 0.29999998, 7.391109)
+collision = 0

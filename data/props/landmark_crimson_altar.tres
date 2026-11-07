@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_y8tnv"]
+
+[resource]
+script = ExtResource("1_y8tnv")
+id = &"landmark_crimson_altar"
+mesh_path = "res://assets/props/landmark_crimson_altar/landmark_crimson_altar.res"
+albedo_path = "res://assets/props/landmark_crimson_altar/landmark_crimson_altar_albedo.jpg"
+size = Vector3(6.825848, 4, 6.831493)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_3sveb"]
+
+[resource]
+script = ExtResource("1_3sveb")
+id = &"tile_dark_slate"
+mesh_path = "res://assets/props/tile_dark_slate/tile_dark_slate.res"
+albedo_path = "res://assets/props/tile_dark_slate/tile_dark_slate_albedo.jpg"
+size = Vector3(6.7765384, 0.3, 6.787109)
+collision = 0

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="RegionData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/region_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/weather_table.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="4"]
+[ext_resource type="Resource" path="res://data/gates/gate_r4_b_icecave.tres" id="g0"]
+[ext_resource type="Resource" path="res://data/gates/gate_r4_a_mirror.tres" id="g1"]
+[ext_resource type="Resource" path="res://data/enemies/frost_yeti.tres" id="b0"]
+[ext_resource type="Resource" path="res://data/enemies/ice_wyvernling.tres" id="b1"]
+
+[sub_resource type="Resource" id="weather"]
+script = ExtResource("2")
+weights = Dictionary[StringName, float]({&"clear": 40.0, &"rain": 5.0, &"fog": 25.0, &"storm": 30.0})
+min_duration_minutes = 90.0
+max_duration_minutes = 240.0
+
+[resource]
+script = ExtResource("1")
+id = &"r4_frostveil"
+display_name = &"REGION_R4"
+level_min = 40
+level_max = 55
+secret_total = 33
+mission_total = 6
+weather = SubResource("weather")
+scene_path = "res://scenes/world/regions/frostveil.tscn"
+spawn = Vector3(0, 0.3, 10)
+waystones = Dictionary[StringName, Vector3]({&"r4_lodge": Vector3(0, 0, 6), &"r4_temple": Vector3(128, 0, 14)})
+gate_table = Array[ExtResource("3")]([ExtResource("g0"), ExtResource("g1")])
+gate_points = PackedVector3Array(-128, 0, 128, -128, 0, -128, 128, 0, 128, 0, 0, 128)
+max_world_gates = 2
+break_pool = Array[ExtResource("4")]([ExtResource("b0"), ExtResource("b1")])

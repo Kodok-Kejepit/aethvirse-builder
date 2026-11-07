@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GateData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/enemies/drowned_rat.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/gravewarden.tres" id="boss"]
+
+[resource]
+script = ExtResource("1")
+id = &"hidden_gate_r1"
+display_name = &"GATE_HIDDEN_R1"
+rank = 0
+seed_value = 7331
+room_count = 3
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0")])
+enemies_per_room = 3
+boss = ExtResource("boss")
+rules = Array[StringName]([&"no_skills"])
+completes_secret = &"SM-R1-02:2"
+reward_gold = 80
+reward_items = Dictionary[StringName, int]({})

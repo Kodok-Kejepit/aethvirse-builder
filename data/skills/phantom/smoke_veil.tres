@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"smoke_veil"
+display_name = "Smoke Veil"
+description = "Vanish. Enemies lose you; your next strike crits."
+kind = 3
+is_ultimate = false
+icon_color = Color(0.6, 0.6, 0.7, 1)
+unlock_level = 3
+mp_cost = 20
+cooldown_s = 18.0
+buff_stat = &"stealth"
+buff_amount = 1.0
+buff_duration_s = 6.0
+buff_amount_per_level = 0.0

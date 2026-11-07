@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SummonData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/summon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"shadow_soldier"
+display_name = "Shadow Soldier"
+body_color = Color(0.35, 0.15, 0.55, 0.9)
+height = 1.6
+power = 0.4
+attack_range = 1.9
+attack_interval_s = 1.0
+move_speed = 7.5
+duration_s = 0.0
+element = 6

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_34de7"]
+
+[resource]
+script = ExtResource("1_34de7")
+id = &"landmark_waystone_arch"
+mesh_path = "res://assets/props/landmark_waystone_arch/landmark_waystone_arch.res"
+albedo_path = "res://assets/props/landmark_waystone_arch/landmark_waystone_arch_albedo.jpg"
+size = Vector3(5.373719, 4.5, 5.328676)
+collision = 2

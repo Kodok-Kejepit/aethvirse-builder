@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LoreData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/lore_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"LORE-R5-UMBRA"
+title = &"LORE_R5_UMBRA_T"
+text = &"LORE_R5_UMBRA"
+region = &"r5_archive"

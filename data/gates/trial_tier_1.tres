@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GateData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
+[ext_resource type="Resource" path="res://data/enemies/moss_brute.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/thorn_stalker.tres" id="e1"]
+[ext_resource type="Resource" path="res://data/enemies/gate_husk.tres" id="e2"]
+[ext_resource type="Resource" path="res://data/enemies/trial_warden.tres" id="boss"]
+
+[resource]
+script = ExtResource("1")
+id = &"trial_tier_1"
+display_name = &"GATE_TRIAL_1"
+rank = 2
+seed_value = 4101
+room_count = 3
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1"), ExtResource("e2")])
+enemies_per_room = 3
+boss = ExtResource("boss")
+rules = Array[StringName]([&"trial", &"no_double"])
+min_guild_rank = 0
+completes_secret = &""
+reward_gold = 0
+reward_items = Dictionary[StringName, int]({})

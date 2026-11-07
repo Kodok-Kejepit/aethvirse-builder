@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+attack = 14.0
+defense = 4.0
+crit_chance = 0.05
+crit_damage = 1.5
+element = 0
+
+[resource]
+script = ExtResource("1")
+id = &"gate_husk"
+display_name = "Gate Husk"
+level = 1
+max_health = 140
+stats = SubResource("stats")
+poise = 25.0
+body_color = Color(0.75, 0.22, 0.25, 1)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_7vatr"]
+
+[resource]
+script = ExtResource("1_7vatr")
+id = &"tile_lava_crack"
+mesh_path = "res://assets/props/tile_lava_crack/tile_lava_crack.res"
+albedo_path = "res://assets/props/tile_lava_crack/tile_lava_crack_albedo.jpg"
+size = Vector3(2.9972234, 0.3, 2.996236)
+collision = 0

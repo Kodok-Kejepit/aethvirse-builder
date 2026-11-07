@@ -1,0 +1,141 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy.gd" id="1"]
+[ext_resource type="Resource" path="res://data/enemies/gate_husk.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/components/state_machine.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_idle_state.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_chase_state.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_attack_state.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_hurt_state.gd" id="10"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_return_state.gd" id="11"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/states/enemy_dead_state.gd" id="12"]
+[ext_resource type="Script" path="res://scripts/systems/ui/world_health_bar.gd" id="13"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.9
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
+radius = 0.4
+height = 1.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eye"]
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eye"]
+material = SubResource("StandardMaterial3D_eye")
+size = Vector3(0.45, 0.1, 0.1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hurt"]
+radius = 0.5
+height = 1.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hit"]
+resource_local_to_scene = true
+size = Vector3(1.8, 1.4, 1.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tele"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.1, 0.1, 0.45)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tele"]
+material = SubResource("StandardMaterial3D_tele")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.02
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1")
+data = ExtResource("2")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Visual" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Visual"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+mesh = SubResource("CapsuleMesh_body")
+
+[node name="Eye" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, -0.35)
+mesh = SubResource("BoxMesh_eye")
+
+[node name="Hitbox" type="Area3D" parent="Visual"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("5")
+
+[node name="HitboxShape" type="CollisionShape3D" parent="Visual/Hitbox"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_hit")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4")
+health = NodePath("../Health")
+
+[node name="HurtShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_hurt")
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3")
+
+[node name="Telegraph" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+top_level = true
+mesh = SubResource("CylinderMesh_tele")
+
+[node name="InfoLabel" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+visibility_range_end = 28.0
+pixel_size = 0.0005
+font_size = 40
+outline_size = 10
+
+[node name="HealthBar" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+script = ExtResource("13")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("6")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("8")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("9")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("10")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("11")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("12")

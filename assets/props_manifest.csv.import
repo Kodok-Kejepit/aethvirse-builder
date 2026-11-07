@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://eqkxrb5a350f"
+
+[deps]
+
+files=["res://assets/props_manifest.height.translation", "res://assets/props_manifest.collision.translation", "res://assets/props_manifest.max.translation"]
+
+source_file="res://assets/props_manifest.csv"
+dest_files=["res://assets/props_manifest.height.translation", "res://assets/props_manifest.collision.translation", "res://assets/props_manifest.max.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

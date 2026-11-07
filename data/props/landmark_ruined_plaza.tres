@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_xdomx"]
+
+[resource]
+script = ExtResource("1_xdomx")
+id = &"landmark_ruined_plaza"
+mesh_path = "res://assets/props/landmark_ruined_plaza/landmark_ruined_plaza.res"
+albedo_path = "res://assets/props/landmark_ruined_plaza/landmark_ruined_plaza_albedo.jpg"
+size = Vector3(9.606124, 3, 9.032239)
+collision = 2

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_ulwk1"]
+
+[resource]
+script = ExtResource("1_ulwk1")
+id = &"mob_ice_wyvernling"
+mesh_path = "res://assets/props/mob_ice_wyvernling/mob_ice_wyvernling.res"
+albedo_path = "res://assets/props/mob_ice_wyvernling/mob_ice_wyvernling_albedo.jpg"
+size = Vector3(1.4967246, 1.4, 1.0122501)
+collision = 0

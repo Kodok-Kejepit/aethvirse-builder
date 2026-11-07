@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+crit_chance = 0.05
+element = 2
+
+[resource]
+script = ExtResource("1")
+id = &"glacier_colossus"
+display_name = "Glacier Colossus"
+level = 54
+stats = SubResource("stats")
+body_color = Color(0.6, 0.8, 0.95, 1)
+tier = 2
+hp_scale = 0.3
+attack_scale = 0.9
+poise = 180.0
+attack_range = 3.2
+attack_windup_s = 1.0
+attack_hitbox_size = Vector3(4, 2, 3.4)
+telegraph_radius = 3.2
+aggro_radius = 30.0
+leash_radius = 70.0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"codex_identify_scroll"
+display_name = "Codex Identification Scroll"
+description = "The Codex will tell you what this is. The Codex is always right."
+kind = 0
+rarity = 1
+max_stack = 10
+sell_price = 10
+can_sell = true
+slot = 0
+attack = 0.0
+attack_per_level = 0.0
+identifies_items = true

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/projectile_data.gd" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e3")
+speed = 42.0
+range_m = 32.0
+radius = 0.18
+pierce = 0
+explode_radius = 0.0
+count = 7
+spread_degrees = 50.0
+homing = false
+lifetime_s = 0.0
+color = Color(0.85, 0.95, 0.7, 1)
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+id = &"multishot"
+display_name = "Multishot"
+damage_multiplier = 1
+is_heavy = true
+element = 0
+startup_s = 0.15
+active_s = 0.04
+recovery_s = 0.3
+combo_window_s = 0.295
+dodge_cancel_s = 0.19
+hitbox_size = Vector3(1, 1, 1)
+hitbox_offset = Vector3(0, 1, -1)
+knockback = 1.5
+stagger = 10.0
+hit_stop_s = 0.04
+lunge_speed = 0.0
+swing = 3
+projectile = SubResource("s1")
+
+[resource]
+script = ExtResource("e1")
+id = &"multishot"
+display_name = "Multishot"
+description = "Fan out a volley of arrows."
+kind = 4
+is_ultimate = false
+icon_color = Color(0.8, 0.95, 0.6, 1)
+unlock_level = 1
+mp_cost = 16
+cooldown_s = 6.0
+attack = SubResource("s2")
+damage_multiplier = 1.1
+multiplier_per_level = 0.08

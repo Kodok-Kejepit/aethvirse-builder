@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Resource" path="res://data/summons/familiar_wisp.tres" id="e2"]
+
+
+[resource]
+script = ExtResource("e1")
+id = &"familiar_host"
+display_name = "Familiar Host"
+description = "Call a host of wisps (up to four)."
+kind = 6
+is_ultimate = false
+icon_color = Color(0.55, 0.85, 1, 1)
+unlock_level = 60
+mp_cost = 60
+cooldown_s = 12.0
+multiplier_per_level = 0.1
+max_summons = 3
+extra_summon_every = 10
+summon = ExtResource("e2")

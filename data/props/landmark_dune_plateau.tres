@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_mwiqk"]
+
+[resource]
+script = ExtResource("1_mwiqk")
+id = &"landmark_dune_plateau"
+mesh_path = "res://assets/props/landmark_dune_plateau/landmark_dune_plateau.res"
+albedo_path = "res://assets/props/landmark_dune_plateau/landmark_dune_plateau_albedo.jpg"
+size = Vector3(31.01407, 3.0000002, 29.585497)
+collision = 2

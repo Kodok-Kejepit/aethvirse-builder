@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+id = &"evasive_roll"
+display_name = "Evasive Roll"
+damage_multiplier = 1
+is_heavy = true
+element = 0
+startup_s = 0.04
+active_s = 0.2
+recovery_s = 0.18
+combo_window_s = 0.303
+dodge_cancel_s = 0.24
+hitbox_size = Vector3(1.6, 1.4, 1.6)
+hitbox_offset = Vector3(0, 1, -0.5)
+knockback = 1.5
+stagger = 10.0
+hit_stop_s = 0.04
+lunge_speed = 20.0
+swing = 3
+
+[resource]
+script = ExtResource("e1")
+id = &"evasive_roll"
+display_name = "Evasive Roll"
+description = "Dash and slice anything in the way."
+kind = 1
+is_ultimate = false
+icon_color = Color(0.7, 0.9, 0.8, 1)
+unlock_level = 5
+mp_cost = 12
+cooldown_s = 5.0
+attack = SubResource("s1")
+damage_multiplier = 1.2
+multiplier_per_level = 0.08

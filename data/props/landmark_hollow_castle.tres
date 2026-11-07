@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_7d5kr"]
+
+[resource]
+script = ExtResource("1_7d5kr")
+id = &"landmark_hollow_castle"
+mesh_path = "res://assets/props/landmark_hollow_castle/landmark_hollow_castle.res"
+albedo_path = "res://assets/props/landmark_hollow_castle/landmark_hollow_castle_albedo.jpg"
+size = Vector3(45.11809, 40, 43.91536)
+collision = 0

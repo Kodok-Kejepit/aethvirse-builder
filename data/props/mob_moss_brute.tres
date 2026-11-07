@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_k3ov3"]
+
+[resource]
+script = ExtResource("1_k3ov3")
+id = &"mob_moss_brute"
+mesh_path = "res://assets/props/mob_moss_brute/mob_moss_brute.res"
+albedo_path = "res://assets/props/mob_moss_brute/mob_moss_brute_albedo.jpg"
+size = Vector3(1.745983, 2.4, 1.1166635)
+collision = 0

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SkillData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="e1"]
+[ext_resource type="Script" path="res://scripts/resources/attack_data.gd" id="e2"]
+[ext_resource type="Script" path="res://scripts/resources/projectile_data.gd" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e3")
+speed = 20.0
+range_m = 32.0
+radius = 0.6
+pierce = 0
+explode_radius = 4.0
+count = 1
+spread_degrees = 0.0
+homing = false
+lifetime_s = 0.0
+color = Color(1, 0.45, 0.15, 1)
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+id = &"meteor"
+display_name = "Meteor"
+damage_multiplier = 1
+is_heavy = true
+element = 1
+startup_s = 0.18
+active_s = 0.15
+recovery_s = 0.3
+combo_window_s = 0.435
+dodge_cancel_s = 0.33
+hitbox_size = Vector3(3.0, 2.0, 3.0)
+hitbox_offset = Vector3(0, 1, -1.5)
+knockback = 4.0
+stagger = 30.0
+hit_stop_s = 0.07
+lunge_speed = 0.0
+swing = 0
+projectile = SubResource("s1")
+
+[resource]
+script = ExtResource("e1")
+id = &"meteor"
+display_name = "Meteor"
+description = "A falling star that explodes."
+kind = 4
+is_ultimate = false
+icon_color = Color(1, 0.45, 0.15, 1)
+unlock_level = 30
+mp_cost = 34
+cooldown_s = 9.0
+attack = SubResource("s2")
+damage_multiplier = 3.4
+multiplier_per_level = 0.15
