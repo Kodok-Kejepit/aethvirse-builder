@@ -106,3 +106,10 @@ weapon_bow_crimson,1.2,none,15000
 weapon_spear_frostleaf,2.0,none,10000
 weapon_sword_wraith,1.2,none,15000
 weapon_fan_jade,0.6,none,15000
+tile_asphalt_broken,0.48,none,8000
+tile_dirt,0.36,none,8000
+tile_mud,0.4,none,8000
+tile_roots_grass,0.85,none,8000
+tile_cliff_dirt,3.5,convex,8000
+tile_broken_tiles,4.0,none,8000
+tile_ceramic,4.0,none,8000

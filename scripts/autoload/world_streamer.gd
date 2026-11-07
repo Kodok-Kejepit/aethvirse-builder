@@ -18,6 +18,15 @@ var radius_override: int = -1
 ## One material per graybox color + kind (thousands of blocks share a handful of materials).
 ## Kind comes from the colour: non-solid blue = water, non-solid green = leaves, else surface.
 const SURFACE_SHADER: Shader = preload("res://assets/shaders/world_surface.gdshader")
+const GROUND_SHADER: Shader = preload("res://assets/shaders/ruin_ground.gdshader")
+const SURFACES: String = "res://assets/textures/surfaces/%s.jpg"
+## Palette colours drawn with the ruined-ground shader (owner's baked tiles):
+## [paving tile, paved share, overgrowth, wetness].
+const GROUNDS: Dictionary[String, Array] = {
+	"52545c": ["tile_asphalt_broken", 0.62, 0.38, 0.12],   # ASPHALT: broken roads
+	"827d78": ["tile_broken_tiles", 0.8, 0.3, 0.05],       # SIDEWALK: cracked pavement
+	"614a33": ["tile_dirt", 0.12, 0.55, 0.2],              # DIRT: camp / lots / open ground
+}
 const WATER_SHADER: Shader = preload("res://assets/shaders/water.gdshader")
 const FOLIAGE_SHADER: Shader = preload("res://assets/shaders/foliage.gdshader")
 
@@ -56,6 +65,9 @@ static func surface_kind(color: Color, solid: bool) -> StringName:
 
 
 func shared_material(color: Color, solid: bool = true) -> Material:
+	var ground: Material = _ground_material(color)
+	if ground != null:
+		return ground
 	var kind: StringName = surface_kind(color, solid)
 	var key: String = "%s:%s" % [kind, color.to_html()]
 	if _materials.has(key):
@@ -81,6 +93,30 @@ func shared_material(color: Color, solid: bool = true) -> Material:
 			if style != 0:
 				m.set_shader_parameter(&"top_amount", 0.15)
 			_styled.append(m)
+	_materials[key] = m
+	return m
+
+
+func _ground_material(color: Color) -> Material:
+	var html: String = color.to_html(false)
+	if not GROUNDS.has(html):
+		return null
+	var key: String = "ground:" + html
+	if _materials.has(key):
+		return _materials[key]
+	var spec: Array = GROUNDS[html]
+	var paving: String = spec[0]
+	if not ResourceLoader.exists(SURFACES % paving) or not ResourceLoader.exists(SURFACES % "tile_dirt"):
+		return null
+	var m: ShaderMaterial = ShaderMaterial.new()
+	m.shader = GROUND_SHADER
+	m.set_shader_parameter(&"tex_asphalt", load(SURFACES % paving))
+	m.set_shader_parameter(&"tex_dirt", load(SURFACES % "tile_dirt"))
+	m.set_shader_parameter(&"tex_mud", load(SURFACES % "tile_mud"))
+	m.set_shader_parameter(&"tex_grass", load(SURFACES % "tile_roots_grass"))
+	m.set_shader_parameter(&"paved", spec[1])
+	m.set_shader_parameter(&"overgrowth", spec[2])
+	m.set_shader_parameter(&"wetness", spec[3])
 	_materials[key] = m
 	return m
 

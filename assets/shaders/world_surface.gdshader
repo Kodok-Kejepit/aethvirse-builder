@@ -62,6 +62,13 @@ void fragment() {
 		col = mix(col, vec3(0.08, 0.1, 0.14), win * 0.85);
 		glow += mix(vec3(1.0, 0.72, 0.4), vec3(0.75, 0.85, 1.0), step(0.7, warmth)) * win * lit * night * 0.9;
 		col *= 1.0 - smoothstep(0.03, 0.0, f.y) * 0.4;
+		// Moss creeping up from the street, streaks down from ledges.
+		float creep = smoothstep(0.45, 0.8, noise(world_pos * 0.35 + vec3(13.0))) * (1.0 - smoothstep(0.0, 7.0, world_pos.y));
+		float streak = smoothstep(0.7, 0.9, noise(vec3(world_pos.x * 1.7, world_pos.y * 0.15, world_pos.z * 1.7)));
+		col = mix(col, vec3(0.2, 0.31, 0.15), clamp(creep * 0.75 + streak * 0.35, 0.0, 0.8));
+	} else if (style == 1) {
+		// Roofs / ledges of facade blocks: moss beds.
+		col = mix(col, vec3(0.24, 0.36, 0.17), smoothstep(0.35, 0.7, noise(world_pos * 0.4 + vec3(5.0))) * 0.7);
 	} else if (style == 2) {
 		float crack = smoothstep(0.012, 0.0, abs(noise(world_pos * 3.2) - 0.5))
 			* smoothstep(0.55, 0.7, noise(world_pos * 0.4 + vec3(11.0))) * 0.22;

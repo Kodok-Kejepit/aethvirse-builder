@@ -33,10 +33,13 @@ func test_poses_pick_clips() -> void:
 	assert_eq(body.animation.current_animation, AnimatedBody.ANIM_WALK)
 	body.drive(&"sprint", 0, 0.0, 7.0, 0.016)
 	assert_eq(body.animation.current_animation, AnimatedBody.ANIM_SPRINT)
-	body.drive(&"attack", 1, 0.5, 0.0, 0.016)
-	assert_eq(body.animation.current_animation, AnimatedBody.ANIM_COMBO)
-	var seg: Vector2 = AnimatedBody.COMBO_SEGMENTS[1]
-	assert_almost_eq(body.animation.current_animation_position, lerpf(seg.x, seg.y, 0.5), 0.02)
+	body.drive(&"attack", 0, 0.5, 0.0, 0.016)
+	var move: Array = AnimatedBody.SWINGS[0]
+	var clip: StringName = move[0]
+	var t0: float = move[1]
+	var t1: float = move[2]
+	assert_eq(body.animation.current_animation, clip)
+	assert_almost_eq(body.animation.current_animation_position, lerpf(t0, t1, 0.5), 0.02)
 	body.drive(&"fall", 0, 1.0, 0.0, 0.016)
 	assert_eq(body.animation.current_animation, AnimatedBody.ANIM_JUMP)
 
@@ -44,8 +47,9 @@ func test_poses_pick_clips() -> void:
 func test_finished_one_shot_keeps_holding() -> void:
 	var body: AnimatedBody = _model.animated
 	for i: int in 30:
-		body.drive(&"cast", 3, 2.0, 0.0, 0.1)
-	assert_eq(body.animation.current_animation, AnimatedBody.ANIM_COMBO, "clip still active at its end")
+		body.drive(&"cast", AnimatedBody.SWING_CAST, 2.0, 0.0, 0.1)
+	var cast_clip: StringName = AnimatedBody.SKILL_CAST[0]
+	assert_eq(body.animation.current_animation, cast_clip, "clip still active at its end")
 
 
 func test_hand_joint_follows_the_animated_hand() -> void:

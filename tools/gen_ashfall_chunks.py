@@ -255,8 +255,10 @@ def camp(c):
     shrine sits half hidden among rubble in the south-west corner. NPCs stand at the thing
     they run. Safe zone: no monsters inside."""
     ground(c)
-    c.block((94, 0.1, 94), (0, 0.05, 0), CONCRETE)
+    # Earth floor (the paving is long gone), grass and puddles mixed in by the ground shader.
+    c.block((94, 0.1, 94), (0, 0.05, 0), city.DIRT)
     c.point((0, 0, 0), 50)  # the plaza slab is too big for an automatic flatten disc
+    _camp_greenery(c)
     _camp_palisade(c)
     for i, z in enumerate((-22, -8, 6, 20)):
         c.prop("bld_refugee_tent", (-30, 0, z), (6, 3, 5), TENT, rot_y=90 + (i * 7) % 11 - 5)
@@ -290,6 +292,34 @@ def camp(c):
     c.instance("sign", (-28, 0, 32), 'text_key = &"HINT_SM_R1_01_6"\nhint_secret = &"SM-R1-01:3"\n')
     c.instance("dummy", (-20, 0, 24))
     c.label("REFUGEE CAMP", (0, 9, -40), 64)
+
+
+def _camp_greenery(c):
+    """Shade trees behind the tents, grass, a fenced vegetable garden and the clutter of
+    people living here."""
+    import random
+    rng = random.Random(91)
+    for i, (x, z) in enumerate([(-40, -30), (-40, -4), (-39, 24), (40, -30), (40, -4), (6, 24), (-14, 38)]):
+        c.tree("oak", (x, 0, z), rng.uniform(7, 11), 9000 + i)
+    for i, (x, z, w, d) in enumerate([(-38, 10, 8, 10), (38, 12, 8, 10), (-18, 30, 10, 8), (0, -18, 8, 6),
+                                      (30, -38, 10, 6), (-30, -38, 10, 6), (8, 40, 12, 6)]):
+        c.grass(city.MOSS, 900, 200 + i, (w, d), (x, 0, z))
+    # Vegetable garden: four raised beds with crops, a plank fence around it.
+    gx, gz = 22, 34
+    for k in range(4):
+        z = gz - 4.5 + k * 3.0
+        c.block((12, 0.3, 1.1), (gx, 0.15, z), city.DIRT)
+        c.grass("Color(0.3, 0.55, 0.22, 1)", 260, 300 + k, (11, 0.8), (gx, 0.3, z))
+    for x in (gx - 6.5, gx + 6.5):
+        for z in (gz - 4.5, gz - 1.5, gz + 1.5, gz + 4.5):
+            c.decor("fence", (x, 0, z), rot_y=90.0, seed=int(x * 3 + z))
+    for x in (gx - 4.5, gx - 1.5, gx + 1.5, gx + 4.5):
+        c.decor("fence", (x, 0, gz - 6.5), seed=int(x * 5))
+    # Life around the stalls and tents.
+    for i, (x, z) in enumerate([(-21, -31), (-20, -33), (21, -31), (20, -33.5), (-24, 2), (24, -2), (-8, 12), (9, -10)]):
+        c.decor("crate" if i % 3 else "barrel", (x, 0, z), seed=150 + i)
+    for i, (x, z) in enumerate([(-24, -26), (24, 20), (-6, 28), (34, 0)]):
+        c.decor("junk", (x, 0, z), seed=330 + i)
 
 
 def _camp_palisade(c):

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_2r5m7"]
+
+[resource]
+script = ExtResource("1_2r5m7")
+id = &"tile_ceramic"
+mesh_path = "res://assets/props/tile_ceramic/tile_ceramic.res"
+albedo_path = "res://assets/props/tile_ceramic/tile_ceramic_albedo.jpg"
+size = Vector3(3.9959507, 4, 0.1976729)
+collision = 0

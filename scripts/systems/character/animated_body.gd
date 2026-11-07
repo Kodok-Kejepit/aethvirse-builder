@@ -1,15 +1,21 @@
 class_name AnimatedBody
 extends Node3D
-## Mixamo-animated hero body (tools/import_rigged_hero.gd output): plays the owner's
-## animations from the pose CharacterModel picks, simulates the hair chains with
+## Animated hero body (tools/import_hero_glb.gd output): plays the owner's animations
+## from the pose CharacterModel picks, simulates hair and cloth chains with
 ## SpringBoneSimulator3D, and copies hand/body bones back into CharacterRig's joints so
 ## weapons, gear, trails and the spirit dragon keep working unchanged.
 
-## Weapon_Combo split into four swings (seconds); the last one doubles as the skill cast.
-const COMBO_SEGMENTS: Array[Vector2] = [
-	Vector2(0.0, 0.9), Vector2(0.9, 1.65), Vector2(1.65, 2.55), Vector2(2.55, 3.66),
+## Attack swings (AttackData.Swing order): [clip, start s, end s] of the move itself.
+const SWINGS: Array[Array] = [
+	[&"Slash", 0.15, 1.25], [&"Skill", 0.0, 1.45], [&"Dodge", 0.0, 1.1], [&"Slash", 0.55, 1.35],
 ]
-const STANCE_TIME: float = 0.0
+const SKILL_CAST: Array = [&"Cast", 0.2, 2.2]
+const ULTIMATE: Array = [&"Skill", 0.0, 1.6]
+const BOW_SHOT: Array = [&"Archery", 0.8, 2.6]
+const STAFF_SHOT: Array = [&"Cast", 0.2, 1.3]
+## Swing index CharacterModel passes for skill casts / ultimates.
+const SWING_CAST: int = 10
+const SWING_ULTIMATE: int = 11
 const JUMP_RISE: Vector2 = Vector2(0.55, 0.8)
 const JUMP_FALL: Vector2 = Vector2(0.84, 1.08)
 const BLEND_S: float = 0.14
@@ -27,11 +33,15 @@ const DODGE_ANIM_SCALE: float = 1.8
 const HURT_TILT_DEG: float = 14.0
 const DEAD_TILT_DEG: float = 82.0
 
+const ANIM_IDLE: StringName = &"Idle"
 const ANIM_WALK: StringName = &"Walking"
 const ANIM_RUN: StringName = &"Running"
-const ANIM_SPRINT: StringName = &"Lean_Forward_Sprint"
-const ANIM_JUMP: StringName = &"Regular_Jump"
-const ANIM_COMBO: StringName = &"Weapon_Combo"
+const ANIM_SPRINT: StringName = &"Running"
+const ANIM_JUMP: StringName = &"Jump"
+const ANIM_DODGE: StringName = &"Dodge"
+const ANIM_HURT: StringName = &"KnockDown"
+const ANIM_DEAD: StringName = &"Dead"
+const SPRINT_RATE_BOOST: float = 1.3
 
 ## CharacterRig joint -> Mixamo bone.
 const BONE_FOR_JOINT: Dictionary[StringName, String] = {
@@ -44,11 +54,19 @@ const BONE_FOR_JOINT: Dictionary[StringName, String] = {
 	&"thigh_r": "mixamorig_RightUpLeg", &"shin_r": "mixamorig_RightLeg", &"foot_r": "mixamorig_RightFoot",
 	&"thigh_l": "mixamorig_LeftUpLeg", &"shin_l": "mixamorig_LeftLeg", &"foot_l": "mixamorig_LeftFoot",
 }
-## Body colliders for the hair (bone, radius in metres: collisions work in world space).
+## Body colliders for hair and cloth (bone, radius in metres: collisions are world space).
 const COLLIDERS: Array[Array] = [
 	["mixamorig_Head", 0.1], ["mixamorig_Spine2", 0.12], ["mixamorig_Spine", 0.12],
-	["mixamorig_Hips", 0.13], ["mixamorig_LeftUpLeg", 0.08], ["mixamorig_RightUpLeg", 0.08],
+	["mixamorig_Hips", 0.13], ["mixamorig_LeftUpLeg", 0.09], ["mixamorig_RightUpLeg", 0.09],
+	["mixamorig_LeftLeg", 0.07], ["mixamorig_RightLeg", 0.07],
 ]
+## Spring tuning (stiffness, drag, gravity): hair light and lively, cloth heavier and
+## quicker to settle back so it never flips in front of the body.
+const HAIR_SPRING: Vector3 = Vector3(1.6, 0.55, 0.5)
+const CLOTH_SPRING: Vector3 = Vector3(2.4, 0.65, 0.8)
+
+## Weapon of the class (CharacterRig.Weapon); picks bow / staff shots.
+var weapon: int = 0
 
 var skeleton: Skeleton3D
 var animation: AnimationPlayer
@@ -78,7 +96,23 @@ func setup(rig: CharacterRig, scene: PackedScene, albedo: Texture2D, outline: bo
 	skeleton = model.find_children("*", "Skeleton3D", true, false)[0] as Skeleton3D
 	animation = model.find_children("*", "AnimationPlayer", true, false)[0] as AnimationPlayer
 	for mesh: Node in skeleton.find_children("*", "MeshInstance3D", true, false):
-		(mesh as MeshInstance3D).material_override = ImportedBody._material(albedo, null, outline)
+		var mi: MeshInstance3D = mesh
+		var own: BaseMaterial3D = mi.mesh.surface_get_material(0) as BaseMaterial3D
+		if own != null and own.albedo_texture != null:
+			# GLB heroes bring their full material (colour + metal/roughness): keep it, add rim.
+			var m: BaseMaterial3D = own.duplicate() as BaseMaterial3D
+			m.cull_mode = BaseMaterial3D.CULL_DISABLED
+			m.rim_enabled = true
+			m.rim = 0.2
+			m.rim_tint = 0.5
+			if outline:
+				var o: ShaderMaterial = ShaderMaterial.new()
+				o.shader = CharacterRig.OUTLINE_SHADER
+				o.set_shader_parameter(&"width", 0.004)
+				m.next_pass = o
+			mi.material_override = m
+		else:
+			mi.material_override = ImportedBody._material(albedo, null, outline)
 	for id: StringName in BONE_FOR_JOINT:
 		_bone_of[id] = skeleton.find_bone(BONE_FOR_JOINT[id])
 	# Centre the hips over the origin.
@@ -88,8 +122,7 @@ func setup(rig: CharacterRig, scene: PackedScene, albedo: Texture2D, outline: bo
 	_build_springs(chains)
 	# Advanced by drive() so joints read this frame's pose.
 	animation.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
-	animation.play(ANIM_COMBO)
-	animation.seek(STANCE_TIME, true)
+	animation.play(ANIM_IDLE)
 
 
 ## Rest positions of the rig joints (model space, metres) from the Mixamo skeleton.
@@ -122,17 +155,27 @@ func _build_springs(chains: Array) -> void:
 		col.bone_name = row[0]
 		col.radius = row[1]
 		springs.add_child(col)
+	# Skeleton units per metre (FBX rigs are in cm, GLB rigs in m).
+	var upm: float = 1.0 / maxf(_skel_xform().basis.get_scale().y, 0.0001)
 	springs.set_setting_count(chains.size())
 	for i: int in chains.size():
-		var names: PackedStringArray = chains[i]
+		var names: PackedStringArray = PackedStringArray()
+		var cloth: bool = false
+		if chains[i] is Dictionary:
+			var d: Dictionary = chains[i]
+			names = d["names"]
+			cloth = d.get("kind", "hair") == "cloth"
+		else:
+			names = chains[i]
+		var tune: Vector3 = CLOTH_SPRING if cloth else HAIR_SPRING
 		springs.set_root_bone_name(i, names[0])
 		springs.set_end_bone_name(i, names[names.size() - 1])
 		springs.set_extend_end_bone(i, true)
-		springs.set_end_bone_length(i, 12.0)
-		springs.set_radius(i, 2.0)
-		springs.set_stiffness(i, 1.4)
-		springs.set_drag(i, 0.5)
-		springs.set_gravity(i, 0.4)
+		springs.set_end_bone_length(i, 0.1 * upm)
+		springs.set_radius(i, 0.02 * upm)
+		springs.set_stiffness(i, tune.x)
+		springs.set_drag(i, tune.y)
+		springs.set_gravity(i, tune.z)
 		springs.set_enable_all_child_collisions(i, true)
 
 
@@ -170,27 +213,42 @@ func reset_springs() -> void:
 
 func _select(pose: StringName, swing: int, progress: float, speed: float) -> void:
 	_pivot.rotation.x = 0.0
+	var p: float = clampf(progress, 0.0, 1.0)
 	match pose:
 		&"walk":
 			_loop(ANIM_WALK, speed / WALK_ANIM_SPEED)
 		&"run":
 			_loop(ANIM_RUN, speed / RUN_ANIM_SPEED)
-		&"sprint", &"dodge":
-			_loop(ANIM_SPRINT, DODGE_ANIM_SCALE if pose == &"dodge" else speed / SPRINT_ANIM_SPEED)
+		&"sprint":
+			_loop(ANIM_SPRINT, speed / SPRINT_ANIM_SPEED * SPRINT_RATE_BOOST)
+		&"dodge":
+			_hold(ANIM_DODGE, lerpf(0.0, 1.1, p), ATTACK_BLEND_S)
 		&"jump", &"fall":
 			var span: Vector2 = JUMP_RISE if pose == &"jump" else JUMP_FALL
-			_hold(ANIM_JUMP, lerpf(span.x, span.y, clampf(progress, 0.0, 1.0)), BLEND_S)
+			_hold(ANIM_JUMP, lerpf(span.x, span.y, p), BLEND_S)
 		&"attack", &"shoot", &"cast", &"slash", &"summon", &"victory", &"ultimate":
-			var seg: Vector2 = COMBO_SEGMENTS[clampi(swing, 0, COMBO_SEGMENTS.size() - 1)]
-			_hold(ANIM_COMBO, lerpf(seg.x, seg.y, clampf(progress, 0.0, 1.0)), ATTACK_BLEND_S, swing)
+			var move: Array = _move_for(pose, swing)
+			var clip: StringName = move[0]
+			var t0: float = move[1]
+			var t1: float = move[2]
+			_hold(clip, lerpf(t0, t1, p), ATTACK_BLEND_S, swing)
 		&"hurt":
-			_hold(ANIM_COMBO, STANCE_TIME, BLEND_S)
-			_pivot.rotation.x = deg_to_rad(-HURT_TILT_DEG) * (1.0 - clampf(progress, 0.0, 1.0))
+			_hold(ANIM_HURT, lerpf(0.0, 0.5, p), BLEND_S)
 		&"dead":
-			_hold(ANIM_COMBO, STANCE_TIME, BLEND_S)
-			_pivot.rotation.x = deg_to_rad(-DEAD_TILT_DEG) * clampf(progress * 2.0, 0.0, 1.0)
+			_hold(ANIM_DEAD, lerpf(0.0, 2.9, clampf(progress / 1.5, 0.0, 1.0)), BLEND_S)
 		_:
-			_hold(ANIM_COMBO, STANCE_TIME, BLEND_S)
+			_loop(ANIM_IDLE, 1.0)
+
+
+## Which clip (and part of it) shows an attack / cast.
+func _move_for(pose: StringName, swing: int) -> Array:
+	if pose == &"ultimate" or swing == SWING_ULTIMATE:
+		return ULTIMATE
+	if pose == &"cast" or pose == &"summon" or pose == &"victory" or swing == SWING_CAST:
+		return SKILL_CAST
+	if pose == &"shoot":
+		return BOW_SHOT if weapon == CharacterRig.Weapon.BOW else STAFF_SHOT
+	return SWINGS[clampi(swing, 0, SWINGS.size() - 1)]
 
 
 func _loop(anim: StringName, rate: float) -> void:

@@ -65,6 +65,7 @@ func setup(owner_player: Player, weapon: CharacterRig.Weapon, lite: bool, hero_d
 		animated = AnimatedBody.new()
 		add_child(animated)
 		animated.setup(rig, load(hero.rig_scene) as PackedScene, load(hero.rig_albedo) as Texture2D, with_outline)
+		animated.weapon = weapon
 		rig.build_skeleton_only(weapon, animated.joint_rest(), with_outline)
 	elif hero != null and hero.has_imported_model():
 		var mesh: ArrayMesh = hero.body_mesh(lite)
@@ -231,8 +232,9 @@ func _drive_animated(delta: float) -> void:
 			&"attack", &"shoot", &"cast":
 				var attack: AttackData = player.combat.current_attack
 				swing = attack.swing if attack != null else 0
-				if player.combat.current_skill != null:
-					swing = AnimatedBody.COMBO_SEGMENTS.size() - 1
+				var skill: SkillData = player.combat.current_skill
+				if skill != null:
+					swing = AnimatedBody.SWING_ULTIMATE if skill.is_ultimate else AnimatedBody.SWING_CAST
 				progress = player.combat.swing_progress
 			&"jump", &"fall":
 				progress = 1.0 - clampf(absf(player.velocity.y) / 6.0, 0.0, 1.0) if pose_name == &"jump" else clampf(-player.velocity.y / 8.0, 0.0, 1.0)
@@ -241,13 +243,13 @@ func _drive_animated(delta: float) -> void:
 			&"dead":
 				progress = _state_time
 			&"dodge":
-				progress = _state_time
+				progress = _state_time / maxf(player.movement.dodge_duration_s, 0.01)
 	elif pose_name == &"run":
 		speed = PREVIEW_RUN_SPEED
-	if pose_name == &"cast" or pose_name == &"summon" or pose_name == &"victory":
-		swing = AnimatedBody.COMBO_SEGMENTS.size() - 1
+	if player == null and (pose_name == &"cast" or pose_name == &"summon" or pose_name == &"victory"):
+		swing = AnimatedBody.SWING_CAST
 	elif pose_name == &"slash":
-		swing = 1
+		swing = 0
 	if forced_pose != &"" and forced_progress >= 0.0:
 		progress = forced_progress
 	if _overlay_timer > 0.0 and (pose_name == &"summon" or pose_name == &"victory"):

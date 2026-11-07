@@ -23,6 +23,8 @@ BUILDING = "Color(0.45, 0.42, 0.48, 1)"
 RUST = "Color(0.5, 0.35, 0.25, 1)"
 MOSS = "Color(0.26, 0.42, 0.24, 1)"
 SAND = "Color(0.74, 0.66, 0.5, 1)"
+SIDEWALK = "Color(0.51, 0.49, 0.47, 1)"   # cracked pavement (ruined ground shader)
+DIRT = "Color(0.38, 0.29, 0.2, 1)"        # bare earth (ruined ground shader)
 SEA = "Color(0.16, 0.3, 0.42, 1)"
 
 HALF = 64.0
@@ -120,13 +122,22 @@ def roads(c, cx, cz, seed):
         for side in (-1, 1):
             off = side * (ROAD_W / 2 + WALK_W / 2)
             if horizontal:
-                c.block((length, KERB_H, WALK_W), (mx, KERB_H / 2, mz + off), CONCRETE)
+                c.block((length, KERB_H, WALK_W), (mx, KERB_H / 2, mz + off), SIDEWALK)
             else:
-                c.block((WALK_W, KERB_H, length), (mx + off, KERB_H / 2, mz), CONCRETE)
+                c.block((WALK_W, KERB_H, length), (mx + off, KERB_H / 2, mz), SIDEWALK)
         steps = max(1, int(length // 10))
         for i in range(steps + 1):
             t = i / steps
             c.point((x0 + (x1 - x0) * t - cx, 0, z0 + (z1 - z0) * t - cz), ROAD_W)
+        # Earth and roots breaking through near the kerbs.
+        for _ in range(int(length // 40)):
+            t = rng.uniform(0.05, 0.95)
+            off = rng.choice((-1, 1)) * (ROAD_W / 2 - rng.uniform(0.8, 2.5))
+            gx, gz = (x0 + (x1 - x0) * t, seg[1] + off) if horizontal else (seg[0] + off, z0 + (z1 - z0) * t)
+            if not _reserved(gx, gz, 2) and abs(gx - HWY_X) > 10:
+                model = rng.choice(("tile_roots_grass", "tile_roots_grass", "tile_dirt", "tile_mud"))
+                c.prop(model, (gx - cx, 0, gz - cz), (rng.uniform(2.5, 4.5), 0.5, rng.uniform(2.5, 4.5)), DIRT, rot_y=rng.uniform(0, 360))
+                c.points.pop()
         # One lamp every LAMP_EVERY m, alternating sides, never on another road's asphalt.
         v = math.ceil((x0 if horizontal else z0) / LAMP_EVERY) * LAMP_EVERY
         end = x1 if horizontal else z1
@@ -218,13 +229,13 @@ def plan_buildings(seed=4242):
                     kind = "ruin" if roll < 0.35 else ("collapsed" if roll < 0.55 else "tower")
                     placed.append((kind, x, z, w, h, d, yaw))
                 v += w + (rng.uniform(3, 6) if rng.random() < 0.3 else 0.4)
-    for _ in range(160):
+    for _ in range(260):
         x, z = rng.uniform(-EDGE + 20, CITY_EAST - 10), rng.uniform(-EDGE + 20, EDGE - 20)
         roll = rng.random()
         if roll < 0.35:
             if free(x, z, 12, 9, 0):
                 placed.append(("slab", x, z, 12, 0, 9, rng.uniform(-25, 25)))
-        elif roll < 0.65:
+        elif roll < 0.7:
             if free(x, z, 3, 3, 0):
                 placed.append(("tree", x, z, 3, rng.uniform(5, 9), 3, 0))
         elif free(x, z, 8, 8, 0):
@@ -247,10 +258,24 @@ def city_blocks(c, cx, cz, seed):
             if rng.random() < 0.5:
                 sh = rng.uniform(2, 4)
                 c.block((w * rng.uniform(0.4, 0.7), sh, d * 0.8), (lx, h + sh / 2, lz), BUILDING, rot_y=yaw)
+            elif rng.random() < 0.55:
+                # Roof garden gone wild: moss bed and a tree that rooted up there.
+                c.grass(MOSS, 500, rng.randint(1, 99999), (w * 0.7, d * 0.7), (lx, h, lz))
+                if rng.random() < 0.6:
+                    c.tree("oak", (lx + rng.uniform(-w / 4, w / 4), h, lz + rng.uniform(-d / 4, d / 4)), rng.uniform(4, 7), rng.randint(1, 1 << 30))
+            if rng.random() < 0.4:
+                c.prop("tile_roots_grass", (lx + fwd[0] * (d / 2 + 0.5), 0, lz + fwd[1] * (d / 2 + 0.5)), (w * 0.8, 0.7, 2.5), DIRT, rot_y=yaw)
+                c.points.pop()
         elif kind == "collapsed":
             # A broken stump of a building; its upper floors lie as debris on the street side.
             hs = rng.uniform(4, 9)
             c.block((w, hs, d), (lx, hs / 2, lz), BUILDING, rot_y=yaw)
+            # Nature took the stump: moss on top, often a tree growing out of it.
+            c.grass(MOSS, 600, rng.randint(1, 99999), (w * 0.8, d * 0.8), (lx, hs, lz))
+            if rng.random() < 0.6:
+                c.tree("oak", (lx + rng.uniform(-2, 2), hs, lz + rng.uniform(-2, 2)), rng.uniform(5, 9), rng.randint(1, 1 << 30))
+            c.prop("tile_roots_grass", (lx, 0, lz + d / 2 + 0.8), (w, 0.8, 3), DIRT, rot_y=yaw)
+            c.points.pop()
             for i in range(rng.randint(2, 4)):
                 k = d / 2 + rng.uniform(1.5, 5.0)
                 sx = rng.uniform(-w / 2, w / 2)
@@ -264,9 +289,13 @@ def city_blocks(c, cx, cz, seed):
             c.block((w, 0.8, d), (lx, y, lz), BUILDING, rot_y=yaw, rot_x=tilt)
             c.decor("debris", (lx + rng.uniform(-3, 3), 0, lz + d / 2), seed=rng.randint(1, 99999))
         elif kind == "tree":
-            c.tree("dead", (lx, 0, lz), h, rng.randint(1, 1 << 30))
+            c.tree("oak" if rng.random() < 0.65 else "dead", (lx, 0, lz), h + (2 if rng.random() < 0.65 else 0), rng.randint(1, 1 << 30))
+            c.grass(MOSS, 400, rng.randint(1, 99999), (6, 6), (lx, 0, lz))
         elif kind == "moss":
-            c.grass(MOSS, 900, rng.randint(1, 99999), (w, d), (lx, 0, lz))
+            c.grass(MOSS, 1400, rng.randint(1, 99999), (w * 1.6, d * 1.6), (lx, 0, lz))
+            if rng.random() < 0.5:
+                c.prop(rng.choice(("tile_mud", "tile_roots_grass", "tile_dirt")), (lx, 0, lz), (4, 0.5, 4), DIRT, rot_y=rng.uniform(0, 360))
+                c.points.pop()
 
 
 def planters(c, cx, cz, seed):

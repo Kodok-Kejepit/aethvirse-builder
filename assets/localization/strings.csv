@@ -270,10 +270,10 @@ JOB_CHANGED,Job Change: you are now a %s.,Job Change: kamu sekarang %s.
 SKILL_SLOT_BUTTON,Slot %d,Slot %d
 JOB_CHANGE_SOON,Job Change unlocks at Lv %d.,Job Change terbuka di Lv %d.
 MENU_PICK_HERO,Choose your character,Pilih karaktermu
-HERO_DRAGON_MAIDEN,Starry Dragon Maiden,Gadis Naga Berbintang
-HERO_DRAGON_MAIDEN_DESC,Long hair. A spirit dragon answers every skill.,Rambut panjang. Naga roh muncul di setiap skill.
-HERO_STARBLADE,Violet Starblade,Pedang Bintang Ungu
-HERO_STARBLADE_DESC,Short hair. Swift and clean — no dragon.,Rambut pendek. Gesit dan bersih — tanpa naga.
+HERO_DRAGON_MAIDEN,Dragon Sovereign,Ratu Naga
+HERO_DRAGON_MAIDEN_DESC,Long silver hair. A white spirit dragon answers every skill.,Rambut perak panjang. Naga roh putih muncul di setiap skill.
+HERO_STARBLADE,Nocturne,Nokturna
+HERO_STARBLADE_DESC,Short black hair. A swift assassin in a night gown — no dragon.,Rambut hitam pendek. Pembunuh senyap bergaun malam — tanpa naga.
 PROMPT_WAYSTONE,Waystone,Waystone
 PROMPT_TRAVEL,Travel to,Pergi ke
 TRAVEL_TITLE,Fast Travel,Perjalanan Cepat

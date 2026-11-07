@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build on GitHub (run by the owner):  bash tools/setup_builder.sh
+# Build on GitHub:  bash tools/setup_builder.sh   (owner or Claude)
 # First run: makes Kodok-Kejepit/ascendant-builder public with a builder description and
 # stores the Android signing key as a secret. Every run: pushes a one-commit snapshot of the
 # current branch as `main` (author = your GitHub noreply address, so your private email is
@@ -20,15 +20,22 @@ gh repo edit "$REPO" --description "$DESC" >/dev/null
 if [ -f "$HOME/.android/debug.keystore" ] && ! gh secret list -R "$REPO" | grep -q ANDROID_DEBUG_KEYSTORE_B64; then
 	base64 -w0 "$HOME/.android/debug.keystore" | gh secret set ANDROID_DEBUG_KEYSTORE_B64 -R "$REPO"
 fi
-git remote get-url builder >/dev/null 2>&1 || git remote add builder "git@github.com:$REPO.git"
+# Push over HTTPS with the gh token (works after a reboot without unlocking the SSH key).
+URL="https://github.com/$REPO.git"
+GITGH=(git -c credential.helper= -c 'credential.helper=!gh auth git-credential')
 
 LOGIN="$(gh api user -q .login)"
 NOREPLY="$(gh api user -q .id)+${LOGIN}@users.noreply.github.com"
 BRANCH="$(git branch --show-current)"
 SHA="$(git rev-parse --short HEAD)"
+# The snapshot sits on top of the builder's current main: a plain fast-forward push.
+PARENT_ARGS=()
+if "${GITGH[@]}" fetch -q "$URL" main 2>/dev/null; then
+	PARENT_ARGS=(-p "$(git rev-parse FETCH_HEAD)")
+fi
 SNAP="$(GIT_AUTHOR_EMAIL="$NOREPLY" GIT_COMMITTER_EMAIL="$NOREPLY" \
-	git commit-tree "HEAD^{tree}" -m "build: snapshot ${BRANCH} @ ${SHA}")"
-git push --force builder "${SNAP}:refs/heads/main"
+	git commit-tree "HEAD^{tree}" "${PARENT_ARGS[@]}" -m "build: snapshot ${BRANCH} @ ${SHA}")"
+"${GITGH[@]}" push "$URL" "${SNAP}:refs/heads/main"
 
 echo
 echo "Selesai. Proses build: https://github.com/$REPO/actions"

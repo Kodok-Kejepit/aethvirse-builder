@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_aafca"]
+
+[resource]
+script = ExtResource("1_aafca")
+id = &"tile_dirt"
+mesh_path = "res://assets/props/tile_dirt/tile_dirt.res"
+albedo_path = "res://assets/props/tile_dirt/tile_dirt_albedo.jpg"
+size = Vector3(3.885893, 0.35999998, 3.8021452)
+collision = 0

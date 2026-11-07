@@ -18,6 +18,8 @@ const STYLES: Dictionary[StringName, Array] = {
 	&"hollow": [Color(0.12, 0.1, 0.16), Color(0.18, 0.15, 0.22), Color(0.8, 0.8, 0.85), Color(0.12, 0.1, 0.16), 99.0],
 }
 const SHADER: Shader = preload("res://assets/shaders/terrain.gdshader")
+## Palette colour WorldStreamer maps to the ruined ground (bare earth, grass, mud).
+const RUIN_GROUND: Color = Color(0.38, 0.29, 0.2)
 
 @export var style: StringName = &"ashfall"
 @export var amplitude: float = 4.0
@@ -109,7 +111,9 @@ func _build() -> void:
 	st.generate_normals()
 	var mi: MeshInstance3D = MeshInstance3D.new()
 	mi.mesh = st.commit()
-	mi.material_override = _material(style)
+	# Ashfall: the dead city's ground (owner's dirt / roots / mud tiles), mostly unpaved.
+	var ground: Material = WorldStreamer.shared_material(RUIN_GROUND) if style == &"ashfall" else null
+	mi.material_override = ground if ground is ShaderMaterial and (ground as ShaderMaterial).shader == WorldStreamer.GROUND_SHADER else _material(style)
 	add_child(mi)
 	# Height-map collision (uniform scale = grid step; heights pre-divided).
 	var shape: HeightMapShape3D = HeightMapShape3D.new()

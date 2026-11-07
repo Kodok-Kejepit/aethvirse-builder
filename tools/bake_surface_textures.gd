@@ -9,7 +9,7 @@ extends SceneTree
 const OUT_DIR: String = "res://assets/textures/surfaces"
 const PX: int = 1024
 ## Crop inside the model edges so bevels / sides never show.
-const INSET: float = 0.06
+const INSET: float = 0.16
 
 var _ids: PackedStringArray = []
 var _i: int = 0
@@ -56,7 +56,8 @@ func _show(id: String) -> void:
 	_holder.add_child(mi)
 	var box: AABB = mi.mesh.get_aabb()
 	var c: Vector3 = box.get_center()
-	if id.begins_with("tile_"):
+	# Look along the thinnest axis (some floor models were made standing upright).
+	if id.begins_with("tile_") and box.size.y <= box.size.z:
 		# Square crop of the top face.
 		var side: float = minf(box.size.x, box.size.z) * (1.0 - INSET * 2.0)
 		_cam.size = side

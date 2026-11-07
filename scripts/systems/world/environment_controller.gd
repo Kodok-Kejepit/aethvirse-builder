@@ -25,8 +25,8 @@ const DUSK_SUN: Color = Color(1.0, 0.58, 0.34)
 const DUSK_SUN_ENERGY: float = 0.75
 const DUSK_AMBIENT: float = 1.0
 const DUSK_FOG: Color = Color(0.5, 0.33, 0.48)
-const DAY_AMBIENT_COLOR: Color = Color(0.72, 0.78, 0.9)
-const DUSK_AMBIENT_COLOR: Color = Color(0.6, 0.45, 0.65)
+const DAY_AMBIENT_COLOR: Color = Color(0.42, 0.45, 0.52)
+const DUSK_AMBIENT_COLOR: Color = Color(0.5, 0.38, 0.55)
 const NIGHT_AMBIENT_COLOR: Color = Color(0.3, 0.32, 0.55)
 const SKY_SHADER: Shader = preload("res://assets/shaders/sky_dynamic.gdshader")
 
