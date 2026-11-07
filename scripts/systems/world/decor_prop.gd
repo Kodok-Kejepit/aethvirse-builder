@@ -72,12 +72,85 @@ func _ready() -> void:
 			_box(Vector3(0.1, 4.0, 0.1), Vector3(0, 2.0, 0), WOOD, true)
 			var cloth: MeshInstance3D = _box(Vector3(0.9, 1.6, 0.03), Vector3(0.5, 3.1, 0), tint, false)
 			cloth.material_override = WorldStreamer.shared_material(tint, false)
+		&"streetlight", &"palisade", &"junk", &"water_tank", &"debris":
+			_ruined(rng)
 		_:
 			var s: float = rng.randf_range(0.7, 1.1)
 			_box(Vector3(s, s, s), Vector3(0, s * 0.5, 0), WOOD.lerp(tint, 0.1), false)
 			_box(Vector3(s + 0.02, 0.08, s + 0.02), Vector3(0, s * 0.5, 0), WOOD.darkened(0.3), false)
 			_collide(Vector3(s, s, s), s * 0.5)
 			rotation.y = rng.randf_range(0, TAU)
+
+
+const RUST_IRON: Color = Color(0.36, 0.27, 0.22)
+const SODIUM: Color = Color(1.0, 0.62, 0.3)
+const SHEET: Color = Color(0.42, 0.4, 0.38)
+const CONCRETE_CHUNK: Color = Color(0.55, 0.53, 0.5)
+const JUNK_COLORS: Array[Color] = [Color(0.42, 0.3, 0.2), Color(0.42, 0.4, 0.38), Color(0.36, 0.27, 0.22)]
+
+
+## Dressing for the ruined city and the refugee camp (Ashfall).
+func _ruined(rng: RandomNumberGenerator) -> void:
+	match kind:
+		&"streetlight":
+			# Rusted city lamp: some lean, about a third are dead.
+			rotation.z = deg_to_rad(rng.randf_range(-9.0, 9.0)) if rng.randf() < 0.4 else 0.0
+			_box(Vector3(0.16, 6.0, 0.16), Vector3(0, 3.0, 0), RUST_IRON, true)
+			_box(Vector3(1.7, 0.1, 0.1), Vector3(0.8, 5.95, 0), RUST_IRON, false)
+			_box(Vector3(0.6, 0.14, 0.32), Vector3(1.55, 5.85, 0), IRON, false)
+			if rng.randf() > 0.33:
+				_bulb = _glow_mat(SODIUM)
+				_box_mat(Vector3(0.5, 0.05, 0.26), Vector3(1.55, 5.77, 0), _bulb)
+				tint = SODIUM
+				_add_light(Vector3(1.55, 5.5, 0), 11.0)
+		&"palisade":
+			# Makeshift wall: uneven planks and a corrugated sheet nailed to two rails.
+			for i: int in 9:
+				var x: float = -1.4 + float(i) * 0.35
+				var h: float = rng.randf_range(1.5, 2.3)
+				var plank: MeshInstance3D = _box(Vector3(0.28, h, 0.06), Vector3(x, h * 0.5, 0), WOOD.lerp(Color(0.3, 0.25, 0.2), rng.randf()), false)
+				plank.rotation.z = deg_to_rad(rng.randf_range(-4.0, 4.0))
+			for y: float in [0.5, 1.3]:
+				_box(Vector3(3.1, 0.09, 0.08), Vector3(0, y, 0.05), WOOD.darkened(0.25), false)
+			if rng.randf() < 0.5:
+				var sheet: MeshInstance3D = _box(Vector3(1.2, 1.5, 0.03), Vector3(rng.randf_range(-0.8, 0.8), 0.9, -0.05), SHEET, false)
+				sheet.material_override = WorldStreamer.shared_material(Color(0.5, 0.35, 0.25))
+			_collide(Vector3(3.1, 2.0, 0.3), 1.0)
+		&"junk":
+			# Scrap heap: boxes, a barrel on its side, planks, a tyre.
+			for i: int in 6:
+				var sz: Vector3 = Vector3(rng.randf_range(0.4, 1.0), rng.randf_range(0.3, 0.7), rng.randf_range(0.4, 0.9))
+				var b: MeshInstance3D = _box(sz, Vector3(rng.randf_range(-0.8, 0.8), sz.y * 0.5, rng.randf_range(-0.6, 0.6)),
+					JUNK_COLORS[i % JUNK_COLORS.size()], false)
+				b.rotation = Vector3(0, rng.randf_range(0, TAU), deg_to_rad(rng.randf_range(-12, 12)))
+			var tyre: TorusMesh = TorusMesh.new()
+			tyre.inner_radius = 0.2
+			tyre.outer_radius = 0.38
+			_mesh(tyre, _mat(Color(0.12, 0.12, 0.13)), Vector3(0.6, 0.12, 0.5))
+			_collide(Vector3(2.0, 0.9, 1.6), 0.45)
+		&"water_tank":
+			# Rusty drum on a timber stand with a tap: the camp's water.
+			for x: float in [-0.6, 0.6]:
+				for z: float in [-0.6, 0.6]:
+					_box(Vector3(0.14, 1.4, 0.14), Vector3(x, 0.7, z), WOOD, false)
+			_box(Vector3(1.5, 0.1, 1.5), Vector3(0, 1.4, 0), WOOD.darkened(0.2), false)
+			var drum: CylinderMesh = CylinderMesh.new()
+			drum.top_radius = 0.7
+			drum.bottom_radius = 0.7
+			drum.height = 1.5
+			_mesh(drum, _mat(Color(0.5, 0.35, 0.25)), Vector3(0, 2.2, 0))
+			_box(Vector3(0.06, 0.06, 0.4), Vector3(0, 1.6, 0.75), IRON, false)
+			_collide(Vector3(1.5, 3.0, 1.5), 1.5)
+		&"debris":
+			# Broken concrete slabs with bent rebar.
+			for i: int in 5:
+				var sz2: Vector3 = Vector3(rng.randf_range(0.8, 2.2), rng.randf_range(0.2, 0.5), rng.randf_range(0.6, 1.6))
+				var chunk: MeshInstance3D = _box(sz2, Vector3(rng.randf_range(-1.2, 1.2), sz2.y * 0.4, rng.randf_range(-1.0, 1.0)), CONCRETE_CHUNK, false)
+				chunk.rotation = Vector3(deg_to_rad(rng.randf_range(-25, 25)), rng.randf_range(0, TAU), deg_to_rad(rng.randf_range(-25, 25)))
+			for i2: int in 3:
+				var bar: MeshInstance3D = _box(Vector3(0.03, rng.randf_range(0.6, 1.3), 0.03), Vector3(rng.randf_range(-1, 1), 0.4, rng.randf_range(-0.8, 0.8)), RUST_IRON, false)
+				bar.rotation = Vector3(deg_to_rad(rng.randf_range(-50, 50)), 0, deg_to_rad(rng.randf_range(-50, 50)))
+			_collide(Vector3(2.4, 0.6, 2.0), 0.3)
 
 
 ## Owner model `prop_<kind>` replaces the primitives; lights / fire stay.
@@ -107,7 +180,7 @@ func _process(_delta: float) -> void:
 	if _light == null:
 		return
 	var night: float = 1.0 - clampf(sin((GameState.clock.day_fraction() - 0.25) * TAU) * 1.5 + 0.2, 0.0, 1.0)
-	var lit: bool = kind == &"campfire" or night > 0.15
+	var lit: bool = kind == &"campfire" or night > 0.15 or kind == &"streetlight" and night > 0.05
 	_light.visible = lit
 	if lit:
 		var flicker: float = 1.0 + (sin(Time.get_ticks_msec() * 0.013) * 0.08 if kind == &"campfire" else 0.0)

@@ -9,7 +9,7 @@ extends Node
 @export var day_sun_energy: float = 1.0
 @export var night_sun_energy: float = 0.28
 @export var day_ambient: float = 1.0
-@export var night_ambient: float = 0.5
+@export var night_ambient: float = 0.62
 @export var clear_fog: float = 0.004
 @export var fog_fog: float = 0.04
 @export var rain_fog: float = 0.012
@@ -23,7 +23,7 @@ var _cloud: float = 0.35
 
 const DUSK_SUN: Color = Color(1.0, 0.58, 0.34)
 const DUSK_SUN_ENERGY: float = 0.75
-const DUSK_AMBIENT: float = 0.7
+const DUSK_AMBIENT: float = 1.0
 const DUSK_FOG: Color = Color(0.5, 0.33, 0.48)
 const DAY_AMBIENT_COLOR: Color = Color(0.72, 0.78, 0.9)
 const DUSK_AMBIENT_COLOR: Color = Color(0.6, 0.45, 0.65)
@@ -32,6 +32,9 @@ const SKY_SHADER: Shader = preload("res://assets/shaders/sky_dynamic.gdshader")
 
 
 func _ready() -> void:
+	# Rain keeps falling while a dialog / panel pauses the game.
+	if rain != null:
+		rain.process_mode = Node.PROCESS_MODE_ALWAYS
 	var env: Environment = world_environment.environment if world_environment != null else null
 	if env == null:
 		return

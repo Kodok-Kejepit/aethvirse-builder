@@ -34,7 +34,8 @@ func set_night(value: float) -> void:
 ## Palette colours of the world generators -> surface pattern (world_surface.gdshader `style`).
 const STYLES: Dictionary[String, int] = {
 	"736b7a": 1,                          # BUILDING
-	"8c8780": 2, "52545c": 2,             # CONCRETE, ASPHALT
+	"8c8780": 2,                          # CONCRETE
+	"52545c": 7,                          # ASPHALT (ruined: cracks, moss, potholes)
 	"598073": 3,                          # TENT
 	"9e8573": 4, "737a8c": 4, "596b7a": 4, # STONE, ROCK, WATERSTONE
 	"523d2e": 5, "664c38": 5, "6b4c38": 5, # BARK, ROOT, SHELF

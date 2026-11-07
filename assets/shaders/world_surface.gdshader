@@ -8,7 +8,8 @@ uniform vec4 top_color : source_color = vec4(0.6, 0.6, 0.65, 1.0);
 uniform float noise_scale = 0.35;
 uniform float noise_strength = 0.38;
 uniform float top_amount = 0.6;
-// 0 plain, 1 building facade, 2 concrete, 3 canvas, 4 brick/stone, 5 wood, 6 rusted metal.
+// 0 plain, 1 building facade, 2 concrete, 3 canvas, 4 brick/stone, 5 wood, 6 rusted metal,
+// 7 ruined asphalt (crack network, moss in the cracks, potholes, worn patches).
 uniform int style = 0;
 // 0 day … 1 night (windows light up).
 uniform float night = 0.0;
@@ -68,6 +69,21 @@ void fragment() {
 		col *= 1.0 - crack - stain;
 		vec2 slab = fract(world_pos.xz / 4.0);
 		col *= 1.0 - up * smoothstep(0.02, 0.0, min(slab.x, slab.y)) * 0.3;
+	} else if (style == 7) {
+		// Two crack networks (iso-lines of noise) of different scales, moss growing in them.
+		float c1 = smoothstep(0.03, 0.0, abs(noise(world_pos * 0.9) - 0.5));
+		float c2 = smoothstep(0.02, 0.0, abs(noise(world_pos * 2.7 + vec3(5.0)) - 0.5))
+			* smoothstep(0.45, 0.6, noise(world_pos * 0.3 + vec3(2.0)));
+		float cracks = max(c1, c2 * 0.8) * up;
+		float moss = smoothstep(0.35, 0.75, noise(world_pos * 0.5 + vec3(9.0)));
+		col = mix(col, mix(col * 0.35, vec3(0.2, 0.32, 0.14), moss), cracks);
+		// Potholes: dark wet blobs with a lighter broken rim.
+		float hole = noise(world_pos * 0.45 + vec3(31.0)) * noise(world_pos * 0.13 + vec3(17.0));
+		col = mix(col, col * 0.55, smoothstep(0.62, 0.66, hole) * up);
+		col = mix(col, col * 1.2, smoothstep(0.58, 0.62, hole) * (1.0 - smoothstep(0.62, 0.66, hole)) * up);
+		// Sun-bleached, worn patches and creeping moss at the edges.
+		col = mix(col, col * 1.18, smoothstep(0.55, 0.8, noise(world_pos * 0.12 + vec3(4.0))) * 0.6 * up);
+		col = mix(col, vec3(0.24, 0.36, 0.17), smoothstep(0.7, 0.9, moss * noise(world_pos * 1.3)) * 0.55 * up);
 	} else if (style == 3) {
 		float stripe = step(0.5, fract((wall.x + world_pos.x + world_pos.z) * 0.6));
 		col = mix(col, col * vec3(1.25, 1.15, 0.95), stripe * 0.6);

@@ -62,8 +62,19 @@ func _refresh() -> void:
 	_label.modulate = Color(1, 1, 1, 1) if on else Color(1, 1, 1, 0.5)
 
 
-const ARCH_MODEL: StringName = &"landmark_waystone_arch"
-const ARCH_HEIGHT: float = 3.6
+## Shrine model + height per region (waystone id prefix): each fits its place - a broken
+## stone ring in the ruined city, the witch circle in the forest, the moon altar in the
+## desert, the golden arch in the snow and the archive, the void altar in the Fracture.
+const SHRINES: Dictionary[String, Array] = {
+	"r1": [&"landmark_ruined_plaza", 2.4], "r2": [&"landmark_ritual_circle", 2.8],
+	"r3": [&"landmark_crimson_altar", 3.0], "r4": [&"landmark_waystone_arch", 3.6],
+	"r5": [&"landmark_waystone_arch", 3.6], "r6": [&"landmark_nexus_altar", 3.0],
+	"r7": [&"landmark_nexus_altar", 3.0],
+}
+
+
+static func shrine_for(id: StringName) -> Array:
+	return SHRINES.get(String(id).substr(0, 2), [&"landmark_waystone_arch", 3.6])
 
 
 func _build() -> void:
@@ -88,7 +99,10 @@ func _build() -> void:
 	_crystal.material_override = glow
 	add_child(_crystal)
 	# Owner's golden archway: the crystal floats inside the arch.
-	if road_to == &"" and PropInstance.replace_mesh(stone, ARCH_MODEL, ARCH_HEIGHT):
+	var shrine: Array = shrine_for(waystone_id)
+	var shrine_model: StringName = shrine[0]
+	var shrine_h: float = shrine[1]
+	if road_to == &"" and PropInstance.replace_mesh(stone, shrine_model, shrine_h):
 		_crystal.position = Vector3(0.0, 1.9, 0.0)
 		_crystal.scale = Vector3.ONE * 0.7
 	_label = Label3D.new()

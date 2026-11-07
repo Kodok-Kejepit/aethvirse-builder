@@ -248,68 +248,65 @@ def edges(c, x, z):
 
 
 def camp(c):
-    """Refugee camp inside the old city plaza (ring road around it, avenue to the south).
-    Layout: paved plaza, rubble/wreck barricade with four street gates, two facing tent
-    rows, a market lane under the statue, the campfire in the middle, waystone at the
-    south gate. NPCs stand at the thing they run."""
+    """Refugee camp inside the old city plaza (ring road around it, avenue to the north).
+    A palisade of planks and sheet metal closes the plaza (gates face the four streets);
+    two tent rows face each other with scrap heaps between them; the market lane runs up
+    to the statue; the campfire is the heart; water comes from a rusty tank; the waystone
+    shrine sits half hidden among rubble in the south-west corner. NPCs stand at the thing
+    they run. Safe zone: no monsters inside."""
     ground(c)
     c.block((94, 0.1, 94), (0, 0.05, 0), CONCRETE)
-    _camp_barricade(c)
+    c.point((0, 0, 0), 50)  # the plaza slab is too big for an automatic flatten disc
+    _camp_palisade(c)
     for i, z in enumerate((-22, -8, 6, 20)):
-        c.prop("bld_refugee_tent", (-30, 0, z), (6, 3, 5), TENT, rot_y=90)
-        c.prop("bld_refugee_tent", (30, 0, z), (6, 3, 5), TENT, rot_y=-90)
+        c.prop("bld_refugee_tent", (-30, 0, z), (6, 3, 5), TENT, rot_y=90 + (i * 7) % 11 - 5)
+        c.prop("bld_refugee_tent", (30, 0, z), (6, 3, 5), TENT, rot_y=-90 + (i * 5) % 9 - 4)
+    for i, z in enumerate((-15, 13)):
+        c.decor("junk", (-24, 0, z), seed=300 + i)
+        c.decor("junk", (24, 0, z + 2), seed=310 + i)
     for i, x in enumerate((-16, -7, 7, 16)):
         c.prop("prop_market_stall", (x, 0, -28), (3.7, 3.2, 1.8), "Color(0.45, 0.32, 0.22, 1)", rot_y=180)
     c.block((3.2, 1.0, 3.2), (0, 0.5, -38), CONCRETE)
     c.prop("statue_starblade", (0, 1.0, -38), (1.2, 3.0, 1.2), CONCRETE, rot_y=180)
     c.decor("campfire", (0, 0, 0))
     for i in range(6):
-        a = i / 6 * math.tau
+        a = i / 6 * math.tau + 0.3
         c.decor("barrel" if i % 2 else "crate", (math.cos(a) * 3.6, 0, math.sin(a) * 3.6), seed=40 + i)
-    c.prop("prop_well", (16, 0, 14), (2.9, 3.2, 2.5), CONCRETE, rot_y=-30)
-    for i, (x, z) in enumerate([(-40, -40), (40, -40), (-40, 40), (40, 40), (-12, -18), (12, -18), (-12, 18), (12, 18)]):
-        c.decor("lamp", (x, 0, z), rot_y=(i * 90.0) % 360)
+    c.decor("water_tank", (16, 0, 14), seed=7)
+    for i, (x, z) in enumerate([(-12, -18), (12, -18), (-12, 18), (12, 18), (-20, -36), (20, -36)]):
+        c.decor("lantern", (x, 0, z), "Color(1, 0.7, 0.4, 1)", seed=60 + i)
     for i, (x, z, r) in enumerate([(0, -46, 0), (0, 46, 180), (-46, 0, 90), (46, 0, 270)]):
         for dx in (-5.5, 5.5):
             px, pz = (x + dx, z) if r in (0, 180) else (x, z + dx)
             c.decor("banner", (px, 0, pz), "Color(0.25, 0.55, 0.85, 1)", rot_y=r)
+    # Waystone shrine: tucked into the rubble of the south-west corner.
+    c.instance("waystone", (-36, 0, 36), 'waystone_id = &"r1_camp"\n')
+    for i, (x, z) in enumerate([(-41, 31), (-30, 41), (-42, 40), (-31, 30)]):
+        c.decor("debris", (x, 0, z), seed=700 + i)
     c.npc("bread_seller", (-12, 0, -25), 0)
     c.npc("appraiser", (12, 0, -25), 0)
     c.npc("quartermaster", (-5, 0, -35), 20)
     c.npc("camp_kid", (5, 0, 5), 220)
-    c.instance("waystone", (0, 0, 38), 'waystone_id = &"r1_camp"\n')
-    c.instance("sign", (7, 0, 40), 'text_key = &"HINT_SM_R1_01_6"\nhint_secret = &"SM-R1-01:3"\n')
-    c.instance("dummy", (-20, 0, 34))
+    c.instance("sign", (-28, 0, 32), 'text_key = &"HINT_SM_R1_01_6"\nhint_secret = &"SM-R1-01:3"\n')
+    c.instance("dummy", (-20, 0, 24))
     c.label("REFUGEE CAMP", (0, 9, -40), 64)
 
 
-def _camp_barricade(c):
-    """Rubble, crates and wrecks along the plaza edge, open at the four street gates."""
-    import random
-    rng = random.Random(77)
+def _camp_palisade(c):
+    """Plank-and-sheet-metal walls along the plaza edge, open at the four street gates."""
     for side in range(4):
-        v = -44.0
-        while v <= 44.0:
-            if abs(v) > 7.0:
+        v = -43.5
+        while v <= 43.5:
+            if abs(v) > 7.5:
                 x, z = [(v, -46), (v, 46), (-46, v), (46, v)][side]
-                roll = rng.random()
-                yaw = (0 if side < 2 else 90) + rng.uniform(-10, 10)
-                if roll < 0.25:
-                    c.prop("prop_car_rusted", (x, 0, z), (4, 1.45, 2.0), RUST, rot_y=yaw)
-                elif roll < 0.6:
-                    c.prop("rock_pile", (x, 0, z), (3, rng.uniform(1.2, 1.9), 3), CONCRETE, rot_y=rng.uniform(0, 360))
-                else:
-                    c.decor("crate" if roll < 0.8 else "barrel", (x, 0, z), seed=int(v * 7 + side))
-            v += 4.4
+                yaw = (0 if side < 2 else 90) + ((int(v * 13) % 7) - 3)
+                c.decor("palisade", (x, 0, z), rot_y=yaw, seed=int(v * 7 + side * 101))
+            v += 3.0
 
 
 def overpass_and_culvert(c):
     ground(c)
-    # Collapsed highway: raised deck with a broken ramp.
-    c.block((16, 1, 120), (24, 8, 0), CONCRETE)
-    for z in (-50, -20, 10, 40):
-        c.block((3, 8, 3), (24, 4, z), CONCRETE)
-    c.block((16, 1, 30), (24, 3.8, -62), CONCRETE, rot_x=-15)
+    # (The elevated highway along x = 152 is built for every chunk by ashfall_city.highway.)
     # Culvert: tunnel from the grate (west) to the pump room (east).
     c.block((24, 0.6, 5), (-14, 4, 20), CONCRETE)
     c.block((24, 4, 0.6), (-14, 2, 17.5), CONCRETE)
@@ -330,11 +327,7 @@ def overpass_and_culvert(c):
     c.instance("portal", (-10, 0, -40), f'gate = {c.data("gate_r1_e_overpass")}\n')
     for p in [(-20, 0.3, -30), (0, 0.3, -30), (-10, 0.3, -52)]:
         c.spawner("ash_hound", p)
-    for z in (-40, -10, 20, 50):
-        c.decor("lamp", (14, 0, z), rot_y=180.0)
-    for i, z in enumerate((-48, -6, 36)):
-        c.prop("prop_car_rusted", (35 + i * 2, 0, z), (4, 1.45, 1.9), RUST, rot_y=80 + i * 25)
-    c.label("OVERPASS", (24, 12, 0), 64)
+    c.label("OVERPASS", (24, 14, 0), 64)
     c.instance("waystone", (8, 0, -10), 'waystone_id = &"r1_overpass"\n')
     # Where the prologue Double Gate stood: the Hollow Throne opens here at 03:xx (M11).
     c.point((2, 0, 40), 5.0)
@@ -342,39 +335,77 @@ def overpass_and_culvert(c):
 
 
 def bridge(c):
+    """Road bridge on the avenue: low deck with gentle ramps from both banks, railings,
+    piers standing in the shallow river (you can wade underneath)."""
     ground(c)
-    # The river runs through the whole district (see river_reach for the side chunks).
     c.block((128, 0.2, 16), (0, 0.05, 0), WATER, solid=False)
-    c.block((6, 5, 20), (-12, 2.5, 0), CONCRETE)
-    c.block((6, 5, 20), (12, 2.5, 0), CONCRETE)
-    c.block((40, 1, 10), (0, 5.5, 0), CONCRETE)
-    c.npc("marrow", (0, 0, 2), 180)
-    c.marker("SM-R1-01:1", (0, 3, 2))
+    for side in (-1, 1):
+        c.block((128, 0.8, 1.2), (-0 if False else 0, 0.4, side * 8.6), CONCRETE)
+    deck_y = 1.6
+    c.block((14, 0.5, 22), (0, deck_y - 0.25, 0), ASPHALT)
+    for side in (-1, 1):
+        # Ramps down to the avenue on each bank.
+        run = 10.0
+        ang = math.degrees(math.atan2(deck_y, run))
+        c.block((14, 0.5, math.hypot(run, deck_y)), (0, deck_y / 2 - 0.25, side * (11 + run / 2)), ASPHALT, rot_x=side * ang)
+        # Railings along both edges (deck + ramps).
+        for x in (-7.2, 7.2):
+            c.block((0.3, 1.0, 22), (x, deck_y + 0.5, 0), CONCRETE)
+        # Piers in the water.
+        for x in (-4.5, 4.5):
+            c.block((1.6, deck_y, 1.6), (x, deck_y / 2, side * 4.0), CONCRETE)
+    c.npc("marrow", (4, deck_y, 2), 180)
+    c.marker("SM-R1-01:1", (0, 3 + deck_y, 2))
     c.spawner("gate_husk", (-30, 0.3, -30))
     c.spawner("gate_husk", (30, 0.3, -24))
     c.label("BRIDGE", (0, 10, 0), 64)
 
 
 def apartment(c):
+    """Ruined 4-storey apartment block you can walk into: lobby door on the south side,
+    switch-back ramps in the stairwell (west end) up to every floor, the sealed room 404
+    on the 4th floor (floor 12 m), part of the roof caved in."""
     ground(c)
-    # Leaning apartment block (graybox): lobby on the ground, 4th floor reached by a long ramp.
-    c.room((0, 0, 20), (24, 14), 4, BUILDING, door_side="s", door_width=4)
-    c.instance("sign", (0, 0, 15), 'text_key = &"SIGN_MAILBOX_404"\nhint_secret = &"SEC-R1-02"\nhint_key = &"HINT_SEC_R1_02_1"\n')
+    x0, x1, z0, z1 = -34.0, 10.0, -23.0, 3.0
+    cx, czz = (x0 + x1) / 2, (z0 + z1) / 2
+    top = 16.0
+    t = 0.6
+    # Outer walls (door gap 4 m on the ground floor, south side at x = -12).
+    c.block((x1 - x0, top, t), (cx, top / 2, z0), BUILDING)
+    c.block((t, top, z1 - z0), (x0, top / 2, czz), BUILDING)
+    c.block((t, top, z1 - z0), (x1, top / 2, czz), BUILDING)
+    c.block((-14 - x0, top, t), ((x0 - 14) / 2, top / 2, z1), BUILDING)
+    c.block((x1 + 10, top, t), ((x1 - 10) / 2, top / 2, z1), BUILDING)
+    c.block((4, top - 4, t), (-12, 4 + (top - 4) / 2, z1), BUILDING)
+    # Floors at 4 / 8 / 12 m, leaving the stairwell (x -33.4..-27.4) open.
+    well_x = -27.4
+    for fy in (4.0, 8.0, 12.0):
+        c.block((x1 - well_x, 0.4, z1 - z0 - 1.2), ((well_x + x1) / 2, fy - 0.2, czz), BUILDING)
+    # Stairwell: lane A (west) climbs north, lane B climbs south, landings at the ends.
+    lane_a, lane_b = -31.9, -28.9
+    run = 12.0
+    ang = math.degrees(math.atan2(4.0, run))
+    for i, fy in enumerate((0.0, 4.0, 8.0)):
+        north = i % 2 == 0
+        lx = lane_a if north else lane_b
+        c.block((3.0, 0.4, math.hypot(run, 4.0)), (lx, fy + 2.0 - 0.2, -15.0), BUILDING, rot_x=(1 if north else -1) * ang)
+        land_z = -21.7 if north else -8.3
+        c.block((6.0, 0.4, 2.6), (-30.4, fy + 4.0 - 0.2, land_z), BUILDING)
+    # Roof: two thirds intact, a fallen slab inside.
+    c.block((22, 0.5, z1 - z0 - 1.2), (-1, top - 0.25, czz), BUILDING)
+    c.block((10, 0.5, 8), (-17, 12.6, -2), BUILDING, rot_x=14, rot_y=8)
+    c.instance("sign", (-10, 0, 0), 'text_key = &"SIGN_MAILBOX_404"\nhint_secret = &"SEC-R1-02"\nhint_key = &"HINT_SEC_R1_02_1"\n')
+    for i, (x, z) in enumerate([(-20, -16), (2, -4), (-6, -18)]):
+        c.decor("debris", (x, 0, z), seed=500 + i)
+    # Survivors' lanterns: lobby and every stairwell landing.
+    for i, (x, y, z) in enumerate([(-6, 0, -1), (-30.4, 4, -21.7), (-30.4, 8, -8.3), (-30.4, 12, -21.7), (-12, 12, -2)]):
+        c.decor("lantern", (x, y, z), "Color(1, 0.7, 0.4, 1)", seed=520 + i)
+    # 4th floor: corridor with rooms 403 | 404 (sealed) | 405 on the north side.
     floor_y = 12.0
-    c.block((40, 1, 4), (-22, floor_y / 2, 34), CONCRETE, rot_y=0, rot_x=0)
-    ramp_len = 44.0
-    angle = math.degrees(math.atan2(floor_y, ramp_len))
-    c.block((4, 0.6, math.hypot(ramp_len, floor_y)), (-34, floor_y / 2, 10), CONCRETE, rot_x=-angle)
-    # 4th floor: corridor along x with rooms 403 | 404 (sealed) | 405 on the north side.
-    c.block((44, 0.6, 26), (-12, floor_y - 0.3, -10), BUILDING)
-    c.block((44, 4, 0.6), (-12, floor_y + 2, 3), BUILDING)
-    c.block((0.6, 4, 26), (-34, floor_y + 2, -10), BUILDING)
-    c.block((0.6, 4, 26), (10, floor_y + 2, -10), BUILDING)
-    c.block((44, 4, 0.6), (-12, floor_y + 2, -23), BUILDING)
     for x, label in [(-24, "403"), (0, "405")]:
         c.block((10, 4, 0.6), (x, floor_y + 2, -6), BUILDING)
         c.label(label, (x, floor_y + 3.4, -5.5), 40)
-    c.block((3.5, 4, 0.6), (-17.25 + 0.0, floor_y + 2, -6), BUILDING)
+    c.block((3.5, 4, 0.6), (-17.25, floor_y + 2, -6), BUILDING)
     c.block((3.5, 4, 0.6), (-6.75, floor_y + 2, -6), BUILDING)
     c.instance("wall", (-12, floor_y, -6), 'save_flag = &"r1_wall_404_broken"\n')
     c.marker("SEC-R1-02", (-12, floor_y + 3, -6))
@@ -445,10 +476,6 @@ if __name__ == "__main__":
                 builder(chunk)
             else:
                 ground(chunk)
-                rng = random.Random(x * 31 + z * 7)
-                enemy = "gate_husk" if (x + z) % 2 == 0 else "ash_hound"
-                for _ in range(2):
-                    chunk.spawner(enemy, (rng.uniform(-40, 40), 0.3, rng.uniform(-40, 40)))
                 if (x, z) == (-1, 1):
                     # Road north-west to Region 2.
                     chunk.instance("waystone", (0, 0, 0), 'road_to = &"r2_glade"\n')
