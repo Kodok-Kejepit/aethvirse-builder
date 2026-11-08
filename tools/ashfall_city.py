@@ -119,12 +119,46 @@ def roads(c, cx, cz, seed):
             c.block((length + ext * 0.5, 0.12, ROAD_W), (mx, 0.06, mz), ASPHALT)
         else:
             c.block((ROAD_W, 0.12, length + ext * 0.5), (mx, 0.06, mz), ASPHALT)
+        # Sidewalks in broken runs: gaps where the earth took over, some slabs sunk or tilted.
         for side in (-1, 1):
             off = side * (ROAD_W / 2 + WALK_W / 2)
-            if horizontal:
-                c.block((length, KERB_H, WALK_W), (mx, KERB_H / 2, mz + off), SIDEWALK)
-            else:
-                c.block((WALK_W, KERB_H, length), (mx + off, KERB_H / 2, mz), SIDEWALK)
+            v = (x0 if horizontal else z0) + rng.uniform(0, 3)
+            end_v = x1 if horizontal else z1
+            while v < end_v - 1:
+                run = min(rng.uniform(5, 14), end_v - v)
+                mid = v + run / 2
+                sink = -rng.uniform(0.0, 0.08) if rng.random() < 0.3 else 0.0
+                tilt = rng.uniform(-4, 4) if rng.random() < 0.25 else 0.0
+                if horizontal:
+                    c.block((run, KERB_H, WALK_W), (mid - cx, KERB_H / 2 + sink, seg[1] + off - cz), SIDEWALK, rot_x=tilt)
+                else:
+                    c.block((WALK_W, KERB_H, run), (seg[0] + off - cx, KERB_H / 2 + sink, mid - cz), SIDEWALK, rot_x=tilt)
+                v += run + (rng.uniform(1.0, 4.0) if rng.random() < 0.55 else 0.2)
+        # Road damage every ~20 m: sinkholes, lifted slabs, grass strips, puddles.
+        v = (x0 if horizontal else z0) + rng.uniform(4, 14)
+        end_v = x1 if horizontal else z1
+        while v < end_v - 4:
+            across = rng.uniform(-ROAD_W / 2 + 2.0, ROAD_W / 2 - 2.0)
+            gx, gz = (v, seg[1] + across) if horizontal else (seg[0] + across, v)
+            if not _reserved(gx, gz, 2) and abs(gx - HWY_X) > 10:
+                lx, lz = gx - cx, gz - cz
+                roll = rng.random()
+                if roll < 0.28:
+                    c.prop("tile_mud", (lx, 0, lz), (rng.uniform(4, 6.5), 0.35, rng.uniform(3.5, 5)), DIRT, rot_y=rng.uniform(0, 360))
+                    c.points.pop()
+                    c.prop("rubble_heap", (lx + rng.uniform(-1.5, 1.5), 0, lz + rng.uniform(-1.5, 1.5)), (2.4, 1.1, 2.4), CONCRETE, rot_y=rng.uniform(0, 360))
+                elif roll < 0.52:
+                    c.prop("tile_asphalt_broken", (lx, rng.uniform(0.05, 0.25), lz), (rng.uniform(2.5, 4), 0.5, rng.uniform(2, 3.5)), ASPHALT, rot_y=rng.uniform(0, 360))
+                    c.points.pop()
+                elif roll < 0.78:
+                    strip = rng.uniform(3, 6)
+                    # A band of grass grown right across the road.
+                    area = (strip, ROAD_W + 4) if horizontal else (ROAD_W + 4, strip)
+                    c.grass(MOSS, 700, rng.randint(1, 99999), area, (lx, 0, lz))
+                else:
+                    c.prop("tile_mud", (lx, 0, lz), (rng.uniform(2.5, 4), 0.3, rng.uniform(2, 3.5)), DIRT, rot_y=rng.uniform(0, 360))
+                    c.points.pop()
+            v += rng.uniform(14, 26)
         steps = max(1, int(length // 10))
         for i in range(steps + 1):
             t = i / steps
@@ -416,14 +450,32 @@ def wildlife(c, cx, cz, seed):
     rng = random.Random(seed)
     placed = 0
     for _ in range(40):
-        if placed >= 2:
+        if placed >= 3:
             break
         x, z = cx + rng.uniform(-50, 50), cz + rng.uniform(-50, 50)
         if math.hypot(x, z) < 80 or _reserved(x, z, 4) or x > CITY_EAST:
             continue
-        enemy = "ash_hound" if rng.random() < 0.55 else "gate_husk"
+        roll = rng.random()
+        enemy = "ash_hound" if roll < 0.45 else ("gate_husk" if roll < 0.8 else "ember_husk")
         for k in range(rng.randint(2, 3)):
             c.spawner(enemy, (x - cx + rng.uniform(-3, 3), 0.3, z - cz + rng.uniform(-3, 3)))
+        placed += 1
+
+
+def loot(c, cx, cz, seed):
+    """Chests on lots and next to wrecks: two supply crates per chunk, rarely a treasure."""
+    if cx == 0 and cz == 0:
+        return
+    rng = random.Random(seed)
+    placed = 0
+    for _ in range(60):
+        if placed >= 2:
+            break
+        x, z = cx + rng.uniform(-56, 56), cz + rng.uniform(-56, 56)
+        if _reserved(x, z, 3) or _on_asphalt(x, z, WALK_W + 1) or x > CITY_EAST:
+            continue
+        kind = "treasure" if rng.random() < 0.18 else "supply"
+        c.chest(f"r1_{int(x)}_{int(z)}", (x - cx, 0, z - cz), kind, 4 if kind == "supply" else 7, rng.uniform(0, 360))
         placed += 1
 
 
@@ -437,3 +489,4 @@ def dress_chunk(c, cx, cz, seed):
     border(c, cx, cz)
     skyline(c, cx, cz)
     wildlife(c, cx, cz, seed + 6)
+    loot(c, cx, cz, seed + 7)

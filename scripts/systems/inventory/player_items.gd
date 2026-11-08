@@ -68,6 +68,9 @@ func use(stack: ItemStack) -> bool:
 		var got: ItemStack = result["item"]
 		Codex.notify(tr(&"CODEX_MSG_BOX") % [" → ".join(names), GameState.inventory.display_name(got)],
 			&"anomaly" if steps[steps.size() - 1] == ItemData.Rarity.UNKNOWN else &"reward")
+		var got_key: bool = result.get("key", false)
+		if got_key:
+			Codex.notify(tr(&"CODEX_MSG_GOT_GATE_KEY"), &"anomaly")
 		return true
 	if item.identifies_items:
 		var target: ItemStack = _first_unidentified()

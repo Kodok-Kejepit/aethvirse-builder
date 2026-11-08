@@ -39,10 +39,12 @@ EXT = {
     "decor": ("Script", "res://scripts/systems/world/decor_prop.gd"),
     "prop": ("Script", "res://scripts/systems/world/prop_instance.gd"),
     "terrain": ("Script", "res://scripts/systems/world/terrain_patch.gd"),
+    "chest": ("Script", "res://scripts/systems/world/loot_chest.gd"),
 }
 DATA = {
     "gate_husk": "res://data/enemies/gate_husk.tres",
     "ash_hound": "res://data/enemies/ash_hound.tres",
+    "ember_husk": "res://data/enemies/ember_husk.tres",
     "drowned_rat": "res://data/enemies/drowned_rat.tres",
     "marrow": "res://data/dialogs/marrow.tres",
     "camp_kid": "res://data/dialogs/camp_kid.tres",
@@ -146,6 +148,11 @@ class Chunk:
         self.point(pos, 0.6 * max(size[0], size[2]) + 1.0)
         self.nodes.append(f'[node name="{n}" type="StaticBody3D" parent="."]\ntransform = {self.tf(pos, rot_y)}\nscript = {self.ext("prop")}\n'
                           f'prop_id = &"{prop_id}"\nfallback_size = Vector3({size[0]}, {size[1]}, {size[2]})\nfallback_color = {color}\n')
+
+    def chest(self, chest_id, pos, kind="supply", level=3, rot_y=0.0):
+        n = self._id("Chest")
+        self.nodes.append(f'[node name="{n}" type="StaticBody3D" parent="."]\ntransform = {self.tf(pos, rot_y)}\nscript = {self.ext("chest")}\n'
+                          f'chest_id = &"{chest_id}"\nkind = &"{kind}"\nlevel = {level}\n')
 
     def label(self, text, pos, size=48):
         n = self._id("Label")

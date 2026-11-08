@@ -4,6 +4,9 @@ extends RefCounted
 ## Pure-ish (inventory + gold + rng in, results out) so they are easy to test.
 
 const RULES: LootRules = preload("res://data/balancing/loot_rules.tres")
+## Chance a mystery box also holds a Gate Key (opens sealed Double Gate doors).
+const GATE_KEY_CHANCE: float = 0.3
+const GATE_KEY: StringName = &"gate_key"
 const SALVAGE_SCRAP: PackedInt32Array = [1, 2, 3, 5, 8, 12]
 
 enum UpgradeResult { SUCCESS, FAILED, FAILED_DOWNGRADED, MAXED, NO_GOLD, NOT_EQUIPMENT }
@@ -17,7 +20,10 @@ static func open_mystery_box(inv: Inventory, box: ItemStack, level: int, rng: Ra
 	var item: ItemStack = gen.generate(level, mini(final_tier, ItemData.Rarity.MYTHIC))
 	inv.remove(box.item_id)
 	inv.add_stack(item)
-	return {"steps": steps, "item": item}
+	var key: bool = rng.randf() < GATE_KEY_CHANCE and inv.db.get_item(GATE_KEY) != null
+	if key:
+		inv.add(GATE_KEY)
+	return {"steps": steps, "item": item, "key": key}
 
 
 static func sell_price(inv: Inventory, stack: ItemStack) -> int:

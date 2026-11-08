@@ -9,7 +9,8 @@ func test_xp_curve_matches_formula() -> void:
 	assert_eq(Progression.xp_needed(1, tuning), 100)
 	assert_eq(Progression.xp_needed(2, tuning), roundi(100.0 * pow(2.0, 1.8)))
 	assert_eq(Progression.xp_needed(10, tuning), roundi(100.0 * pow(10.0, 1.8)))
-	assert_eq(Progression.xp_needed(100, tuning), 0, "cap")
+	assert_gt(Progression.xp_needed(100, tuning), 0, "100 is no longer the cap")
+	assert_eq(Progression.xp_needed(1000, tuning), 0, "cap at 1000")
 
 
 func test_level_up_grants_points() -> void:

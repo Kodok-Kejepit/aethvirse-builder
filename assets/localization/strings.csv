@@ -498,3 +498,7 @@ LOAD_TIP_2,The Codex never tells you everything. Read item descriptions carefull
 LOAD_TIP_3,Gates left open too long break — and their monsters walk out.,Gate yang dibiarkan terlalu lama akan pecah — dan monsternya keluar.
 LOAD_TIP_4,Waystones let you travel between regions in an instant.,Waystone memungkinkanmu berpindah antar-region seketika.
 LOAD_TIP_5,"Some doors only appear at night, or in the rain.","Beberapa pintu hanya muncul di malam hari, atau saat hujan."
+PROMPT_OPEN_DOOR,Push the door open,Dorong pintu
+PROMPT_DOUBLE_DOOR,Use a Gate Key,Pakai Gate Key
+CODEX_MSG_DOUBLE_NEED_KEY,"The winged door will not move. A key-shaped hollow waits in its centre.","Pintu bersayap ini tak bergeming. Ada ceruk berbentuk kunci di tengahnya."
+CODEX_MSG_GOT_GATE_KEY,"…a Gate Key fell out of the box. It is cold, and it has wings.","…sebuah Gate Key jatuh dari kotak itu. Dingin, dan bersayap."

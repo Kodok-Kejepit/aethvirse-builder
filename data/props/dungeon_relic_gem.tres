@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_0cqot"]
+
+[resource]
+script = ExtResource("1_0cqot")
+id = &"dungeon_relic_gem"
+mesh_path = "res://assets/props/dungeon_relic_gem/dungeon_relic_gem.res"
+albedo_path = "res://assets/props/dungeon_relic_gem/dungeon_relic_gem_albedo.jpg"
+size = Vector3(1.0094109, 0.99999994, 1.0048978)
+collision = 0

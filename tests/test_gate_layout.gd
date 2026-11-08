@@ -64,7 +64,7 @@ func test_double_session_keeps_the_way_home() -> void:
 	assert_true(inner.has_rule(&"double"))
 
 
-func test_dungeon_hides_double_gate_behind_cracked_wall() -> void:
+func test_dungeon_has_a_winged_door_that_wants_a_key() -> void:
 	var session: GateSession = GateSession.new()
 	session.gate = gate
 	session.force_double = true
@@ -72,27 +72,27 @@ func test_dungeon_hides_double_gate_behind_cracked_wall() -> void:
 	var dungeon: GateDungeon = (load(GateDungeon.SCENE) as PackedScene).instantiate() as GateDungeon
 	add_child_autofree(dungeon)
 	await wait_physics_frames(3)
-	var crack: Breakable = _find_first(dungeon, "Breakable") as Breakable
-	assert_not_null(crack, "cracked wall exists")
-	var portal: ExitPortal = null
-	for node: Node in dungeon.find_children("*", "Node3D", true, false):
-		if node is ExitPortal and (node as ExitPortal).enters_double_gate:
-			portal = node
-	assert_not_null(portal)
-	assert_false(portal.visible, "hidden until the wall breaks")
-	var light: DamageInfo = DamageInfo.new()
-	crack.hurtbox.hit_received.emit(light)
-	assert_false(portal.visible, "light attacks do not break it")
-	var heavy: DamageInfo = DamageInfo.new()
-	heavy.is_heavy = true
-	crack.hurtbox.hit_received.emit(heavy)
-	assert_true(portal.visible)
+	var double_door: DungeonDoor = null
+	var linked: int = 0
+	for node: Node in dungeon.find_children("*", "StaticBody3D", true, false):
+		var door: DungeonDoor = node as DungeonDoor
+		if door == null:
+			continue
+		if door.is_double:
+			double_door = door
+		else:
+			assert_gt(door.target_door, -1, "every door leads somewhere and back")
+			linked += 1
+	assert_gt(linked, 2)
+	assert_not_null(double_door, "forced Double Gate door exists")
+	double_door.used.disconnect(dungeon._on_door_used)
+	watch_signals(double_door)
+	double_door.set_locked(false)
+	GameState.inventory.remove(DungeonDoor.KEY_ITEM, GameState.inventory.count_of(DungeonDoor.KEY_ITEM))
+	double_door._on_use(null)
+	assert_signal_not_emitted(double_door, "used", "no key, no way in")
+	GameState.inventory.add(DungeonDoor.KEY_ITEM)
+	double_door._on_use(null)
+	assert_signal_emitted(double_door, "used")
+	assert_eq(GameState.inventory.count_of(DungeonDoor.KEY_ITEM), 0, "the key is used up")
 	GameState.gate_session = null
-
-
-func _find_first(root: Node, type_name: String) -> Node:
-	for node: Node in root.find_children("*", "", true, false):
-		var script: Script = node.get_script()
-		if script != null and script.get_global_name() == type_name:
-			return node
-	return null

@@ -173,3 +173,11 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - Floors/walls: Meshy atlases do not tile, so tiling textures are baked from orthographic renders of the models.
 - Monsters / NPCs without rigs animate as a whole (breath, bob, lean) via CreatureBody; slot ids `mob_<enemy>` / `npc_<npc>` so swapping a model needs no code.
 - Towns are dressed from `tools/world_dressing.py`; every piece is a PropInstance slot, so a missing model shows its graybox footprint.
+
+## Level cap (2026-11-08)
+- Level cap raised from 100 to 1000 (owner: long-term open world with more worlds). XP curve unchanged (100 x level^1.8, ~25 M XP at 999).
+
+## Dungeon doors teleport instead of corridors (2026-11-08)
+- Rooms are built far apart and doors move the player with a short fade (owner offered "transisi gelap 1-2 detik"). Reasons: the downloaded door models are single meshes (the leaf cannot swing on its own), irregular rooms never have to line up, and only one room is drawn at a time (phones).
+- Double Gate entry moved from the cracked-wall portal to a key door; Gate Keys come from Mystery Boxes (30%). Cracked walls now hide loot niches instead.
+

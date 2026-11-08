@@ -19,11 +19,22 @@ const BY_RANK: Array[Array] = [
 	[&"tile_lava_crack", &"wall_carved", &"pillar_obsidian"],
 ]
 const RED: Array = [&"tile_lava_crack", &"wall_dungeon_dark", &"pillar_obsidian"]
+## Rank (E..S) -> door models (owner's downloads) the rooms pick from.
+const DOORS_BY_RANK: Array[Array] = [
+	[&"door_wood_heavy", &"door_cellar", &"door_ruined_stone"],
+	[&"door_stone_arch", &"door_ruined_stone", &"door_barred_wall"],
+	[&"door_forgotten", &"door_dark_twin", &"door_portcullis"],
+	[&"door_runeforged", &"door_ornate", &"door_forgotten"],
+	[&"door_dragon", &"door_ornate", &"door_infernal"],
+	[&"door_infernal", &"door_lava", &"door_dark_twin"],
+]
+const RED_DOORS: Array[StringName] = [&"door_lava", &"door_infernal"]
 
 var floor_material: StandardMaterial3D
 var wall_material: StandardMaterial3D
 var pillar_model: StringName
 var tint: Color
+var door_models: Array[StringName] = []
 
 
 func _init(rank: int, red: bool) -> void:
@@ -36,6 +47,7 @@ func _init(rank: int, red: bool) -> void:
 	floor_material = surface(floor_id, FLOOR_TILE_M, tint.darkened(0.55))
 	wall_material = surface(wall_id, WALL_TILE_M, tint.darkened(0.55))
 	pillar_model = row[2]
+	door_models.assign(RED_DOORS if red else DOORS_BY_RANK[clampi(rank, 0, DOORS_BY_RANK.size() - 1)])
 
 
 ## World-space triplanar material from a baked surface, or a flat colour.

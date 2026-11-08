@@ -5,7 +5,7 @@ extends Resource
 @export_group("Leveling")
 @export var xp_base: float = 100.0
 @export var xp_exponent: float = 1.8
-@export var level_cap: int = 100
+@export var level_cap: int = 1000
 @export var free_points_per_level: int = 5
 @export var skill_points_per_level: int = 1
 

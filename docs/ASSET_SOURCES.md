@@ -191,3 +191,19 @@ The project is non-commercial: nothing here is sold, no paid skins.
 | Низкополиго | `Meshy_AI_Низкополиго_1107051100_texture.glb` | — |  |  |
 | 一个高保真的3D写 | `Meshy_AI_一个高保真的3D写_1107035927_texture.glb` | tree_dead |  |  |
 | Starry Dragon Maiden .glb | `Starry_Dragon_Maiden_.glb` | — | owner (own Meshy generation) |  |
+| Single heavy wooden door | `meshy3/a_single_heavy_wooden.glb` | door_wood_heavy |  |  |
+| Stone doorway | `meshy3/a_stone_doorway_seem.glb` | door_stone_arch |  |  |
+| The Forgotten Gate | `meshy3/the_forgotten_gate.glb` | door_forgotten |  |  |
+| Ruined stone door | `meshy3/ruined_stone_door_in.glb` | door_ruined_stone |  |  |
+| Une porte de donjon | `meshy3/une_porte_de_donjon_d.glb` | door_dragon |  |  |
+| Ruinforged | `meshy3/ruinforged.glb` | door_runeforged |  |  |
+| Donjon doors | `meshy3/donjon_doors_dark_ag.glb` | door_dark_twin |  |  |
+| Winged key gate | `meshy3/winged_key_gate.glb` | door_winged |  |  |
+| Portcullis gatehouse | `meshy3/portcullis_gatehouse.glb` | door_portcullis |  |  |
+| Lava gate | `meshy3/x_1108015850.glb` | door_lava |  |  |
+| Enchanted infernal gate | `meshy3/enchanted_infernal_ga.glb` | door_infernal |  |  |
+| Ornate ancient gate | `meshy3/an_ornate_ancient_ga.glb` | door_ornate |  |  |
+| Dwarven cellar entrance | `meshy3/dwarven_cellar_entran.glb` | door_cellar |  |  |
+| Dungeon wall part | `meshy3/a_dungeon_wall_part_w.glb` | door_barred_wall |  |  |
+| Abstract gothic statue | `meshy3/eine_abstrakte_gotisc.glb` | dungeon_statue |  |  |
+| Emerald core | `meshy3/emerald_core.glb` | dungeon_relic_gem |  |  |

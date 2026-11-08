@@ -25,13 +25,17 @@ func _ready() -> void:
 
 ## The Double Gate keeps the outer Gate's way home: leaving it returns to the world.
 func _enter_double(_player: Player) -> void:
+	ExitPortal.enter_double(get_tree())
+
+
+static func enter_double(tree: SceneTree) -> void:
 	var outer: GateSession = GameState.gate_session
 	if outer == null:
 		return
 	var day: int = GameState.clock.day() if GameState.clock != null else 1
 	GameState.gate_session = GateLayout.double_session(outer, day)
 	EventBus.secret_area_entered.emit(&"double_gate")
-	LoadingScreen.go(get_tree(), GateDungeon.SCENE)
+	LoadingScreen.go(tree, GateDungeon.SCENE)
 
 
 func _process(delta: float) -> void:

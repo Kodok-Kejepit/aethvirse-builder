@@ -9,6 +9,8 @@ signal cleared
 
 var spawn_points: Array[Vector3] = []
 var exit_door: StaticBody3D = null
+## Doors of this room (dungeon rooms): sealed while enemies are alive.
+var doors: Array[DungeonDoor] = []
 var _alive: int = 0
 var _started: bool = false
 var _living: Array[Enemy] = []
@@ -94,6 +96,8 @@ func _on_cleared() -> void:
 
 
 func _set_door_locked(locked: bool) -> void:
+	for door: DungeonDoor in doors:
+		door.set_locked(locked)
 	if exit_door == null:
 		return
 	exit_door.visible = locked

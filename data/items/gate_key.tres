@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"gate_key"
+display_name = "Gate Key"
+description = "A key of black glass with wings on its bow. Somewhere inside a Gate, a door with the same wings is waiting."
+kind = 5
+rarity = 4
+max_stack = 9
+sell_price = 0
+can_sell = false

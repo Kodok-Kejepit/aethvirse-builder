@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_yovqf"]
+
+[resource]
+script = ExtResource("1_yovqf")
+id = &"door_infernal"
+mesh_path = "res://assets/props/door_infernal/door_infernal.res"
+albedo_path = "res://assets/props/door_infernal/door_infernal_albedo.jpg"
+size = Vector3(4.6830244, 4.6000004, 4.685232)
+collision = 0

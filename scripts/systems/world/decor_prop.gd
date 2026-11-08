@@ -7,6 +7,9 @@ extends StaticBody3D
 @export var kind: StringName = &"crate"
 @export var tint: Color = Color(1.0, 0.75, 0.4)
 @export var seed_value: int = 1
+## Dungeons: always burning (no day / night), optionally with a wider light.
+@export var always_lit: bool = false
+@export var light_range_m: float = 0.0
 
 const WOOD: Color = Color(0.42, 0.3, 0.2)
 const IRON: Color = Color(0.22, 0.22, 0.25)
@@ -179,7 +182,7 @@ func _use_model() -> bool:
 func _process(_delta: float) -> void:
 	if _light == null:
 		return
-	var night: float = 1.0 - clampf(sin((GameState.clock.day_fraction() - 0.25) * TAU) * 1.5 + 0.2, 0.0, 1.0)
+	var night: float = 1.0 if always_lit or GameState.clock == null else 1.0 - clampf(sin((GameState.clock.day_fraction() - 0.25) * TAU) * 1.5 + 0.2, 0.0, 1.0)
 	var lit: bool = kind == &"campfire" or night > 0.15 or kind == &"streetlight" and night > 0.05
 	_light.visible = lit
 	if lit:
@@ -193,7 +196,7 @@ func _add_light(at: Vector3, range_m: float) -> void:
 	_light = OmniLight3D.new()
 	_light.position = at
 	_light.light_color = tint
-	_light.omni_range = range_m
+	_light.omni_range = light_range_m if light_range_m > 0.0 else range_m
 	_light.shadow_enabled = false
 	_light.distance_fade_enabled = true
 	_light.distance_fade_begin = LIGHT_FADE_M * (0.5 if OS.has_feature("mobile") else 1.0)

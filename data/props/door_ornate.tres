@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_psicl"]
+
+[resource]
+script = ExtResource("1_psicl")
+id = &"door_ornate"
+mesh_path = "res://assets/props/door_ornate/door_ornate.res"
+albedo_path = "res://assets/props/door_ornate/door_ornate_albedo.jpg"
+size = Vector3(2.8621836, 4.6, 1.0670124)
+collision = 0

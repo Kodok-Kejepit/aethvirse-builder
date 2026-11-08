@@ -333,3 +333,18 @@
 
 ### Known issues
 - None.
+
+## Gate dungeons rebuilt (2026-11-08)
+- **Branching dungeons:** a Gate is now a graph of rooms (DungeonPlan): start → fight rooms → boss hall, with 1–3 dead-end side rooms. Same Gate + day = same dungeon.
+- **Irregular, roofed rooms** (DungeonRoomShape / DungeonRoomBuilder): caves (bulging walls, rocks), halls (near-regular, pillar rings), ruins (walls broken into jagged stubs with rock behind, rubble). Each room has its own size (13–22 m radius) and ceiling (8–14 m).
+- **Doors from the owner's downloads** (16 models, by Gate rank; Red Gates use the lava / infernal gates). A room seals its doors with a pulsing red ward while enemies live. Using a door: it shudders, the screen fades to black (~1.5 s in all), and you arrive at the matching door of the next room; the fight starts right away. Only the current room is drawn.
+- **Secrets:** side rooms hold an ornate chest, a glowing emerald relic and a gothic statue; ~30% of fight rooms hide a cracked wall (heavy attack) with a lit niche and a chest. Gate chests do not leave world flags.
+- **Double Gate = winged door:** when a run has a Double Gate, one room has the winged key gate. It needs a **Gate Key** (30% chance inside every Mystery Box) and uses it up. No key: the Codex hints at the key-shaped hollow.
+- Torches in dungeons always burn; the sky light is only a dim fill under the roofs.
+- 321 tests.
+
+### How to test
+- `gate gate_r1_e_overpass` (add `double` for the winged door), `give gate_key`.
+- Debug: `dungeonmap` (all rooms from above, roofs off), `dungeonmap 3` (stand in room 3), `dungeonmap next` (clear room + use its last door).
+- Check: door fade timing, the camera right after arriving, red wards, breaking a cracked wall, side-room chests.
+

@@ -54,6 +54,15 @@ func _ready() -> void:
 	_apply_rotation()
 
 
+## Jumps behind the target facing `yaw` (after a teleport: no swoop across the map).
+func snap_to(yaw: float) -> void:
+	_yaw = yaw
+	_apply_rotation()
+	if target != null:
+		global_position = _follow_point()
+	reset_physics_interpolation()
+
+
 func get_camera() -> Camera3D:
 	return _camera
 

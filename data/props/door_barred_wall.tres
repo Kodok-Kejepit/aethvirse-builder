@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_8hufa"]
+
+[resource]
+script = ExtResource("1_8hufa")
+id = &"door_barred_wall"
+mesh_path = "res://assets/props/door_barred_wall/door_barred_wall.res"
+albedo_path = "res://assets/props/door_barred_wall/door_barred_wall_albedo.jpg"
+size = Vector3(4.5373297, 4.5999994, 2.0694075)
+collision = 0

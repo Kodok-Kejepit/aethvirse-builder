@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_bxodt"]
+
+[resource]
+script = ExtResource("1_bxodt")
+id = &"door_portcullis"
+mesh_path = "res://assets/props/door_portcullis/door_portcullis.res"
+albedo_path = "res://assets/props/door_portcullis/door_portcullis_albedo.jpg"
+size = Vector3(3.258638, 4.6, 2.6144404)
+collision = 0
