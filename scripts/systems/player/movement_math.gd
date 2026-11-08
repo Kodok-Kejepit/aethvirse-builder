@@ -11,10 +11,18 @@ static func camera_relative(input: Vector2, camera_yaw: float) -> Vector3:
 
 
 ## Moves horizontal velocity toward the target at `rate` m/s², keeping vertical velocity.
+## rate 45 m/s² -> smoothing ~7.5/s (reaches run speed in ~0.3 s, stops in ~0.25 s).
+const EASE_DIVISOR: float = 6.0
+const SETTLE_SHARE: float = 0.15
+
+
 static func approach_horizontal(velocity: Vector3, target: Vector3, rate: float, delta: float) -> Vector3:
 	var horizontal: Vector3 = Vector3(velocity.x, 0.0, velocity.z)
 	var flat_target: Vector3 = Vector3(target.x, 0.0, target.z)
-	horizontal = horizontal.move_toward(flat_target, rate * delta)
+	# Ease in / ease out (frame-rate independent): close most of the gap exponentially,
+	# plus a small constant step so it settles exactly instead of creeping forever.
+	horizontal = horizontal.lerp(flat_target, 1.0 - exp(-rate / EASE_DIVISOR * delta))
+	horizontal = horizontal.move_toward(flat_target, rate * SETTLE_SHARE * delta)
 	return Vector3(horizontal.x, velocity.y, horizontal.z)
 
 

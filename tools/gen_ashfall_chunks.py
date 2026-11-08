@@ -271,9 +271,6 @@ def camp(c):
     c.block((3.2, 1.0, 3.2), (0, 0.5, -38), CONCRETE)
     c.prop("statue_starblade", (0, 1.0, -38), (1.2, 3.0, 1.2), CONCRETE, rot_y=180)
     c.decor("campfire", (0, 0, 0))
-    for i in range(6):
-        a = i / 6 * math.tau + 0.3
-        c.decor("barrel" if i % 2 else "crate", (math.cos(a) * 3.6, 0, math.sin(a) * 3.6), seed=40 + i)
     c.decor("water_tank", (16, 0, 14), seed=7)
     for i, (x, z) in enumerate([(-12, -18), (12, -18), (-12, 18), (12, 18), (-20, -36), (20, -36)]):
         c.decor("lantern", (x, 0, z), "Color(1, 0.7, 0.4, 1)", seed=60 + i)
@@ -295,15 +292,42 @@ def camp(c):
 
 
 def _camp_greenery(c):
-    """Shade trees behind the tents, grass, a fenced vegetable garden and the clutter of
-    people living here."""
+    """The camp grew into the old plaza: big mossy trees the survivors camp under, roots
+    and grass where the paving broke, remnant asphalt slabs, mud by the water tank, a fenced
+    vegetable garden, and the clutter of people living here. Layout by area:
+      NW / NE corners: tent rows sheltered under old trees (shade, roots, moss)
+      centre: campfire on a remnant asphalt slab, logs to sit on
+      SE: vegetable garden, SW: waystone shrine in rubble, N: market lane to the statue."""
     import random
     rng = random.Random(91)
-    for i, (x, z) in enumerate([(-40, -30), (-40, -4), (-39, 24), (40, -30), (40, -4), (6, 24), (-14, 38)]):
-        c.tree("oak", (x, 0, z), rng.uniform(7, 11), 9000 + i)
-    for i, (x, z, w, d) in enumerate([(-38, 10, 8, 10), (38, 12, 8, 10), (-18, 30, 10, 8), (0, -18, 8, 6),
-                                      (30, -38, 10, 6), (-30, -38, 10, 6), (8, 40, 12, 6)]):
-        c.grass(city.MOSS, 900, 200 + i, (w, d), (x, 0, z))
+    # Old trees: behind each tent row and along the market lane, never on paths.
+    for i, (x, z, h) in enumerate([(-41, -30, 12), (-42, -5, 10.5), (-41, 22, 11.5), (41, -28, 11), (42, 2, 12.5),
+                                   (-24, -40, 9), (24, -40, 9.5), (-12, 36, 10)]):
+        c.tree("ruin", (x, 0, z), h, 9000 + i)
+        c.prop("tile_roots_grass", (x, 0, z), (6, 0.9, 6), city.DIRT, rot_y=i * 47)
+        c.points.pop()
+    for i, (x, z) in enumerate([(-36, 32), (37, 30), (-28, -42), (30, 40)]):
+        c.tree("ruin_bush", (x, 0, z), 2.8, 9100 + i)
+    for i, (x, z) in enumerate([(-33, -18), (35, -14), (14, 28)]):
+        c.tree("ruin_stump", (x, 0, z), 1.8, 9200 + i)
+    # Remnants of the old plaza paving, broken into slabs, earth between them.
+    for i, (x, z, w, d) in enumerate([(0, 0, 9, 9), (-6, -24, 7, 5), (8, -22, 6, 5), (-10, 10, 5, 4),
+                                      (12, 8, 6, 4), (0, -34, 8, 5)]):
+        c.prop("tile_asphalt_broken", (x, 0, z), (w, 0.5, d), city.ASPHALT, rot_y=rng.uniform(0, 360))
+        c.points.pop()
+    # Logs and stumps around the fire to sit on.
+    for i in range(4):
+        a = i / 4 * math.tau + 0.4
+        c.prop("ruin_log_1", (math.cos(a) * 5.0, 0, math.sin(a) * 5.0), (2.4, 0.7, 1.0), city.DIRT, rot_y=math.degrees(-a) + 90)
+    # Mud where water spills under the tank.
+    c.prop("tile_mud", (16, 0, 14), (6, 0.35, 5), city.DIRT, rot_y=20)
+    c.points.pop()
+    # Moss and grass in the shady corners and along the palisade.
+    for i, (x, z, w, d) in enumerate([(-38, 10, 8, 14), (38, 12, 8, 14), (-18, 30, 10, 8), (30, -38, 10, 6),
+                                      (-30, -38, 10, 6), (0, 42, 18, 4), (-42, -18, 4, 14), (42, -18, 4, 14)]):
+        c.grass(city.MOSS, 1100, 200 + i, (w, d), (x, 0, z))
+    for i, (x, z) in enumerate([(-40, 40), (40, -42), (-22, 42)]):
+        c.prop("ruin_rock_%d" % (1 + i % 2), (x, 0, z), (2.4, 1.6, 2.2), city.CONCRETE, rot_y=i * 80)
     # Vegetable garden: four raised beds with crops, a plank fence around it.
     gx, gz = 22, 34
     for k in range(4):
@@ -462,7 +486,7 @@ def filler(c, seed, enemy):
     for i in range(5):
         p = (rng.uniform(-56, 56), 0, rng.uniform(-56, 56))
         if abs(p[0]) > 12 or abs(p[2]) > 12:
-            c.tree("dead", p, rng.uniform(5, 9), seed * 100 + i)
+            c.tree("ruin_twisted", p, rng.uniform(6, 9), seed * 100 + i)
 
 
 def ruins(c, x, z):

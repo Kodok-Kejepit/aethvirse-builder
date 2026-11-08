@@ -255,6 +255,7 @@ func _drive_animated(delta: float) -> void:
 	if _overlay_timer > 0.0 and (pose_name == &"summon" or pose_name == &"victory"):
 		progress = 1.0 - _overlay_timer / _overlay_length
 	animated.drive(pose_name, swing, progress, speed, delta)
+	animated.squash(sin(_land_timer / LAND_S * PI) * _land_strength if _land_timer > 0.0 else 0.0)
 	animated.sync_to_rig()
 	_update_trail()
 

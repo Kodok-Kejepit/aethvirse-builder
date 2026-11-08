@@ -21,7 +21,18 @@ func test_camera_relative_diagonal_is_clamped() -> void:
 
 func test_approach_keeps_vertical_velocity() -> void:
 	var v: Vector3 = MovementMath.approach_horizontal(Vector3(0.0, -3.0, 0.0), Vector3(10.0, 0.0, 0.0), 5.0, 1.0)
-	assert_almost_eq(v, Vector3(5.0, -3.0, 0.0), Vector3.ONE * 0.001)
+	assert_eq(v.y, -3.0, "vertical untouched")
+	assert_gt(v.x, 0.0)
+	assert_lt(v.x, 10.0, "eases toward the target, no jump")
+
+
+func test_approach_eases_out() -> void:
+	# Bigger steps far from the target, smaller ones near it (ease out).
+	var a: Vector3 = MovementMath.approach_horizontal(Vector3.ZERO, Vector3(6.0, 0.0, 0.0), 45.0, 0.05)
+	var b: Vector3 = MovementMath.approach_horizontal(a, Vector3(6.0, 0.0, 0.0), 45.0, 0.05)
+	var c: Vector3 = MovementMath.approach_horizontal(Vector3(5.5, 0.0, 0.0), Vector3(6.0, 0.0, 0.0), 45.0, 0.05)
+	assert_gt(a.x, c.x - 5.5, "first step from rest is bigger than the last step near the target")
+	assert_gt(b.x, a.x)
 
 
 func test_approach_does_not_overshoot() -> void:

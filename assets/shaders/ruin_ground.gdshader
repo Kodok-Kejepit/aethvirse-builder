@@ -9,7 +9,7 @@ uniform sampler2D tex_dirt : source_color, filter_linear_mipmap, repeat_enable;
 uniform sampler2D tex_mud : source_color, filter_linear_mipmap, repeat_enable;
 uniform sampler2D tex_grass : source_color, filter_linear_mipmap, repeat_enable;
 // Metres per texture repeat.
-uniform float tile_m = 4.0;
+uniform float tile_m = 2.6;
 // How much of the surface is still asphalt (1 road … 0 bare ground).
 uniform float paved = 0.75;
 // How green it has grown.

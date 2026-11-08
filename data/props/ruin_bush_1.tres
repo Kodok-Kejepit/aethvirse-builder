@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_tph5g"]
+
+[resource]
+script = ExtResource("1_tph5g")
+id = &"ruin_bush_1"
+mesh_path = "res://assets/props/ruin_bush_1/ruin_bush_1.res"
+albedo_path = "res://assets/props/ruin_bush_1/ruin_bush_1_albedo.jpg"
+size = Vector3(3.9983182, 3, 3.8174977)
+collision = 0

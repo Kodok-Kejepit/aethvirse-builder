@@ -4,6 +4,12 @@ extends StaticBody3D
 ## snow), palm, dead, crystal. Trunk collides; leaves sway with the foliage shader.
 
 @export var kind: StringName = &"oak"
+
+## Tree kinds drawn from the owner's model sets: kind -> [prop id prefix, variant count].
+const VARIANTS: Dictionary[StringName, Array] = {
+	&"ruin": ["ruin_tree", 12], &"ruin_twisted": ["ruin_twisted", 4], &"ruin_stump": ["ruin_stump", 4],
+	&"ruin_bush": ["ruin_bush", 2],
+}
 @export var height: float = 9.0
 @export var seed_value: int = 0
 @export var snowy: bool = false
@@ -27,6 +33,14 @@ func _ready() -> void:
 	shape.shape = cyl
 	shape.position.y = height * 0.35
 	add_child(shape)
+	# Owner's model sets: one variant per tree, picked by seed and turned randomly.
+	if VARIANTS.has(kind):
+		var variants: Array = VARIANTS[kind]
+		var count: int = variants[1]
+		var model_id: StringName = StringName("%s_%d" % [variants[0], 1 + rng.randi() % count])
+		rotation.y = rng.randf_range(0.0, TAU)
+		if PropInstance.attach_model(self, model_id, height):
+			return
 	if PropInstance.attach_model(self, StringName("tree_" + String(kind)), height):
 		return
 	match kind:

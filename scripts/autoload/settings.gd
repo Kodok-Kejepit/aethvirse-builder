@@ -64,6 +64,7 @@ func apply_preset(target: QualityPresets.Preset) -> void:
 	profile = QualityPresets.load_profile(target)
 	Engine.max_fps = fps_cap if fps_cap > 0 else profile.target_fps
 	get_viewport().scaling_3d_scale = profile.render_scale
+	_apply_render_quality()
 	EventBus.quality_preset_changed.emit(preset)
 
 
@@ -178,3 +179,24 @@ func load_from(path: String = PATH) -> void:
 			if Keybinds.decode(code) != null:
 				codes.append(code)
 		keybinds[action] = codes
+
+
+## Anti-aliasing and shadow filtering by preset: High / Ultra (shadow quality 3) get MSAA
+## 4x and soft 4K shadows; Medium MSAA 2x; Low and phones stay light (FPS first).
+func _apply_render_quality() -> void:
+	var q: int = mini(profile.shadow_quality, 1) if software_renderer() else profile.shadow_quality
+	var vp: Viewport = get_viewport()
+	vp.msaa_3d = Viewport.MSAA_4X if q >= 3 else (Viewport.MSAA_2X if q == 2 and not is_mobile else Viewport.MSAA_DISABLED)
+	RenderingServer.directional_shadow_atlas_set_size(4096 if q >= 3 else 2048, true)
+	RenderingServer.directional_soft_shadow_filter_set_quality(
+		RenderingServer.SHADOW_QUALITY_SOFT_HIGH if q >= 3 else (RenderingServer.SHADOW_QUALITY_SOFT_LOW if q == 2 else RenderingServer.SHADOW_QUALITY_HARD))
+
+
+## Screen-space ambient occlusion only on PC High / Ultra.
+func wants_ssao() -> bool:
+	return profile != null and profile.shadow_quality >= 3 and not is_mobile and not software_renderer()
+
+
+## CPU rendering (llvmpipe: headless captures / VMs): heavy effects would crawl.
+static func software_renderer() -> bool:
+	return RenderingServer.get_video_adapter_name().to_lower().contains("llvmpipe")

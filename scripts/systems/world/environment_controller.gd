@@ -38,6 +38,14 @@ func _ready() -> void:
 	var env: Environment = world_environment.environment if world_environment != null else null
 	if env == null:
 		return
+	# PC: contact shadows and soft occlusion in corners (Genshin-like depth); phones skip.
+	if Settings.wants_ssao():
+		env.ssao_enabled = true
+		env.ssao_radius = 1.2
+		env.ssao_intensity = 1.6
+		env.glow_enabled = true
+		env.glow_intensity = maxf(env.glow_intensity, 0.35)
+		env.glow_hdr_threshold = 1.1
 	# Dynamic sky built from the region's procedural sky colours.
 	if env.sky != null:
 		var old: ProceduralSkyMaterial = env.sky.sky_material as ProceduralSkyMaterial

@@ -18,13 +18,13 @@ const SWING_CAST: int = 10
 const SWING_ULTIMATE: int = 11
 const JUMP_RISE: Vector2 = Vector2(0.55, 0.8)
 const JUMP_FALL: Vector2 = Vector2(0.84, 1.08)
-const BLEND_S: float = 0.14
+const BLEND_S: float = 0.2
 ## Hair springs restart instead of whipping after teleports, respawns, hitches or snaps.
 const SPRING_TELEPORT_M: float = 1.5
 const SPRING_HITCH_S: float = 0.1
 const SPRING_SNAP_RAD: float = 0.35
 const SPRING_SETTLE_FRAMES: int = 3
-const ATTACK_BLEND_S: float = 0.06
+const ATTACK_BLEND_S: float = 0.1
 ## Ground speed (m/s) at which each loop plays at 1x.
 const WALK_ANIM_SPEED: float = 1.6
 const RUN_ANIM_SPEED: float = 4.6
@@ -33,7 +33,11 @@ const DODGE_ANIM_SCALE: float = 1.8
 const HURT_TILT_DEG: float = 14.0
 const DEAD_TILT_DEG: float = 82.0
 
-const ANIM_IDLE: StringName = &"Idle"
+## Calm standing loop; every IDLE_FIDGET_S seconds one fidget plays once (stretch, look
+## left / right), never the same twice in a row.
+const ANIM_IDLE: StringName = &"IdleAlt"
+const IDLE_FIDGETS: Array[StringName] = [&"Idle", &"TurnLeft", &"TurnRight"]
+const IDLE_FIDGET_S: Vector2 = Vector2(9.0, 16.0)
 const ANIM_WALK: StringName = &"Walking"
 const ANIM_RUN: StringName = &"Running"
 const ANIM_SPRINT: StringName = &"Running"
@@ -42,6 +46,7 @@ const ANIM_DODGE: StringName = &"Dodge"
 const ANIM_HURT: StringName = &"KnockDown"
 const ANIM_DEAD: StringName = &"Dead"
 const SPRINT_RATE_BOOST: float = 1.3
+const SQUASH: float = 0.05
 
 ## CharacterRig joint -> Mixamo bone.
 const BONE_FOR_JOINT: Dictionary[StringName, String] = {
@@ -67,6 +72,10 @@ const CLOTH_SPRING: Vector3 = Vector3(2.4, 0.65, 0.8)
 
 ## Weapon of the class (CharacterRig.Weapon); picks bow / staff shots.
 var weapon: int = 0
+var _idle_for: float = 0.0
+var _next_fidget: float = 12.0
+var _fidget: StringName = &""
+var _last_fidget: StringName = &""
 
 var skeleton: Skeleton3D
 var animation: AnimationPlayer
@@ -100,7 +109,14 @@ func setup(rig: CharacterRig, scene: PackedScene, albedo: Texture2D, outline: bo
 		var own: BaseMaterial3D = mi.mesh.surface_get_material(0) as BaseMaterial3D
 		if own != null and own.albedo_texture != null:
 			# GLB heroes bring their full material (colour + metal/roughness): keep it, add rim.
-			var m: BaseMaterial3D = own.duplicate() as BaseMaterial3D
+			# Toon look: colour only, no metal / gloss (the baked metal map made her glow white).
+			var m: StandardMaterial3D = StandardMaterial3D.new()
+			m.albedo_texture = own.albedo_texture
+			m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+			m.metallic = 0.0
+			m.roughness = 0.9
+			m.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON
+			m.specular_mode = BaseMaterial3D.SPECULAR_TOON
 			m.cull_mode = BaseMaterial3D.CULL_DISABLED
 			m.rim_enabled = true
 			m.rim = 0.2
@@ -205,6 +221,12 @@ func _guard_springs(delta: float) -> void:
 		springs.reset()
 
 
+## Landing squash, 0..1 (CharacterModel feeds its land timer): wider and shorter, a few %.
+func squash(amount: float) -> void:
+	var k: float = clampf(amount, 0.0, 1.0) * SQUASH
+	_pivot.scale = Vector3(1.0 + k, 1.0 - k * 1.2, 1.0 + k)
+
+
 ## Restart hair (call after moving the character by script).
 func reset_springs() -> void:
 	if springs != null:
@@ -237,7 +259,7 @@ func _select(pose: StringName, swing: int, progress: float, speed: float) -> voi
 		&"dead":
 			_hold(ANIM_DEAD, lerpf(0.0, 2.9, clampf(progress / 1.5, 0.0, 1.0)), BLEND_S)
 		_:
-			_loop(ANIM_IDLE, 1.0)
+			_idle()
 
 
 ## Which clip (and part of it) shows an attack / cast.
@@ -249,6 +271,29 @@ func _move_for(pose: StringName, swing: int) -> Array:
 	if pose == &"shoot":
 		return BOW_SHOT if weapon == CharacterRig.Weapon.BOW else STAFF_SHOT
 	return SWINGS[clampi(swing, 0, SWINGS.size() - 1)]
+
+
+func _idle() -> void:
+	if _current != ANIM_IDLE and not IDLE_FIDGETS.has(_current):
+		_idle_for = 0.0
+		_fidget = &""
+	if _fidget != &"":
+		if animation.current_animation == _fidget and animation.current_animation_position < animation.current_animation_length - 0.25:
+			return
+		_fidget = &""
+		_idle_for = 0.0
+		_next_fidget = randf_range(IDLE_FIDGET_S.x, IDLE_FIDGET_S.y)
+	_loop(ANIM_IDLE, 1.0)
+	_idle_for += get_process_delta_time()
+	if _idle_for >= _next_fidget and animation.has_animation(IDLE_FIDGETS[0]):
+		var pick: StringName = IDLE_FIDGETS[randi() % IDLE_FIDGETS.size()]
+		if pick == _last_fidget:
+			pick = IDLE_FIDGETS[(IDLE_FIDGETS.find(pick) + 1) % IDLE_FIDGETS.size()]
+		_fidget = pick
+		_last_fidget = pick
+		_current = pick
+		animation.speed_scale = 1.0
+		animation.play(pick, 0.35)
 
 
 func _loop(anim: StringName, rate: float) -> void:

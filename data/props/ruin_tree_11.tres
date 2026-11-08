@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_e1v6x"]
+
+[resource]
+script = ExtResource("1_e1v6x")
+id = &"ruin_tree_11"
+mesh_path = "res://assets/props/ruin_tree_11/ruin_tree_11.res"
+albedo_path = "res://assets/props/ruin_tree_11/ruin_tree_11_albedo.jpg"
+size = Vector3(8.776317, 10.5, 7.1263385)
+collision = 0

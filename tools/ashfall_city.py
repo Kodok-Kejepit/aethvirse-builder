@@ -262,7 +262,7 @@ def city_blocks(c, cx, cz, seed):
                 # Roof garden gone wild: moss bed and a tree that rooted up there.
                 c.grass(MOSS, 500, rng.randint(1, 99999), (w * 0.7, d * 0.7), (lx, h, lz))
                 if rng.random() < 0.6:
-                    c.tree("oak", (lx + rng.uniform(-w / 4, w / 4), h, lz + rng.uniform(-d / 4, d / 4)), rng.uniform(4, 7), rng.randint(1, 1 << 30))
+                    c.tree("ruin_bush" if rng.random() < 0.5 else "ruin", (lx + rng.uniform(-w / 4, w / 4), h, lz + rng.uniform(-d / 4, d / 4)), rng.uniform(3, 6), rng.randint(1, 1 << 30))
             if rng.random() < 0.4:
                 c.prop("tile_roots_grass", (lx + fwd[0] * (d / 2 + 0.5), 0, lz + fwd[1] * (d / 2 + 0.5)), (w * 0.8, 0.7, 2.5), DIRT, rot_y=yaw)
                 c.points.pop()
@@ -273,7 +273,7 @@ def city_blocks(c, cx, cz, seed):
             # Nature took the stump: moss on top, often a tree growing out of it.
             c.grass(MOSS, 600, rng.randint(1, 99999), (w * 0.8, d * 0.8), (lx, hs, lz))
             if rng.random() < 0.6:
-                c.tree("oak", (lx + rng.uniform(-2, 2), hs, lz + rng.uniform(-2, 2)), rng.uniform(5, 9), rng.randint(1, 1 << 30))
+                c.tree("ruin", (lx + rng.uniform(-2, 2), hs, lz + rng.uniform(-2, 2)), rng.uniform(6, 10), rng.randint(1, 1 << 30))
             c.prop("tile_roots_grass", (lx, 0, lz + d / 2 + 0.8), (w, 0.8, 3), DIRT, rot_y=yaw)
             c.points.pop()
             for i in range(rng.randint(2, 4)):
@@ -289,7 +289,10 @@ def city_blocks(c, cx, cz, seed):
             c.block((w, 0.8, d), (lx, y, lz), BUILDING, rot_y=yaw, rot_x=tilt)
             c.decor("debris", (lx + rng.uniform(-3, 3), 0, lz + d / 2), seed=rng.randint(1, 99999))
         elif kind == "tree":
-            c.tree("oak" if rng.random() < 0.65 else "dead", (lx, 0, lz), h + (2 if rng.random() < 0.65 else 0), rng.randint(1, 1 << 30))
+            roll = rng.random()
+            kind = "ruin" if roll < 0.55 else ("ruin_twisted" if roll < 0.75 else ("ruin_bush" if roll < 0.9 else "ruin_stump"))
+            hh = {"ruin": rng.uniform(8, 13), "ruin_twisted": rng.uniform(6, 9), "ruin_bush": 2.8, "ruin_stump": 1.8}[kind]
+            c.tree(kind, (lx, 0, lz), hh, rng.randint(1, 1 << 30))
             c.grass(MOSS, 400, rng.randint(1, 99999), (6, 6), (lx, 0, lz))
         elif kind == "moss":
             c.grass(MOSS, 1400, rng.randint(1, 99999), (w * 1.6, d * 1.6), (lx, 0, lz))
@@ -311,7 +314,7 @@ def planters(c, cx, cz, seed):
             for side in (-1, 1):
                 gx = seg[0] + side * (ROAD_W / 2 + WALK_W + 1.5)
                 if not _reserved(gx, v, 2):
-                    c.tree("dead", (gx - cx, 0, v - cz), rng.uniform(5, 8), rng.randint(1, 1 << 30))
+                    c.tree("ruin" if rng.random() < 0.6 else "ruin_twisted", (gx - cx, 0, v - cz), rng.uniform(6, 10), rng.randint(1, 1 << 30))
             v += 36
 
 
