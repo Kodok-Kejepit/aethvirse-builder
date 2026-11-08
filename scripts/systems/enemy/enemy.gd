@@ -239,6 +239,25 @@ func show_telegraph(progress: float) -> void:
 
 # --- Hits ----------------------------------------------------------------------------
 
+## Damage of this enemy's blows and shots (projectiles call it too).
+func build_damage_for(target: HurtboxComponent) -> DamageInfo:
+	return _build_damage(target)
+
+
+var _aim_line: MeshInstance3D = null
+
+
+## Ranged sight line (EnemyRanged); hidden with `progress` < 0.
+func show_aim_line(to: Vector3, progress: float, locked: bool) -> void:
+	if _aim_line == null:
+		_aim_line = EnemyRanged.make_line()
+		add_child(_aim_line)
+	if progress < 0.0:
+		_aim_line.visible = false
+		return
+	EnemyRanged.update_line(_aim_line, EnemyRanged.muzzle(self), to, progress, locked)
+
+
 func _build_damage(target: HurtboxComponent) -> DamageInfo:
 	var defender: CombatStats = target.stats if target.stats != null else CombatStats.new()
 	var info: DamageInfo = DamageCalculator.resolve(stats, defender, data.attack_multiplier,
@@ -247,6 +266,7 @@ func _build_damage(target: HurtboxComponent) -> DamageInfo:
 	var push: Vector3 = target.global_position - global_position
 	push.y = 0.0
 	info.knockback = push.normalized() * data.attack_knockback
+	info.launch = data.attack_launch
 	return info
 
 

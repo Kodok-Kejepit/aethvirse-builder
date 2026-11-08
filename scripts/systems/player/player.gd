@@ -354,7 +354,8 @@ func _on_damaged(info: DamageInfo) -> void:
 	if health.is_dead():
 		return
 	var armored: bool = combat.current_attack != null and combat.current_attack.is_heavy
-	if info.stagger >= poise_threshold and not armored:
+	# A throw (launch) breaks through heavy-attack armour too.
+	if info.launch > 0.0 or (info.stagger >= poise_threshold and not armored):
 		state_machine.transition_to(PlayerState.HURT)
 
 

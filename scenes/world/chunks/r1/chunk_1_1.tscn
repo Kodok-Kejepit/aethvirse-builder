@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
+[ext_resource type="Resource" path="res://data/enemies/cinder_archer.tres" id="d_cinder_archer"]
 [ext_resource type="Resource" path="res://data/enemies/ember_husk.tres" id="d_ember_husk"]
 [ext_resource type="Resource" path="res://data/enemies/moss_brute.tres" id="d_moss_brute"]
 [ext_resource type="Script" path="res://scripts/systems/world/decor_prop.gd" id="decor"]
@@ -1193,6 +1194,14 @@ respawn_s = 20.0
 level = 8
 
 [node name="Spawn166" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -39.3186, 0.3, -53.1184)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_cinder_archer")
+respawn_s = 20.0
+level = 10
+
+[node name="Spawn167" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -11.643, 0.3, -36.1511)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1200,7 +1209,7 @@ enemy_data = ExtResource("d_moss_brute")
 respawn_s = 20.0
 level = 12
 
-[node name="Spawn167" type="Marker3D" parent="."]
+[node name="Spawn168" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14.9547, 0.3, -37.3396)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1208,7 +1217,7 @@ enemy_data = ExtResource("d_moss_brute")
 respawn_s = 20.0
 level = 14
 
-[node name="Spawn168" type="Marker3D" parent="."]
+[node name="Spawn169" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -19.3519, 0.3, 29.0908)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1216,7 +1225,7 @@ enemy_data = ExtResource("d_ember_husk")
 respawn_s = 20.0
 level = 26
 
-[node name="Spawn169" type="Marker3D" parent="."]
+[node name="Spawn170" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -15.8947, 0.3, 26.7155)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1224,14 +1233,14 @@ enemy_data = ExtResource("d_ember_husk")
 respawn_s = 20.0
 level = 23
 
-[node name="Chest170" type="StaticBody3D" parent="."]
+[node name="Chest171" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.1313, 0, 0.99134, 0, 1, -0, -0.99134, -0, -0.1313, -39.1116, 0, -27.4005)
 script = ExtResource("chest")
 chest_id = &"r1_88_100"
 kind = &"supply"
 level = 4
 
-[node name="Chest171" type="StaticBody3D" parent="."]
+[node name="Chest172" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.698, -0, -0.7161, 0, 1, -0, 0.7161, -0, -0.698, 3.24562, 0, -47.0888)
 script = ExtResource("chest")
 chest_id = &"r1_131_80"

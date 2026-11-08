@@ -21,3 +21,7 @@ chase_speed = 3.4
 attack_windup_s = 0.95
 attack_multiplier = 1.3
 poise = 60.0
+attack_scale = 1.2
+attack_knockback = 15.0
+attack_launch = 7.0
+attack_stagger = 50.0

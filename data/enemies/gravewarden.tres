@@ -29,3 +29,5 @@ attack_hitbox_offset = Vector3(0, 1, -1.6)
 telegraph_radius = 3.0
 aggro_radius = 40.0
 leash_radius = 80.0
+attack_knockback = 13.0
+attack_launch = 6.0

@@ -27,3 +27,4 @@ func _ready() -> void:
 	add_child(gates)
 	gates.setup(region)
 	Codex.notify(tr(&"CODEX_MSG_REGION") % [tr(region.display_name), region.level_min, region.level_max], &"info")
+	OpeningClip.play_if_pending(self)

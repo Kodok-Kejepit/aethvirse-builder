@@ -513,6 +513,9 @@ def _pack(rng, level):
     return ("moss_brute" if roll < 0.7 else "ember_husk"), rng.randint(2, 3), None
 
 
+ARCHER_CHANCE = 0.5
+
+
 def wildlife(c, cx, cz, seed):
     """Roaming packs outside the camp's safe zone (three per chunk, on lots and streets),
     at the level of where they roam."""
@@ -532,6 +535,14 @@ def wildlife(c, cx, cz, seed):
             c.spawner(leader, (x - cx, 0.3, z - cz), 60.0, level=min(LEVEL_MAX, level + 2))
         for k in range(count):
             c.spawner(enemy, (x - cx + rng.uniform(-3, 3), 0.3, z - cz + rng.uniform(-3, 3)), level=max(1, level + rng.randint(-2, 1)))
+        # Owner: a long-range shooter now and then, covering the pack from 10-14 m.
+        # Own random stream so the rest of the chunk keeps its layout.
+        arng = random.Random(seed * 31 + placed)
+        if arng.random() < ARCHER_CHANCE:
+            a = arng.uniform(0, math.tau)
+            ax, az = x + math.cos(a) * arng.uniform(10, 14), z + math.sin(a) * arng.uniform(10, 14)
+            if not _reserved(ax, az, 3):
+                c.spawner("cinder_archer", (ax - cx, 0.3, az - cz), level=max(1, level))
         placed += 1
 
 

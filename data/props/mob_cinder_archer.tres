@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_v3701"]
+
+[resource]
+script = ExtResource("1_v3701")
+id = &"mob_cinder_archer"
+mesh_path = "res://assets/props/mob_cinder_archer/mob_cinder_archer.res"
+albedo_path = "res://assets/props/mob_cinder_archer/mob_cinder_archer_albedo.jpg"
+size = Vector3(1.6087799, 2, 0.6588308)
+collision = 0

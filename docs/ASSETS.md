@@ -77,3 +77,6 @@ Owner-picked Meshy models (own + Meshy community uploads). Pipeline:
 
 Unrigged characters / monsters move as one piece. For real animation, rig them like the
 Dragon Maiden (Meshy auto-rig or Mixamo) and send the FBX — `tools/import_rigged_hero.gd`.
+
+## Generated for the game (Meshy, owner subscription)
+- `mob_cinder_archer` — charred hooded archer with a bone bow (2026-11-09, 10 credits), reduced with `--rebake` to 20 k, imported at 10 k + LODs.

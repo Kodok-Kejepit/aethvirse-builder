@@ -5,6 +5,7 @@
 [ext_resource type="Resource" path="res://data/enemies/drowned_rat.tres" id="e0"]
 [ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="e1"]
 [ext_resource type="Resource" path="res://data/enemies/ash_hound_alpha.tres" id="boss"]
+[ext_resource type="Resource" path="res://data/enemies/cinder_archer.tres" id="archer"]
 
 [resource]
 script = ExtResource("1")
@@ -13,7 +14,7 @@ display_name = &"GATE_R1_E_CULVERT"
 rank = 0
 seed_value = 1311
 room_count = 3
-enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1")])
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1"), ExtResource("archer")])
 enemies_per_room = 3
 boss = ExtResource("boss")
 rules = Array[StringName]([])

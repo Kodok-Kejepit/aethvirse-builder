@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
 [ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="d_ash_hound"]
+[ext_resource type="Resource" path="res://data/enemies/cinder_archer.tres" id="d_cinder_archer"]
 [ext_resource type="Resource" path="res://data/enemies/ember_husk.tres" id="d_ember_husk"]
 [ext_resource type="Resource" path="res://data/enemies/moss_brute.tres" id="d_moss_brute"]
 [ext_resource type="Script" path="res://scripts/systems/world/decor_prop.gd" id="decor"]
@@ -1313,6 +1314,14 @@ respawn_s = 20.0
 level = 21
 
 [node name="Spawn183" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 42.2681, 0.3, 4.47666)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_cinder_archer")
+respawn_s = 20.0
+level = 20
+
+[node name="Spawn184" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 27.3459, 0.3, -42.6403)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1320,7 +1329,7 @@ enemy_data = ExtResource("d_ash_hound")
 respawn_s = 20.0
 level = 9
 
-[node name="Spawn184" type="Marker3D" parent="."]
+[node name="Spawn185" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 29.566, 0.3, -42.731)
 script = ExtResource("spawner")
 enemy_scene = ExtResource("enemy")
@@ -1328,14 +1337,22 @@ enemy_data = ExtResource("d_ash_hound")
 respawn_s = 20.0
 level = 9
 
-[node name="Chest185" type="StaticBody3D" parent="."]
+[node name="Spawn186" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 16.5418, 0.3, -37.1333)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_cinder_archer")
+respawn_s = 20.0
+level = 11
+
+[node name="Chest187" type="StaticBody3D" parent="."]
 transform = Transform3D(0.76103, -0, -0.64872, 0, 1, -0, 0.64872, 0, 0.76103, 30.492, 0, 23.7477)
 script = ExtResource("chest")
 chest_id = &"r1_-97_151"
 kind = &"supply"
 level = 4
 
-[node name="Chest186" type="StaticBody3D" parent="."]
+[node name="Chest188" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99911, -0, -0.042072, 0, 1, -0, 0.042072, -0, -0.99911, 32.3467, 0, -39.7121)
 script = ExtResource("chest")
 chest_id = &"r1_-95_88"

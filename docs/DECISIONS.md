@@ -221,3 +221,29 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
   camera, shrinks away and is culled at 40–70 m by preset, and big fields are cut into 24 m cells.
   Decor without a light stops ticking; lamp lights beyond their fade distance skip their update.
 - High/Ultra below 25 fps for 12 s shows a one-time Codex hint to lower the preset.
+
+## Mystery Journal pages drive progression (owner, 2026-11-09)
+- Superseded "every mission is a seal" in the UI: the owner wants it never said. "Seal" is an
+  internal word; the Codex tab is "Quests" again. The Mystery Journal hints instead, with a
+  cryptic synopsis per region.
+- One journal page per region (RegionJournal): every tracked secret and sealed mission of the
+  region is an entry, counted from the data that exists (R1: 7 + 2), not the planned totals.
+  A sealed mission that failed for good closes its entry (✕) so a permanent choice can never
+  lock progression.
+- Page complete → Codex notice → [ SYSTEM UPDATE ] overlay → automatic travel to the next
+  region's first waystone (JournalCompletion, once per region). Forward roads stay shut until
+  the page before is complete (or the region was already reached in an old save).
+- Prologue: text pages, then an in-engine opening clip in Ashfall (letterbox, narration,
+  paused world, skippable): why the city died, why the hero lived. Skipped in `--skip-opening`
+  runs; cheat `clip` replays it.
+
+## Harder enemies (owner, 2026-11-09)
+- New ranged enemy **Cinder Archer** (Meshy model, 10 k tris + LODs): keeps 8 m away, shoots
+  from 20 m only with a clear line, red sight line during the 1.15 s windup that leads a moving
+  hero (aim_lead 0.9) and freezes for the last 0.25 s — the dodge cue. Half of Ashfall's
+  roaming packs get one 10–14 m away; also in the R1 Gate pools.
+- Heavy blows throw the hero (DamageInfo.launch): Moss Brute 15 m/s + 7 up, Gravewarden,
+  Ash Hound Alpha, Ember Husk lighter. No braking in the air, short get-up, breaks through
+  heavy-attack armour. R1 enemies hit ~15–20 % harder and recover faster.
+- Three more R1 quests in a clear chain (archers → brutes → metro Gate), each with a named
+  NPC to report to.

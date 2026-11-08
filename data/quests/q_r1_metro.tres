@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="QuestData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/quest_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/quest_objective.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/reward_data.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="4"]
+
+[sub_resource type="Resource" id="c0"]
+script = ExtResource("4")
+type = 0
+key = &"r1_moss_giants_done"
+
+[sub_resource type="Resource" id="o0"]
+script = ExtResource("2")
+type = 1
+target = &"quartermaster"
+count = 1
+text = &"QO_ASK_QM_METRO"
+stage = 0
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2")
+type = 4
+target = &"gate_r1_d_metro"
+count = 1
+text = &"QO_CLEAR_METRO"
+stage = 1
+
+[sub_resource type="Resource" id="r0"]
+script = ExtResource("3")
+type = 2
+key = &""
+amount = 2500
+
+[sub_resource type="Resource" id="r1"]
+script = ExtResource("3")
+type = 1
+key = &""
+amount = 600
+
+[sub_resource type="Resource" id="r2"]
+script = ExtResource("3")
+type = 0
+key = &"potion_large"
+amount = 3
+
+[sub_resource type="Resource" id="r3"]
+script = ExtResource("3")
+type = 3
+key = &"r1_metro_done"
+amount = 1
+
+[resource]
+script = ExtResource("1")
+id = &"q_r1_metro"
+title = &"QUEST_R1_METRO"
+description = &"QUEST_R1_METRO_D"
+kind = 0
+auto_start = true
+start_conditions = Array[ExtResource("4")]([SubResource("c0")])
+guild_points = 40
+objectives = Array[ExtResource("2")]([SubResource("o0"), SubResource("o1")])
+rewards = Array[ExtResource("3")]([SubResource("r0"), SubResource("r1"), SubResource("r2"), SubResource("r3")])

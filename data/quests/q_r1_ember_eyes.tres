@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="QuestData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/quest_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/quest_objective.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/reward_data.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="4"]
+
+[sub_resource type="Resource" id="c0"]
+script = ExtResource("4")
+type = 0
+key = &"main_ch1_done"
+
+[sub_resource type="Resource" id="o0"]
+script = ExtResource("2")
+type = 0
+target = &"cinder_archer"
+count = 4
+text = &"QO_KILL_ARCHERS"
+stage = 0
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2")
+type = 1
+target = &"quartermaster"
+count = 1
+text = &"QO_REPORT_QM"
+stage = 1
+
+[sub_resource type="Resource" id="r0"]
+script = ExtResource("3")
+type = 2
+key = &""
+amount = 450
+
+[sub_resource type="Resource" id="r1"]
+script = ExtResource("3")
+type = 1
+key = &""
+amount = 160
+
+[sub_resource type="Resource" id="r2"]
+script = ExtResource("3")
+type = 0
+key = &"potion_small"
+amount = 3
+
+[sub_resource type="Resource" id="r3"]
+script = ExtResource("3")
+type = 3
+key = &"r1_ember_eyes_done"
+amount = 1
+
+[resource]
+script = ExtResource("1")
+id = &"q_r1_ember_eyes"
+title = &"QUEST_R1_EMBER"
+description = &"QUEST_R1_EMBER_D"
+kind = 1
+auto_start = true
+start_conditions = Array[ExtResource("4")]([SubResource("c0")])
+guild_points = 15
+objectives = Array[ExtResource("2")]([SubResource("o0"), SubResource("o1")])
+rewards = Array[ExtResource("3")]([SubResource("r0"), SubResource("r1"), SubResource("r2"), SubResource("r3")])

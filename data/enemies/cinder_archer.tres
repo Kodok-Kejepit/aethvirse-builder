@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/combat_stats.gd" id="2"]
+
+[sub_resource type="Resource" id="stats"]
+script = ExtResource("2")
+attack = 16.0
+defense = 4.0
+crit_chance = 0.08
+crit_damage = 1.5
+element = 1
+
+[resource]
+script = ExtResource("1")
+id = &"cinder_archer"
+display_name = "Cinder Archer"
+level = 4
+max_health = 150
+stats = SubResource("stats")
+poise = 20.0
+body_color = Color(0.35, 0.3, 0.28, 1)
+hp_scale = 0.75
+attack_scale = 1.1
+walk_speed = 1.4
+chase_speed = 3.6
+aggro_radius = 24.0
+leash_radius = 36.0
+attack_range = 20.0
+attack_windup_s = 1.15
+attack_recovery_s = 0.7
+attack_cooldown_s = 2.0
+attack_multiplier = 1.25
+attack_stagger = 24.0
+attack_knockback = 6.0
+telegraph_radius = 0.0
+ranged = true
+projectile_speed = 34.0
+aim_lead = 0.9
+keep_distance_m = 8.0
+projectile_color = Color(1, 0.45, 0.12, 1)
+xp_reward = 55
+gold_reward = 14

@@ -5,12 +5,15 @@ extends Area3D
 
 const WORLD_MASK: int = 1
 const ENEMY_HURTBOX_MASK: int = 16
+## Enemy shots hit the hero's hurtbox layer instead.
+const PLAYER_HURTBOX_MASK: int = 8
 
 var data: ProjectileData
 var direction: Vector3 = Vector3.FORWARD
 var damage_builder: Callable
 var source: Node3D
 var homing_target: Node3D = null
+var hit_mask: int = ENEMY_HURTBOX_MASK
 
 var _age: float = 0.0
 var _pierce_left: int = 0
@@ -19,7 +22,7 @@ var _done: bool = false
 
 
 static func fire(parent: Node, from: Vector3, dir: Vector3, projectile: ProjectileData, builder: Callable,
-		owner_body: Node3D, target: Node3D = null) -> Array[Projectile]:
+		owner_body: Node3D, target: Node3D = null, mask: int = ENEMY_HURTBOX_MASK) -> Array[Projectile]:
 	var out: Array[Projectile] = []
 	var count: int = maxi(projectile.count, 1)
 	for i: int in count:
@@ -32,6 +35,7 @@ static func fire(parent: Node, from: Vector3, dir: Vector3, projectile: Projecti
 		p.damage_builder = builder
 		p.source = owner_body
 		p.homing_target = target if projectile.homing else null
+		p.hit_mask = mask
 		p.position = from
 		parent.add_child(p)
 		out.append(p)
@@ -40,7 +44,7 @@ static func fire(parent: Node, from: Vector3, dir: Vector3, projectile: Projecti
 
 func _ready() -> void:
 	collision_layer = 0
-	collision_mask = ENEMY_HURTBOX_MASK | WORLD_MASK
+	collision_mask = hit_mask | WORLD_MASK
 	monitoring = true
 	monitorable = false
 	_pierce_left = data.pierce

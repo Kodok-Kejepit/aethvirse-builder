@@ -1,7 +1,6 @@
 class_name CodexQuestTab
 extends VBoxContainer
-## Codex → Seals: every mission is one of the Codex's seals (owner's story: breaking a
-## seal opens a page). Active missions with their current objective, then the broken ones.
+## Codex → Quests: active quests with current objective, completed list.
 
 
 func _init() -> void:
@@ -15,7 +14,6 @@ func refresh() -> void:
 	if system == null:
 		return
 	var log_state: QuestLog = GameState.quests
-	_add(tr(&"QUESTS_PAGES") % log_state.completed.size(), 20, Color(0.95, 0.8, 0.5))
 	if log_state.active.is_empty() and log_state.completed.is_empty():
 		_add(tr(&"QUESTS_NONE"), 22, Color(1, 1, 1, 0.6))
 	if not log_state.active.is_empty():

@@ -40,6 +40,10 @@ func _unlock() -> void:
 func _use(player: Player) -> void:
 	if road_to != &"":
 		var region: RegionData = RegionData.region_of_waystone(road_to)
+		# Forward roads stay shut until this region's journal page is complete.
+		if region != null and not RegionJournal.road_open(region.id):
+			Codex.notify(tr(&"CODEX_MSG_ROAD_SHUT"), &"warning")
+			return
 		if region != null and player != null and GameState.progression != null and GameState.progression.level < region.level_min - 5:
 			Codex.notify(tr(&"CODEX_MSG_ROAD_DANGER") % [tr(region.display_name), region.level_min], &"warning")
 		WorldTravel.unlock(road_to)

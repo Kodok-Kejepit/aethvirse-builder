@@ -1,15 +1,21 @@
 extends EnemyState
 ## Windup (red ground telegraph) → active hitbox with lunge → recovery.
+## Ranged enemies: windup with a red sight line (leading the hero, frozen for the last
+## EnemyRanged.AIM_LOCK_S) → one shot → recovery.
 
 var _elapsed: float = 0.0
 var _direction: Vector3 = Vector3.FORWARD
+var _aim: Vector3 = Vector3.ZERO
+var _fired: bool = false
 
 
 func enter(_previous: StringName) -> void:
 	_elapsed = 0.0
+	_fired = false
 
 
 func exit() -> void:
+	enemy.show_aim_line(Vector3.ZERO, -1.0, false)
 	enemy.hitbox.deactivate()
 	enemy.show_telegraph(0.0)
 	enemy.release_attack_token()
@@ -18,6 +24,9 @@ func exit() -> void:
 
 func physics_update(delta: float) -> void:
 	var d: EnemyData = enemy.data
+	if d.ranged:
+		_ranged_update(delta)
+		return
 	_elapsed += delta / enemy.windup_multiplier if _elapsed < d.attack_windup_s else delta
 	var target: Node3D = enemy.get_target()
 	if _elapsed < d.attack_windup_s:
@@ -39,4 +48,24 @@ func physics_update(delta: float) -> void:
 		enemy.stop(delta)
 	enemy.apply_gravity_and_move(delta)
 	if _elapsed >= d.attack_windup_s + d.attack_active_s + d.attack_recovery_s:
+		transitioned.emit(CHASE)
+
+
+func _ranged_update(delta: float) -> void:
+	var d: EnemyData = enemy.data
+	_elapsed += delta / enemy.windup_multiplier if _elapsed < d.attack_windup_s else delta
+	var target: Node3D = enemy.get_target()
+	enemy.stop(delta)
+	if _elapsed < d.attack_windup_s:
+		var locked: bool = _elapsed > d.attack_windup_s - EnemyRanged.AIM_LOCK_S
+		if target != null and not locked:
+			_aim = EnemyRanged.aim_point(EnemyRanged.muzzle(enemy), target, d.projectile_speed, d.aim_lead)
+			enemy.face_point(_aim, delta)
+		enemy.show_aim_line(_aim, _elapsed / d.attack_windup_s, locked)
+	elif not _fired:
+		_fired = true
+		enemy.show_aim_line(Vector3.ZERO, -1.0, false)
+		EnemyRanged.fire(enemy, _aim)
+	enemy.apply_gravity_and_move(delta)
+	if _elapsed >= d.attack_windup_s + d.attack_recovery_s:
 		transitioned.emit(CHASE)

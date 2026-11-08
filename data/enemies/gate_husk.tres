@@ -20,3 +20,5 @@ max_health = 140
 stats = SubResource("stats")
 poise = 25.0
 body_color = Color(0.75, 0.22, 0.25, 1)
+attack_scale = 1.15
+attack_cooldown_s = 1.0

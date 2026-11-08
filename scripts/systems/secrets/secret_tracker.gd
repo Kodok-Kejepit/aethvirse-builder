@@ -75,7 +75,7 @@ func evaluate_all() -> void:
 		if is_found(secret.id) or is_failed(secret.id):
 			continue
 		if not secret.fail_conditions.is_empty() and ConditionData.any_true(secret.fail_conditions, ctx):
-			state().failed[secret.id] = true
+			fail(secret.id)
 			continue
 		if secret.trigger == SecretData.Trigger.AUTO and ConditionData.all_true(secret.conditions, ctx):
 			_complete(secret)
@@ -106,22 +106,25 @@ func discover_hint(secret_id: StringName, hint_key: StringName) -> void:
 
 func fail(id: StringName) -> void:
 	state().failed[id] = true
+	var secret: SecretData = db.get_secret(id)
+	if secret != null:
+		EventBus.journal_updated.emit()
+		JournalCompletion.check(self, secret.region)
 
 
-## "Secrets 3/13 · Sealed missions 1/3" numbers for a region.
+## "Secrets 3/7 · Sealed missions 1/2" numbers for a region, counted from the secrets that
+## exist in the game (a sealed mission counts once all its stages are done).
 func region_progress(region_id: StringName) -> Vector4i:
-	var region: RegionData = db.regions.get(region_id, null)
-	var secrets_found: int = 0
-	var missions: Dictionary[StringName, bool] = {}
-	for secret: SecretData in db.secrets.values():
-		if secret.region != region_id or not is_found(secret.id):
-			continue
-		if secret.counts_as_secret():
-			secrets_found += 1
-		elif secret.kind == SecretData.Kind.SEALED_MISSION:
-			missions[secret.mission if secret.mission != &"" else secret.id] = true
-	var totals: Vector2i = Vector2i(region.secret_total, region.mission_total) if region != null else Vector2i.ZERO
-	return Vector4i(secrets_found, totals.x, missions.size(), totals.y)
+	var out: Vector4i = Vector4i.ZERO
+	for entry: Dictionary in RegionJournal.entries(db, region_id):
+		var done: int = 1 if RegionJournal.is_resolved(entry, state().found, state().failed) else 0
+		if entry["kind"] == SecretData.Kind.SEALED_MISSION:
+			out.z += done
+			out.w += 1
+		else:
+			out.x += done
+			out.y += 1
+	return out
 
 
 func _complete(secret: SecretData) -> void:
@@ -134,6 +137,7 @@ func _complete(secret: SecretData) -> void:
 		Codex.notify(tr(&"CODEX_MSG_SECRET_FOUND"), &"secret")
 	EventBus.secret_found.emit(secret.id)
 	EventBus.journal_updated.emit()
+	JournalCompletion.check(self, secret.region)
 
 
 func grant(reward: RewardData) -> void:

@@ -60,4 +60,4 @@ func test_region_progress() -> void:
 	EventBus.secret_area_entered.emit(&"sec_r1_01_pump_room")
 	tracker.evaluate_all()
 	var p: Vector4i = tracker.region_progress(&"r1_ashfall")
-	assert_eq(p, Vector4i(1, 13, 0, 3))
+	assert_eq(p, Vector4i(1, 7, 0, 2), "counted from the secrets that exist")

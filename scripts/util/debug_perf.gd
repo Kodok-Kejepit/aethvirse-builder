@@ -14,6 +14,7 @@ const MESH_RADIUS_M: float = 150.0
 
 static func register() -> void:
 	DebugConsole.register("prologue", _prologue, "prologue — show the New Game prologue again")
+	DebugConsole.register("clip", _clip, "clip — play the opening clip (Ashfall)")
 	DebugConsole.register("perf", _perf, "perf [mesh|shadows|lod N] — frame cost; mesh = heaviest models near the camera; shadows = toggle sun shadows; lod = mesh LOD threshold")
 
 
@@ -25,6 +26,11 @@ static func _prologue(_args: PackedStringArray) -> String:
 	layer.add_child(prologue)
 	prologue.finished.connect(layer.queue_free)
 	return "prologue"
+
+
+static func _clip(_args: PackedStringArray) -> String:
+	_tree().current_scene.add_child(OpeningClip.new())
+	return "clip"
 
 
 static func _tree() -> SceneTree:

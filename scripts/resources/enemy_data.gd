@@ -38,6 +38,20 @@ extends Resource
 @export var attack_hitbox_size: Vector3 = Vector3(1.8, 1.4, 1.6)
 @export var attack_hitbox_offset: Vector3 = Vector3(0.0, 1.0, -1.0)
 @export var telegraph_radius: float = 1.6
+## Heavy hitters throw the hero through the air (owner: "kena gebuk, mental jauh"):
+## upward speed added to the knockback (0 = only a shove).
+@export var attack_launch: float = 0.0
+
+@export_group("Ranged")
+## Shoots instead of swinging: keeps its distance, aims with a red sight line during the
+## windup (leading a moving target), locks the aim just before firing.
+@export var ranged: bool = false
+@export var projectile_speed: float = 30.0
+## 0 = shoots where the hero is, 1 = where the hero will be when the shot arrives.
+@export var aim_lead: float = 0.9
+## Backs away when the hero comes closer than this.
+@export var keep_distance_m: float = 7.0
+@export var projectile_color: Color = Color(1.0, 0.45, 0.15)
 
 ## World flag set when this enemy dies (secret bosses, story).
 @export var death_flag: StringName = &""

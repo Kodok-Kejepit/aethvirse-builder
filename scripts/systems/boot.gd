@@ -124,7 +124,9 @@ func _show_class_menu() -> void:
 func _play_prologue() -> void:
 	var prologue: Prologue = Prologue.new()
 	add_child(prologue)
-	prologue.finished.connect(_start_new)
+	prologue.finished.connect(func() -> void:
+		OpeningClip.pending = true
+		_start_new())
 
 
 func _choose_class(class_id: StringName) -> void:

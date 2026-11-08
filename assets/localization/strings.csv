@@ -14,7 +14,7 @@ STATUS_LOCKED,Unlocks at Lv %d,Terbuka di Lv %d
 CODEX_TITLE,THE CODEX,THE CODEX
 CODEX_TAB_STATUS,Status,Status
 CODEX_TAB_LOG,Log,Log
-CODEX_TAB_QUESTS,Seals,Segel
+CODEX_TAB_QUESTS,Quests,Misi
 CODEX_TAB_INVENTORY,Inventory,Inventori
 CODEX_TAB_MAP,Map,Peta
 CODEX_TAB_SHADOWS,Shadow Army,Pasukan Bayangan
@@ -144,12 +144,12 @@ QUEST_R1_SAFE_ROAD,A Safe Road Home,Jalan Aman ke Kamp
 QUEST_R1_SAFE_ROAD_D,Husks keep wandering toward the camp. Push them back.,Husk terus berkeliaran ke arah kamp. Usir mereka.
 QO_KILL_HUSKS,Defeat Gate Husks,Kalahkan Gate Husk
 QO_TALK_KID,Tell the camp kid the road is safe,Beri tahu anak kamp jalannya sudah aman
-CODEX_MSG_QUEST_STARTED,A new seal appears: %s,Segel baru muncul: %s
+CODEX_MSG_QUEST_STARTED,New quest: %s,Misi baru: %s
 CODEX_MSG_QUEST_STEP,Next: %s,Selanjutnya: %s
-CODEX_MSG_QUEST_DONE,Seal broken: %s — a page of the Codex opens.,Segel terbuka: %s — satu halaman Codex terbuka.
-QUESTS_ACTIVE,Seals to break,Segel yang menunggu
-QUESTS_DONE,Broken seals,Segel yang terbuka
-QUESTS_NONE,No seals yet.,Belum ada segel.
+CODEX_MSG_QUEST_DONE,Quest complete: %s,Misi selesai: %s
+QUESTS_ACTIVE,Active,Aktif
+QUESTS_DONE,Completed,Selesai
+QUESTS_NONE,No quests.,Tidak ada misi.
 MENU_CONTINUE,Continue,Lanjutkan
 MENU_NEW_GAME,New Game,Game Baru
 MENU_CONTINUE_INFO,%s  Lv %d,%s  Lv %d
@@ -537,17 +537,56 @@ PROLOGUE_TITLE,PROLOGUE · THE WEAKEST,PROLOG · SANG TERLEMAH
 PROLOGUE_1,"In a world called Aethvirse, there was a Vanguard who began at the very bottom.
 Not a hero. Not the chosen one. Only the weakest.","Di dunia bernama Aethvirse, ada seorang Vanguard yang memulai dari titik paling bawah.
 Bukan pahlawan. Bukan yang terpilih. Hanya yang terlemah."
-PROLOGUE_2,"In their hands lay an ancient book: The Codex. Most of its pages are still sealed.
-No one knows who sealed them, and no one knows why.","Di tangannya, ada sebuah kitab kuno bernama The Codex. Sebagian besar halamannya masih tersegel.
+PROLOGUE_2,"One day, beneath the ruins, they found an ancient book: The Codex. Most of its pages are sealed.
+No one knows who sealed them, and no one knows why.","Suatu hari, di bawah reruntuhan, ia menemukan sebuah kitab kuno: The Codex. Sebagian besar halamannya tersegel.
 Tidak ada yang tahu siapa yang menyegelnya, dan tidak ada yang tahu mengapa."
 PROLOGUE_3,"The Codex is alive.
 And it chose the Vanguard to carry it.","Codex itu hidup.
 Dan ia memilih Vanguard untuk membawanya."
-PROLOGUE_4,"Ashfall Outskirts — the fringe of the world, buried in ash.
-This is where it begins.","Ashfall Outskirts — wilayah pinggiran yang diselimuti abu.
-Di sinilah semuanya dimulai."
+PROLOGUE_4,"But to know why, we must go back eight years —
+to the night Ashfall died.","Tapi untuk tahu mengapa, kita harus kembali delapan tahun —
+ke malam ketika Ashfall mati."
 PROLOGUE_SKIP,Skip »,Lewati »
-QUESTS_PAGES,"Every mission is a seal. Pages of the Codex opened: %d","Setiap misi adalah segel. Halaman Codex yang terbuka: %d"
 JOURNAL_UNNAMED,[ ??? ],[ ??? ]
 JOURNAL_UNNAMED_NOTE,"A name that never answers. No map points there, and no road leads there. Only your own notes might.","Nama yang tak pernah menjawab. Tak ada peta yang menunjuk ke sana, tak ada jalan yang mengarah ke sana. Mungkin hanya catatanmu sendiri."
 ENDING_LAST_SEAL,"The known world ends here. Yet one page of the Codex stays sealed, and in your Mystery Journal one name is still written as [ ??? ]. The journey is not over. It has only begun.","Dunia yang dikenal berakhir di sini. Namun satu halaman Codex masih tersegel, dan di Jurnal Misteri-mu satu nama masih tertulis sebagai [ ??? ]. Perjalanan ini belum berakhir. Ia baru saja dimulai."
+JOURNAL_PAGE,Page — %s,Halaman — %s
+JOURNAL_UNCOVERED,Records uncovered: %d / %d,Catatan terungkap: %d / %d
+JOURNAL_KIND_MISSION,Sealed missions,Misi tersegel
+JOURNAL_KIND_PLACE,Hidden places,Tempat tersembunyi
+JOURNAL_KIND_ITEM,Odd things,Benda ganjil
+JOURNAL_KIND_CHEST,Chests,Peti
+JOURNAL_KIND_PUZZLE,Riddles,Teka-teki
+JOURNAL_LOST,(lost for good),(hilang selamanya)
+JOURNAL_SYNOPSIS_R1_ASHFALL,"The ash never quite stops falling here. Something breathes under the streets when it rains, a baker keeps waiting for a customer who never comes, and a door remembers a tenant nobody else does. This page will not let you go while it still has blank lines — and the fog at the end of the road knows it.","Abu tak pernah benar-benar berhenti turun di sini. Ada yang bernapas di bawah jalan saat hujan, seorang penjual roti terus menunggu pembeli yang tak pernah datang, dan sebuah pintu mengingat penghuni yang tak diingat siapa pun. Halaman ini tak akan melepasmu selama masih ada baris yang kosong — dan kabut di ujung jalan tahu itu."
+JOURNAL_SYNOPSIS_R2_VERDANT,"A green valley, too calm to be trusted. The roots here are older than the trees above them, and they listen. Whatever the forest forgets, it forgets on purpose.","Lembah hijau yang terlalu tenang untuk dipercaya. Akar di sini lebih tua dari pohon di atasnya, dan mereka mendengarkan. Apa pun yang dilupakan hutan, ia lupakan dengan sengaja."
+JOURNAL_SYNOPSIS_R3_DUNES,Red sand as far as the eye can see. The storms do not only bury things; sometimes they give them back.,Pasir merah sejauh mata memandang. Badai di sini bukan hanya mengubur; kadang ia juga mengembalikan.
+JOURNAL_SYNOPSIS_R4_FROSTVEIL,"Peaks behind a veil of snow. Some who climbed them are still up there, holding something that once spoke.","Puncak di balik selubung salju. Sebagian yang mendakinya masih di atas sana, menggenggam sesuatu yang dulu bisa bicara."
+JOURNAL_SYNOPSIS_R5_ARCHIVE,An archive sunk on purpose. The records here were not lost; they were hidden from someone.,Arsip yang sengaja ditenggelamkan. Catatan di sini bukan hilang; mereka disembunyikan dari seseorang.
+JOURNAL_SYNOPSIS_R6_FRACTURE,"Cracked ground, as if the world was once torn here. Through the cracks, a voice that is almost your own.","Tanah retak, seolah dunia pernah terbelah di sini. Dari celahnya, sebuah suara yang hampir seperti suaramu sendiri."
+JOURNAL_SYNOPSIS_R7_HOLLOW_THRONE,"An empty throne at the edge of the known map. Empty, because the one it belongs to never lived inside this world.","Singgasana kosong di ujung peta yang dikenal. Kosong, karena pemiliknya tak pernah tinggal di dunia ini."
+JOURNAL_PAGE_DONE,[ SYSTEM ] Mystery Journal — %s: every line is written.,[ SYSTEM ] Jurnal Misteri — %s: semua baris telah tertulis.
+JOURNAL_ALL_DONE,"Every known page is full. Somewhere past the map, a blank one is waiting.","Semua halaman yang dikenal telah penuh. Di suatu tempat di luar peta, satu halaman kosong menunggu."
+SYSTEM_UPDATE_TITLE,[ SYSTEM UPDATE ],[ PEMBARUAN SISTEM ]
+SYSTEM_UPDATE_LINE,The Codex is rewriting itself…,Codex sedang menulis ulang dirinya…
+SYSTEM_UPDATE_DONE,A new page opens. The road moves.,Halaman baru terbuka. Jalan bergeser.
+CODEX_MSG_ROAD_SHUT,The fog will not part. Something here is still unwritten.,Kabut tak mau tersibak. Masih ada yang belum tertulis di sini.
+CLIP_1,"Eight years ago, Ashfall was a living city.","Delapan tahun lalu, Ashfall adalah kota yang hidup."
+CLIP_2,Then the sky above the overpass cracked. A small gate opened — for a single night.,Lalu langit di atas jalan layang retak. Sebuah gerbang kecil terbuka — hanya semalam.
+CLIP_3,"What came out was not a monster. Only ash. Three days of it, until everything that breathed went still.","Yang keluar bukan monster. Hanya abu. Tiga hari tanpa henti, sampai semua yang bernapas terdiam."
+CLIP_4,"When the ash stopped, only one was still breathing — a child, lying beside an old book that would not open.","Saat abu berhenti, hanya satu yang masih bernapas — seorang anak, terbaring di samping buku tua yang tak bisa dibuka."
+CLIP_5,No one knows why the child lived. The book knows. But the book has forgotten.,Tak ada yang tahu kenapa anak itu selamat. Buku itu tahu. Tapi buku itu sudah lupa.
+CLIP_6,"Eight years later, the book wakes up.","Delapan tahun kemudian, buku itu bangun."
+CODEX_MSG_AWAKEN,[ SYSTEM ] … bearer found. Memory: [ sealed ]. Instruction kept: find the Vanguard.,[ SYSTEM ] … pembawa ditemukan. Ingatan: [ tersegel ]. Perintah tersimpan: temukan Vanguard.
+QUEST_R1_EMBER,Embers on the Rooftops,Mata Bara di Atap
+QUEST_R1_EMBER_D,"Charred archers shoot at anyone who walks the streets — from far away, and they rarely miss. The Quartermaster wants the supply lanes safe. Watch for the red line: when it stops moving, move.","Pemanah hangus menembaki siapa pun yang lewat jalan — dari jauh, dan jarang meleset. Quartermaster ingin jalur suplai aman. Perhatikan garis merah: saat garis itu berhenti bergerak, bergeraklah."
+QO_KILL_ARCHERS,Defeat Cinder Archers,Kalahkan Cinder Archer
+QO_REPORT_QM,Report to the Quartermaster,Lapor ke Quartermaster
+QUEST_R1_MOSS,Moss Giants,Raksasa Berlumut
+QUEST_R1_MOSS_D,"Moss Brutes roam the outer lots. One blow sends a grown man across the street. The Appraiser pays well for proof they are gone.","Moss Brute berkeliaran di lahan-lahan terluar. Satu pukulannya melempar orang dewasa ke seberang jalan. Penilai membayar mahal untuk bukti mereka sudah tumbang."
+QO_KILL_BRUTES,Defeat Moss Brutes,Kalahkan Moss Brute
+QO_REPORT_APPRAISER,Show the Appraiser,Tunjukkan ke Penilai
+QUEST_R1_METRO,Echoes Underground,Gema di Bawah Tanah
+QUEST_R1_METRO_D,"Something hums under the old metro station, louder every night. The Quartermaster has heard it too. Go down the stairs northwest of the camp and close what opened there.","Ada yang berdengung di bawah stasiun metro tua, makin keras setiap malam. Quartermaster juga mendengarnya. Turuni tangga di barat laut kamp dan tutup apa yang terbuka di sana."
+QO_ASK_QM_METRO,Ask the Quartermaster about the hum,Tanya Quartermaster soal dengungan itu
+QO_CLEAR_METRO,Close the Gate in the metro station,Tutup Gate di stasiun metro

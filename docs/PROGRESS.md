@@ -444,3 +444,17 @@
 - Debug: `perf` (frame cost), `perf mesh` (heaviest models nearby), `perf shadows`, `perf lod N`.
 - Known: on the owner's Intel UHD, **High** is the sensible top preset; Ultra still adds
   volumetric fog + reflections.
+
+## Journal pages, opening clip, harder Ashfall (2026-11-09, later)
+- "Seal" wording removed from the UI again (Codex tab back to Quests).
+- **Mystery Journal = one page per region:** cryptic synopsis, "Records uncovered x / y" with a
+  breakdown (sealed missions, hidden places, odd things, chests, riddles), entries ✦ solved /
+  ◇ hinted / ◇ — — — blank / ✕ lost; finished pages stay readable.
+- **Finishing the Ashfall page:** Codex notice → [ SYSTEM UPDATE ] → you are carried to Verdant
+  Hollow and the journal opens its page. The road to Region 2 stays in fog until then.
+- **Opening clip** after the prologue text on New Game (city skyline, overpass, dead avenue,
+  camp, the hero) with the story of the night Ashfall died. Skip with any key / Skip.
+- **Cinder Archer** (ranged, sharp leading aim, red sight line) in the city and R1 Gates;
+  heavy hitters throw you through the air; R1 enemies tougher.
+- **New quests:** Embers on the Rooftops → Moss Giants → Echoes Underground (metro Gate).
+- Debug: `clip`, `prologue`, `reveal_secrets` (finishes the page → travel), `spawn cinder_archer`.

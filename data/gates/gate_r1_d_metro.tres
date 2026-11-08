@@ -6,6 +6,7 @@
 [ext_resource type="Resource" path="res://data/enemies/ember_husk.tres" id="e1"]
 [ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="e2"]
 [ext_resource type="Resource" path="res://data/enemies/gravewarden.tres" id="boss"]
+[ext_resource type="Resource" path="res://data/enemies/cinder_archer.tres" id="archer"]
 
 [resource]
 script = ExtResource("1")
@@ -14,7 +15,7 @@ display_name = &"GATE_R1_D_METRO"
 rank = 1
 seed_value = 4410
 room_count = 4
-enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1"), ExtResource("e2")])
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1"), ExtResource("e2"), ExtResource("archer")])
 enemies_per_room = 3
 level_floor = 44
 boss = ExtResource("boss")

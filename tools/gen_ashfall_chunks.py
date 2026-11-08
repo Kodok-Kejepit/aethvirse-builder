@@ -50,6 +50,7 @@ DATA = {
     "ash_hound_alpha": "res://data/enemies/ash_hound_alpha.tres",
     "moss_brute": "res://data/enemies/moss_brute.tres",
     "gravewarden": "res://data/enemies/gravewarden.tres",
+    "cinder_archer": "res://data/enemies/cinder_archer.tres",
     "marrow": "res://data/dialogs/marrow.tres",
     "camp_kid": "res://data/dialogs/camp_kid.tres",
     "bread_seller": "res://data/dialogs/bread_seller.tres",
