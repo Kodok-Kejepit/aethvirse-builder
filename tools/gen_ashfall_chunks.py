@@ -339,7 +339,8 @@ def camp(c):
     for x in (-16, -8, 8, 16):
         c.prop("prop_market_stall", (x, 0, -28), (3.7, 3.2, 1.8), "Color(0.45, 0.32, 0.22, 1)", rot_y=180)
     c.block((3.2, 1.0, 3.2), (0, 0.5, -38), CONCRETE)
-    c.prop("statue_starblade", (0, 1.0, -38), (1.2, 3.0, 1.2), CONCRETE, rot_y=180)
+    # Weathered monolith (the old test statue had a licensed likeness: never in a build).
+    c.prop("rock_monolith_moss", (0, 1.0, -38), (1.2, 3.0, 1.2), CONCRETE, rot_y=180)
     c.decor("water_tank", (28, 0, -26), seed=7)
     c.prop("tile_mud", (28, 0, -23), (5, 0.3, 4), city.DIRT, rot_y=30)
     c.points.pop()

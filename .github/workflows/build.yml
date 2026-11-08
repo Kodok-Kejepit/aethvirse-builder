@@ -140,29 +140,29 @@ jobs:
             android-debug) tools/build.sh android debug ;;
             aab) tools/build.sh aab release ;;
           esac
-          if [ -f build/windows/ASCENDANT.exe ]; then
-            (cd build/windows && zip -q -9 ../ASCENDANT-windows.zip ./*)
+          if [ -f build/windows/AETHVIRSE.exe ]; then
+            (cd build/windows && zip -q -9 ../AETHVIRSE-windows.zip ./*)
           fi
           ls -lh build build/android build/windows 2>/dev/null || true
 
       - name: Upload build files
         uses: actions/upload-artifact@v4
         with:
-          name: ascendant-${{ github.run_number }}
+          name: aethvirse-${{ github.run_number }}
           retention-days: 5
           path: |
             build/android/*.apk
             build/android/*.aab
-            build/ASCENDANT-windows.zip
+            build/AETHVIRSE-windows.zip
 
       - name: Publish rolling "latest" release
         if: env.PUBLISH == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          FILES=$(ls build/android/*.apk build/android/*.aab build/ASCENDANT-windows.zip 2>/dev/null || true)
+          FILES=$(ls build/android/*.apk build/android/*.aab build/AETHVIRSE-windows.zip 2>/dev/null || true)
           [ -z "$FILES" ] && exit 0
           gh release delete latest --yes --cleanup-tag || true
           gh release create latest $FILES --prerelease \
             --title "Build terbaru — ${GITHUB_REF_NAME} @ ${GITHUB_SHA::7}" \
-            --notes "Build otomatis #${GITHUB_RUN_NUMBER} dari commit ${GITHUB_SHA::7}. Android: ascendant-share.apk (pasang langsung di HP). Windows: ekstrak ASCENDANT-windows.zip lalu jalankan ASCENDANT.exe."
+            --notes "Build otomatis #${GITHUB_RUN_NUMBER} dari commit ${GITHUB_SHA::7}. Android: aethvirse-share.apk (pasang langsung di HP). Windows: ekstrak AETHVIRSE-windows.zip lalu jalankan AETHVIRSE.exe."

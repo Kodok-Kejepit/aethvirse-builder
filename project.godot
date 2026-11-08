@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="ASCENDANT"
-config/description="Third-person 3D action RPG. Rise from the weakest."
+config/name="AETHVIRSE"
+config/description="Third-person 3D action RPG. Unseal the Codex."
 config/version="0.0.1"
 run/main_scene="res://scenes/main/boot.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")

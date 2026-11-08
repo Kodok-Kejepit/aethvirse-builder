@@ -13,6 +13,18 @@ extends StaticBody3D
 
 var data: PropData = null
 
+## Small things are only drawn near the player: view range = height × this, at least
+## MIN_VIEW_M, at most the preset's range for the model (buildings stay visible far away).
+const VIEW_PER_METRE: float = 45.0
+const MIN_VIEW_M: float = 60.0
+## Lower than this (or flat floor pieces) casts no shadow: the shadow pass is the most
+## expensive part of a frame, and a crate's shadow is not missed.
+const SHADOW_MIN_HEIGHT_M: float = 1.2
+const FLAT_PREFIXES: PackedStringArray = ["tile_", "floor_", "rubble_", "rock_pile"]
+
+## One material per model: every copy shares it (fewer GPU state changes).
+static var _materials: Dictionary[StringName, StandardMaterial3D] = {}
+
 
 func _ready() -> void:
 	data = PropData.find(prop_id)
@@ -24,15 +36,8 @@ func _ready() -> void:
 	var mi: MeshInstance3D = MeshInstance3D.new()
 	mi.mesh = load(data.mesh_path) as Mesh
 	mi.scale = Vector3.ONE * size_scale
-	var mat: StandardMaterial3D = StandardMaterial3D.new()
-	if ResourceLoader.exists(data.albedo_path):
-		mat.albedo_texture = load(data.albedo_path) as Texture2D
-	mat.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON
-	mat.roughness = 0.85
-	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	mi.material_override = mat
-	if Settings.profile != null and data.view_share > 0.0:
-		mi.visibility_range_end = Settings.profile.view_distance_m * data.view_share
+	mi.material_override = material_for(data)
+	apply_view(mi, data, size_scale)
 	add_child(mi)
 	match data.collision:
 		PropData.Collision.BOX:
@@ -70,14 +75,8 @@ static func attach_model(parent: Node3D, model_id: StringName, height: float) ->
 	var mi: MeshInstance3D = MeshInstance3D.new()
 	mi.mesh = load(d.mesh_path) as Mesh
 	mi.scale = Vector3.ONE * (height / d.size.y)
-	var mat: StandardMaterial3D = StandardMaterial3D.new()
-	if ResourceLoader.exists(d.albedo_path):
-		mat.albedo_texture = load(d.albedo_path) as Texture2D
-	mat.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON
-	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	mi.material_override = mat
-	if Settings.profile != null and d.view_share > 0.0:
-		mi.visibility_range_end = Settings.profile.view_distance_m * d.view_share
+	mi.material_override = material_for(d)
+	apply_view(mi, d, height / d.size.y)
 	parent.add_child(mi)
 	return true
 
@@ -94,3 +93,36 @@ static func replace_mesh(placeholder: MeshInstance3D, model_id: StringName, heig
 		return false
 	placeholder.mesh = null
 	return true
+
+
+static func material_for(d: PropData) -> StandardMaterial3D:
+	if _materials.has(d.id):
+		return _materials[d.id]
+	var mat: StandardMaterial3D = StandardMaterial3D.new()
+	if ResourceLoader.exists(d.albedo_path):
+		mat.albedo_texture = load(d.albedo_path) as Texture2D
+	mat.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON
+	mat.roughness = 0.85
+	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	_materials[d.id] = mat
+	return mat
+
+
+## Distance culling by size and shadow casting by size / shape.
+static func apply_view(mi: MeshInstance3D, d: PropData, scale_k: float) -> void:
+	var height: float = d.size.y * scale_k
+	if Settings.profile != null and d.view_share > 0.0:
+		mi.visibility_range_end = view_range(height, Settings.profile.view_distance_m * d.view_share)
+	if height < SHADOW_MIN_HEIGHT_M or is_flat(d.id):
+		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
+static func view_range(height: float, preset_range: float) -> float:
+	return minf(maxf(height * VIEW_PER_METRE, MIN_VIEW_M), preset_range)
+
+
+static func is_flat(id: StringName) -> bool:
+	for prefix: String in FLAT_PREFIXES:
+		if String(id).begins_with(prefix):
+			return true
+	return false

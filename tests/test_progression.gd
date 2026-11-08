@@ -1,5 +1,5 @@
 extends GutTest
-## Numbers checked against ascendant-dev/docs/ASCENDANT_Balancing.xlsx.
+## Numbers checked against aethvirse-dev/docs/AETHVIRSE_Balancing.xlsx.
 
 var tuning: StatTuning = preload("res://data/balancing/stat_tuning.tres")
 var vanguard: ClassData = preload("res://data/classes/vanguard.tres")

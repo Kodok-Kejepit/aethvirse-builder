@@ -1,6 +1,6 @@
 """Draws an icon for every skill (data/skills/**.tres) into assets/ui/skills/<id>.png.
 
-    ~/.cache/ascendant-venv/bin/python tools/make_skill_icons.py
+    ~/.cache/aethvirse-venv/bin/python tools/make_skill_icons.py
 
 A gem plate in the skill's colour (light from the top, dark rim), a glowing symbol chosen
 from the skill's id / kind (slash, dash, quake, fire, frost, bolt, wind, shield, roar,

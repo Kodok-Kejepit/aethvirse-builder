@@ -1387,7 +1387,7 @@ solid = true
 [node name="Prop196" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 0, 1, -38)
 script = ExtResource("prop")
-prop_id = &"statue_starblade"
+prop_id = &"rock_monolith_moss"
 fallback_size = Vector3(1.2, 3.0, 1.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 

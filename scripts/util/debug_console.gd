@@ -56,6 +56,7 @@ func _ready() -> void:
 	_panel.visible = false
 	_input.text_submitted.connect(_on_submitted)
 	DebugCommands.register_core()
+	DebugPerf.register()
 	var exec: String = _exec_arg()
 	if not exec.is_empty():
 		await get_tree().create_timer(EXEC_DELAY_S).timeout

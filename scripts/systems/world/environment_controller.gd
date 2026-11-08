@@ -35,6 +35,7 @@ func _ready() -> void:
 	# Rain keeps falling while a dialog / panel pauses the game.
 	if rain != null:
 		rain.process_mode = Node.PROCESS_MODE_ALWAYS
+	Settings.apply_sun(sun)
 	var env: Environment = world_environment.environment if world_environment != null else null
 	if env == null:
 		return
@@ -76,7 +77,9 @@ func _process(delta: float) -> void:
 	# Sunrise / sunset band: warm sun, orange-violet sky, purple haze (not pitch black).
 	var dusk: float = clampf(1.0 - absf(elevation) * 3.2, 0.0, 1.0)
 	if sun != null:
-		sun.rotation = Vector3(deg_to_rad(-15.0 - 60.0 * maxf(elevation, 0.0)), clock.day_fraction() * TAU, 0.0)
+		# The moon climbs at night as the sun does by day: a low light all night long
+		# stretched every shadow across the map (the shadow pass cost doubled).
+		sun.rotation = Vector3(deg_to_rad(-15.0 - 60.0 * absf(elevation)), clock.day_fraction() * TAU, 0.0)
 		sun.light_energy = lerpf(night_sun_energy, day_sun_energy, daylight)
 		# Moonlight is cool and blue, sunlight warm.
 		sun.light_color = Color(0.55, 0.65, 1.0).lerp(Color(1.0, 0.96, 0.9), daylight).lerp(DUSK_SUN, dusk * 0.85)

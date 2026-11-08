@@ -1,19 +1,27 @@
 [gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/boot.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/branding/ascendant_logo.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/branding/aethvirse_keyart.png" id="2"]
 [ext_resource type="Shader" path="res://assets/shaders/opening_logo.gdshader" id="3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_art"]
 shader = ExtResource("3")
 shader_parameter/logo_tex = ExtResource("2")
+shader_parameter/tex_aspect = 2.2222
+shader_parameter/ring_center = Vector2(0.5, 0.5)
+shader_parameter/ring_color = Color(1, 0.78, 0.4, 1)
+shader_parameter/accent_color = Color(0.45, 0.75, 1, 1)
+shader_parameter/core_light_pos = Vector2(0.5, 0.55)
+shader_parameter/title_band = Vector2(0.1, 0.26)
+shader_parameter/glitch_duration = 0.0
+shader_parameter/ring_intensity = 0.3
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
 blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_sparks"]
 offsets = PackedFloat32Array(0, 0.2, 1)
-colors = PackedColorArray(0.4, 0.75, 1, 0, 0.55, 0.85, 1, 0.9, 0.7, 0.5, 1, 0)
+colors = PackedColorArray(1, 0.75, 0.35, 0, 1, 0.85, 0.5, 0.9, 0.5, 0.75, 1, 0)
 
 [node name="Boot" type="Control"]
 layout_mode = 3

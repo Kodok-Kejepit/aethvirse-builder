@@ -1,6 +1,6 @@
 class_name StatTuning
 extends Resource
-## Global balancing constants. Values mirror ascendant-dev/docs/ASCENDANT_Balancing.xlsx (sheet Parameter).
+## Global balancing constants. Values mirror aethvirse-dev/docs/AETHVIRSE_Balancing.xlsx (sheet Parameter).
 
 @export_group("Leveling")
 @export var xp_base: float = 100.0

@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Build on GitHub:  bash tools/setup_builder.sh   (owner or Claude)
-# First run: makes Kodok-Kejepit/ascendant-builder public with a builder description and
+# First run: makes Kodok-Kejepit/aethvirse-builder public with a builder description and
 # stores the Android signing key as a secret. Every run: pushes a one-commit snapshot of the
 # current branch as `main` (author = your GitHub noreply address, so your private email is
 # never published; local history is untouched). GitHub Actions then builds the APK +
 # Windows version and puts them on the "latest" release.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-REPO="Kodok-Kejepit/ascendant-builder"
-DESC="Repo khusus builder/CI untuk game ASCENDANT: GitHub Actions membangun APK Android & versi Windows otomatis (lihat Releases → latest). Bukan repo pengembangan utama."
+REPO="Kodok-Kejepit/aethvirse-builder"
+DESC="Repo khusus builder/CI untuk game AETHVIRSE: GitHub Actions membangun APK Android & versi Windows otomatis (lihat Releases → latest). Bukan repo pengembangan utama."
 
 if ! gh repo view "$REPO" >/dev/null 2>&1; then
 	gh repo create "$REPO" --public --description "$DESC"

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Export ASCENDANT from Linux via the Godot CLI.
+# Export AETHVIRSE from Linux via the Godot CLI.
 #
 # Usage:
 #   tools/build.sh [windows|android|aab|share|all] [debug|release]
 #   share = small release APK signed with the local debug key, for sending to a phone
-#           (no debug overlay). Output: build/android/ascendant-share.apk
+#           (no debug overlay). Output: build/android/aethvirse-share.apk
 #
 # Defaults: all debug. Output goes to build/<platform>/.
 # Requirements (machine-local, not in the repo):
@@ -36,7 +36,7 @@ unset ANDROID_SDK_ROOT
 
 GODOT_VERSION="$("$GODOT" --version | cut -d. -f1-3)"
 GRADLE_FILE="$ROOT/android/build/build.gradle"
-PATCH_MARKER="// ascendant: compress dex"
+PATCH_MARKER="// aethvirse: compress dex"
 
 # Installs the Android build template only when missing / outdated (Godot reinstalls it on
 # every export that passes --install-android-build-template, which would drop our patch).
@@ -76,20 +76,20 @@ export_preset() {
 "$GODOT" --headless --path . --import >/dev/null 2>&1
 
 case "$TARGET" in
-	windows) export_preset "Windows Desktop" "build/windows/ASCENDANT.exe" ;;
-	android) export_preset "Android APK" "build/android/ascendant-$MODE.apk" ;;
-	aab) export_preset "Android AAB" "build/android/ascendant-$MODE.aab" ;;
+	windows) export_preset "Windows Desktop" "build/windows/AETHVIRSE.exe" ;;
+	android) export_preset "Android APK" "build/android/aethvirse-$MODE.apk" ;;
+	aab) export_preset "Android AAB" "build/android/aethvirse-$MODE.aab" ;;
 	share)
 		EXPORT_FLAG="--export-release"
 		export GODOT_ANDROID_KEYSTORE_RELEASE_PATH="${GODOT_ANDROID_KEYSTORE_RELEASE_PATH:-$HOME/.android/debug.keystore}"
 		export GODOT_ANDROID_KEYSTORE_RELEASE_USER="${GODOT_ANDROID_KEYSTORE_RELEASE_USER:-androiddebugkey}"
 		export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD="${GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD:-android}"
-		export_preset "Android APK" "build/android/ascendant-share.apk"
+		export_preset "Android APK" "build/android/aethvirse-share.apk"
 		;;
 	all)
-		export_preset "Windows Desktop" "build/windows/ASCENDANT.exe"
-		export_preset "Android APK" "build/android/ascendant-$MODE.apk"
-		export_preset "Android AAB" "build/android/ascendant-$MODE.aab"
+		export_preset "Windows Desktop" "build/windows/AETHVIRSE.exe"
+		export_preset "Android APK" "build/android/aethvirse-$MODE.apk"
+		export_preset "Android AAB" "build/android/aethvirse-$MODE.aab"
 		;;
 	*) echo "Unknown target: $TARGET (use windows|android|aab|share|all)" >&2; exit 2 ;;
 esac

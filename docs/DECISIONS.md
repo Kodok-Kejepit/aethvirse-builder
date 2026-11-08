@@ -5,7 +5,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 ## M0 — Setup
 
 - **2026-11-06 — Engine locked to Godot 4.7.2-stable (official build).** Latest stable at project start. Installed as the official Linux binary (`~/.local/bin/godot`) with matching export templates, not the distro package, so exports match the templates exactly.
-- **2026-11-06 — Two repositories.** `ascendant` = the game (Godot project, code, data, technical docs). `ascendant-dev` = private design docs (master prompt, GDD, mystery bible, balancing sheet). Spoilers never live in the game repo's docs.
+- **2026-11-06 — Two repositories.** `aethvirse` = the game (Godot project, code, data, technical docs). `aethvirse-dev` = private design docs (master prompt, GDD, mystery bible, balancing sheet). Spoilers never live in the game repo's docs.
 - **2026-11-06 — GDScript only, full static typing.** Enforced by project warning settings plus `tools/validate.sh`, which promotes every GDScript warning to an error during validation.
 - **2026-11-06 — Physics: Jolt** (`physics/3d/physics_engine="Jolt Physics"`), built into Godot 4.4+.
 - **2026-11-06 — Renderers:** Forward+ on desktop, Mobile on Android via `rendering_method.mobile`, with `rendering_device/fallback_to_opengl3=true` for devices without usable Vulkan.
@@ -15,7 +15,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - **2026-11-06 — Debug overlay is an autoload scene** (`DebugOverlay`) so F3 works in every scene including F6 test scenes. It frees itself in release builds. On Android it toggles with a 3-finger tap.
 - **2026-11-06 — Android export uses the Gradle build** (needed for `min_sdk 34`; the non-Gradle path ignores min/target SDK). `min_sdk = 34`, `target_sdk = 36`, arm64-v8a only. JDK 21 is used for Gradle 8.11.1.
 - **2026-11-06 — `tools/build.sh` unsets `ANDROID_SDK_ROOT`.** The owner shell exports `ANDROID_SDK_ROOT=/usr/lib/android-sdk`, which conflicts with the SDK in Godot editor settings (`~/Android/Sdk`) and makes Gradle fail. Exporting from the editor needs the editor started without that variable (or with it pointing to `~/Android/Sdk`).
-- **2026-11-06 — Android package id (provisional): `com.kodokkejepit.ascendant`.** Must be final before the first Play Store upload; changing it later means a new app listing.
+- **2026-11-06 — Android package id (provisional): `com.kodokkejepit.aethvirse`.** Must be final before the first Play Store upload; changing it later means a new app listing.
 - **2026-11-06 — Window:** 1920×1080 base viewport, `canvas_items` stretch, `expand` aspect (covers 16:9 to 20:9), editor/desktop window starts at 1280×720. Android orientation: sensor landscape.
 - **2026-11-06 — Localization:** CSV (`assets/localization/strings.csv`, columns `en`, `id`), fallback `en`. All UI text goes through `tr()`.
 - **2026-11-06 — Opening is the full-screen key art, animated by a single canvas shader** (no separate layered art yet). The square logo is cover-fitted, so 16:9/20:9 crop the top and bottom of the image. If the owner later provides layered art (background, rings, title separately), the shader can be replaced by real layers.
@@ -37,7 +37,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 
 - **2026-11-06 — Two big phases (owner decision).** *Big Phase 1 — Systems*: every gameplay system complete and playable with graybox visuals (capsules, boxes, flat colors): combat, stats, skills, items, quests, Codex, world, Gates, secrets, save, all classes. *Big Phase 2 — Presentation*: characters (VRoid/VRM), animation, skins/outfits, environment art, VFX and audio polish. The milestone order of the master prompt still applies inside Phase 1, but art tasks inside milestones (VRM model, toon shader polish, environment art) move to Phase 2.
 - **2026-11-06 — Sharing builds to the owner's phone:** chat uploads are limited to 30 MiB, so `tools/build.sh share` makes a release APK signed with the local debug key (~30 MiB, no debug overlay). Native libraries are compressed in all Android exports; banner/poster are excluded from exports; app icon is a 512 px copy (`assets/branding/app_icon.png`); the opening logo texture is imported lossy (0.85). The share APK is right at the limit — if it grows past it, next options are a custom smaller export template (Phase 2/M12) or another delivery channel.
-- **2026-11-06 — Playtest launcher:** `tools/play.sh [linux|windows|android|editor]` plus desktop entries "ASCENDANT (Linux)" and "ASCENDANT (Windows via Wine)" in the app launcher. Wine on the real display uses the Intel GPU through Vulkan.
+- **2026-11-06 — Playtest launcher:** `tools/play.sh [linux|windows|android|editor]` plus desktop entries "AETHVIRSE (Linux)" and "AETHVIRSE (Windows via Wine)" in the app launcher. Wine on the real display uses the Intel GPU through Vulkan.
 
 ## M2 — Combat core
 
@@ -53,7 +53,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 
 ## M3 — Stats & skills
 
-- **2026-11-06 — Balancing source of truth:** `data/balancing/stat_tuning.tres` mirrors sheet *Parameter* of `ASCENDANT_Balancing.xlsx`; class numbers mirror sheet *Kelas*. Tests assert the sheet values (Vanguard Lv1: HP 330, ATK 27 + weapon, DEF 14.6; Normal enemy Lv1: HP 155, ATK 35, XP 6). When the sheet changes, update the .tres and the tests together.
+- **2026-11-06 — Balancing source of truth:** `data/balancing/stat_tuning.tres` mirrors sheet *Parameter* of `AETHVIRSE_Balancing.xlsx`; class numbers mirror sheet *Kelas*. Tests assert the sheet values (Vanguard Lv1: HP 330, ATK 27 + weapon, DEF 14.6; Normal enemy Lv1: HP 155, ATK 35, XP 6). When the sheet changes, update the .tres and the tests together.
 - **2026-11-06 — Not in the sheet, engine defaults:** MSPD (+0.1%/AGI, cap 1.3), CDR (+0.1%/INT, cap 40%), MP regen (2 + 0.05/INT per second), 1 skill point per level. Starter weapon ATK = level × 4 (sheet's "average gear" assumption) until equipment exists (M6).
 - **2026-11-06 — Enemies scale from a reference hero** (Vanguard with the recommended stat split) like the sheet's *Musuh* tab; `EnemyData.scale_by_level` + `tier` (Normal/Elite/Boss) + `hp_scale`/`attack_scale` for per-type flavour.
 - **2026-11-06 — Skill keys:** 1–4 and Q/R/F/G (E stays free for Interact, C for Codex), ultimate T. Gamepad: hold LB + face buttons, ultimate LT+RT. Skills cancel normal attacks after the combo window, not other skills. Attack speed (AGI) scales normal attacks only.
@@ -157,7 +157,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - PC keeps the HD hero mesh at every preset (owner: laptop as smooth as possible); only the outline pass is preset-gated (PC Medium+).
 
 ## Builds on GitHub Actions
-- The dev laptop ran out of memory during Android (Gradle) exports, so exports moved to a **public** GitHub repo `Kodok-Kejepit/ascendant-builder` (owner's choice: the private-repo Actions quota was used up). `tools/setup_builder.sh` pushes a one-commit snapshot of the current branch as `main`, authored with the owner's GitHub noreply address (GitHub blocks pushes that expose the private email); `.github/workflows/build.yml` runs the GUT tests, exports the share APK (signed with the owner's debug key from the `ANDROID_DEBUG_KEYSTORE_B64` secret, so phone updates install over older builds) and the Windows debug build (keeps the `~` console), and republishes them as the rolling `latest` release. Local branches/history stay as they are; merging to the local `main` still waits for the owner's approval.
+- The dev laptop ran out of memory during Android (Gradle) exports, so exports moved to a **public** GitHub repo `Kodok-Kejepit/aethvirse-builder` (owner's choice: the private-repo Actions quota was used up). `tools/setup_builder.sh` pushes a one-commit snapshot of the current branch as `main`, authored with the owner's GitHub noreply address (GitHub blocks pushes that expose the private email); `.github/workflows/build.yml` runs the GUT tests, exports the share APK (signed with the owner's debug key from the `ANDROID_DEBUG_KEYSTORE_B64` secret, so phone updates install over older builds) and the Windows debug build (keeps the `~` console), and republishes them as the rolling `latest` release. Local branches/history stay as they are; merging to the local `main` still waits for the owner's approval.
 - No release keystore is stored anywhere in the repo or the workflow.
 
 ## Animated hero rig (p2-8)
@@ -191,3 +191,33 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 ## Pavement proportions are measured, not guessed (2026-11-08)
 - Owner asked for 80 % intact / 10 % cracked / 10 % earth with 15–20 % moss. Each slab's state comes from score = 0.6·hash(slab) + 0.4·fbm(slab·0.21) (clusters damage instead of salt-and-pepper). The thresholds 0.6793 / 0.7434 are the 80th / 90th percentiles of that score, measured over 360 000 slabs with the shader's exact hash and noise; moss: 0.5·hash + 0.5·fbm > 0.6393 (78th percentile) → 22 % of slabs × ~80 % cover ≈ 17.5 %.
 
+
+## AETHVIRSE rename and story canon (2026-11-09)
+- The game is now **AETHVIRSE: Unseal the Codex** (owner). Every repo, file, export name and
+  string uses the new name; the Android package id is `com.kodokkejepit.aethvirse` (a separate
+  app from the old test installs). Logo / key art / app icon come from the owner's website.
+- Godot keeps player data in a folder named after the game: on desktop the first start copies
+  `settings.cfg` and `saves/` from the old folder (`UserDataMigration`, the only place the old
+  name remains, as the folder name it must look for). Never overwrites newer data.
+- Story canon lives in `aethvirse-dev/docs/STORY.md`. "Vanguard" is the hero's title, so the tank
+  class shows as **Warden** (id stays `vanguard`: saves, data paths and tests keep working).
+- Every mission is one of the Codex's seals: the quest tab is "Seals", start / finish notices
+  speak of seals and opened pages. The Mystery Journal always lists **[ ??? ]**. Endings close
+  with the last-seal line. Hollow Throne access (3-key gate) is unchanged until [ ??? ] is built.
+
+## Frame cost: the "laptop got heavy" fix (2026-11-09)
+- Measured with the new `perf` cheat in Ashfall camp (same view): day 2502 draw calls / 3.79 M
+  triangles → 1470 / 1.79 M; night 4878 / 9.16 M → 1512 / 1.93 M.
+- Causes, biggest first: (1) PC Ultra turned on SDFGI/SSIL and disabled mesh LODs — on a
+  built-in GPU (owner: Intel UHD) real-time GI is now skipped and Ultra keeps LODs (threshold
+  0.5); (2) the night "moon" sat at −15° all night, so the sun shadow pass redrew the whole map —
+  the moon now climbs like the sun; (3) most Meshy props had no LODs (UV-atlas "triangle soup"
+  defeats Godot's simplifier) — `tools/add_lods.gd` welds by position, simplifies, and maps each
+  LOD triangle back to one UV island (129 meshes, LOD 0 untouched; seamless ground pieces skipped).
+- Shadow distance / cascades by preset (Low 55 m 2 splits … High/Ultra 110 m 4 splits). Props
+  under 1.2 m and flat floor pieces cast no shadow; props are drawn up to height × 45 m (min
+  60 m, max the preset range) and share one material per model.
+- Owner's "active things only near the character": grass sways only within ~14–26 m of the
+  camera, shrinks away and is culled at 40–70 m by preset, and big fields are cut into 24 m cells.
+  Decor without a light stops ticking; lamp lights beyond their fade distance skip their update.
+- High/Ultra below 25 fps for 12 s shows a one-time Codex hint to lower the preset.

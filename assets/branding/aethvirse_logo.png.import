@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddt7kk0rhad2l"
-path="res://.godot/imported/ascendant_logo.png-a2c9652c8d91783a0314bb506e104b63.ctex"
+uid="uid://cdikrpvo6lrts"
+path="res://.godot/imported/aethvirse_logo.png-994fa7da0cc96dac78b309ed46584ca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/branding/ascendant_logo.png"
-dest_files=["res://.godot/imported/ascendant_logo.png-a2c9652c8d91783a0314bb506e104b63.ctex"]
+source_file="res://assets/branding/aethvirse_logo.png"
+dest_files=["res://.godot/imported/aethvirse_logo.png-994fa7da0cc96dac78b309ed46584ca5.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.85
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

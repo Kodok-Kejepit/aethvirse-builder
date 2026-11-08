@@ -37,7 +37,7 @@ case "$TARGET" in
 			--resolution "$RES" --position 0,0 "${SCENE_ARG[@]}" -- "--capture=$OUT" "--capture-delay=$DELAY" "${EXTRA[@]}"
 		;;
 	windows)
-		EXE="$ROOT/build/windows/ASCENDANT.console.exe"
+		EXE="$ROOT/build/windows/AETHVIRSE.console.exe"
 		[[ -f "$EXE" ]] || { echo "Missing $EXE, run tools/build.sh windows" >&2; exit 1; }
 		WIN_OUT="$(winepath -w "$OUT")"
 		timeout 300 env WINEDEBUG=-all xvfb-run -a -s "$SCREEN" wine "$EXE" \

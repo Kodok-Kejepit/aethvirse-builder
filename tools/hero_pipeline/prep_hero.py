@@ -1,4 +1,4 @@
-"""Prepare a Meshy image-to-3D GLB for ASCENDANT: optional dragon strip (colour + adjacency),
+"""Prepare a Meshy image-to-3D GLB for AETHVIRSE: optional dragon strip (colour + adjacency),
 face -Z, scale to height, feet on y=0, drop unused vertices, resize textures.
 usage: prep_hero.py in.glb out.glb --height 1.8 --tex 4096 --normal 2048 [--strip-dragon] [--dragon-out d.glb]"""
 import sys,argparse,numpy as np

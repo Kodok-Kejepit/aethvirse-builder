@@ -28,12 +28,12 @@ func test_missing_asset_uses_graybox_slot() -> void:
 	assert_false(PropInstance.attach_model(slot, &"prop_nothing", 1.0))
 
 
-func test_imported_statue_fits_its_slot() -> void:
-	if PropData.find(&"statue_starblade") == null:
-		pending("statue not imported")
+func test_imported_model_fits_its_slot() -> void:
+	if PropData.find(&"rock_monolith_moss") == null:
+		pending("model not imported")
 		return
 	var slot: PropInstance = PropInstance.new()
-	slot.prop_id = &"statue_starblade"
+	slot.prop_id = &"rock_monolith_moss"
 	slot.fallback_size = Vector3(1, 3, 1)
 	add_child_autofree(slot)
 	var meshes: Array[Node] = slot.find_children("*", "MeshInstance3D", false, false)

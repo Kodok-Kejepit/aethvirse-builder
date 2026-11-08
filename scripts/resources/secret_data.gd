@@ -1,6 +1,6 @@
 class_name SecretData
 extends Resource
-## A secret from ascendant-dev/docs/MYSTERY_BIBLE.md (same IDs). See §4 there.
+## A secret from aethvirse-dev/docs/MYSTERY_BIBLE.md (same IDs). See §4 there.
 
 enum Kind { LOCATION, SEALED_MISSION, SECRET_ITEM, CHEST, PUZZLE, LORE, MASTER_CLUE }
 enum Tier { SMALL, MEDIUM, LARGE }

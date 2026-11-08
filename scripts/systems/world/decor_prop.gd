@@ -183,6 +183,11 @@ func _use_model() -> bool:
 
 func _process(_delta: float) -> void:
 	if _light == null:
+		# Nothing to light (crates, fences, ...): stop ticking.
+		set_process(false)
+		return
+	if _far_from_camera():
+		_light.visible = false
 		return
 	var night: float = 1.0 if always_lit or GameState.clock == null else 1.0 - clampf(sin((GameState.clock.day_fraction() - 0.25) * TAU) * 1.5 + 0.2, 0.0, 1.0)
 	var lit: bool = not snuffed and (kind == &"campfire" or night > 0.15 or kind == &"streetlight" and night > 0.05)
@@ -192,6 +197,12 @@ func _process(_delta: float) -> void:
 		_light.light_energy = (1.6 if kind == &"campfire" else 1.3) * maxf(night, 0.35 if kind == &"campfire" else 0.0) * flicker
 	if _bulb != null:
 		_bulb.emission_energy_multiplier = 0.0 if snuffed else 0.3 + 2.5 * night
+
+
+## Lights fade out past LIGHT_FADE_M anyway: skip the work for those.
+func _far_from_camera() -> bool:
+	var cam: Camera3D = get_viewport().get_camera_3d()
+	return cam != null and cam.global_position.distance_squared_to(global_position) > pow(LIGHT_FADE_M + 15.0, 2.0)
 
 
 func _add_light(at: Vector3, range_m: float) -> void:

@@ -117,7 +117,14 @@ func _show_class_menu() -> void:
 		GameState.class_id = cls
 		GameState.hero_id = hero
 		select.queue_free()
-		_fade_then(_start_new))
+		_fade_then(_play_prologue))
+
+
+## The story opens before the first step in Ashfall (skippable).
+func _play_prologue() -> void:
+	var prologue: Prologue = Prologue.new()
+	add_child(prologue)
+	prologue.finished.connect(_start_new)
 
 
 func _choose_class(class_id: StringName) -> void:

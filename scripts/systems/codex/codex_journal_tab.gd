@@ -19,6 +19,9 @@ func refresh() -> void:
 	for region: RegionData in tracker.db.regions.values():
 		var p: Vector4i = tracker.region_progress(region.id)
 		_add_label(tr(&"JOURNAL_TRACKER") % [tr(region.display_name), p.x, p.y, p.z, p.w], 26, CodexTheme.ACCENT)
+	# The region past the known map: only a name that never answers (story: the last seal).
+	_add_label(tr(&"JOURNAL_UNNAMED"), 26, Color(0.6, 0.55, 0.7))
+	_add_label("   " + tr(&"JOURNAL_UNNAMED_NOTE"), 20, Color(1, 1, 1, 0.55))
 	var state: SecretState = GameState.secrets
 	if state.hints.is_empty():
 		_add_label(tr(&"JOURNAL_NO_HINTS"), 22, Color(1, 1, 1, 0.6))

@@ -75,7 +75,7 @@ extra_stagger = 20.0
 [resource]
 script = ExtResource("1")
 id = &"vanguard"
-display_name = "Vanguard"
+display_name = "Warden"
 description = "Tank / bruiser. Heavy greatsword combos, high HP and DEF."
 magic_damage = false
 base_stats = SubResource("base")

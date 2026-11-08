@@ -23,8 +23,8 @@ enum Hair { LONG, SHORT }
 @export var has_dragon: bool = false
 ## Procedural fallback hairstyle.
 @export var hair: Hair = Hair.LONG
-@export var hair_color: Color = Color(1.0, 0.88, 0.6)
-@export var hair_tip_color: Color = Color(1.0, 0.62, 0.68)
+@export var hair_color: Color = Color(0.14, 0.11, 0.1)
+@export var hair_tip_color: Color = Color(0.22, 0.18, 0.16)
 
 
 const DEFAULT_ID: StringName = &"dragon_maiden"

@@ -7,7 +7,7 @@ const HIT_FLASH_S: float = 0.12
 const POISE_RESET_S: float = 2.0
 const TURN_SPEED: float = 10.0
 const TUNING: StatTuning = preload("res://data/balancing/stat_tuning.tres")
-## Reference hero for enemy scaling (Balancing sheet uses the selected class; Vanguard by default).
+## Reference hero for enemy scaling (Balancing sheet uses the selected class; Warden — id vanguard — by default).
 const REFERENCE_CLASS: ClassData = preload("res://data/classes/vanguard.tres")
 
 @export var data: EnemyData

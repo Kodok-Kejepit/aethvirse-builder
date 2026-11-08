@@ -229,7 +229,7 @@
 ### How to test (M5)
 1. `tools/play.sh` → opening → Ashfall camp. `~` opens the console (`help`).
 2. Quest 1: talk to the Bread Seller, kill 5 Ash Hounds near the overpass (east), enter the Overpass Rift portal, clear 3 rooms + boss, leave through the blue ring.
-3. Secrets (spoilers in `ascendant-dev/docs/MYSTERY_BIBLE.md`; `reveal_secrets` shows pink markers, `list_secrets` shows status). Useful cheats: `weather rain`, `time 22:00`, `day +1`, `level 10`, `tp x y z`.
+3. Secrets (spoilers in `aethvirse-dev/docs/MYSTERY_BIBLE.md`; `reveal_secrets` shows pink markers, `list_secrets` shows status). Useful cheats: `weather rain`, `time 22:00`, `day +1`, `level 10`, `tp x y z`.
 4. Save in Codex → System, quit, restart: you continue where you saved.
 5. Feel/clarity checklist: can you find the culvert/apartment clues without the cheats? Is the dialog readable on the phone? Does the boss phase change feel noticeable?
 
@@ -298,7 +298,7 @@
 1. F5 → opening → press any key → sandbox. Or open `scenes/test/test_movement.tscn` and press **F6**.
 2. Click the game to capture the mouse (Esc releases). WASD move, mouse look, Space jump (hold = higher), Shift tap = dodge, hold Shift while moving = sprint. F3 shows state, speed, stamina.
 3. Check: walk the 20° ramp (should climb), 40° (should climb), 55° (should slide/block); jump onto the 0.5–1.0 m steps; go through the corridor and check the camera does not clip through walls.
-4. Phone: `adb install -r build/android/ascendant-debug.apk`, tap through the opening, left thumb = joystick, right thumb drag = camera, buttons bottom right.
+4. Phone: `adb install -r build/android/aethvirse-debug.apk`, tap through the opening, left thumb = joystick, right thumb drag = camera, buttons bottom right.
 5. Feel checklist for the owner: run speed, acceleration/stop snappiness, jump height & air control, dodge distance/speed, sprint FOV kick, camera sensitivity (PC and phone). Tune in `data/player/default_movement.tres` or tell me the direction.
 
 ### Not done yet (M1)
@@ -323,8 +323,8 @@
 ### How to test
 1. Open the project in Godot 4.7.2, press **F5** → full-screen animated opening (fade-in, rotating rings, light sweep on the title). Press **F3** → debug overlay.
 2. `tools/validate.sh` → must end with `VALIDATION OK`.
-3. `tools/build.sh windows` → `tools/screenshot.sh windows 1920x1080 7` (Wine), or `wine build/windows/ASCENDANT.exe` to see it live.
-4. `tools/build.sh android` → `adb install -r build/android/ascendant-debug.apk`, open the app, 3-finger tap for the overlay.
+3. `tools/build.sh windows` → `tools/screenshot.sh windows 1920x1080 7` (Wine), or `wine build/windows/AETHVIRSE.exe` to see it live.
+4. `tools/build.sh android` → `adb install -r build/android/aethvirse-debug.apk`, open the app, 3-finger tap for the overlay.
 
 ### Not done yet
 - Cheat console (`~`) — planned alongside the first gameplay systems (M1/M2).
@@ -423,3 +423,24 @@
 
 ## Ultra preset effects (2026-11-09)
 - PC Ultra now really turns on volumetric fog, screen-space reflections, SDFGI + SSIL, TAA and full mesh detail (High: SSAO) in the world, Gates and the metro; phones / software rendering skip them.
+
+## AETHVIRSE (2026-11-09)
+- **New name everywhere:** AETHVIRSE: Unseal the Codex — window / app name, Windows exe, Android
+  package (installs as a new app: uninstall the old one), opening key art and app icon from the
+  owner's website. Old settings and saves on the laptop are copied over on first start.
+- **Prologue "The Weakest"** after choosing a character in New Game (4 pages; tap / any key =
+  next, "Skip »" ends it).
+- **Seals:** Codex tab "Seals" (was Quests); "A new seal appears" / "Seal broken — a page of the
+  Codex opens"; counter of opened pages. Mystery Journal always ends with **[ ??? ]**.
+- Tank class shown as **Warden** (Vanguard is now the hero's title); "Create your Vanguard".
+- **Obsidia gone from builds:** the camp statue became a mossy monolith and the statue files are
+  excluded from every export; the stand-in body (only used if a hero model is missing) is neutral.
+- Test: New Game → pick → prologue → Ashfall; Codex (C) → Seals; Codex → Mystery Journal.
+
+## Lighter frames on the laptop (2026-11-09)
+- Fewer draw calls / triangles by day and especially by night (see DECISIONS): distance LODs on
+  129 models, smarter moon shadows, short-range shadows on lower presets, small props culled
+  near, grass only near the hero, Ultra without real-time GI on built-in GPUs.
+- Debug: `perf` (frame cost), `perf mesh` (heaviest models nearby), `perf shadows`, `perf lod N`.
+- Known: on the owner's Intel UHD, **High** is the sensible top preset; Ultra still adds
+  volumetric fog + reflections.

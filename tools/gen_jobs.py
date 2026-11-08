@@ -175,7 +175,7 @@ def ranger_jobs():
 
 def summoner_line():
     # Weakest start: low damage, mana-hungry, only one or two familiars. The road to the
-    # Necromancer is a sealed mission (see ascendant-dev MYSTERY_BIBLE: necromancer_path).
+    # Necromancer is a sealed mission (see aethvirse-dev MYSTERY_BIBLE: necromancer_path).
     job("summoner", "Summoner", "Calls small familiars to fight. Weak and mana-hungry... at first.", "", 1, 30,
         [dict(id="call_familiar", name="Call Familiar", desc="Call a familiar wisp. Two at skill Lv 5.", kind=6,
               color="Color(0.55, 0.85, 1, 1)", unlock=30, mp=40, cd=6.0, per=0.08, max=1, every=5, summon="familiar_wisp"),

@@ -15,9 +15,9 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MODE="${1:-linux}"
 shift || true
 GAME_ARGS=("$@")
-EXE="$ROOT/build/windows/ASCENDANT.exe"
-APK="$ROOT/build/android/ascendant-debug.apk"
-PACKAGE="com.kodokkejepit.ascendant"
+EXE="$ROOT/build/windows/AETHVIRSE.exe"
+APK="$ROOT/build/android/aethvirse-debug.apk"
+PACKAGE="com.kodokkejepit.aethvirse"
 ADB="${ADB:-$HOME/Android/Sdk/platform-tools/adb}"
 
 # True if any project file is newer than the given build output.
@@ -41,7 +41,7 @@ case "$MODE" in
 			echo "Code changed since the last Windows build, rebuilding..."
 			"$ROOT/tools/build.sh" windows
 		fi
-		echo "Starting ASCENDANT.exe in Wine (close the window or press Alt+F4 to quit)..."
+		echo "Starting AETHVIRSE.exe in Wine (close the window or press Alt+F4 to quit)..."
 		cd "$(dirname "$EXE")"
 		WINEDEBUG=-all exec wine "$EXE" -- "${GAME_ARGS[@]}"
 		;;

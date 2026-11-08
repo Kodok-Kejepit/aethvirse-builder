@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctkdlh482j5sk"
-path="res://.godot/imported/ascendant_poster.png-2ba62bd4c1ca84c5118fdd3a71c7bc02.ctex"
+uid="uid://bnp5a7vjvl5ad"
+path="res://.godot/imported/aethvirse_keyart.png-4a7f534cad44ee914748c7a3ccf4ef0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/branding/ascendant_poster.png"
-dest_files=["res://.godot/imported/ascendant_poster.png-2ba62bd4c1ca84c5118fdd3a71c7bc02.ctex"]
+source_file="res://assets/branding/aethvirse_keyart.png"
+dest_files=["res://.godot/imported/aethvirse_keyart.png-4a7f534cad44ee914748c7a3ccf4ef0e.ctex"]
 
 [params]
 

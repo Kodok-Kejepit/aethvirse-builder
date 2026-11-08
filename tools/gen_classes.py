@@ -3,7 +3,7 @@
 
 Run from the project root:  python3 tools/gen_classes.py
 Writes data/combat/<weapon>_combo.tres, data/skills/<class>/*.tres, data/classes/<class>.tres,
-data/items/issued_*.tres. Stats mirror ASCENDANT_Balancing.xlsx sheet "Kelas".
+data/items/issued_*.tres. Stats mirror AETHVIRSE_Balancing.xlsx sheet "Kelas".
 Edit numbers here, not in the generated files.
 """
 import os

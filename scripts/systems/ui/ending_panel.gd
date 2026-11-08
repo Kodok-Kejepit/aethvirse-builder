@@ -78,6 +78,8 @@ func _choose(choice: int) -> void:
 	_clear()
 	_line(tr(StringName("ENDING_%s_TITLE" % String(ending).to_upper())), 34)
 	_line(tr(StringName("ENDING_%s_TEXT" % String(ending).to_upper())))
+	# Story: the known world ends here; the last seal waits beyond the map, at [ ??? ].
+	_line(tr(&"ENDING_LAST_SEAL"))
 	var back: Button = Button.new()
 	back.text = tr(&"ENDING_RETURN")
 	back.custom_minimum_size = CodexTheme.button_size(420, 60)

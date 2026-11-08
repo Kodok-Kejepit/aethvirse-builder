@@ -9,6 +9,9 @@ const AUDIO_BUSES: Array[StringName] = [&"Master", &"BGM", &"SFX", &"Voice", &"U
 const LANGUAGES: Array[String] = ["", "en", "id"]
 const FPS_CAPS: Array[int] = [0, 30, 60, 120]
 const TOUCH_SCALE_RANGE: Vector2 = Vector2(0.7, 1.4)
+## Sun shadow distance by shadow quality 0..3 (metres).
+const SHADOW_DISTANCE_M: Array[float] = [40.0, 55.0, 80.0, 110.0]
+const ULTRA_LOD_THRESHOLD: float = 0.5
 
 var is_mobile: bool = false
 var preset: QualityPresets.Preset = QualityPresets.Preset.PC_MEDIUM
@@ -44,9 +47,18 @@ var keybinds: Dictionary[StringName, PackedStringArray] = {}
 var _default_binds: Dictionary[StringName, PackedStringArray] = {}
 
 var _detected: QualityPresets.Preset = QualityPresets.Preset.PC_MEDIUM
+## Heavy preset on a device that cannot keep up: tell the player once per session.
+const SLOW_FPS: float = 25.0
+const SLOW_WARN_S: float = 12.0
+var _slow_s: float = 0.0
+var _warned_slow: bool = false
+static var _software: int = -1
 
 
 func _ready() -> void:
+	# First autoload that reads user://: bring settings and saves over from the old name.
+	if not OS.has_feature("mobile"):
+		UserDataMigration.run()
 	is_mobile = OS.has_feature("mobile")
 	force_mobile_ui = "--mobile-ui" in OS.get_cmdline_user_args()
 	if wants_touch_controls():
@@ -63,8 +75,18 @@ func _ready() -> void:
 	apply_all()
 
 
+func _process(delta: float) -> void:
+	if _warned_slow or preset < QualityPresets.Preset.PC_HIGH or software_renderer() or get_tree().paused:
+		return
+	_slow_s = _slow_s + delta if Engine.get_frames_per_second() < SLOW_FPS else 0.0
+	if _slow_s > SLOW_WARN_S:
+		_warned_slow = true
+		Codex.notify(tr(&"SET_TOO_HEAVY") % get_preset_name(), &"warning")
+
+
 func apply_preset(target: QualityPresets.Preset) -> void:
 	preset = target
+	_slow_s = 0.0
 	profile = QualityPresets.load_profile(target)
 	Engine.max_fps = fps_cap if fps_cap > 0 else profile.target_fps
 	get_viewport().scaling_3d_scale = profile.render_scale
@@ -225,13 +247,33 @@ func apply_effects(env: Environment) -> void:
 		env.ssr_enabled = true
 		env.ssr_max_steps = 48
 		env.ssr_fade_out = 2.0
-	if profile.global_illumination:
+	# Real-time GI (SDFGI + SSIL) only on a dedicated GPU: on a laptop's built-in GPU it
+	# alone drops Ultra to a slideshow (owner's Intel UHD).
+	var gi: bool = profile.global_illumination and not integrated_gpu()
+	if gi:
 		env.sdfgi_enabled = true
 		env.sdfgi_use_occlusion = true
 		env.ssil_enabled = true
 	var vp: Viewport = get_viewport()
-	vp.use_taa = profile.global_illumination
-	vp.mesh_lod_threshold = 0.0 if profile.global_illumination else 1.0
+	vp.use_taa = gi
+	# Ultra keeps more detail at a distance, but distance LODs stay on everywhere.
+	vp.mesh_lod_threshold = ULTRA_LOD_THRESHOLD if profile.global_illumination else 1.0
+
+
+## Sun / moon shadows by preset: the shadow pass redraws everything in range, so lower
+## presets cover less distance with fewer cascades. Call on every scene's sun.
+func apply_sun(sun: DirectionalLight3D) -> void:
+	if sun == null or profile == null:
+		return
+	var q: int = mini(profile.shadow_quality, 1) if software_renderer() else profile.shadow_quality
+	sun.shadow_enabled = q > 0
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS if q >= 3 else DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+	sun.directional_shadow_max_distance = SHADOW_DISTANCE_M[clampi(q, 0, SHADOW_DISTANCE_M.size() - 1)]
+
+
+## Laptop / phone GPU sharing system memory (Intel UHD / Iris, AMD APU graphics).
+static func integrated_gpu() -> bool:
+	return RenderingServer.get_video_adapter_type() == RenderingDevice.DEVICE_TYPE_INTEGRATED_GPU
 
 
 ## Screen-space ambient occlusion only on PC High / Ultra.
@@ -241,4 +283,6 @@ func wants_ssao() -> bool:
 
 ## CPU rendering (llvmpipe: headless captures / VMs): heavy effects would crawl.
 static func software_renderer() -> bool:
-	return RenderingServer.get_video_adapter_name().to_lower().contains("llvmpipe")
+	if _software < 0:
+		_software = 1 if RenderingServer.get_video_adapter_name().to_lower().contains("llvmpipe") else 0
+	return _software == 1

@@ -1,6 +1,6 @@
 class_name CharacterRig
 extends Node3D
-## Procedural anime-style heroine (Big Phase 2 test character): a joint hierarchy of Node3Ds
+## Procedural stand-in body (used only when a hero has no imported model; neutral colours): a joint hierarchy of Node3Ds
 ## with primitive meshes, toon materials, long spring-driven hair and sashes, and a
 ## class weapon. Faces -Z, feet on y = 0. Poses come from CharacterPoses via CharacterAnimator.
 
@@ -10,18 +10,17 @@ const TOON_SHADER: Shader = preload("res://assets/shaders/toon_character.gdshade
 const OUTLINE_SHADER: Shader = preload("res://assets/shaders/toon_outline.gdshader")
 
 const SKIN: Color = Color(0.98, 0.8, 0.72)
-const SUIT: Color = Color(0.12, 0.07, 0.21)
-const GOLD: Color = Color(0.96, 0.74, 0.34)
-const HAIR: Color = Color(1.0, 0.88, 0.6)
-const HAIR_TIP: Color = Color(1.0, 0.62, 0.68)
-const SLEEVE: Color = Color(0.88, 0.2, 0.38)
-const SLEEVE_END: Color = Color(0.22, 0.05, 0.16)
-const GLOVE: Color = Color(0.1, 0.05, 0.1)
-const SASH: Color = Color(0.55, 0.06, 0.2)
-const SASH_TIP: Color = Color(0.95, 0.45, 0.7)
-const EYE: Color = Color(0.68, 0.48, 1.0)
-const GEM: Color = Color(1.0, 0.32, 0.78)
-const FEATHER: Color = Color(0.07, 0.06, 0.09)
+const SUIT: Color = Color(0.13, 0.14, 0.16)
+const GOLD: Color = Color(0.62, 0.64, 0.68)
+const HAIR: Color = Color(0.14, 0.11, 0.1)
+const HAIR_TIP: Color = Color(0.22, 0.18, 0.16)
+const SLEEVE: Color = Color(0.24, 0.27, 0.32)
+const SLEEVE_END: Color = Color(0.12, 0.13, 0.16)
+const GLOVE: Color = Color(0.08, 0.08, 0.09)
+const SASH: Color = Color(0.3, 0.33, 0.38)
+const SASH_TIP: Color = Color(0.45, 0.5, 0.56)
+const EYE: Color = Color(0.95, 0.72, 0.35)
+const GEM: Color = Color(0.45, 0.75, 1.0)
 
 ## Joint rest positions (parent-relative). Order matters: parents first.
 const JOINTS: Array[Array] = [
@@ -231,7 +230,7 @@ static func _prism(size: Vector3) -> PrismMesh:
 # --- body --------------------------------------------------------------------------------
 
 func _suit() -> ShaderMaterial:
-	return _mat("suit", SUIT, {"star_amount": 1.0, "rim_color": Color(0.7, 0.45, 1.0), "rim_strength": 0.45})
+	return _mat("suit", SUIT, {"star_amount": 0.0, "rim_color": Color(0.6, 0.7, 0.85), "rim_strength": 0.3})
 
 
 func _build_torso() -> void:
@@ -288,11 +287,6 @@ func _build_head() -> void:
 	for side: float in [1.0, -1.0]:
 		_part(head, _capsule(0.028, 0.26), hair, Vector3(0.092 * side, 0.05, -0.035), Vector3(-4.0, 0.0, 6.0 * side), Vector3(1.0, 1.0, 0.7))
 	_part(head, _capsule(0.012, 0.12), hair, Vector3(0.01, 0.25, 0.0), Vector3(30.0, 0.0, -20.0))
-	# Black feather crest on her left side.
-	var black: ShaderMaterial = _mat("feather", FEATHER, {"rim_color": Color(0.5, 0.35, 0.7), "rim_strength": 0.5})
-	for i: int in 4:
-		_part(head, _prism(Vector3(0.03, 0.17 - 0.025 * float(i), 0.012)), black,
-			Vector3(-0.08 - 0.012 * float(i), 0.21 + 0.01 * float(i), 0.03), Vector3(-25.0, 0.0, 30.0 - 20.0 * float(i)))
 
 
 func _build_arm(side: float) -> void:

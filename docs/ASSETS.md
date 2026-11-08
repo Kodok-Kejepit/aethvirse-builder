@@ -52,7 +52,7 @@ More slots (apartment ruins, Gate frames, waystones, shrines, tombs, bookshelves
 Throne) get added as the models arrive — send them and Claude wires them in.
 
 
-## Big batch (owner's downloads, `~/Unduhan/game/ASCENDANT`)
+## Big batch (owner's downloads, `~/Unduhan/game/AETHVIRSE`)
 Owner-picked Meshy models (own + Meshy community uploads). Pipeline:
 1. `reduce_glb.py` shrinks every file (≤ 40k triangles, 1024 albedo). Meshy atlases are
    cut into thousands of UV islands, so very dense files cannot be simplified with their

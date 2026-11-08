@@ -1,8 +1,8 @@
-<p align="center"><img src="assets/branding/ascendant_banner.png" width="720" alt="ASCENDANT"></p>
+<p align="center"><img src="assets/branding/aethvirse_keyart.png" width="720" alt="AETHVIRSE"></p>
 
-# ASCENDANT
+# AETHVIRSE
 
-> **ascendant-builder** — repo ini khusus untuk *build*: GitHub Actions membangun APK Android dan versi Windows dari snapshot kode terbaru, hasilnya ada di **Releases → latest**. Pengembangan utama tidak dilakukan di sini.
+> **aethvirse-builder** — repo ini khusus untuk *build*: GitHub Actions membangun APK Android dan versi Windows dari snapshot kode terbaru, hasilnya ada di **Releases → latest**. Pengembangan utama tidak dilakukan di sini.
 
 **Third-person 3D action RPG · Open world · Anime cel-shaded**
 Windows (full version) · Android 14+

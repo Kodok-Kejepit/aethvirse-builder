@@ -1,10 +1,12 @@
 shader_type canvas_item;
-// Full-screen animated opening built on top of the square key art.
-// The image is cover-fitted to any aspect ratio (16:9 .. 20:9), then animated with
-// rotating HUD rings, a pulsing core light, a light sweep over the title and a short glitch.
+// Full-screen animated opening built on top of the key art (any width : height, set
+// tex_aspect). The image is cover-fitted to any screen (16:9 .. 20:9), then animated with
+// slow rune rings, a pulsing core light, a light sweep over the title and an optional glitch.
 
 uniform sampler2D logo_tex : source_color, filter_linear_mipmap;
 uniform vec2 rect_size = vec2(1920.0, 1080.0);
+// Key art width / height.
+uniform float tex_aspect = 1.0;
 // Image-space point kept centered when the image is cropped to the screen.
 uniform vec2 focus = vec2(0.5, 0.5);
 uniform float zoom = 1.0;
@@ -43,7 +45,7 @@ float ring(vec2 p, float radius, float width, float dashes, float duty, float sp
 
 vec2 cover_uv(vec2 screen_uv) {
 	float aspect = rect_size.x / rect_size.y;
-	vec2 visible = aspect >= 1.0 ? vec2(1.0, 1.0 / aspect) : vec2(aspect, 1.0);
+	vec2 visible = aspect >= tex_aspect ? vec2(1.0, tex_aspect / aspect) : vec2(aspect / tex_aspect, 1.0);
 	visible /= zoom;
 	vec2 half_vis = visible * 0.5;
 	vec2 center = clamp(focus, half_vis, vec2(1.0) - half_vis);
@@ -70,7 +72,8 @@ void fragment() {
 	vec3 col = sample_glitched(uv);
 
 	// Rotating HUD rings around the emblem (image space keeps them aligned with the art).
-	vec2 p = uv - ring_center;
+	// Measured in image heights so rings stay round on wide art.
+	vec2 p = (uv - ring_center) * vec2(tex_aspect, 1.0);
 	float rings = 0.0;
 	rings += ring(p, 0.235, 0.0018, 3.0, 0.62, 0.035) * 0.55;
 	rings += ring(p, 0.275, 0.0010, 96.0, 0.35, -0.010) * 0.45;
@@ -84,10 +87,10 @@ void fragment() {
 	col += mix(ring_color, accent_color, step(0.33, length(p))) * rings * ring_intensity * fx_strength;
 
 	// Pulsing core light at the base of the spire + soft vertical beam.
-	vec2 d = (uv - core_light_pos) * vec2(1.0, 0.8);
+	vec2 d = (uv - core_light_pos) * vec2(tex_aspect, 0.8);
 	float pulse = 0.55 + 0.45 * sin(TIME * 1.7);
 	float core = exp(-dot(d, d) * 140.0) * (0.10 + 0.14 * pulse);
-	float beam = exp(-abs(uv.x - core_light_pos.x) * 140.0) * smoothstep(core_light_pos.y + 0.05, 0.0, uv.y);
+	float beam = exp(-abs(uv.x - core_light_pos.x) * tex_aspect * 140.0) * smoothstep(core_light_pos.y + 0.05, 0.0, uv.y);
 	beam *= 0.10 + 0.08 * sin(TIME * 3.1 + uv.y * 30.0);
 	col += ring_color * (core + beam) * fx_strength;
 

@@ -1,5 +1,5 @@
 keys,en,id
-GAME_TITLE,ASCENDANT,ASCENDANT
+GAME_TITLE,AETHVIRSE,AETHVIRSE
 HUD_HITS,HITS,HIT
 HUD_PERFECT_DODGE,PERFECT DODGE,HINDARAN SEMPURNA
 HUD_DOWN,DOWN,TUMBANG
@@ -14,7 +14,7 @@ STATUS_LOCKED,Unlocks at Lv %d,Terbuka di Lv %d
 CODEX_TITLE,THE CODEX,THE CODEX
 CODEX_TAB_STATUS,Status,Status
 CODEX_TAB_LOG,Log,Log
-CODEX_TAB_QUESTS,Quests,Misi
+CODEX_TAB_QUESTS,Seals,Segel
 CODEX_TAB_INVENTORY,Inventory,Inventori
 CODEX_TAB_MAP,Map,Peta
 CODEX_TAB_SHADOWS,Shadow Army,Pasukan Bayangan
@@ -120,7 +120,7 @@ DLG_MARROW_THANKS,"...He takes it without a word, and watches you leave.","...Di
 NPC_KID,Camp Kid,Anak Kamp
 NPC_BREAD,Bread Seller,Penjual Roti
 DLG_CHOICE_BUY_BREAD,Buy bread,Beli roti
-DLG_BREAD_THANKS,"Fresh-ish. Thanks, Hunter.","Lumayan segar. Makasih, Hunter."
+DLG_BREAD_THANKS,"Fresh-ish. Thanks, Vanguard.","Lumayan segar. Makasih, Vanguard."
 NPC_APPRAISER,Honest Appraiser,Penilai Jujur
 DLG_CHOICE_APPRAISE,Appraise the heavy license,Nilai lisensi yang berat itu
 DLG_APPRAISER_LICENSE,Rank S. Marrow Kessick. ...I knew that name once. Everyone did.,Rank S. Marrow Kessick. ...Dulu aku kenal nama itu. Semua orang kenal.
@@ -144,12 +144,12 @@ QUEST_R1_SAFE_ROAD,A Safe Road Home,Jalan Aman ke Kamp
 QUEST_R1_SAFE_ROAD_D,Husks keep wandering toward the camp. Push them back.,Husk terus berkeliaran ke arah kamp. Usir mereka.
 QO_KILL_HUSKS,Defeat Gate Husks,Kalahkan Gate Husk
 QO_TALK_KID,Tell the camp kid the road is safe,Beri tahu anak kamp jalannya sudah aman
-CODEX_MSG_QUEST_STARTED,New quest: %s,Misi baru: %s
+CODEX_MSG_QUEST_STARTED,A new seal appears: %s,Segel baru muncul: %s
 CODEX_MSG_QUEST_STEP,Next: %s,Selanjutnya: %s
-CODEX_MSG_QUEST_DONE,Quest complete: %s,Misi selesai: %s
-QUESTS_ACTIVE,Active,Aktif
-QUESTS_DONE,Completed,Selesai
-QUESTS_NONE,No quests.,Tidak ada misi.
+CODEX_MSG_QUEST_DONE,Seal broken: %s — a page of the Codex opens.,Segel terbuka: %s — satu halaman Codex terbuka.
+QUESTS_ACTIVE,Seals to break,Segel yang menunggu
+QUESTS_DONE,Broken seals,Segel yang terbuka
+QUESTS_NONE,No seals yet.,Belum ada segel.
 MENU_CONTINUE,Continue,Lanjutkan
 MENU_NEW_GAME,New Game,Game Baru
 MENU_CONTINUE_INFO,%s  Lv %d,%s  Lv %d
@@ -466,7 +466,7 @@ STAT_AGI_NAME,Agility,Kelincahan
 STAT_INT_NAME,Intelligence,Kecerdasan
 STAT_VIT_NAME,Vitality,Vitalitas
 STAT_SEN_NAME,Sense,Indra
-MENU_CREATE_TITLE,Create your Hunter,Buat Hunter-mu
+MENU_CREATE_TITLE,Create your Vanguard,Buat Vanguard-mu
 MENU_PICK_CLASS,Class,Kelas
 MENU_START,Begin,Mulai
 SET_MOUSE_ATTACK,Basic attack on mouse click,Serangan dasar pakai klik mouse
@@ -532,3 +532,22 @@ CHALLENGE_TIMED_LOST,"Too slow for the trial.","Terlalu lambat untuk tantangan."
 CHALLENGE_TRAPS,"Trial: fire vents in the floor — watch for the red glow.","Tantangan: semburan api dari lantai — awas cahaya merah."
 CHALLENGE_DARK,"Trial: the lights go out.","Tantangan: lampu padam."
 CHALLENGE_ELITE,"Trial: an elite guardian.","Tantangan: penjaga elite."
+SET_TOO_HEAVY,"%s is too heavy for this device (low frame rate). Try a lower quality in Settings → Graphics.","%s terlalu berat untuk perangkat ini (frame rate rendah). Coba kualitas lebih rendah di Pengaturan → Grafis."
+PROLOGUE_TITLE,PROLOGUE · THE WEAKEST,PROLOG · SANG TERLEMAH
+PROLOGUE_1,"In a world called Aethvirse, there was a Vanguard who began at the very bottom.
+Not a hero. Not the chosen one. Only the weakest.","Di dunia bernama Aethvirse, ada seorang Vanguard yang memulai dari titik paling bawah.
+Bukan pahlawan. Bukan yang terpilih. Hanya yang terlemah."
+PROLOGUE_2,"In their hands lay an ancient book: The Codex. Most of its pages are still sealed.
+No one knows who sealed them, and no one knows why.","Di tangannya, ada sebuah kitab kuno bernama The Codex. Sebagian besar halamannya masih tersegel.
+Tidak ada yang tahu siapa yang menyegelnya, dan tidak ada yang tahu mengapa."
+PROLOGUE_3,"The Codex is alive.
+And it chose the Vanguard to carry it.","Codex itu hidup.
+Dan ia memilih Vanguard untuk membawanya."
+PROLOGUE_4,"Ashfall Outskirts — the fringe of the world, buried in ash.
+This is where it begins.","Ashfall Outskirts — wilayah pinggiran yang diselimuti abu.
+Di sinilah semuanya dimulai."
+PROLOGUE_SKIP,Skip »,Lewati »
+QUESTS_PAGES,"Every mission is a seal. Pages of the Codex opened: %d","Setiap misi adalah segel. Halaman Codex yang terbuka: %d"
+JOURNAL_UNNAMED,[ ??? ],[ ??? ]
+JOURNAL_UNNAMED_NOTE,"A name that never answers. No map points there, and no road leads there. Only your own notes might.","Nama yang tak pernah menjawab. Tak ada peta yang menunjuk ke sana, tak ada jalan yang mengarah ke sana. Mungkin hanya catatanmu sendiri."
+ENDING_LAST_SEAL,"The known world ends here. Yet one page of the Codex stays sealed, and in your Mystery Journal one name is still written as [ ??? ]. The journey is not over. It has only begun.","Dunia yang dikenal berakhir di sini. Namun satu halaman Codex masih tersegel, dan di Jurnal Misteri-mu satu nama masih tertulis sebagai [ ??? ]. Perjalanan ini belum berakhir. Ia baru saja dimulai."
