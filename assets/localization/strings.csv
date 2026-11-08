@@ -509,3 +509,26 @@ METRO_SIGN,METRO,METRO
 METRO_EXIT,EXIT ↑,KELUAR ↑
 CODEX_MSG_METRO,"Collapsed Metro Station (Lv 40-50). Something still runs the tunnels.","Stasiun Metro Runtuh (Lv 40-50). Ada yang masih berkeliaran di terowongan."
 GATE_R1_D_METRO,Metro Tunnel Gate,Gate Terowongan Metro
+ACT_MAP,Map,Peta
+STATUS_PROFILE,Character Profile,Profil Karakter
+SET_TOUCH_LAYOUT,Button layout,Tata letak tombol
+SET_TOUCH_ARRANGE,Arrange buttons…,Atur posisi tombol…
+TOUCH_EDIT_HINT,"Drag a button to move it, − / + to resize the one you picked.","Seret tombol untuk memindah, − / + untuk ukuran tombol yang dipilih."
+TOUCH_EDIT_RESET,Reset,Reset
+TOUCH_EDIT_DONE,Done,Selesai
+CODEX_MSG_DUNGEON_KIND,"This Gate opens into: %s","Gate ini terbuka ke: %s"
+DUNGEON_WARRENS,the Warrens,Liang Gua
+DUNGEON_HALLS,the Fallen Halls,Aula Runtuh
+DUNGEON_RUINS,the Ruins,Reruntuhan
+DUNGEON_GROTTO,the Crystal Grotto,Gua Kristal
+DUNGEON_CRYPT,the Crypt,Kripta
+DUNGEON_ROOTDEEP,the Rootdeep,Akar Purba
+CHALLENGE_TIMED_START,"Trial: clear the room within %d seconds.","Tantangan: bersihkan ruangan dalam %d detik."
+CHALLENGE_WAVES_START,"Trial: %d waves are coming.","Tantangan: %d gelombang akan datang."
+CHALLENGE_NEXT_WAVE,"Next wave!","Gelombang berikutnya!"
+CHALLENGE_TIMED_LATE,"Time is up — the reward is gone.","Waktu habis — hadiahnya hilang."
+CHALLENGE_TIMED_WON,"Trial cleared in time: a chest appears.","Tantangan selesai tepat waktu: sebuah peti muncul."
+CHALLENGE_TIMED_LOST,"Too slow for the trial.","Terlalu lambat untuk tantangan."
+CHALLENGE_TRAPS,"Trial: fire vents in the floor — watch for the red glow.","Tantangan: semburan api dari lantai — awas cahaya merah."
+CHALLENGE_DARK,"Trial: the lights go out.","Tantangan: lampu padam."
+CHALLENGE_ELITE,"Trial: an elite guardian.","Tantangan: penjaga elite."

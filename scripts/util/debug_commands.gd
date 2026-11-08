@@ -31,6 +31,7 @@ static func register_core() -> void:
 	DebugConsole.register("codex", _codex, "codex <status|quests|inventory|journal|lore|log|system> — open a Codex tab")
 	DebugConsole.register("newgame", _newgame, "newgame <vanguard|phantom|arcanist|ranger> — restart this scene as a new character")
 	DebugConsole.register("press", _press, "press <action> — tap an input action (testing)")
+	DebugConsole.register("hold", _hold, "hold <action> <seconds> — hold an input action (testing)")
 	DebugConsole.register("job", _job, "job [id] — list job options, or force a job (ignores level/flags)")
 	DebugConsole.register("pose", _pose, "pose [name|auto|off] — freeze the character on a pose (list without args)")
 	DebugConsole.register("dragon", _dragon, "dragon [ult] — summon the spirit dragon effect")
@@ -43,6 +44,7 @@ static func register_core() -> void:
 	DebugConsole.register("droploot", _droploot, "droploot — drop one item of every rarity in front of you")
 	DebugConsole.register("trial", _trial, "trial <job_id> — start that job's Change trial now")
 	DebugConsole.register("gate", _gate, "gate [gate_id] [double] — enter a Gate (double = force the hidden Double Gate)")
+	DebugConsole.register("touchedit", _touchedit, "touchedit — open the touch button layout editor")
 	DebugConsole.register("metro", _metro, "metro — go down into the Region 1 metro station")
 	DebugConsole.register("dungeonmap", _dungeonmap, "dungeonmap [room|next|zoom|tunnel N] — inside a Gate: map from above (roofs off), jump to a room / tunnel")
 
@@ -205,6 +207,16 @@ static func _press(args: PackedStringArray) -> String:
 	return "pressed %s" % action
 
 
+static func _hold(args: PackedStringArray) -> String:
+	if args.size() < 2 or not InputMap.has_action(StringName(args[0])):
+		return "usage: hold <input action> <seconds>"
+	var action: StringName = StringName(args[0])
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	Input.action_press(action)
+	tree.create_timer(args[1].to_float(), true, false, true).timeout.connect(func() -> void: Input.action_release(action))
+	return "holding %s" % action
+
+
 static func _job(args: PackedStringArray) -> String:
 	var p: Player = _player()
 	if p == null:
@@ -333,6 +345,15 @@ static func _trial(args: PackedStringArray) -> String:
 		return "this job has no trial"
 	var tree: SceneTree = Engine.get_main_loop() as SceneTree
 	return "entering trial" if JobTrial.start(tree, p, job) else "cannot start now"
+
+
+static func _touchedit(_args: PackedStringArray) -> String:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	var controls: Node = tree.get_first_node_in_group(&"mobile_controls")
+	if controls == null:
+		return "no touch controls"
+	controls.call(&"begin_edit")
+	return "arranging touch buttons"
 
 
 static func _metro(_args: PackedStringArray) -> String:

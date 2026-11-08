@@ -90,7 +90,8 @@ func _make_tunnel(plan: DungeonPlan, link: Dictionary, rng: RandomNumberGenerato
 	var ca: Vector2 = plan.center(a)
 	var cb: Vector2 = plan.center(b)
 	var side: Vector2 = (cb - ca).orthogonal().normalized()
-	var wiggle: float = 4.0 if kind == DungeonPlan.Link.BREACH else 10.0
+	var wind: float = DungeonArchetype.spec(plan.archetype)["wiggle"]
+	var wiggle: float = (4.0 if kind == DungeonPlan.Link.BREACH else 10.0) * wind
 	var key: PackedVector2Array = [ca, ca.lerp(cb, 0.35) + side * rng.randf_range(-wiggle, wiggle), ca.lerp(cb, 0.65) + side * rng.randf_range(-wiggle, wiggle), cb]
 	var points: PackedVector2Array = _spline(key, 2.0)
 	var t: Dictionary = {"a": a, "b": b, "kind": kind, "width": LINK_WIDTH[kind], "points": points}

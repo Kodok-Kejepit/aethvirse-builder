@@ -48,11 +48,21 @@ func _init() -> void:
 	_left.add_child(_card(_titled(&"STATUS_DERIVED", _derived)))
 	_job_box = VBoxContainer.new()
 	_left.add_child(_card(_job_box))
+	# The hero in a framed "CHARACTER PROFILE" card (owner's reference).
+	var profile: VBoxContainer = VBoxContainer.new()
+	profile.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	profile.size_flags_stretch_ratio = 0.8
+	var caption: Label = _label(tr(&"STATUS_PROFILE").to_upper(), 18, CodexTheme.TRIM)
+	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	caption.add_theme_font_override(&"font", CodexTheme.SERIF)
+	profile.add_child(caption)
 	_stage = HeroStage.new()
-	_stage.custom_minimum_size = Vector2(CodexTheme.px(400), CodexTheme.px(560))
+	_stage.custom_minimum_size = Vector2(CodexTheme.px(400), CodexTheme.px(540))
 	_stage.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_stage.size_flags_stretch_ratio = 0.8
-	add_child(_stage)
+	var frame: PanelContainer = _card(_stage)
+	frame.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	profile.add_child(frame)
+	add_child(profile)
 	_stage.set_framing(5.6, 0.95)
 	_skills_box = VBoxContainer.new()
 	_skills_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -66,11 +76,10 @@ func _init() -> void:
 static func _card(content: Control) -> PanelContainer:
 	var card: PanelContainer = PanelContainer.new()
 	var style: StyleBoxFlat = StyleBoxFlat.new()
-	style.bg_color = Color(0.06, 0.13, 0.24, 0.85)
-	style.border_color = Color(CodexTheme.ACCENT, 0.45)
+	style.bg_color = Color(CodexTheme.BG.r * 1.4, CodexTheme.BG.g * 1.4, CodexTheme.BG.b * 1.4, 0.78)
+	style.border_color = Color(CodexTheme.TRIM, 0.6)
 	style.set_border_width_all(1)
-	style.border_width_left = 3
-	style.set_corner_radius_all(4)
+	style.set_corner_radius_all(2)
 	style.set_content_margin_all(CodexTheme.px(12))
 	card.add_theme_stylebox_override(&"panel", style)
 	card.add_child(content)
@@ -79,7 +88,9 @@ static func _card(content: Control) -> PanelContainer:
 
 func _titled(key: StringName, content: Control) -> VBoxContainer:
 	var box: VBoxContainer = VBoxContainer.new()
-	box.add_child(_label(tr(key), 20, CodexTheme.ACCENT))
+	var title: Label = _label(tr(key).to_upper(), 18, CodexTheme.TRIM)
+	title.add_theme_font_override(&"font", CodexTheme.SERIF)
+	box.add_child(title)
 	box.add_child(content)
 	return box
 
@@ -297,7 +308,13 @@ func _skill_row(stats: StatsComponent, prog: Progression, skill: SkillData) -> C
 func _skill_icon(skill: SkillData) -> Button:
 	var icon: Button = Button.new()
 	icon.custom_minimum_size = Vector2(CodexTheme.px(56), CodexTheme.px(56))
-	icon.text = skill.display_name.substr(0, 2).to_upper()
+	var tex: Texture2D = SkillIcons.icon_for(skill)
+	if tex != null:
+		icon.icon = tex
+		icon.expand_icon = true
+		icon.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	else:
+		icon.text = skill.display_name.substr(0, 2).to_upper()
 	icon.tooltip_text = tr(&"STATUS_PREVIEW")
 	icon.add_theme_font_size_override(&"font_size", CodexTheme.px(20))
 	for state: StringName in [&"normal", &"hover", &"pressed", &"focus"]:

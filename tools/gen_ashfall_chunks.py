@@ -153,8 +153,15 @@ class Chunk:
         self.nodes.append(f'[node name="{n}" type="StaticBody3D" parent="."]\ntransform = {self.tf(pos, rot_y)}\nscript = {self.ext("decor")}\n'
                           f'kind = &"{kind}"\ntint = {tint}\nseed_value = {seed}\n')
 
+    # Flat ground pieces (mud, root mats, paving): set into the earth so only this much
+    # shows and feet rest on them instead of sinking through.
+    GROUND_PIECES = ("tile_mud", "tile_roots_grass", "tile_dirt", "floor_stepping_stones", "floor_stone_tile")
+    GROUND_PROUD = 0.12
+
     def prop(self, prop_id, pos, size, color, rot_y=0.0):
         """Asset slot: the owner's imported model `prop_id`, or a graybox block of `size` until it exists."""
+        if prop_id in self.GROUND_PIECES and pos[1] == 0:
+            pos = (pos[0], -(size[1] - self.GROUND_PROUD), pos[2])
         n = self._id("Prop")
         self.point(pos, 0.6 * max(size[0], size[2]) + 1.0)
         self.nodes.append(f'[node name="{n}" type="StaticBody3D" parent="."]\ntransform = {self.tf(pos, rot_y)}\nscript = {self.ext("prop")}\n'
@@ -282,13 +289,17 @@ def camp(c):
     c.block((94, 0.1, 94), (0, 0.05, 0), city.DIRT)
     c.point((0, 0, 0), 50)
     _camp_palisade(c)
-    # Lanes: stepping stones and stone tiles, mud puddles between them.
+    # Lanes: stepping stones and stone tiles, mud puddles between them. Set into the
+    # ground (4 cm proud) so feet rest on them instead of sinking through.
+    proud = 0.17
     for z in range(-20, 42, 5):
-        c.prop("floor_stepping_stones" if (z // 5) % 2 else "floor_stone_tile", (rng.uniform(-0.6, 0.6), 0, z), (4.2, 0.25, 4.2), city.CONCRETE, rot_y=rng.uniform(0, 360))
+        stepping = (z // 5) % 2
+        sink = (0.25 if stepping else 0.3) - proud
+        c.prop("floor_stepping_stones" if stepping else "floor_stone_tile", (rng.uniform(-0.6, 0.6), -sink, z), (4.2, 0.25, 4.2), city.CONCRETE, rot_y=rng.uniform(0, 360))
         c.points.pop()
     for x in range(-36, 40, 6):
         if abs(x) > 6:
-            c.prop("floor_stepping_stones", (x, 0, rng.uniform(-0.5, 0.5)), (3.6, 0.25, 3.6), city.CONCRETE, rot_y=rng.uniform(0, 360))
+            c.prop("floor_stepping_stones", (x, -(0.25 - proud), rng.uniform(-0.5, 0.5)), (3.6, 0.25, 3.6), city.CONCRETE, rot_y=rng.uniform(0, 360))
             c.points.pop()
     for i, z in enumerate((-12, 8, 22, 34)):
         c.prop("tile_mud", (rng.uniform(-2, 2), 0, z), (rng.uniform(3, 5), 0.3, rng.uniform(2.5, 4)), city.DIRT, rot_y=rng.uniform(0, 360))

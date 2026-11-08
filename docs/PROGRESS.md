@@ -396,3 +396,30 @@
 - Saves made inside a Gate or the station keep the street position; dying inside carries you out to your altar.
 - Debug: `metro`.
 
+## Owner playtest fixes (2026-11-08, evening)
+- **No more softlock after dying in a Gate:** you now always rise at your last altar (the camp altar before you have touched any) and are carried out of Gates / the metro. Before, with no altar, you woke in the dungeon's start room while the room you died in stayed sealed.
+- Metro cheat "freeze": could not reproduce (walking works after `metro`, also when used from inside a Gate). Likely the first-visit shader compile on a busy laptop; the loading screen now stays up 1.5 s after the switch so shaders compile behind it.
+- **Hero light at night:** a soft light above the hero fades in after dusk and stays on in Gates and the metro.
+- **Stepping stones / ground pieces:** camp stones and flat ground pieces (mud, root mats, paving) are set into the ground so feet rest on them instead of sinking through.
+- **Grass:** tufts of five curved, tapering blades (dark roots, fresh middle, dry tips, light through the blades, per-tuft wind phase) instead of flat spikes, within a similar triangle budget.
+
+## HUD frame and Codex restyle (2026-11-09)
+- **Player frame** in the owner's design: his line-art dragon wrapped around the round portrait (extracted from his sketch: the gold lines kept, the face / text removed by colour), name bar, HP bar, MP strip and level tab drawn inside the art; dragon heroes get this frame, shadow heroes a silver-violet frame with a crescent moon and crossed daggers. Level tiers still brighten / glow / sparkle it. The portrait aims at the face (head + "headfront" bones).
+- **Codex** is now an elegant card (owner's "System Notification" reference): hero-themed glass (jade + gold for dragon heroes, violet + silver for shadow heroes), double trim frame with corner studs, serif capitals title over an ornament rule, card-style tabs, a "Character Profile" frame around the hero, and the line-art dragon faint in the corner.
+- **Inventory lives in the Codex** (tab after Status); **I** opens the Codex on it, **M** on the map; clicking / tapping the minimap opens the map too. M is rebindable.
+- Fonts: Noto Serif (OFL), see CREDITS.
+
+
+## Skill icons (2026-11-09)
+- 67 skill icons drawn by `tools/make_skill_icons.py` (gem plate in the skill colour, glowing symbol picked from the skill id / kind, gold frame with rays for ultimates, hexagon for passives). Shown on the skill bar, the touch skill buttons and in the Codex.
+
+## Touch button layout (2026-11-09)
+- Settings → Touch controls → Arrange buttons: drag any button, − / + resizes the picked one, Reset, Done. The game pauses meanwhile; the layout is saved in Settings (per button offset + size). Debug: `touchedit` (PC: run with `--mobile-ui`).
+
+## Dungeon variety and challenges (2026-11-09)
+- **Kinds of place** per Gate rank, picked per day (DungeonArchetype): Warrens, Fallen Halls, Ruins, Crystal Grotto, Crypt, Rootdeep. Each sets the room style mix, room size and roof height, how much tunnels wind, wetness, moss, light tint and fog; the Codex names it when you enter.
+- **Room challenges** in about half of the fight rooms: waves (2-3), timed clear (a treasure chest if quick), fire vents (red warning glow, then a burst for 8 % max HP), darkness (all lights out but the hero's), an elite guardian.
+
+
+## Ultra preset effects (2026-11-09)
+- PC Ultra now really turns on volumetric fog, screen-space reflections, SDFGI + SSIL, TAA and full mesh detail (High: SSAO) in the world, Gates and the metro; phones / software rendering skip them.

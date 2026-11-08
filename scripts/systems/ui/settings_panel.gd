@@ -71,6 +71,11 @@ func rebuild() -> void:
 			Settings.touch_button_scale, func(v: float) -> void: Settings.touch_button_scale = v)
 		_slider(&"SET_TOUCH_OPACITY", 0.3, 1.0, Settings.touch_opacity, func(v: float) -> void:
 			Settings.touch_opacity = v)
+		var arrange: Button = Button.new()
+		arrange.text = tr(&"SET_TOUCH_ARRANGE")
+		arrange.custom_minimum_size = CodexTheme.button_size(320)
+		arrange.pressed.connect(_arrange_buttons)
+		_row(&"SET_TOUCH_LAYOUT", arrange, false)
 	if not Settings.wants_touch_controls():
 		_toggle(&"SET_MOUSE_ATTACK", Settings.mouse_attack, func(on: bool) -> void: Settings.mouse_attack = on)
 		_section(&"SET_KEYS")
@@ -85,6 +90,15 @@ func rebuild() -> void:
 		rebuild.call_deferred())
 	_toggle(&"SET_DAMAGE_NUMBERS", Settings.show_damage_numbers, func(on: bool) -> void:
 		Settings.show_damage_numbers = on)
+
+
+## Closes Settings and lets the player drag / resize the touch buttons on the live screen.
+func _arrange_buttons() -> void:
+	var controls: Node = get_tree().get_first_node_in_group(&"mobile_controls")
+	if controls == null:
+		return
+	close()
+	controls.call(&"begin_edit")
 
 
 func _holds_keys() -> bool:

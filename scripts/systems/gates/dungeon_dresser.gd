@@ -141,7 +141,8 @@ func _inward(p: Vector2, metres: float) -> Vector2:
 
 func _lights(group: Node3D, spec: DungeonPlan.Room, c: Vector2, near_wall: Array[Vector2]) -> void:
 	var fill: OmniLight3D = OmniLight3D.new()
-	fill.light_color = theme.tint.lightened(0.55)
+	var tint: Color = DungeonArchetype.spec(plan.archetype)["tint"]
+	fill.light_color = theme.tint.lightened(0.55).lerp(tint, 0.5)
 	fill.omni_range = spec.radius * 1.8
 	fill.light_energy = 0.5
 	fill.omni_attenuation = 0.6
@@ -157,7 +158,8 @@ func _lantern(group: Node3D, at: Vector2, light_range: float) -> void:
 	lamp.kind = &"lantern"
 	lamp.always_lit = true
 	lamp.light_range_m = light_range
-	lamp.tint = Color(1.0, 0.62, 0.3).lerp(theme.tint, 0.2)
+	var place_tint: Color = DungeonArchetype.spec(plan.archetype)["tint"]
+	lamp.tint = Color(1.0, 0.62, 0.3).lerp(theme.tint, 0.2).lerp(place_tint, 0.45)
 	lamp.seed_value = _rng.randi()
 	lamp.position = Vector3(at.x, 0.0, at.y)
 	group.add_child(lamp)

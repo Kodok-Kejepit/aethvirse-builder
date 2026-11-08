@@ -1,8 +1,9 @@
 class_name CodexPanel
 extends PausingPanel
-## The Codex (C / Select / ☰): tabbed "System" window — status & stat points, quests, journal,
-## lore, log, system. Inventory lives in its own InventoryPanel. Tabs for systems that do not
-## exist yet are shown sealed; the Shadow Army tab only exists for the shadow job line.
+## The Codex (C / Select / ☰): tabbed "System" window — status & stat points, inventory,
+## quests, journal, lore, log, map, system (owner: everything the System keeps lives here).
+## I opens it on the inventory, M on the map. Tabs for systems that do not exist yet are
+## shown sealed; the Shadow Army tab only exists for the shadow job line.
 
 const SEALED_TABS: Array[StringName] = [&"CODEX_TAB_ACHIEVEMENTS"]
 const GROUP: StringName = &"codex_panel"
@@ -16,6 +17,8 @@ var _quests: CodexQuestTab
 var _lore: CodexLoreTab
 var _shadows: CodexShadowTab
 var _map: CodexMapTab
+var _inventory: CodexInventoryTab
+var _map_was_down: bool = false
 
 
 func _init() -> void:
@@ -28,11 +31,31 @@ func _ready() -> void:
 	super._ready()
 	EventBus.player_stats_changed.connect(func() -> void:
 		if is_open():
-			_status.refresh())
+			_status.refresh()
+			_inventory.refresh())
+
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	# M: straight to the map (again to close).
+	var down: bool = Input.is_action_pressed(&"map")
+	if down and not _map_was_down:
+		open_on(&"CODEX_TAB_MAP")
+	_map_was_down = down
+
+
+## Opens on a tab, or closes when already showing it.
+func open_on(key: StringName) -> void:
+	if is_open() and _tab_index(key) == _tabs.current_tab:
+		close()
+		return
+	open()
+	select_tab(key)
 
 
 func _on_open() -> void:
 	_status.refresh()
+	_inventory.refresh()
 	_refresh_log()
 	_system.refresh()
 	_journal.refresh()
@@ -53,11 +76,6 @@ func _refresh_shadow_tab() -> void:
 		_tabs.current_tab = 0
 
 func select_tab(key: StringName) -> void:
-	if key == &"CODEX_TAB_INVENTORY":
-		var bag: InventoryPanel = get_tree().get_first_node_in_group(InventoryPanel.GROUP) as InventoryPanel
-		if bag != null:
-			bag.open()
-		return
 	var index: int = _tab_index(key)
 	if index != -1 and not _tabs.is_tab_hidden(index):
 		_tabs.current_tab = index
@@ -81,6 +99,8 @@ func _build_content(body: VBoxContainer) -> void:
 	body.add_child(_tabs)
 	_status = CodexStatusTab.new()
 	_add_tab(_status, &"CODEX_TAB_STATUS")
+	_inventory = CodexInventoryTab.new()
+	_add_tab(_inventory, &"CODEX_TAB_INVENTORY")
 	_quests = CodexQuestTab.new()
 	_add_tab(_quests, &"CODEX_TAB_QUESTS")
 	_journal = CodexJournalTab.new()

@@ -9,6 +9,9 @@ const LAYER: int = 120
 const FADE_S: float = 0.35
 ## After the switch, wait for chunks at most this long before revealing anyway.
 const STREAM_WAIT_MAX_S: float = 8.0
+## The overlay stays at least this long after the switch so the new place's shaders
+## compile behind it (no freeze on the first steps).
+const WARMUP_S: float = 1.5
 const TIPS: Array[StringName] = [&"LOAD_TIP_1", &"LOAD_TIP_2", &"LOAD_TIP_3", &"LOAD_TIP_4", &"LOAD_TIP_5"]
 
 var _path: String = ""
@@ -105,7 +108,7 @@ func _process(delta: float) -> void:
 		1:
 			_waited += delta
 			_bar.value = 0.7 + 0.3 * minf(_waited / 2.0, 1.0)
-			if (WorldStreamer.is_ready_around_player() and _waited > 0.4) or _waited > STREAM_WAIT_MAX_S:
+			if (WorldStreamer.is_ready_around_player() and _waited > WARMUP_S) or _waited > STREAM_WAIT_MAX_S:
 				_phase = 2
 				var t: Tween = create_tween()
 				t.tween_property(_root, ^"modulate:a", 0.0, FADE_S)

@@ -49,13 +49,15 @@ func test_player_rises_at_the_last_altar_in_this_region() -> void:
 	assert_false(player.health.is_dead(), "revived")
 
 
-func test_without_an_altar_the_scene_start_is_used() -> void:
+func test_without_an_altar_you_rise_at_the_camp() -> void:
 	var world: Node3D = Node3D.new()
 	add_child_autofree(world)
 	var player: Player = PLAYER_SCENE.instantiate() as Player
 	world.add_child(player)
 	await wait_physics_frames(2)
+	GameState.current_region = &"r1_ashfall"
 	player.spawn_point = Vector3(3.0, 0.2, 4.0)
 	player.global_position = Vector3(90.0, 0.0, 90.0)
 	player.respawn()
-	assert_almost_eq(player.global_position, Vector3(3.0, 0.2, 4.0), Vector3.ONE * 0.01)
+	var camp: Vector3 = RegionData.load_region(&"r1_ashfall").waystones[WorldTravel.DEFAULT_ALTAR]
+	assert_lt(Vector2(player.global_position.x - camp.x, player.global_position.z - camp.z).length(), 4.0, "owner: no altar yet -> the camp")

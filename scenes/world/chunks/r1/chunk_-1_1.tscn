@@ -770,7 +770,7 @@ color = Color(0.45, 0.42, 0.48, 1)
 solid = true
 
 [node name="Prop108" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30.0963, 0, -62.3)
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30.0963, -0.58, -62.3)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(10.74593025765856, 0.7, 2.5)
@@ -915,7 +915,7 @@ seed_value = 731885734
 snowy = false
 
 [node name="Prop128" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -15.5797, 0, 30.9657)
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -15.5797, -0.68, 30.9657)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(10.527056705009768, 0.8, 3)
@@ -1057,7 +1057,7 @@ seed_value = 1017575641
 snowy = false
 
 [node name="Prop148" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 59.3567, 0, -17.7)
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 59.3567, -0.58, -17.7)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(12.616020067378887, 0.7, 2.5)
@@ -1148,7 +1148,7 @@ color = Color(0.45, 0.42, 0.48, 1)
 solid = true
 
 [node name="Prop161" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 49.448, 0, 1.7)
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 49.448, -0.58, 1.7)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(9.912613863928929, 0.7, 2.5)

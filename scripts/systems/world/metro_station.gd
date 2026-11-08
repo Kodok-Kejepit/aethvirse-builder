@@ -40,6 +40,9 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	_rng.seed = 7341
+	var world_env: WorldEnvironment = get_node_or_null(^"WorldEnvironment") as WorldEnvironment
+	if world_env != null:
+		Settings.apply_effects(world_env.environment)
 	AudioManager.set_area_music(&"gate")
 	_materials()
 	_hall()

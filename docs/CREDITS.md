@@ -9,3 +9,9 @@
 | Dragon Maiden animations (walk, run, sprint, jump, weapon combo) — Mixamo, applied by the owner | Adobe Mixamo | Mixamo terms (royalty-free in games) | https://www.mixamo.com |
 | Meshy community models downloaded by the owner (buildings, dungeon pieces, monsters, weapons, characters — see `docs/ASSETS.md`) | Their Meshy creators (owner starred each source) | Free-use terms shown on each Meshy community page; non-commercial project — author list to be filled in before any public release | https://www.meshy.ai |
 | World models and character bodies generated with Meshy AI | Project owner (paid Meshy subscription — commercial use) | Owner's assets | https://www.meshy.ai |
+
+## Fonts
+- Noto Serif (Regular, SemiBold) — Google / Noto project, SIL Open Font License 1.1 — UI titles and HUD.
+
+## Owner art
+- HUD dragon frame and Codex dragon ornament: from the owner's own HP-bar sketch (line art extracted).

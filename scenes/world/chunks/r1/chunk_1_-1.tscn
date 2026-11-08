@@ -470,7 +470,7 @@ color = Color(0.45, 0.42, 0.48, 1)
 solid = true
 
 [node name="Prop65" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -11.6015, 0, 28.3)
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -11.6015, -0.58, 28.3)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(12.81668277309101, 0.7, 2.5)

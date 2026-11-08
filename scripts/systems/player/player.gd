@@ -95,6 +95,7 @@ func _ready() -> void:
 		last_safe_position = restored
 		GameState.pending_player_position = null
 	GameState.player = self
+	add_child(PlayerAura.new())
 	state_machine.start()
 
 

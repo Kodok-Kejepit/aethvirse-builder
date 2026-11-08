@@ -40,13 +40,19 @@ func _draw_slot(rect: Rect2, skill: SkillData, player: Player, font: Font, slot:
 	var color: Color = skill.icon_color
 	if not player.mana.can_pay(player.stats.mp_cost(skill)):
 		color = color * NO_MP_TINT
-	draw_rect(rect, Color(color, 0.85))
-	var initials: String = "".join(Array(skill.display_name.split(" ")).map(func(w: String) -> String: return w.left(1)))
-	draw_string(font, rect.position + Vector2(0, rect.size.y * 0.6), initials, HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 30)
+	var icon: Texture2D = SkillIcons.icon_for(skill)
+	if icon != null:
+		var dim: Color = Color.WHITE if color == skill.icon_color else Color(0.55, 0.6, 1.0)
+		draw_texture_rect(icon, rect, false, dim)
+	else:
+		draw_rect(rect, Color(color, 0.85))
+		var initials: String = "".join(Array(skill.display_name.split(" ")).map(func(w: String) -> String: return w.left(1)))
+		draw_string(font, rect.position + Vector2(0, rect.size.y * 0.6), initials, HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 30)
 	var ratio: float = player.skills.get_cooldown_ratio(skill)
 	if ratio > 0.0:
 		draw_rect(Rect2(rect.position, Vector2(rect.size.x, rect.size.y * ratio)), COOLDOWN_SHADE)
 		var remaining: float = player.skills.get_cooldown_remaining(skill)
 		draw_string(font, rect.position + Vector2(0, rect.size.y * 0.95), "%.0f" % ceilf(remaining), HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 24)
-	draw_rect(rect, ULT_BORDER if skill.is_ultimate else BORDER, false, 2.0)
+	if icon == null:
+		draw_rect(rect, ULT_BORDER if skill.is_ultimate else BORDER, false, 2.0)
 	draw_string(font, rect.position + Vector2(6, 20), KEY_HINTS[slot], HORIZONTAL_ALIGNMENT_LEFT, -1, 18)

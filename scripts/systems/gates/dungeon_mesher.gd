@@ -24,10 +24,14 @@ var wall_material: ShaderMaterial
 var ceiling_material: ShaderMaterial
 
 
-func _init(theme: GateTheme) -> void:
+func _init(theme: GateTheme, archetype: StringName = &"ruins") -> void:
 	floor_material = _material(theme.floor_id, 0, 3.0, theme)
 	wall_material = _material(theme.wall_id, 1, 4.0, theme)
 	ceiling_material = _material(theme.wall_id, 2, 4.0, theme)
+	var spec: Dictionary = DungeonArchetype.spec(archetype)
+	for m: ShaderMaterial in [floor_material, wall_material, ceiling_material]:
+		m.set_shader_parameter(&"moss", spec["moss"])
+		m.set_shader_parameter(&"wetness", spec["wet"])
 
 
 static func _material(base: StringName, surface: int, tile_m: float, theme: GateTheme) -> ShaderMaterial:

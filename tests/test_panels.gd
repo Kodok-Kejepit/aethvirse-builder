@@ -24,23 +24,26 @@ func after_each() -> void:
 	GameState.player = null
 
 
-func test_codex_has_no_inventory_or_shadow_tab() -> void:
-	assert_false(codex.has_tab(&"CODEX_TAB_INVENTORY"), "inventory has its own window")
+func test_codex_holds_the_inventory_but_no_shadow_tab() -> void:
+	assert_true(codex.has_tab(&"CODEX_TAB_INVENTORY"), "owner: the inventory lives in the Codex")
 	assert_false(codex.has_tab(&"CODEX_TAB_SHADOWS"), "shadow army only for the shadow job line")
 	assert_true(codex.has_tab(&"CODEX_TAB_STATUS"))
 
 
-func test_only_one_window_open_and_pause_restored() -> void:
+func test_inventory_key_opens_the_codex_on_the_inventory() -> void:
 	bag.open()
-	assert_true(bag.is_open())
-	assert_true(get_tree().paused)
-	codex.open()
 	assert_true(codex.is_open())
-	assert_false(bag.is_open(), "opening the Codex closes the bag")
-	codex.close()
-	assert_false(get_tree().paused, "closing restores the state from before the first window")
+	assert_eq(codex._tabs.current_tab, codex._tab_index(&"CODEX_TAB_INVENTORY"))
+	assert_true(get_tree().paused)
+	bag.open()
+	assert_false(codex.is_open(), "the same key closes it again")
+	assert_false(get_tree().paused, "pause restored")
 
 
-func test_select_inventory_tab_opens_bag() -> void:
-	codex.select_tab(&"CODEX_TAB_INVENTORY")
-	assert_true(bag.is_open())
+func test_map_shortcut_opens_the_map_tab() -> void:
+	codex.open_on(&"CODEX_TAB_MAP")
+	assert_true(codex.is_open())
+	assert_eq(codex._tabs.current_tab, codex._tab_index(&"CODEX_TAB_MAP"))
+	codex.open_on(&"CODEX_TAB_STATUS")
+	assert_true(codex.is_open(), "another tab keeps it open")
+	assert_eq(codex._tabs.current_tab, codex._tab_index(&"CODEX_TAB_STATUS"))

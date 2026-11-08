@@ -94,21 +94,17 @@ func test_dungeon_has_a_winged_door_that_wants_a_key() -> void:
 	GameState.gate_session = null
 
 
-func test_dying_in_a_later_room_respawns_in_the_shown_start_room() -> void:
+func test_falling_in_a_gate_carries_you_out_to_the_altar() -> void:
 	var session: GateSession = GateSession.new()
 	session.gate = gate
 	GameState.gate_session = session
 	GameState.respawn_waystone = &""
-	var dungeon: GateDungeon = (load(GateDungeon.SCENE) as PackedScene).instantiate() as GateDungeon
-	add_child_autofree(dungeon)
-	await wait_physics_frames(3)
-	var far: int = dungeon.plan.boss_index
-	dungeon.debug_goto(far)
-	assert_false(dungeon._groups[0].visible, "start room hidden while away")
-	dungeon.player.respawn()
-	await wait_physics_frames(2)
-	assert_true(dungeon._groups[0].visible, "start room shown again")
-	assert_false(dungeon._groups[far].visible)
-	var start: Vector3 = dungeon._rooms[0].global_position
-	assert_lt(Vector2(dungeon.player.global_position.x - start.x, dungeon.player.global_position.z - start.z).length(), 15.0, "back in the start room")
+	var plan: Dictionary = WorldTravel.respawn_plan()
+	var leave: bool = plan["leave"]
+	var region: RegionData = plan["region"]
+	assert_true(leave, "no softlock inside the Gate: you are carried out")
+	assert_eq(region.id, &"r1_ashfall")
+	var target: Vector3 = plan["target"]
+	var camp: Vector3 = region.waystones[WorldTravel.DEFAULT_ALTAR]
+	assert_lt(Vector2(target.x - camp.x, target.z - camp.z).length(), 4.0, "no altar yet: the camp")
 	GameState.gate_session = null

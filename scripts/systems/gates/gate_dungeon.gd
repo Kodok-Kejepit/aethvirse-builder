@@ -29,6 +29,9 @@ var _rooms: Array[GateRoom] = []
 var _groups: Array[Node3D] = []
 var _current: int = -1
 var _tick: float = 0.0
+## Today's kind of place (DungeonArchetype).
+var archetype: StringName = &"ruins"
+var _challenges: DungeonChallenges
 
 
 func _ready() -> void:
@@ -43,6 +46,9 @@ func _ready() -> void:
 	AudioManager.play_sfx(&"gate_enter")
 	_theme = GateTheme.new(session.gate.rank, session.gate.has_rule(&"red"))
 	_dim_sun()
+	var world_env: WorldEnvironment = get_node_or_null(^"WorldEnvironment") as WorldEnvironment
+	if world_env != null:
+		Settings.apply_effects(world_env.environment)
 	_build()
 	Codex.notify(tr(&"CODEX_MSG_GATE_ENTERED") % [GateData.Rank.keys()[session.gate.rank], tr(session.gate.display_name)], &"warning")
 	for rule: StringName in session.gate.rules:
@@ -60,14 +66,18 @@ func _build() -> void:
 	var double_at: int = -1
 	if session.force_double or GateLayout.has_double_gate(gate, day):
 		double_at = GateLayout.double_gate_room(main_rooms, day)
-	plan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at)
+	archetype = DungeonArchetype.pick(gate.rank, gate.seed_value + day * 31)
+	plan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at, archetype)
 	field = DungeonField.build(plan, rng.randi())
+	_apply_archetype_look()
+	_challenges = DungeonChallenges.new(self)
+	add_child(_challenges)
 	for i: int in plan.rooms.size():
 		var group: Node3D = Node3D.new()
 		group.name = "Room%d" % i
 		add_child(group)
 		_groups.append(group)
-	var mesher: DungeonMesher = DungeonMesher.new(_theme)
+	var mesher: DungeonMesher = DungeonMesher.new(_theme, archetype)
 	mesher.build(field, _groups)
 	var dresser: DungeonDresser = DungeonDresser.new(_theme, field, plan)
 	dresser.level = level
@@ -108,9 +118,21 @@ func _make_room(index: int, gate: GateData, level: int) -> GateRoom:
 	else:
 		for _e: int in spec.enemy_count:
 			room.enemies.append(_scaled(gate.enemy_pool[rng.randi() % gate.enemy_pool.size()], level))
+	room.challenge = spec.challenge if not is_boss else &""
+	_challenges.setup(room, index)
 	# The fight starts once the player is well inside (past the mouths and their wards).
 	room.setup_trigger(Vector2.ONE * (spec.radius + 4.0))
 	return room
+
+
+## Fog colour of today's kind of place, and its name on the Codex.
+func _apply_archetype_look() -> void:
+	var spec: Dictionary = DungeonArchetype.spec(archetype)
+	var env: WorldEnvironment = get_node_or_null(^"WorldEnvironment") as WorldEnvironment
+	if env != null and env.environment != null:
+		env.environment.fog_light_color = spec["fog"]
+	var kind_name: StringName = spec["name"]
+	Codex.notify(tr(&"CODEX_MSG_DUNGEON_KIND") % tr(kind_name), &"info")
 
 
 func _spawn_points(index: int) -> Array[Vector3]:

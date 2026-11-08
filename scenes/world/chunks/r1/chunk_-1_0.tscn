@@ -697,7 +697,7 @@ seed_value = 493260722
 snowy = false
 
 [node name="Prop98" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 56.273, 0, -37.7277)
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 56.273, -0.68, -37.7277)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(16.229196563649232, 0.8, 3)
@@ -804,7 +804,7 @@ seed_value = 1012720811
 snowy = false
 
 [node name="Prop113" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 55.5339, 0, 30.1489)
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 55.5339, -0.68, 30.1489)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(10.623342188490588, 0.8, 3)
@@ -962,7 +962,7 @@ seed_value = 801693396
 snowy = false
 
 [node name="Prop135" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 35.3321, 0, 46.6)
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 35.3321, -0.68, 46.6)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(12.858249948744298, 0.8, 3)
@@ -1021,7 +1021,7 @@ color = Color(0.26, 0.42, 0.24, 1)
 seed_value = 12789
 
 [node name="Prop143" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.99216, -0, -0.125, 0, 1, -0, 0.125, -0, -0.99216, 34.755, 0, -44.2382)
+transform = Transform3D(-0.99216, -0, -0.125, 0, 1, -0, 0.125, -0, -0.99216, 34.755, -0.38, -44.2382)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(4, 0.5, 4)
@@ -1036,7 +1036,7 @@ color = Color(0.26, 0.42, 0.24, 1)
 seed_value = 96236
 
 [node name="Prop145" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.87112, -0, -0.49107, 0, 1, -0, 0.49107, -0, -0.87112, -27.2195, 0, 20.9884)
+transform = Transform3D(-0.87112, -0, -0.49107, 0, 1, -0, 0.49107, -0, -0.87112, -27.2195, -0.38, 20.9884)
 script = ExtResource("prop")
 prop_id = &"tile_dirt"
 fallback_size = Vector3(4, 0.5, 4)

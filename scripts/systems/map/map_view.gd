@@ -20,7 +20,8 @@ var _map: RegionMap = null
 
 
 func _ready() -> void:
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# The minimap is a button too: click / tap it for the full map.
+	mouse_filter = Control.MOUSE_FILTER_STOP if minimap else Control.MOUSE_FILTER_IGNORE
 	clip_contents = true
 
 
@@ -99,3 +100,15 @@ func _draw_marker(kind: int, p: Vector2, yaw: float) -> void:
 			draw_circle(p, s * 0.45, c)
 		RegionMap.Marker.PLACE:
 			pass
+
+
+func _gui_input(event: InputEvent) -> void:
+	if not minimap:
+		return
+	var tap: bool = (event is InputEventMouseButton and (event as InputEventMouseButton).pressed) \
+		or (event is InputEventScreenTouch and (event as InputEventScreenTouch).pressed)
+	if tap:
+		var codex: CodexPanel = get_tree().get_first_node_in_group(CodexPanel.GROUP) as CodexPanel
+		if codex != null:
+			codex.open_on(&"CODEX_TAB_MAP")
+		accept_event()

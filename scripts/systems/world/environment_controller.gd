@@ -66,6 +66,7 @@ func _ready() -> void:
 	env.adjustment_saturation = 1.04
 	env.adjustment_contrast = 1.1
 	env.ssao_enabled = high and not OS.has_feature("mobile")
+	Settings.apply_effects(env)
 
 
 func _process(delta: float) -> void:

@@ -29,27 +29,33 @@ class Room:
 	var has_double_door: bool = false
 	var enemy_count: int = 0
 	var seed_value: int = 0
+	## Room challenge (DungeonArchetype.CHALLENGES) or empty.
+	var challenge: StringName = &""
 
 
 var rooms: Array[Room] = []
 ## [{"a": room index, "b": room index, "kind": Link}]; b is the room further from the start.
 var links: Array[Dictionary] = []
 var boss_index: int = -1
+var archetype: StringName = &"ruins"
 
 
 ## main_rooms: rooms before the boss (start included). double_at: main-path index that
 ## holds the Double Gate door, or -1.
-static func make(main_rooms: int, per_room: int, seed_value: int, double_at: int = -1) -> DungeonPlan:
+static func make(main_rooms: int, per_room: int, seed_value: int, double_at: int = -1, kind_of_place: StringName = &"ruins") -> DungeonPlan:
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.seed = seed_value
 	var count: int = maxi(main_rooms, 1)
 	var cells: Array[Vector2i] = _main_path(count + 1, rng)
 	var plan: DungeonPlan = DungeonPlan.new()
+	plan.archetype = kind_of_place
 	for i: int in count:
 		var room: Room = plan._add(Kind.START if i == 0 else Kind.FIGHT, cells[i], rng)
 		room.enemy_count = 0 if i == 0 else per_room
 		room.has_cache = i > 0 and rng.randf() < CACHE_CHANCE
 		room.has_double_door = i == double_at and i > 0
+		if i > 0 and rng.randf() < DungeonArchetype.CHALLENGE_CHANCE:
+			room.challenge = DungeonArchetype.CHALLENGES[rng.randi() % DungeonArchetype.CHALLENGES.size()]
 		if i > 0:
 			plan._link(i - 1, i, plan._roll_link(rng))
 	var boss: Room = plan._add(Kind.BOSS, cells[count], rng)
@@ -122,7 +128,10 @@ func _add(kind: Kind, cell: Vector2i, rng: RandomNumberGenerator) -> Room:
 	room.kind = kind
 	room.cell = cell
 	room.seed_value = rng.randi()
-	room.style = STYLES[rng.randi() % STYLES.size()]
+	room.style = DungeonArchetype.roll_style(archetype, rng)
+	var spec: Dictionary = DungeonArchetype.spec(archetype)
+	var size_k: float = spec["radius"]
+	var roof_k: float = spec["roof"]
 	match kind:
 		Kind.BOSS:
 			room.radius = BOSS_RADIUS
@@ -132,8 +141,8 @@ func _add(kind: Kind, cell: Vector2i, rng: RandomNumberGenerator) -> Room:
 			room.radius = rng.randf_range(SIDE_RADIUS_RANGE.x, SIDE_RADIUS_RANGE.y)
 			room.height = HEIGHT_RANGE.x
 		_:
-			room.radius = rng.randf_range(RADIUS_RANGE.x, RADIUS_RANGE.y)
-			room.height = rng.randf_range(HEIGHT_RANGE.x, HEIGHT_RANGE.y)
+			room.radius = rng.randf_range(RADIUS_RANGE.x, RADIUS_RANGE.y) * size_k
+			room.height = rng.randf_range(HEIGHT_RANGE.x, HEIGHT_RANGE.y) * roof_k
 	rooms.append(room)
 	return room
 

@@ -30,6 +30,10 @@ var camera_distance: float = 4.5
 ## "" = follow the device language.
 var language: String = ""
 var touch_button_scale: float = 1.0
+## Per-button touch layout chosen by the player: button name -> Vector3(offset x, offset y,
+## size multiplier). Empty = the default layout.
+var touch_layout: Dictionary[String, Vector3] = {}
+const TOUCH_BUTTON_SCALE_RANGE: Vector2 = Vector2(0.6, 1.8)
 var touch_opacity: float = 1.0
 var show_damage_numbers: bool = true
 ## Basic attacks also on mouse clicks (off = keyboard keys only, e.g. J / K on a laptop).
@@ -134,6 +138,7 @@ func save_to(path: String = PATH) -> Error:
 	cfg.set_value("controls", "camera_distance", camera_distance)
 	cfg.set_value("controls", "touch_scale", touch_button_scale)
 	cfg.set_value("controls", "touch_opacity", touch_opacity)
+	cfg.set_value("controls", "touch_layout", touch_layout)
 	cfg.set_value("game", "language", language)
 	cfg.set_value("game", "damage_numbers", show_damage_numbers)
 	cfg.set_value("controls", "mouse_attack", mouse_attack)
@@ -166,6 +171,16 @@ func load_from(path: String = PATH) -> void:
 	touch_button_scale = clampf(ts, TOUCH_SCALE_RANGE.x, TOUCH_SCALE_RANGE.y)
 	var op: float = cfg.get_value("controls", "touch_opacity", 1.0)
 	touch_opacity = clampf(op, 0.3, 1.0)
+	touch_layout.clear()
+	var layout: Variant = cfg.get_value("controls", "touch_layout", {})
+	if layout is Dictionary:
+		var raw: Dictionary = layout
+		for key: Variant in raw:
+			var v: Variant = raw[key]
+			if key is String and v is Vector3:
+				var spec: Vector3 = v
+				spec.z = clampf(spec.z, TOUCH_BUTTON_SCALE_RANGE.x, TOUCH_BUTTON_SCALE_RANGE.y)
+				touch_layout[key] = spec
 	var lang: String = cfg.get_value("game", "language", "")
 	language = lang if lang in LANGUAGES else ""
 	show_damage_numbers = cfg.get_value("game", "damage_numbers", true)
@@ -190,6 +205,33 @@ func _apply_render_quality() -> void:
 	RenderingServer.directional_shadow_atlas_set_size(4096 if q >= 3 else 2048, true)
 	RenderingServer.directional_soft_shadow_filter_set_quality(
 		RenderingServer.SHADOW_QUALITY_SOFT_HIGH if q >= 3 else (RenderingServer.SHADOW_QUALITY_SOFT_LOW if q == 2 else RenderingServer.SHADOW_QUALITY_HARD))
+
+
+## Heavy PC effects from the profile (PC Ultra: volumetric fog, screen-space reflections,
+## real-time global illumination; High+: ambient occlusion). Phones and software
+## rendering get none of them. Call on every scene's Environment.
+func apply_effects(env: Environment) -> void:
+	if env == null or profile == null or is_mobile or software_renderer():
+		return
+	if profile.shadow_quality >= 3:
+		env.ssao_enabled = true
+	if profile.volumetric_fog:
+		env.volumetric_fog_enabled = true
+		env.volumetric_fog_density = 0.012
+		env.volumetric_fog_albedo = env.fog_light_color.lightened(0.4)
+		env.volumetric_fog_anisotropy = 0.45
+		env.volumetric_fog_length = 96.0
+	if profile.ssr:
+		env.ssr_enabled = true
+		env.ssr_max_steps = 48
+		env.ssr_fade_out = 2.0
+	if profile.global_illumination:
+		env.sdfgi_enabled = true
+		env.sdfgi_use_occlusion = true
+		env.ssil_enabled = true
+	var vp: Viewport = get_viewport()
+	vp.use_taa = profile.global_illumination
+	vp.mesh_lod_threshold = 0.0 if profile.global_illumination else 1.0
 
 
 ## Screen-space ambient occlusion only on PC High / Ultra.

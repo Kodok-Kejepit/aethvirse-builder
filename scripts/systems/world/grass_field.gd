@@ -1,14 +1,19 @@
 class_name GrassField
 extends MultiMeshInstance3D
 ## Swaying grass (and a few flowers) scattered over a chunk area with one MultiMesh.
-## Blade count scales with the platform's foliage density.
+## Each instance is a tuft of curved, tapering blades of different heights and lean
+## (BLADES_PER_TUFT); `blades` stays the blade budget. Count scales with foliage density.
 
 @export var area: Vector2 = Vector2(124, 124)
 @export var blades: int = 5000
 @export var color: Color = Color(0.25, 0.5, 0.25)
 @export var seed_value: int = 1
 
-const BLADE_H: float = 0.38
+const BLADES_PER_TUFT: int = 5
+const SEGMENTS: int = 3
+## One tuft stands in for this many blades of the `blades` budget (triangle budget).
+const BUDGET_PER_TUFT: int = 8
+const BLADE_W: float = 0.045
 
 
 func _ready() -> void:
@@ -21,7 +26,7 @@ func _build() -> void:
 		if sib is TerrainPatch:
 			ground = sib
 	var density: float = Settings.profile.foliage_density if Settings.profile != null else 1.0
-	var count: int = int(float(blades) * density)
+	var count: int = int(float(blades) * density / float(BUDGET_PER_TUFT))
 	if count <= 0:
 		return
 	var mm: MultiMesh = MultiMesh.new()
@@ -42,7 +47,7 @@ func _build() -> void:
 		pos.z = clampf(pos.z, -area.y * 0.5, area.y * 0.5)
 		if ground != null:
 			pos.y = ground.local_height(pos.x + position.x, pos.z + position.z) - 0.02
-		var s: float = rng.randf_range(0.6, 1.4)
+		var s: float = rng.randf_range(0.7, 1.35)
 		var b: Basis = Basis(Vector3.UP, rng.randf_range(0, TAU)).scaled(Vector3(s, s, s))
 		mm.set_instance_transform(i, Transform3D(b, pos))
 		var flower: bool = rng.randf() < 0.025
@@ -52,16 +57,41 @@ func _build() -> void:
 	visibility_range_end = 90.0
 
 
+## One tuft: blades fanned around the centre, each bending out along a curve and
+## narrowing to a point. UV.y runs 0 at the root to 1 at the tip (the shader uses it).
 func _blade_mesh() -> ArrayMesh:
 	var st: SurfaceTool = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for k: int in 2:
-		var a: float = float(k) * PI * 0.5
-		var side: Vector3 = Vector3(cos(a), 0, sin(a)) * 0.035
-		st.set_normal(Vector3.UP)
-		st.add_vertex(-side)
-		st.add_vertex(side)
-		st.add_vertex(Vector3(0, BLADE_H, 0))
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	rng.seed = 77
+	for b: int in BLADES_PER_TUFT:
+		var yaw: float = TAU * float(b) / float(BLADES_PER_TUFT) + rng.randf_range(-0.4, 0.4)
+		var out: Vector3 = Vector3(cos(yaw), 0.0, sin(yaw))
+		var side: Vector3 = out.cross(Vector3.UP).normalized()
+		var height: float = rng.randf_range(0.28, 0.62)
+		var lean: float = rng.randf_range(0.08, 0.3)
+		var root: Vector3 = out * rng.randf_range(0.0, 0.06)
+		var rows: Array[Vector3] = []
+		var widths: Array[float] = []
+		for s: int in SEGMENTS + 1:
+			var t: float = float(s) / float(SEGMENTS)
+			rows.append(root + Vector3.UP * height * t + out * lean * t * t)
+			widths.append(BLADE_W * (1.0 - t) + 0.004)
+		for s: int in SEGMENTS:
+			var t0: float = float(s) / float(SEGMENTS)
+			var t1: float = float(s + 1) / float(SEGMENTS)
+			var a0: Vector3 = rows[s] - side * widths[s]
+			var a1: Vector3 = rows[s] + side * widths[s]
+			var b0: Vector3 = rows[s + 1] - side * widths[s + 1]
+			var b1: Vector3 = rows[s + 1] + side * widths[s + 1]
+			# Normals lean up so blades light softly from both sides.
+			var n: Vector3 = (out * -0.4 + Vector3.UP).normalized()
+			for v: Array in [[a0, t0], [a1, t0], [b1, t1], [a0, t0], [b1, t1], [b0, t1]]:
+				var p: Vector3 = v[0]
+				var tt: float = v[1]
+				st.set_normal(n)
+				st.set_uv(Vector2(0.0, tt))
+				st.add_vertex(p)
 	var mesh: ArrayMesh = st.commit()
 	var mat: ShaderMaterial = ShaderMaterial.new()
 	mat.shader = GRASS_SHADER

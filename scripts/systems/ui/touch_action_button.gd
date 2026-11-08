@@ -123,6 +123,11 @@ func _draw_skill(center: Vector2) -> void:
 			draw_arc(center, radius * 0.5, -PI / 2.0, -PI / 2.0 + TAU * ratio, 32, Color(0, 0, 0, 0.6), radius, false)
 	var ring: Color = Color(1.0, 0.85, 0.35, 0.9) if skill != null and skill.is_ultimate else line_color
 	draw_arc(center, radius, 0.0, TAU, 48, ring, 3.0, true)
+	var icon: Texture2D = SkillIcons.icon_for(skill) if learned else null
+	if icon != null:
+		var side: float = radius * 1.35
+		draw_texture_rect(icon, Rect2(center - Vector2(side, side) * 0.5, Vector2(side, side)), false, Color(1, 1, 1, 0.95))
+		return
 	var text: String = label_text
 	if learned:
 		text = "".join(Array(skill.display_name.split(" ")).map(func(w: String) -> String: return w.left(1)))

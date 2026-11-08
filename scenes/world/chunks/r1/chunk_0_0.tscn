@@ -706,189 +706,189 @@ tint = Color(1, 0.75, 0.4, 1)
 seed_value = 607
 
 [node name="Prop99" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.93146, 0, 0.36384, 0, 1, -0, -0.36384, -0, -0.93146, 0.559744, 0, -20)
+transform = Transform3D(-0.93146, 0, 0.36384, 0, 1, -0, -0.36384, -0, -0.93146, 0.559744, -0.13, -20)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop100" type="StaticBody3D" parent="."]
-transform = Transform3D(0.8476, -0, -0.53064, 0, 1, -0, 0.53064, 0, 0.8476, -0.59101, 0, -15)
+transform = Transform3D(0.8476, -0, -0.53064, 0, 1, -0, 0.53064, 0, 0.8476, -0.59101, -0.08, -15)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop101" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.86948, -0, -0.49397, 0, 1, -0, 0.49397, -0, -0.86948, 0.527123, 0, -10)
+transform = Transform3D(-0.86948, -0, -0.49397, 0, 1, -0, 0.49397, -0, -0.86948, 0.527123, -0.13, -10)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop102" type="StaticBody3D" parent="."]
-transform = Transform3D(0.86412, 0, 0.50329, 0, 1, -0, -0.50329, 0, 0.86412, 0.205876, 0, -5)
+transform = Transform3D(0.86412, 0, 0.50329, 0, 1, -0, -0.50329, 0, 0.86412, 0.205876, -0.08, -5)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop103" type="StaticBody3D" parent="."]
-transform = Transform3D(0.082782, 0, 0.99657, 0, 1, -0, -0.99657, 0, 0.082782, 0.319777, 0, 0)
+transform = Transform3D(0.082782, 0, 0.99657, 0, 1, -0, -0.99657, 0, 0.082782, 0.319777, -0.13, 0)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop104" type="StaticBody3D" parent="."]
-transform = Transform3D(0.24121, -0, -0.97047, 0, 1, -0, 0.97047, 0, 0.24121, -0.563023, 0, 5)
+transform = Transform3D(0.24121, -0, -0.97047, 0, 1, -0, 0.97047, 0, 0.24121, -0.563023, -0.08, 5)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop105" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.7147, -0, -0.69943, 0, 1, -0, 0.69943, -0, -0.7147, -0.184693, 0, 10)
+transform = Transform3D(-0.7147, -0, -0.69943, 0, 1, -0, 0.69943, -0, -0.7147, -0.184693, -0.13, 10)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop106" type="StaticBody3D" parent="."]
-transform = Transform3D(0.59511, 0, 0.80365, 0, 1, -0, -0.80365, 0, 0.59511, 0.138979, 0, 15)
+transform = Transform3D(0.59511, 0, 0.80365, 0, 1, -0, -0.80365, 0, 0.59511, 0.138979, -0.08, 15)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop107" type="StaticBody3D" parent="."]
-transform = Transform3D(0.75255, 0, 0.65854, 0, 1, -0, -0.65854, 0, 0.75255, -0.380291, 0, 20)
+transform = Transform3D(0.75255, 0, 0.65854, 0, 1, -0, -0.65854, 0, 0.75255, -0.380291, -0.13, 20)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop108" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.99654, 0, 0.083146, 0, 1, -0, -0.083146, -0, -0.99654, -0.582457, 0, 25)
+transform = Transform3D(-0.99654, 0, 0.083146, 0, 1, -0, -0.083146, -0, -0.99654, -0.582457, -0.08, 25)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop109" type="StaticBody3D" parent="."]
-transform = Transform3D(0.91884, 0, 0.39462, 0, 1, -0, -0.39462, 0, 0.91884, 0.557882, 0, 30)
+transform = Transform3D(0.91884, 0, 0.39462, 0, 1, -0, -0.39462, 0, 0.91884, 0.557882, -0.13, 30)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop110" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.97713, 0, 0.21263, 0, 1, -0, -0.21263, -0, -0.97713, 0.0493058, 0, 35)
+transform = Transform3D(-0.97713, 0, 0.21263, 0, 1, -0, -0.21263, -0, -0.97713, 0.0493058, -0.08, 35)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop111" type="StaticBody3D" parent="."]
-transform = Transform3D(0.84792, 0, 0.53013, 0, 1, -0, -0.53013, 0, 0.84792, 0.121756, 0, 40)
+transform = Transform3D(0.84792, 0, 0.53013, 0, 1, -0, -0.53013, 0, 0.84792, 0.121756, -0.13, 40)
 script = ExtResource("prop")
 prop_id = &"floor_stone_tile"
 fallback_size = Vector3(4.2, 0.25, 4.2)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop112" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.12275, 0, 0.99244, 0, 1, -0, -0.99244, -0, -0.12275, -36, 0, 0.0790027)
+transform = Transform3D(-0.12275, 0, 0.99244, 0, 1, -0, -0.99244, -0, -0.12275, -36, -0.08, 0.0790027)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop113" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.61472, -0, -0.78874, 0, 1, -0, 0.78874, -0, -0.61472, -30, 0, 0.0564326)
+transform = Transform3D(-0.61472, -0, -0.78874, 0, 1, -0, 0.78874, -0, -0.61472, -30, -0.08, 0.0564326)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop114" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.61409, 0, 0.78923, 0, 1, -0, -0.78923, -0, -0.61409, -24, 0, -0.0189636)
+transform = Transform3D(-0.61409, 0, 0.78923, 0, 1, -0, -0.78923, -0, -0.61409, -24, -0.08, -0.0189636)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop115" type="StaticBody3D" parent="."]
-transform = Transform3D(0.91401, -0, -0.40569, 0, 1, -0, 0.40569, 0, 0.91401, -18, 0, -0.250848)
+transform = Transform3D(0.91401, -0, -0.40569, 0, 1, -0, 0.40569, 0, 0.91401, -18, -0.08, -0.250848)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop116" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.9821, -0, -0.18838, 0, 1, -0, 0.18838, -0, -0.9821, -12, 0, -0.046612)
+transform = Transform3D(-0.9821, -0, -0.18838, 0, 1, -0, 0.18838, -0, -0.9821, -12, -0.08, -0.046612)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop117" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.9987, -0, -0.050884, 0, 1, -0, 0.050884, -0, -0.9987, 12, 0, -0.4807)
+transform = Transform3D(-0.9987, -0, -0.050884, 0, 1, -0, 0.050884, -0, -0.9987, 12, -0.08, -0.4807)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop118" type="StaticBody3D" parent="."]
-transform = Transform3D(0.619, 0, 0.78539, 0, 1, -0, -0.78539, 0, 0.619, 18, 0, -0.49422)
+transform = Transform3D(0.619, 0, 0.78539, 0, 1, -0, -0.78539, 0, 0.619, 18, -0.08, -0.49422)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop119" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.71746, 0, 0.6966, 0, 1, -0, -0.6966, -0, -0.71746, 24, 0, -0.0271731)
+transform = Transform3D(-0.71746, 0, 0.6966, 0, 1, -0, -0.6966, -0, -0.71746, 24, -0.08, -0.0271731)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop120" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.85255, -0, -0.52265, 0, 1, -0, 0.52265, -0, -0.85255, 30, 0, -0.445825)
+transform = Transform3D(-0.85255, -0, -0.52265, 0, 1, -0, 0.52265, -0, -0.85255, 30, -0.08, -0.445825)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop121" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.93582, -0, -0.35248, 0, 1, -0, 0.35248, -0, -0.93582, 36, 0, -0.335997)
+transform = Transform3D(-0.93582, -0, -0.35248, 0, 1, -0, 0.35248, -0, -0.93582, 36, -0.08, -0.335997)
 script = ExtResource("prop")
 prop_id = &"floor_stepping_stones"
 fallback_size = Vector3(3.6, 0.25, 3.6)
 fallback_color = Color(0.55, 0.53, 0.5, 1)
 
 [node name="Prop122" type="StaticBody3D" parent="."]
-transform = Transform3D(0.96361, -0, -0.26731, 0, 1, -0, 0.26731, 0, 0.96361, -1.42302, 0, -12)
+transform = Transform3D(0.96361, -0, -0.26731, 0, 1, -0, 0.26731, 0, 0.96361, -1.42302, -0.18, -12)
 script = ExtResource("prop")
 prop_id = &"tile_mud"
 fallback_size = Vector3(4.87461416939245, 0.3, 3.656469957279662)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
 [node name="Prop123" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.16749, 0, 0.98587, 0, 1, -0, -0.98587, -0, -0.16749, -1.43509, 0, 8)
+transform = Transform3D(-0.16749, 0, 0.98587, 0, 1, -0, -0.98587, -0, -0.16749, -1.43509, -0.18, 8)
 script = ExtResource("prop")
 prop_id = &"tile_mud"
 fallback_size = Vector3(3.610785416575397, 0.3, 2.5593844363419427)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
 [node name="Prop124" type="StaticBody3D" parent="."]
-transform = Transform3D(0.9598, -0, -0.28069, 0, 1, -0, 0.28069, 0, 0.9598, 1.22605, 0, 22)
+transform = Transform3D(0.9598, -0, -0.28069, 0, 1, -0, 0.28069, 0, 0.9598, 1.22605, -0.18, 22)
 script = ExtResource("prop")
 prop_id = &"tile_mud"
 fallback_size = Vector3(3.3546860705565082, 0.3, 2.7318557720661847)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
 [node name="Prop125" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.75501, 0, 0.65572, 0, 1, -0, -0.65572, -0, -0.75501, -1.38179, 0, 34)
+transform = Transform3D(-0.75501, 0, 0.65572, 0, 1, -0, -0.65572, -0, -0.75501, -1.38179, -0.18, 34)
 script = ExtResource("prop")
 prop_id = &"tile_mud"
 fallback_size = Vector3(4.667778588302464, 0.3, 2.561594209407711)
@@ -1399,7 +1399,7 @@ tint = Color(1, 0.75, 0.4, 1)
 seed_value = 7
 
 [node name="Prop198" type="StaticBody3D" parent="."]
-transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, 28, 0, -23)
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, 28, -0.18, -23)
 script = ExtResource("prop")
 prop_id = &"tile_mud"
 fallback_size = Vector3(5, 0.3, 4)
@@ -1526,7 +1526,7 @@ seed_value = 9000
 snowy = false
 
 [node name="Prop216" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, -38)
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, -0.78, -38)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(6, 0.9, 6)
@@ -1541,7 +1541,7 @@ seed_value = 9001
 snowy = false
 
 [node name="Prop218" type="StaticBody3D" parent="."]
-transform = Transform3D(0.682, 0, 0.73135, 0, 1, -0, -0.73135, 0, 0.682, 40, 0, -38)
+transform = Transform3D(0.682, 0, 0.73135, 0, 1, -0, -0.73135, 0, 0.682, 40, -0.78, -38)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(6, 0.9, 6)
@@ -1556,7 +1556,7 @@ seed_value = 9002
 snowy = false
 
 [node name="Prop220" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.069756, 0, 0.99756, 0, 1, -0, -0.99756, -0, -0.069756, -40, 0, 40)
+transform = Transform3D(-0.069756, 0, 0.99756, 0, 1, -0, -0.99756, -0, -0.069756, -40, -0.78, 40)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(6, 0.9, 6)
@@ -1571,7 +1571,7 @@ seed_value = 9003
 snowy = false
 
 [node name="Prop222" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.77715, 0, 0.62932, 0, 1, -0, -0.62932, -0, -0.77715, -41, 0, 6)
+transform = Transform3D(-0.77715, 0, 0.62932, 0, 1, -0, -0.62932, -0, -0.77715, -41, -0.78, 6)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(6, 0.9, 6)

@@ -10,6 +10,8 @@ extends StaticBody3D
 ## Dungeons: always burning (no day / night), optionally with a wider light.
 @export var always_lit: bool = false
 @export var light_range_m: float = 0.0
+## Put out (dark challenge rooms): no light, no glow, whatever the time of day.
+var snuffed: bool = false
 
 const WOOD: Color = Color(0.42, 0.3, 0.2)
 const IRON: Color = Color(0.22, 0.22, 0.25)
@@ -183,13 +185,13 @@ func _process(_delta: float) -> void:
 	if _light == null:
 		return
 	var night: float = 1.0 if always_lit or GameState.clock == null else 1.0 - clampf(sin((GameState.clock.day_fraction() - 0.25) * TAU) * 1.5 + 0.2, 0.0, 1.0)
-	var lit: bool = kind == &"campfire" or night > 0.15 or kind == &"streetlight" and night > 0.05
+	var lit: bool = not snuffed and (kind == &"campfire" or night > 0.15 or kind == &"streetlight" and night > 0.05)
 	_light.visible = lit
 	if lit:
 		var flicker: float = 1.0 + (sin(Time.get_ticks_msec() * 0.013) * 0.08 if kind == &"campfire" else 0.0)
 		_light.light_energy = (1.6 if kind == &"campfire" else 1.3) * maxf(night, 0.35 if kind == &"campfire" else 0.0) * flicker
 	if _bulb != null:
-		_bulb.emission_energy_multiplier = 0.3 + 2.5 * night
+		_bulb.emission_energy_multiplier = 0.0 if snuffed else 0.3 + 2.5 * night
 
 
 func _add_light(at: Vector3, range_m: float) -> void:

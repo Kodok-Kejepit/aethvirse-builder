@@ -8,7 +8,7 @@ extends RefCounted
 const ACTIONS: Array[StringName] = [
 	&"move_forward", &"move_back", &"move_left", &"move_right", &"jump", &"sprint", &"dodge",
 	&"attack_light", &"attack_heavy", &"skill_1", &"skill_2", &"skill_3", &"skill_4", &"ultimate",
-	&"lock_on", &"interact", &"use_potion", &"codex", &"inventory",
+	&"lock_on", &"interact", &"use_potion", &"codex", &"inventory", &"map",
 ]
 ## Bindings per action shown in Settings (primary + secondary).
 const SLOTS: int = 2

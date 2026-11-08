@@ -1,11 +1,10 @@
 class_name InventoryPanel
 extends PausingPanel
-## Bag window (I / Back / bag button): equipment, items, crafting. Split from the Codex so
-## each window stays readable on phones.
+## The I key (Back / bag button): the inventory now lives in the Codex (owner: everything
+## the System keeps is in one place). This panel only listens for the key and opens the
+## Codex on its Inventory tab (again to close).
 
 const GROUP: StringName = &"inventory_panel"
-
-var _inventory: CodexInventoryTab
 
 
 func _init() -> void:
@@ -16,17 +15,13 @@ func _init() -> void:
 func _ready() -> void:
 	add_to_group(GROUP)
 	super._ready()
-	EventBus.player_stats_changed.connect(func() -> void:
-		if is_open():
-			_inventory.refresh())
 
 
-func _build_content(body: VBoxContainer) -> void:
-	_inventory = CodexInventoryTab.new()
-	var scroll: ScrollContainer = PausingPanel.wrap_scroll(_inventory)
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	body.add_child(scroll)
+func toggle() -> void:
+	open()
 
 
-func _on_open() -> void:
-	_inventory.refresh()
+func open() -> void:
+	var codex: CodexPanel = get_tree().get_first_node_in_group(CodexPanel.GROUP) as CodexPanel
+	if codex != null:
+		codex.open_on(&"CODEX_TAB_INVENTORY")

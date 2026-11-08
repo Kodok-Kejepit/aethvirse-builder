@@ -3,6 +3,8 @@ extends RefCounted
 ## Fast travel between waystones (same region: teleport; other region: load its scene).
 
 const ARRIVE_OFFSET: Vector3 = Vector3(0.0, 0.3, 2.5)
+## Where you rise before you have stood at any altar (owner: the camp).
+const DEFAULT_ALTAR: StringName = &"r1_camp"
 
 
 static func flag_for(waystone_id: StringName) -> StringName:
@@ -28,14 +30,16 @@ static func set_respawn(waystone_id: StringName) -> bool:
 	return true
 
 
-## After falling in battle: back to the last altar the player stood at. Inside a Gate
-## this fails the Gate (you are carried out). False when no altar was ever visited.
+## After falling in battle: back to the last altar the player stood at (the camp altar
+## before any). Inside a Gate or an interior you are carried out (the Gate is failed).
 static func respawn_at_altar(tree: SceneTree) -> bool:
-	var region: RegionData = RegionData.region_of_waystone(GameState.respawn_waystone)
-	if region == null:
+	var plan: Dictionary = respawn_plan()
+	if plan.is_empty():
 		return false
-	var target: Vector3 = region.waystones[GameState.respawn_waystone] + ARRIVE_OFFSET
-	if GameState.gate_session != null or GameState.interior_return != null:
+	var region: RegionData = plan["region"]
+	var target: Vector3 = plan["target"]
+	var leave: bool = plan["leave"]
+	if leave:
 		# Inside a Gate or an interior (metro station): carried back out to the altar.
 		GameState.gate_session = null
 		GameState.interior_return = null
@@ -44,6 +48,17 @@ static func respawn_at_altar(tree: SceneTree) -> bool:
 		LoadingScreen.go(tree, region.scene_path)
 		return true
 	return go(tree, region, target)
+
+
+## Where a fallen player rises: {"region", "target", "leave" (carried out of a Gate /
+## interior first)}; empty if there is nowhere to go.
+static func respawn_plan() -> Dictionary:
+	var altar: StringName = GameState.respawn_waystone if GameState.respawn_waystone != &"" else DEFAULT_ALTAR
+	var region: RegionData = RegionData.region_of_waystone(altar)
+	if region == null:
+		return {}
+	var leave: bool = GameState.gate_session != null or GameState.interior_return != null
+	return {"region": region, "target": region.waystones[altar] + ARRIVE_OFFSET, "leave": leave}
 
 
 ## All unlocked waystones as [[region, waystone_id], ...] in region order.
