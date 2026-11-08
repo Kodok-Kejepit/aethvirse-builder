@@ -42,6 +42,9 @@ var next_gate_uid: int = 0
 var map_fog: Dictionary[String, PackedByteArray] = {}
 ## Non-null while the player is inside a Gate.
 var gate_session: GateSession = null
+## Street spot outside an interior scene (metro station) while the player is inside it:
+## saves keep this instead of interior coordinates.
+var interior_return: Variant = null
 var clock: WorldClock = WorldClock.new()
 var weather: WeatherSystem = WeatherSystem.new()
 ## Set by SaveManager on load; the player moves here once when it spawns.
@@ -118,6 +121,11 @@ func to_dict() -> Dictionary:
 	}
 	if player != null and is_instance_valid(player):
 		var p: Vector3 = player.global_position
+		# Inside a Gate or an interior the region position is the way back out.
+		if gate_session != null:
+			p = gate_session.return_position
+		elif interior_return is Vector3:
+			p = interior_return
 		data["player_position"] = [p.x, p.y, p.z]
 	return data
 

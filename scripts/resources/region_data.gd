@@ -6,6 +6,9 @@ extends Resource
 @export var display_name: StringName = &""
 @export var level_min: int = 1
 @export var level_max: int = 10
+## Added to monsters that have no level of their own here (regions whose monsters were
+## made for the old 1-100 curve, until they are reworked like Region 1).
+@export var enemy_level_bonus: int = 0
 ## Totals shown by the vague tracker ("Secrets 3/13 · Sealed missions 1/3") — the full count
 ## from the Mystery Bible, even if not every secret is implemented yet.
 @export var secret_total: int = 0

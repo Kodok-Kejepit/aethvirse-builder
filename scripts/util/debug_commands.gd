@@ -43,6 +43,7 @@ static func register_core() -> void:
 	DebugConsole.register("droploot", _droploot, "droploot — drop one item of every rarity in front of you")
 	DebugConsole.register("trial", _trial, "trial <job_id> — start that job's Change trial now")
 	DebugConsole.register("gate", _gate, "gate [gate_id] [double] — enter a Gate (double = force the hidden Double Gate)")
+	DebugConsole.register("metro", _metro, "metro — go down into the Region 1 metro station")
 	DebugConsole.register("dungeonmap", _dungeonmap, "dungeonmap [room|next|zoom|tunnel N] — inside a Gate: map from above (roofs off), jump to a room / tunnel")
 
 
@@ -332,6 +333,13 @@ static func _trial(args: PackedStringArray) -> String:
 		return "this job has no trial"
 	var tree: SceneTree = Engine.get_main_loop() as SceneTree
 	return "entering trial" if JobTrial.start(tree, p, job) else "cannot start now"
+
+
+static func _metro(_args: PackedStringArray) -> String:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	GameState.interior_return = Vector3(-112.0, 0.3, -99.0)
+	LoadingScreen.go(tree, MetroStation.SCENE)
+	return "down to the metro"
 
 
 static func _dungeonmap(args: PackedStringArray) -> String:

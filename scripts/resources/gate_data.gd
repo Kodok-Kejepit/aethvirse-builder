@@ -17,6 +17,8 @@ const RANK_COLORS: Dictionary[Rank, Color] = {
 ## Enemy data per normal room (picked with the seed).
 @export var enemy_pool: Array[EnemyData] = []
 @export var enemies_per_room: int = 3
+## Gate monsters are never below this level (deep places like the metro Gate).
+@export var level_floor: int = 0
 @export var boss: EnemyData
 ## Rule ids: &"no_skills", &"no_potions", &"no_exit" (Red Gate) ...
 @export var rules: Array[StringName] = []

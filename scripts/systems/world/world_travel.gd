@@ -35,8 +35,10 @@ static func respawn_at_altar(tree: SceneTree) -> bool:
 	if region == null:
 		return false
 	var target: Vector3 = region.waystones[GameState.respawn_waystone] + ARRIVE_OFFSET
-	if GameState.gate_session != null:
+	if GameState.gate_session != null or GameState.interior_return != null:
+		# Inside a Gate or an interior (metro station): carried back out to the altar.
 		GameState.gate_session = null
+		GameState.interior_return = null
 		GameState.pending_player_position = target
 		GameState.current_region = region.id
 		LoadingScreen.go(tree, region.scene_path)

@@ -23,9 +23,14 @@ const SURFACES: String = "res://assets/textures/surfaces/%s.jpg"
 ## Palette colours drawn with the ruined-ground shader (owner's baked tiles):
 ## [paving tile, paved share, overgrowth, wetness].
 const GROUNDS: Dictionary[String, Array] = {
-	"52545c": ["tile_asphalt_broken", 0.62, 0.38, 0.12],   # ASPHALT: broken roads
-	"827d78": ["tile_broken_tiles", 0.8, 0.3, 0.05],       # SIDEWALK: cracked pavement
 	"614a33": ["tile_dirt", 0.12, 0.55, 0.2],              # DIRT: camp / lots / open ground
+}
+## Palette colours drawn with the procedural pavement shader: mode (0 concrete slabs,
+## 1 asphalt) and overgrowth.
+const PAVEMENT_SHADER: Shader = preload("res://assets/shaders/pavement.gdshader")
+const PAVEMENTS: Dictionary[String, Vector2] = {
+	"52545c": Vector2(1, 0.35),   # ASPHALT: roads
+	"827d78": Vector2(0, 0.3),    # SIDEWALK: kerbs, building aprons
 }
 const WATER_SHADER: Shader = preload("res://assets/shaders/water.gdshader")
 const FOLIAGE_SHADER: Shader = preload("res://assets/shaders/foliage.gdshader")
@@ -92,6 +97,9 @@ func shared_material(color: Color, solid: bool = true) -> Material:
 			m.set_shader_parameter(&"style", style)
 			if style != 0:
 				m.set_shader_parameter(&"top_amount", 0.15)
+			if style == 1 and ResourceLoader.exists(SURFACES % "tile_roots_grass"):
+				m.set_shader_parameter(&"tex_moss", load(SURFACES % "tile_roots_grass"))
+				m.set_shader_parameter(&"has_moss", true)
 			_styled.append(m)
 	_materials[key] = m
 	return m
@@ -99,6 +107,8 @@ func shared_material(color: Color, solid: bool = true) -> Material:
 
 func _ground_material(color: Color) -> Material:
 	var html: String = color.to_html(false)
+	if PAVEMENTS.has(html):
+		return _pavement_material(html)
 	if not GROUNDS.has(html):
 		return null
 	var key: String = "ground:" + html
@@ -117,6 +127,21 @@ func _ground_material(color: Color) -> Material:
 	m.set_shader_parameter(&"paved", spec[1])
 	m.set_shader_parameter(&"overgrowth", spec[2])
 	m.set_shader_parameter(&"wetness", spec[3])
+	_materials[key] = m
+	return m
+
+
+func _pavement_material(html: String) -> Material:
+	var key: String = "pavement:" + html
+	if _materials.has(key):
+		return _materials[key]
+	var spec: Vector2 = PAVEMENTS[html]
+	var m: ShaderMaterial = ShaderMaterial.new()
+	m.shader = PAVEMENT_SHADER
+	m.set_shader_parameter(&"mode", int(spec.x))
+	m.set_shader_parameter(&"overgrowth", spec.y)
+	m.set_shader_parameter(&"tex_dirt", load(SURFACES % "tile_dirt"))
+	m.set_shader_parameter(&"tex_moss", load(SURFACES % "tile_roots_grass"))
 	_materials[key] = m
 	return m
 

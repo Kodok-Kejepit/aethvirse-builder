@@ -15,6 +15,9 @@ uniform int style = 0;
 uniform float night = 0.0;
 // Share of windows lit at night (abandoned districts stay mostly dark).
 uniform float lit_share : hint_range(0.0, 1.0) = 0.15;
+// Real moss (owner's baked tile) for facades and ledges; without it a flat tint is used.
+uniform sampler2D tex_moss : source_color, filter_linear_mipmap, repeat_enable;
+uniform bool has_moss = false;
 
 varying vec3 world_pos;
 varying vec3 world_normal;
@@ -62,13 +65,19 @@ void fragment() {
 		col = mix(col, vec3(0.08, 0.1, 0.14), win * 0.85);
 		glow += mix(vec3(1.0, 0.72, 0.4), vec3(0.75, 0.85, 1.0), step(0.7, warmth)) * win * lit * night * 0.9;
 		col *= 1.0 - smoothstep(0.03, 0.0, f.y) * 0.4;
-		// Moss creeping up from the street, streaks down from ledges.
-		float creep = smoothstep(0.45, 0.8, noise(world_pos * 0.35 + vec3(13.0))) * (1.0 - smoothstep(0.0, 7.0, world_pos.y));
-		float streak = smoothstep(0.7, 0.9, noise(vec3(world_pos.x * 1.7, world_pos.y * 0.15, world_pos.z * 1.7)));
-		col = mix(col, vec3(0.2, 0.31, 0.15), clamp(creep * 0.75 + streak * 0.35, 0.0, 0.8));
+		// Moss creeping up from the street in ragged tongues, damp streaks down from ledges.
+		// Textured and broken up at the edge so it reads as growth, not paint.
+		float edge = noise(world_pos * 2.6) * 0.5 + noise(world_pos * 7.3) * 0.5;
+		float creep = smoothstep(0.5, 0.75, noise(world_pos * 0.35 + vec3(13.0)) + (edge - 0.5) * 0.35)
+			* (1.0 - smoothstep(0.5, 5.0 + noise(world_pos * 0.2) * 3.0, world_pos.y));
+		float streak = smoothstep(0.78, 0.9, noise(vec3(world_pos.x * 1.7, world_pos.y * 0.15, world_pos.z * 1.7)) + (edge - 0.5) * 0.2);
+		vec3 moss = has_moss ? texture(tex_moss, wall * 0.35).rgb : vec3(0.2, 0.31, 0.15);
+		col = mix(col, moss, clamp(creep * 0.85 + streak * 0.25, 0.0, 0.85));
+		col *= 1.0 - streak * 0.25;
 	} else if (style == 1) {
 		// Roofs / ledges of facade blocks: moss beds.
-		col = mix(col, vec3(0.24, 0.36, 0.17), smoothstep(0.35, 0.7, noise(world_pos * 0.4 + vec3(5.0))) * 0.7);
+		vec3 bed = has_moss ? texture(tex_moss, world_pos.xz * 0.35).rgb : vec3(0.24, 0.36, 0.17);
+		col = mix(col, bed, smoothstep(0.35, 0.7, noise(world_pos * 0.4 + vec3(5.0)) + (noise(world_pos * 3.0) - 0.5) * 0.3) * 0.85);
 	} else if (style == 2) {
 		float crack = smoothstep(0.012, 0.0, abs(noise(world_pos * 3.2) - 0.5))
 			* smoothstep(0.55, 0.7, noise(world_pos * 0.4 + vec3(11.0))) * 0.22;

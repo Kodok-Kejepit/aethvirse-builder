@@ -207,3 +207,5 @@ The project is non-commercial: nothing here is sold, no paid skins.
 | Dungeon wall part | `meshy3/a_dungeon_wall_part_w.glb` | door_barred_wall |  |  |
 | Abstract gothic statue | `meshy3/eine_abstrakte_gotisc.glb` | dungeon_statue |  |  |
 | Emerald core | `meshy3/emerald_core.glb` | dungeon_relic_gem |  |  |
+| Derelict metro car | `meshy_metro/metro_car.glb` | metro_car | owner (Meshy, generated for the project) |  |
+| Wrecked metro cab | `meshy_metro/metro_cab.glb` | metro_cab | owner (Meshy, generated for the project) |  |

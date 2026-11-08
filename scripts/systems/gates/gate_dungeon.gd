@@ -180,7 +180,7 @@ func _hook_boss(room: BossRoom, boss: EnemyData, gate: GateData, level: int) -> 
 
 ## Gate enemies keep up with the player (never far below their level).
 func _scaled(data: EnemyData, player_level: int) -> EnemyData:
-	var target: int = GateLayout.enemy_level(data.level, player_level, session.enemy_level_bonus)
+	var target: int = GateLayout.enemy_level(maxi(data.level, session.gate.level_floor), player_level, session.enemy_level_bonus)
 	if target == data.level:
 		return data
 	var copy: EnemyData = data.duplicate() as EnemyData

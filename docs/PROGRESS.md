@@ -371,3 +371,28 @@
 - `gate gate_r1_e_overpass double`, then `god` (inside the Gate), `dungeonmap` (whole map from above), `dungeonmap 2` (room), `dungeonmap tunnel 1`, `dungeonmap door`, `dungeonmap zoom`.
 - Check: tunnel feel, door push + sink, wards during fights, cracked wall niche, side room chest, winged door with / without a key.
 
+## Region 1 city surfaces (2026-11-08)
+- **Pavement shader** (procedural, sharp at any distance) replaces the baked sidewalk / asphalt tiles:
+  - Concrete slabs (1.5 m) on sidewalks and new 3 m **aprons around every building**: 80 % intact, 10 % cracked, 10 % gone to earth; moss on ~22 % of slabs (~17.5 % of the area) and in some joints.
+  - Asphalt: grain, soft aggregate, long cracks, alligator patches, wet potholes, grass in the cracks.
+- Road damage no longer uses rock-like models: sinkholes are flat earth with a tipped-up asphalt rim, heaved slabs are thin tilted asphalt plates, kerb earth patches are flat with grass.
+- Building facades: moss uses the real moss texture with ragged edges instead of flat green paint.
+- Debug capture waits in real time (hit-stop no longer delays screenshots).
+
+## Region 1 is Lv 1-50 (2026-11-08)
+- Owner: Region 1 spans Lv 1-50, Region 2 50-100, and so on (+50 per region).
+- Monster level follows the place: camp edge Lv 1-3, inner city to Lv 10, the ring to Lv 25, the outskirts to Lv 40; hot spots (highway, culvert pump room, Rank E Gate, apartments) are harder than their ring. Lv 40-50 is kept for the metro station (next).
+- Packs by level: hounds / husks near the camp, moss brutes further out, elites (Ash Hound Alpha leading hounds, Gravewarden) in the far zones.
+- EnemySpawner has a `level` override (stats, XP and gold follow the level; the shared data resource is untouched).
+- Regions 2-7 moved to 50-100 ... 300-350; until they are reworked their monsters get a per-region level bonus.
+
+## Metro station under Ashfall (2026-11-08)
+- **Entrance** in the north-west of Region 1 (between the riverside street and the river): concrete pavilion, shutter jammed half open, METRO sign. "Go down to the metro".
+- **Station** (own scene, built in code): 100 m island platform between two tracks; grimy glazed tiles (missing tiles, damp streaks, moss from the floor), tiled pillars, yellow platform edges, flickering / dead lamps, red emergency lights at the tunnel mouths, puddles, a caved-in ceiling with daylight on rubble and roots.
+- **Trains** from Meshy (owner-approved, 90 credits): a cab and two cars on the south track (the last one derailed), a crashed car tipped against the platform. Rails are procedural (steel rails on concrete sleepers; the generated rail model came out as a triangular junction and was dropped).
+- **Lv 40-50**: brutes, husks, an alpha hound pack, a Gravewarden by the west tunnel; supply chests on the platform, a treasure chest at the east tunnel's dead end.
+- **Metro Tunnel Gate** (Rank D, enemies never below Lv 44) in the west tunnel.
+- Stairs up to the street exit; the Lv 38 zone around the entrance outside.
+- Saves made inside a Gate or the station keep the street position; dying inside carries you out to your altar.
+- Debug: `metro`.
+

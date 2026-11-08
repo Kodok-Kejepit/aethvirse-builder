@@ -103,3 +103,28 @@ func _placed_waystones(dir_path: String) -> Dictionary:
 				var nums: PackedStringArray = transform_line.get_slice("(", 1).get_slice(")", 0).split(",")
 				out[id] = origin + Vector3(nums[9].to_float(), nums[10].to_float(), nums[11].to_float())
 	return out
+
+
+func test_spawner_level_overrides_the_data_level() -> void:
+	var parent: Node3D = _offset_parent()
+	var spawner: EnemySpawner = EnemySpawner.new()
+	spawner.enemy_scene = load("res://scenes/enemies/enemy.tscn") as PackedScene
+	spawner.enemy_data = load("res://data/enemies/ash_hound.tres") as EnemyData
+	spawner.spawn_on_ready = false
+	spawner.level = 27
+	parent.add_child(spawner)
+	var enemy: Enemy = spawner.spawn()
+	assert_eq(enemy.data.level, 27)
+	assert_eq(spawner.enemy_data.level, 3, "the shared data resource is untouched")
+	var weak: Enemy = (load("res://scenes/enemies/enemy.tscn") as PackedScene).instantiate() as Enemy
+	weak.data = spawner.enemy_data
+	parent.add_child(weak)
+	assert_gt(enemy.health.max_health, weak.health.max_health * 3, "a Lv 27 hound is far tougher")
+	enemy.queue_free()
+	weak.queue_free()
+
+
+func test_region_one_spans_level_1_to_50() -> void:
+	var region: RegionData = RegionData.load_region(&"r1_ashfall")
+	assert_eq(region.level_min, 1)
+	assert_eq(region.level_max, 50)

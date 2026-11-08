@@ -188,3 +188,6 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - Superseded "doors teleport instead of corridors": the owner wants a walkable cave map. The imported door models are single meshes, so doors open by sinking into the floor (shudder + 1.4 s slide) instead of swinging. Door models face -Z in their files; DungeonDoor turns them.
 - Rooms are placed on a 64 m grid so tunnels are 25–40 m of real cave between rooms.
 
+## Pavement proportions are measured, not guessed (2026-11-08)
+- Owner asked for 80 % intact / 10 % cracked / 10 % earth with 15–20 % moss. Each slab's state comes from score = 0.6·hash(slab) + 0.4·fbm(slab·0.21) (clusters damage instead of salt-and-pepper). The thresholds 0.6793 / 0.7434 are the 80th / 90th percentiles of that score, measured over 360 000 slabs with the shader's exact hash and noise; moss: 0.5·hash + 0.5·fbm > 0.6393 (78th percentile) → 22 % of slabs × ~80 % cover ≈ 17.5 %.
+

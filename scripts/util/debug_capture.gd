@@ -32,7 +32,8 @@ func start(args: PackedStringArray) -> void:
 		return
 	if ARG_OVERLAY in args:
 		overlay_requested.emit()
-	await get_tree().create_timer(parse_delay(args)).timeout
+	# Real time: hit-stop / slow motion must not hold the shot back.
+	await get_tree().create_timer(parse_delay(args), true, false, true).timeout
 	await RenderingServer.frame_post_draw
 	var image: Image = get_viewport().get_texture().get_image()
 	var err: Error = image.save_png(path)

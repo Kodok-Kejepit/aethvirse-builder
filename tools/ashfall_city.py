@@ -61,8 +61,12 @@ ROADS = [
     (100, -90, 100, -56),    # lane between the riverside and the culvert road
 ]
 
+# Metro station entrance (global x, z), between the riverside street and the river.
+METRO_AT = (-112.0, -106.0)
+
 # Areas kept free of generated pieces: (cx, cz, half_x, half_z) global.
 RESERVED = [
+    (METRO_AT[0], METRO_AT[1], 8, 9),  # metro entrance
     (0, 0, 52, 52),            # camp plaza
     (HWY_X, 0, 12, 200),       # highway deck + pillars
     (124, 20, 26, 10),         # culvert grate, tunnel + pump room
@@ -144,19 +148,32 @@ def roads(c, cx, cz, seed):
                 lx, lz = gx - cx, gz - cz
                 roll = rng.random()
                 if roll < 0.28:
-                    c.prop("tile_mud", (lx, 0, lz), (rng.uniform(4, 6.5), 0.35, rng.uniform(3.5, 5)), DIRT, rot_y=rng.uniform(0, 360))
+                    # Sinkhole: earth showing, its broken asphalt rim tipped up around it.
+                    r = rng.uniform(2.0, 3.2)
+                    c.block((r * 2, 0.04, r * 1.7), (lx, 0.13, lz), DIRT, rot_y=rng.uniform(0, 360))
                     c.points.pop()
-                    c.prop("rubble_heap", (lx + rng.uniform(-1.5, 1.5), 0, lz + rng.uniform(-1.5, 1.5)), (2.4, 1.1, 2.4), CONCRETE, rot_y=rng.uniform(0, 360))
+                    for k in range(rng.randint(3, 5)):
+                        a = k * 2 * math.pi / 4.5 + rng.uniform(-0.3, 0.3)
+                        c.block((rng.uniform(1.2, 2.2), 0.14, rng.uniform(0.9, 1.5)), (lx + math.cos(a) * r, 0.12, lz + math.sin(a) * r),
+                                ASPHALT, rot_y=-math.degrees(a) + 90, rot_x=rng.uniform(8, 22))
+                        c.points.pop()
                 elif roll < 0.52:
-                    c.prop("tile_asphalt_broken", (lx, rng.uniform(0.05, 0.25), lz), (rng.uniform(2.5, 4), 0.5, rng.uniform(2, 3.5)), ASPHALT, rot_y=rng.uniform(0, 360))
-                    c.points.pop()
+                    # Heaved slabs: a few plates of the road pushed up and tilted by roots.
+                    yaw = rng.uniform(0, 360)
+                    for k in range(rng.randint(2, 3)):
+                        off = (k - 1) * rng.uniform(1.6, 2.2)
+                        px = lx + math.cos(math.radians(yaw)) * off
+                        pz = lz - math.sin(math.radians(yaw)) * off
+                        c.block((rng.uniform(1.8, 2.8), 0.16, rng.uniform(1.6, 2.4)), (px, rng.uniform(0.12, 0.28), pz), ASPHALT,
+                                rot_y=yaw + rng.uniform(-12, 12), rot_x=rng.uniform(5, 14) * (1 if k % 2 == 0 else -1))
+                        c.points.pop()
                 elif roll < 0.78:
                     strip = rng.uniform(3, 6)
                     # A band of grass grown right across the road.
                     area = (strip, ROAD_W + 4) if horizontal else (ROAD_W + 4, strip)
                     c.grass(MOSS, 700, rng.randint(1, 99999), area, (lx, 0, lz))
                 else:
-                    c.prop("tile_mud", (lx, 0, lz), (rng.uniform(2.5, 4), 0.3, rng.uniform(2, 3.5)), DIRT, rot_y=rng.uniform(0, 360))
+                    c.block((rng.uniform(2.5, 4), 0.04, rng.uniform(2, 3.5)), (lx, 0.13, lz), DIRT, rot_y=rng.uniform(0, 360))
                     c.points.pop()
             v += rng.uniform(14, 26)
         steps = max(1, int(length // 10))
@@ -169,9 +186,11 @@ def roads(c, cx, cz, seed):
             off = rng.choice((-1, 1)) * (ROAD_W / 2 - rng.uniform(0.8, 2.5))
             gx, gz = (x0 + (x1 - x0) * t, seg[1] + off) if horizontal else (seg[0] + off, z0 + (z1 - z0) * t)
             if not _reserved(gx, gz, 2) and abs(gx - HWY_X) > 10:
-                model = rng.choice(("tile_roots_grass", "tile_roots_grass", "tile_dirt", "tile_mud"))
-                c.prop(model, (gx - cx, 0, gz - cz), (rng.uniform(2.5, 4.5), 0.5, rng.uniform(2.5, 4.5)), DIRT, rot_y=rng.uniform(0, 360))
+                # Flat earth with grass tufts (the old tile models read as lumps of rock).
+                ew, ed_ = rng.uniform(2.5, 4.5), rng.uniform(2.5, 4.5)
+                c.block((ew, 0.04, ed_), (gx - cx, 0.13, gz - cz), DIRT, rot_y=rng.uniform(0, 360))
                 c.points.pop()
+                c.grass(MOSS, 220, rng.randint(1, 99999), (ew * 0.8, ed_ * 0.8), (gx - cx, 0.15, gz - cz))
         # One lamp every LAMP_EVERY m, alternating sides, never on another road's asphalt.
         v = math.ceil((x0 if horizontal else z0) / LAMP_EVERY) * LAMP_EVERY
         end = x1 if horizontal else z1
@@ -278,13 +297,23 @@ def plan_buildings(seed=4242):
     return placed
 
 
+APRON_M = 3.0
+
+
 def city_blocks(c, cx, cz, seed):
     rng = random.Random(seed)
-    for (kind, x, z, w, h, d, yaw) in plan_buildings():
+    for idx, (kind, x, z, w, h, d, yaw) in enumerate(plan_buildings()):
         if not (cx - HALF <= x < cx + HALF and cz - HALF <= z < cz + HALF):
             continue
         lx, lz = x - cx, z - cz
         fwd = (-math.sin(math.radians(yaw)), -math.cos(math.radians(yaw)))
+        if kind in ("ruin", "tower", "collapsed"):
+            # Concrete apron around the building (pavement shader: 80 % intact slabs,
+            # 10 % cracked, 10 % earth, moss on ~17 %). Neighbours sit at different
+            # heights so overlapping aprons never flicker.
+            ah = 0.1 - (idx % 3) * 0.015
+            c.block((w + APRON_M * 2, ah, d + APRON_M * 2), (lx, ah / 2, lz), SIDEWALK, rot_y=yaw)
+            c.points.pop()
         if kind == "ruin":
             c.prop("r1_apartment_ruin_a", (lx, 0, lz), (w, h, d), BUILDING, rot_y=yaw + rng.uniform(-3, 3))
         elif kind == "tower":
@@ -443,8 +472,50 @@ def skyline(c, cx, cz):
         c.points.pop()  # scenery: no flatten disc
 
 
+# Region 1 spans Lv 1-50 (owner, 2026-11-08): danger grows with distance from the camp,
+# and a few places are harder than their ring. ((x, z), radius, level).
+LEVEL_RINGS = [(80, 1, 3), (130, 3, 10), (190, 10, 25), (275, 25, 40)]
+HOTSPOTS = [((HWY_X, 0), 16, 24), ((124, 20), 22, 18), ((118, -40), 18, 15), ((-140, -10), 26, 20),
+            (METRO_AT, 22, 38)]
+LEVEL_MAX = 50
+
+
+def zone_level(x, z):
+    """Monster level for a world position in Region 1 (camp 1 ... outskirts 40, hot spots)."""
+    d = math.hypot(x, z)
+    lvl = LEVEL_RINGS[-1][2]
+    lo_d = 0.0
+    for (edge, lo, hi) in LEVEL_RINGS:
+        if d < edge:
+            lvl = lo + (hi - lo) * (d - lo_d) / (edge - lo_d)
+            break
+        lo_d = edge
+    for ((hx, hz), r, hot) in HOTSPOTS:
+        if math.hypot(x - hx, z - hz) < r:
+            lvl = max(lvl, hot)
+    return max(1, min(LEVEL_MAX, int(round(lvl))))
+
+
+def _pack(rng, level):
+    """(enemy, count, leader) for a roaming pack of this level: hounds and husks near the
+    camp, moss brutes further out, elites (alpha hound, gravewarden) in the far zones."""
+    if level < 8:
+        roll = rng.random()
+        return ("ash_hound" if roll < 0.45 else ("gate_husk" if roll < 0.8 else "ember_husk")), rng.randint(2, 3), None
+    if level < 20:
+        roll = rng.random()
+        return ("ash_hound" if roll < 0.35 else ("ember_husk" if roll < 0.65 else "moss_brute")), rng.randint(2, 3), None
+    roll = rng.random()
+    if roll < 0.2:
+        return "ash_hound", 2, "ash_hound_alpha"
+    if roll < 0.32:
+        return "ember_husk", 1, "gravewarden"
+    return ("moss_brute" if roll < 0.7 else "ember_husk"), rng.randint(2, 3), None
+
+
 def wildlife(c, cx, cz, seed):
-    """Roaming packs outside the camp's safe zone (two per chunk, on lots and streets)."""
+    """Roaming packs outside the camp's safe zone (three per chunk, on lots and streets),
+    at the level of where they roam."""
     if cx == 0 and cz == 0:
         return
     rng = random.Random(seed)
@@ -455,10 +526,12 @@ def wildlife(c, cx, cz, seed):
         x, z = cx + rng.uniform(-50, 50), cz + rng.uniform(-50, 50)
         if math.hypot(x, z) < 80 or _reserved(x, z, 4) or x > CITY_EAST:
             continue
-        roll = rng.random()
-        enemy = "ash_hound" if roll < 0.45 else ("gate_husk" if roll < 0.8 else "ember_husk")
-        for k in range(rng.randint(2, 3)):
-            c.spawner(enemy, (x - cx + rng.uniform(-3, 3), 0.3, z - cz + rng.uniform(-3, 3)))
+        level = zone_level(x, z)
+        enemy, count, leader = _pack(rng, level)
+        if leader:
+            c.spawner(leader, (x - cx, 0.3, z - cz), 60.0, level=min(LEVEL_MAX, level + 2))
+        for k in range(count):
+            c.spawner(enemy, (x - cx + rng.uniform(-3, 3), 0.3, z - cz + rng.uniform(-3, 3)), level=max(1, level + rng.randint(-2, 1)))
         placed += 1
 
 

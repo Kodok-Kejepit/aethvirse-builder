@@ -40,12 +40,16 @@ EXT = {
     "prop": ("Script", "res://scripts/systems/world/prop_instance.gd"),
     "terrain": ("Script", "res://scripts/systems/world/terrain_patch.gd"),
     "chest": ("Script", "res://scripts/systems/world/loot_chest.gd"),
+    "metro": ("Script", "res://scripts/systems/world/metro_entrance.gd"),
 }
 DATA = {
     "gate_husk": "res://data/enemies/gate_husk.tres",
     "ash_hound": "res://data/enemies/ash_hound.tres",
     "ember_husk": "res://data/enemies/ember_husk.tres",
     "drowned_rat": "res://data/enemies/drowned_rat.tres",
+    "ash_hound_alpha": "res://data/enemies/ash_hound_alpha.tres",
+    "moss_brute": "res://data/enemies/moss_brute.tres",
+    "gravewarden": "res://data/enemies/gravewarden.tres",
     "marrow": "res://data/dialogs/marrow.tres",
     "camp_kid": "res://data/dialogs/camp_kid.tres",
     "bread_seller": "res://data/dialogs/bread_seller.tres",
@@ -66,6 +70,9 @@ class Chunk:
         # Flatten discs for the terrain (x, z, radius) and the ground slab nodes it replaces.
         self.points = []
         self.ground_nodes = []
+        # Global (x, z) of the chunk centre and a level-by-position rule for spawners.
+        self.origin = (0.0, 0.0)
+        self.level_at = None
 
     def point(self, pos, r):
         self.points.append((pos[0], pos[2], r))
@@ -109,10 +116,14 @@ class Chunk:
     def npc(self, data_key, pos, rot_y=0.0):
         self.instance("npc", pos, f"data = {self.data(data_key)}\n", rot_y, name=f"Npc_{data_key}")
 
-    def spawner(self, enemy_key, pos, respawn=20.0):
+    def spawner(self, enemy_key, pos, respawn=20.0, level=0):
+        """level 0: the chunk's level rule picks one from the position (if it has a rule)."""
         n = self._id("Spawn")
+        if level == 0 and self.level_at is not None:
+            level = self.level_at(pos[0] + self.origin[0], pos[2] + self.origin[1])
+        lv = f'level = {level}\n' if level > 0 else ''
         self.nodes.append(f'[node name="{n}" type="Marker3D" parent="."]\ntransform = {self.tf(pos)}\nscript = {self.ext("spawner")}\n'
-                          f'enemy_scene = {self.ext("enemy")}\nenemy_data = {self.data(enemy_key)}\nrespawn_s = {respawn}\n')
+                          f'enemy_scene = {self.ext("enemy")}\nenemy_data = {self.data(enemy_key)}\nrespawn_s = {respawn}\n{lv}')
 
     def secret_area(self, area_id, size, pos):
         n = self._id("Area")
@@ -537,6 +548,8 @@ if __name__ == "__main__":
     for x in (-1, 0, 1):
         for z in (-1, 0, 1):
             chunk = Chunk(f"Chunk_{x}_{z}")
+            chunk.origin = (x * 128.0, z * 128.0)
+            chunk.level_at = city.zone_level
             builder = LAYOUT.get((x, z))
             if builder:
                 builder(chunk)
@@ -548,6 +561,11 @@ if __name__ == "__main__":
             # The broken ends of the elevated highway, north and south of its intact deck.
             if z == -1 and x != 0:
                 river_reach(chunk)
+            if (x, z) == (-1, -1):
+                # Ruined metro entrance (station below: Lv 40-50, Rank D Gate inside).
+                mx, mz = city.METRO_AT[0] - x * 128, city.METRO_AT[1] - z * 128
+                chunk.point((mx, 0, mz), 7.0)
+                chunk.nodes.append(f'[node name="MetroEntrance" type="Node3D" parent="."]\ntransform = {chunk.tf((mx, 0, mz))}\nscript = {chunk.ext("metro")}\n')
             if (x, z) in ((1, 1), (1, -1)):
                 chunk.prop("landmark_overpass_cracked", (24, 0, -34 if z > 0 else 34), (30, 11, 8), CONCRETE, rot_y=90)
             city.dress_chunk(chunk, x * 128, z * 128, 900 + x * 31 + z * 17)
