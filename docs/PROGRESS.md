@@ -348,3 +348,11 @@
 - Debug: `dungeonmap` (all rooms from above, roofs off), `dungeonmap 3` (stand in room 3), `dungeonmap next` (clear room + use its last door).
 - Check: door fade timing, the camera right after arriving, red wards, breaking a cracked wall, side-room chests.
 
+## Bug fixes from owner playtest (2026-11-08)
+- **Dying in a dungeon showed nothing:** respawn went to the start room while only the current room was drawn. Now the start room is shown again (and the respawn / fall-safe points are set when you enter or change rooms).
+- **Respawn at the last altar (owner rule):** standing at any waystone makes it your respawn point (Codex notice, saved). Falling in the world brings you back there; falling inside a Gate fails the Gate and carries you out to that altar. No altar yet: the scene start, as before.
+- **Chests gave nothing:** loot was placed at the chest's world position *inside* its moved parent (chunks sit at chunk_x * 128 m), so it landed ~290 m away; also enemy-style rolls are often empty. WorldPickup.spawn now converts to the parent's space; chests always give something and treasure chests always hold equipment.
+- **Monsters outside the centre chunk spawned in the wrong place** (same cause, shifted by the chunk offset). EnemySpawner fixed; their drops too.
+- **Camp altar:** region data still had the old waystone spot (6, 12); fast travel and the respawn now use (-34, 34). A test checks every waystone's data against the chunk scenes.
+- 330 tests.
+

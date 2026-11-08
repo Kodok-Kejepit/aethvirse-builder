@@ -62,12 +62,27 @@ func _open(_player: Player) -> void:
 	rng.seed = hash(chest_id) + GameState.clock.day() if GameState.clock != null else hash(chest_id)
 	var tier: EnemyScaling.Tier = EnemyScaling.Tier.ELITE if kind == &"treasure" else EnemyScaling.Tier.NORMAL
 	var drops: Array[ItemStack] = LootDropper.roll(level, tier, GameState.items, rng)
+	_guarantee(drops, tier, rng)
 	for i: int in drops.size():
 		var offset: Vector3 = Vector3(cos(i * 2.1), 0.3, sin(i * 2.1)) * 1.1
 		WorldPickup.spawn(get_parent(), global_position + offset, drops[i])
 	EventBus.gold_gained.emit(rng.randi_range(level * 2, level * 6) * (3 if kind == &"treasure" else 1))
 	AudioManager.play_sfx(&"pickup")
 	_set_opened()
+
+
+## Enemy loot can roll nothing; a chest never does. Treasure chests always hold gear.
+func _guarantee(drops: Array[ItemStack], tier: EnemyScaling.Tier, rng: RandomNumberGenerator) -> void:
+	var has_gear: bool = false
+	for stack: ItemStack in drops:
+		var item: ItemData = GameState.items.get_item(stack.item_id)
+		if item != null and item.is_equipment():
+			has_gear = true
+	if kind == &"treasure" and not has_gear:
+		var gen: EquipmentGenerator = EquipmentGenerator.new(GameState.items, rng)
+		drops.append(gen.generate(level, LootDropper.RULES.roll_rarity(tier, rng)))
+	if drops.is_empty():
+		drops.append(ItemStack.make(&"potion_small", 1, GameState.items.get_item(&"potion_small")))
 
 
 func _set_opened() -> void:

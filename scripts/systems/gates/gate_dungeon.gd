@@ -97,6 +97,10 @@ func _build() -> void:
 	_show_room(0)
 	var start: DungeonPlan.Room = plan.rooms[0]
 	player.global_position = Vector3(0.0, 0.2, start.radius * 0.45)
+	# Falling in battle sends you back to the start room (it must be drawn again).
+	player.spawn_point = player.global_position
+	player.last_safe_position = player.global_position
+	EventBus.player_respawned.connect(_on_player_respawned)
 	# No way back out of a Double Gate: the exit only opens when its boss falls.
 
 
@@ -118,6 +122,12 @@ func _scaled(data: EnemyData, player_level: int) -> EnemyData:
 	var copy: EnemyData = data.duplicate() as EnemyData
 	copy.level = target
 	return copy
+
+
+func _on_player_respawned() -> void:
+	_show_room(0)
+	player.reset_physics_interpolation()
+	player.camera_rig.snap_to(player.visual.rotation.y)
 
 
 ## Only the room the player is in is shown (lights, draw calls).
@@ -156,6 +166,7 @@ func _travel(door: DungeonDoor) -> void:
 	var facing: Vector3 = target.global_basis.z if target != null else Vector3.FORWARD
 	player.global_position = target.arrival_point() if target != null else _rooms[to_room].global_position + Vector3.UP * 0.2
 	player.velocity = Vector3.ZERO
+	player.last_safe_position = player.global_position
 	player.visual.rotation.y = MovementMath.yaw_for_direction(facing)
 	player.reset_physics_interpolation()
 	if player.camera_rig != null:

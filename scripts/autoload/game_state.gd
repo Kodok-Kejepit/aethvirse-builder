@@ -32,6 +32,8 @@ var codex_points: int = 0
 ## Daily quest bookkeeping: {"day": int, "penalty_pending": bool}
 var daily: Dictionary = {"day": 0, "penalty_pending": false}
 var current_region: StringName = &""
+## Last waystone (altar) the player stood at: falling in battle brings you back there.
+var respawn_waystone: StringName = &""
 ## Dynamic world Gates (see WorldGates) and per-region spawn clocks.
 var world_gates: Array[Dictionary] = []
 var world_gate_clock: Dictionary = {}
@@ -92,6 +94,7 @@ func to_dict() -> Dictionary:
 		"job_id": String(job_id),
 		"hero_id": String(hero_id),
 		"region": String(current_region),
+		"respawn_waystone": String(respawn_waystone),
 		"world_gates": world_gates.duplicate(true),
 		"world_gate_clock": world_gate_clock.duplicate(),
 		"next_gate_uid": next_gate_uid,
@@ -140,6 +143,8 @@ func load_dict(data: Dictionary, tuning: StatTuning) -> void:
 		map_fog[key] = Marshalls.base64_to_raw(b64)
 	var region_id: String = data.get("region", "")
 	current_region = StringName(region_id)
+	var altar: String = data.get("respawn_waystone", "")
+	respawn_waystone = StringName(altar)
 	var hero: String = data.get("hero_id", String(HeroData.DEFAULT_ID))
 	hero_id = StringName(hero)
 	var army: Dictionary = data.get("shadows", {})
@@ -197,6 +202,7 @@ func new_game(class_name_id: StringName, tuning: StatTuning) -> void:
 	skill_slots.clear()
 	gold = 0
 	world_flags.clear()
+	respawn_waystone = &""
 	playtime_s = 0.0
 	pending_player_position = null
 	clock = WorldClock.new()

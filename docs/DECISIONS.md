@@ -181,3 +181,6 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - Rooms are built far apart and doors move the player with a short fade (owner offered "transisi gelap 1-2 detik"). Reasons: the downloaded door models are single meshes (the leaf cannot swing on its own), irregular rooms never have to line up, and only one room is drawn at a time (phones).
 - Double Gate entry moved from the cracked-wall portal to a key door; Gate Keys come from Mystery Boxes (30%). Cracked walls now hide loot niches instead.
 
+## Respawn at the last altar (2026-11-08)
+- Owner: respawn at the last waystone touched, anywhere, "biar ga semudah itu". Dying in a Gate counts as failing it: you are carried out to that altar (assumption; easy to change to "stay in the dungeon" in WorldTravel.respawn_at_altar).
+

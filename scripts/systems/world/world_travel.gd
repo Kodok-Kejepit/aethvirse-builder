@@ -20,6 +20,30 @@ static func unlock(waystone_id: StringName) -> bool:
 	return true
 
 
+## Makes this waystone the respawn point. True when it changed.
+static func set_respawn(waystone_id: StringName) -> bool:
+	if GameState.respawn_waystone == waystone_id:
+		return false
+	GameState.respawn_waystone = waystone_id
+	return true
+
+
+## After falling in battle: back to the last altar the player stood at. Inside a Gate
+## this fails the Gate (you are carried out). False when no altar was ever visited.
+static func respawn_at_altar(tree: SceneTree) -> bool:
+	var region: RegionData = RegionData.region_of_waystone(GameState.respawn_waystone)
+	if region == null:
+		return false
+	var target: Vector3 = region.waystones[GameState.respawn_waystone] + ARRIVE_OFFSET
+	if GameState.gate_session != null:
+		GameState.gate_session = null
+		GameState.pending_player_position = target
+		GameState.current_region = region.id
+		LoadingScreen.go(tree, region.scene_path)
+		return true
+	return go(tree, region, target)
+
+
 ## All unlocked waystones as [[region, waystone_id], ...] in region order.
 static func unlocked_list() -> Array[Array]:
 	var out: Array[Array] = []

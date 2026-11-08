@@ -13,10 +13,12 @@ var _light: OmniLight3D = null
 var _age: float = 0.0
 
 
+## `at` is a world position (parents such as chunks are often moved / rotated).
 static func spawn(parent: Node, at: Vector3, item_stack: ItemStack) -> WorldPickup:
 	var pickup: WorldPickup = WorldPickup.new()
 	pickup.stack = item_stack
-	pickup.position = at
+	var parent_3d: Node3D = parent as Node3D
+	pickup.position = parent_3d.to_local(at) if parent_3d != null and parent_3d.is_inside_tree() else at
 	parent.add_child(pickup)
 	return pickup
 

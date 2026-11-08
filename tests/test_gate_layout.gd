@@ -96,3 +96,21 @@ func test_dungeon_has_a_winged_door_that_wants_a_key() -> void:
 	assert_signal_emitted(double_door, "used")
 	assert_eq(GameState.inventory.count_of(DungeonDoor.KEY_ITEM), 0, "the key is used up")
 	GameState.gate_session = null
+
+
+func test_dying_in_a_later_room_respawns_in_the_shown_start_room() -> void:
+	var session: GateSession = GateSession.new()
+	session.gate = gate
+	GameState.gate_session = session
+	var dungeon: GateDungeon = (load(GateDungeon.SCENE) as PackedScene).instantiate() as GateDungeon
+	add_child_autofree(dungeon)
+	await wait_physics_frames(3)
+	dungeon.debug_goto(2)
+	assert_false(dungeon._rooms[0].visible, "start room hidden while away")
+	dungeon.player.respawn()
+	await wait_physics_frames(2)
+	assert_true(dungeon._rooms[0].visible, "start room shown again")
+	assert_false(dungeon._rooms[2].visible)
+	var start: Vector3 = dungeon._rooms[0].global_position
+	assert_lt(Vector2(dungeon.player.global_position.x - start.x, dungeon.player.global_position.z - start.z).length(), 15.0, "back in the start room")
+	GameState.gate_session = null

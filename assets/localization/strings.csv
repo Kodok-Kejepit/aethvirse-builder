@@ -502,3 +502,4 @@ PROMPT_OPEN_DOOR,Push the door open,Dorong pintu
 PROMPT_DOUBLE_DOOR,Use a Gate Key,Pakai Gate Key
 CODEX_MSG_DOUBLE_NEED_KEY,"The winged door will not move. A key-shaped hollow waits in its centre.","Pintu bersayap ini tak bergeming. Ada ceruk berbentuk kunci di tengahnya."
 CODEX_MSG_GOT_GATE_KEY,"…a Gate Key fell out of the box. It is cold, and it has wings.","…sebuah Gate Key jatuh dari kotak itu. Dingin, dan bersayap."
+CODEX_MSG_RESPAWN_SET,"Respawn point: %s. If you fall, you rise here.","Titik bangkit: %s. Kalau tumbang, kamu bangkit di sini."

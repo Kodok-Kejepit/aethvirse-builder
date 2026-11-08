@@ -21,11 +21,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_crystal.rotate_y(delta * 0.8)
-	if road_to != &"" or WorldTravel.is_unlocked(waystone_id) or Engine.get_process_frames() % 10 != 0:
+	if road_to != &"" or Engine.get_process_frames() % 10 != 0:
 		return
 	var player: Node3D = GameState.player
 	if player != null and player.global_position.distance_to(global_position) < UNLOCK_RADIUS:
 		_unlock()
+		if WorldTravel.set_respawn(waystone_id):
+			Codex.notify(tr(&"CODEX_MSG_RESPAWN_SET") % tr(name_key(waystone_id)), &"info")
 
 
 func _unlock() -> void:

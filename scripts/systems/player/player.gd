@@ -309,8 +309,10 @@ func snap_facing(fallback: Vector3) -> Vector3:
 
 
 func respawn() -> void:
-	global_position = spawn_point
 	velocity = Vector3.ZERO
+	# Last altar visited; without one, where this scene started.
+	if not WorldTravel.respawn_at_altar(get_tree()):
+		global_position = spawn_point
 	health.revive_full()
 	mana.refill()
 	stamina.reset()
