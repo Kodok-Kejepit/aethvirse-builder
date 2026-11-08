@@ -33,1513 +33,1742 @@ size = Vector3(94, 0.1, 94)
 color = Color(0.38, 0.29, 0.2, 1)
 solid = true
 
-[node name="Tree3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -41, 0, -30)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 12.00
-seed_value = 9000
-snowy = false
-
-[node name="Prop4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -41, 0, -30)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree5" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -42, 0, -5)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 10.50
-seed_value = 9001
-snowy = false
-
-[node name="Prop6" type="StaticBody3D" parent="."]
-transform = Transform3D(0.682, 0, 0.73135, 0, 1, -0, -0.73135, 0, 0.682, -42, 0, -5)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree7" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -41, 0, 22)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 11.50
-seed_value = 9002
-snowy = false
-
-[node name="Prop8" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.069756, 0, 0.99756, 0, 1, -0, -0.99756, -0, -0.069756, -41, 0, 22)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree9" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 41, 0, -28)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 11.00
-seed_value = 9003
-snowy = false
-
-[node name="Prop10" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.77715, 0, 0.62932, 0, 1, -0, -0.62932, -0, -0.77715, 41, 0, -28)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree11" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 42, 0, 2)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 12.50
-seed_value = 9004
-snowy = false
-
-[node name="Prop12" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.99027, -0, -0.13917, 0, 1, -0, 0.13917, -0, -0.99027, 42, 0, 2)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree13" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24, 0, -40)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 9.00
-seed_value = 9005
-snowy = false
-
-[node name="Prop14" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.57358, -0, -0.81915, 0, 1, -0, 0.81915, -0, -0.57358, -24, 0, -40)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree15" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24, 0, -40)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 9.50
-seed_value = 9006
-snowy = false
-
-[node name="Prop16" type="StaticBody3D" parent="."]
-transform = Transform3D(0.20791, -0, -0.97815, 0, 1, -0, 0.97815, 0, 0.20791, 24, 0, -40)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree17" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, 36)
-script = ExtResource("tree")
-kind = &"ruin"
-height = 10.00
-seed_value = 9007
-snowy = false
-
-[node name="Prop18" type="StaticBody3D" parent="."]
-transform = Transform3D(0.85717, -0, -0.51504, 0, 1, -0, 0.51504, 0, 0.85717, -12, 0, 36)
-script = ExtResource("prop")
-prop_id = &"tile_roots_grass"
-fallback_size = Vector3(6, 0.9, 6)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Tree19" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -36, 0, 32)
-script = ExtResource("tree")
-kind = &"ruin_bush"
-height = 2.80
-seed_value = 9100
-snowy = false
-
-[node name="Tree20" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 37, 0, 30)
-script = ExtResource("tree")
-kind = &"ruin_bush"
-height = 2.80
-seed_value = 9101
-snowy = false
-
-[node name="Tree21" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 0, -42)
-script = ExtResource("tree")
-kind = &"ruin_bush"
-height = 2.80
-seed_value = 9102
-snowy = false
-
-[node name="Tree22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0, 40)
-script = ExtResource("tree")
-kind = &"ruin_bush"
-height = 2.80
-seed_value = 9103
-snowy = false
-
-[node name="Tree23" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -33, 0, -18)
-script = ExtResource("tree")
-kind = &"ruin_stump"
-height = 1.80
-seed_value = 9200
-snowy = false
-
-[node name="Tree24" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 35, 0, -14)
-script = ExtResource("tree")
-kind = &"ruin_stump"
-height = 1.80
-seed_value = 9201
-snowy = false
-
-[node name="Tree25" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 14, 0, 28)
-script = ExtResource("tree")
-kind = &"ruin_stump"
-height = 1.80
-seed_value = 9202
-snowy = false
-
-[node name="Prop26" type="StaticBody3D" parent="."]
-transform = Transform3D(0.86544, 0, 0.50102, 0, 1, -0, -0.50102, 0, 0.86544, 0, 0, 0)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(9, 0.5, 9)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop27" type="StaticBody3D" parent="."]
-transform = Transform3D(0.46863, 0, 0.8834, 0, 1, -0, -0.8834, 0, 0.46863, -6, 0, -24)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(7, 0.5, 5)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop28" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.40399, -0, -0.91476, 0, 1, -0, 0.91476, -0, -0.40399, 8, 0, -22)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(6, 0.5, 5)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop29" type="StaticBody3D" parent="."]
-transform = Transform3D(0.52859, 0, 0.84887, 0, 1, -0, -0.84887, 0, 0.52859, -10, 0, 10)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(5, 0.5, 4)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop30" type="StaticBody3D" parent="."]
-transform = Transform3D(0.94951, -0, -0.31374, 0, 1, -0, 0.31374, 0, 0.94951, 12, 0, 8)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(6, 0.5, 4)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop31" type="StaticBody3D" parent="."]
-transform = Transform3D(0.55859, -0, -0.82945, 0, 1, -0, 0.82945, 0, 0.55859, 0, 0, -34)
-script = ExtResource("prop")
-prop_id = &"tile_asphalt_broken"
-fallback_size = Vector3(8, 0.5, 5)
-fallback_color = Color(0.32, 0.33, 0.36, 1)
-
-[node name="Prop32" type="StaticBody3D" parent="."]
-transform = Transform3D(0.38942, 0, 0.92106, 0, 1, -0, -0.92106, 0, 0.38942, 4.6053, 0, 1.94709)
-script = ExtResource("prop")
-prop_id = &"ruin_log_1"
-fallback_size = Vector3(2.4, 0.7, 1.0)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Prop33" type="StaticBody3D" parent="."]
-transform = Transform3D(0.92106, -0, -0.38942, 0, 1, -0, 0.38942, 0, 0.92106, -1.94709, 0, 4.6053)
-script = ExtResource("prop")
-prop_id = &"ruin_log_1"
-fallback_size = Vector3(2.4, 0.7, 1.0)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Prop34" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.38942, -0, -0.92106, 0, 1, -0, 0.92106, -0, -0.38942, -4.6053, 0, -1.94709)
-script = ExtResource("prop")
-prop_id = &"ruin_log_1"
-fallback_size = Vector3(2.4, 0.7, 1.0)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Prop35" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.92106, 0, 0.38942, 0, 1, -0, -0.38942, -0, -0.92106, 1.94709, 0, -4.6053)
-script = ExtResource("prop")
-prop_id = &"ruin_log_1"
-fallback_size = Vector3(2.4, 0.7, 1.0)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Prop36" type="StaticBody3D" parent="."]
-transform = Transform3D(0.93969, 0, 0.34202, 0, 1, -0, -0.34202, 0, 0.93969, 16, 0, 14)
-script = ExtResource("prop")
-prop_id = &"tile_mud"
-fallback_size = Vector3(6, 0.35, 5)
-fallback_color = Color(0.38, 0.29, 0.2, 1)
-
-[node name="Grass37" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -38, 0, 10)
-script = ExtResource("grass")
-area = Vector2(8, 14)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 200
-
-[node name="Grass38" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 38, 0, 12)
-script = ExtResource("grass")
-area = Vector2(8, 14)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 201
-
-[node name="Grass39" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -18, 0, 30)
-script = ExtResource("grass")
-area = Vector2(10, 8)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 202
-
-[node name="Grass40" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0, -38)
-script = ExtResource("grass")
-area = Vector2(10, 6)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 203
-
-[node name="Grass41" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30, 0, -38)
-script = ExtResource("grass")
-area = Vector2(10, 6)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 204
-
-[node name="Grass42" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 42)
-script = ExtResource("grass")
-area = Vector2(18, 4)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 205
-
-[node name="Grass43" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -42, 0, -18)
-script = ExtResource("grass")
-area = Vector2(4, 14)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 206
-
-[node name="Grass44" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 42, 0, -18)
-script = ExtResource("grass")
-area = Vector2(4, 14)
-blades = 1100
-color = Color(0.26, 0.42, 0.24, 1)
-seed_value = 207
-
-[node name="Prop45" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, 40)
-script = ExtResource("prop")
-prop_id = &"ruin_rock_1"
-fallback_size = Vector3(2.4, 1.6, 2.2)
-fallback_color = Color(0.55, 0.53, 0.5, 1)
-
-[node name="Prop46" type="StaticBody3D" parent="."]
-transform = Transform3D(0.17365, 0, 0.98481, 0, 1, -0, -0.98481, 0, 0.17365, 40, 0, -42)
-script = ExtResource("prop")
-prop_id = &"ruin_rock_2"
-fallback_size = Vector3(2.4, 1.6, 2.2)
-fallback_color = Color(0.55, 0.53, 0.5, 1)
-
-[node name="Prop47" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.93969, 0, 0.34202, 0, 1, -0, -0.34202, -0, -0.93969, -22, 0, 42)
-script = ExtResource("prop")
-prop_id = &"ruin_rock_1"
-fallback_size = Vector3(2.4, 1.6, 2.2)
-fallback_color = Color(0.55, 0.53, 0.5, 1)
-
-[node name="B48" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.15, 29.5)
-script = ExtResource("gb")
-size = Vector3(12, 0.3, 1.1)
-color = Color(0.38, 0.29, 0.2, 1)
-solid = true
-
-[node name="Grass49" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.3, 29.5)
-script = ExtResource("grass")
-area = Vector2(11, 0.8)
-blades = 260
-color = Color(0.3, 0.55, 0.22, 1)
-seed_value = 300
-
-[node name="B50" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.15, 32.5)
-script = ExtResource("gb")
-size = Vector3(12, 0.3, 1.1)
-color = Color(0.38, 0.29, 0.2, 1)
-solid = true
-
-[node name="Grass51" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.3, 32.5)
-script = ExtResource("grass")
-area = Vector2(11, 0.8)
-blades = 260
-color = Color(0.3, 0.55, 0.22, 1)
-seed_value = 301
-
-[node name="B52" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.15, 35.5)
-script = ExtResource("gb")
-size = Vector3(12, 0.3, 1.1)
-color = Color(0.38, 0.29, 0.2, 1)
-solid = true
-
-[node name="Grass53" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.3, 35.5)
-script = ExtResource("grass")
-area = Vector2(11, 0.8)
-blades = 260
-color = Color(0.3, 0.55, 0.22, 1)
-seed_value = 302
-
-[node name="B54" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.15, 38.5)
-script = ExtResource("gb")
-size = Vector3(12, 0.3, 1.1)
-color = Color(0.38, 0.29, 0.2, 1)
-solid = true
-
-[node name="Grass55" type="MultiMeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22, 0.3, 38.5)
-script = ExtResource("grass")
-area = Vector2(11, 0.8)
-blades = 260
-color = Color(0.3, 0.55, 0.22, 1)
-seed_value = 303
-
-[node name="Decor56" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 15.5, 0, 29.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 76
-
-[node name="Decor57" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 15.5, 0, 32.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 79
-
-[node name="Decor58" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 15.5, 0, 35.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 82
-
-[node name="Decor59" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 15.5, 0, 38.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 85
-
-[node name="Decor60" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28.5, 0, 29.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 115
-
-[node name="Decor61" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28.5, 0, 32.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 118
-
-[node name="Decor62" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28.5, 0, 35.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 121
-
-[node name="Decor63" type="StaticBody3D" parent="."]
-transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28.5, 0, 38.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 124
-
-[node name="Decor64" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 17.5, 0, 27.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 87
-
-[node name="Decor65" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20.5, 0, 27.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 102
-
-[node name="Decor66" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 23.5, 0, 27.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 117
-
-[node name="Decor67" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26.5, 0, 27.5)
-script = ExtResource("decor")
-kind = &"fence"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 132
-
-[node name="Decor68" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -21, 0, -31)
-script = ExtResource("decor")
-kind = &"barrel"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 150
-
-[node name="Decor69" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, -33)
-script = ExtResource("decor")
-kind = &"crate"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 151
-
-[node name="Decor70" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 21, 0, -31)
-script = ExtResource("decor")
-kind = &"crate"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 152
-
-[node name="Decor71" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20, 0, -33.5)
-script = ExtResource("decor")
-kind = &"barrel"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 153
-
-[node name="Decor72" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24, 0, 2)
-script = ExtResource("decor")
-kind = &"crate"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 154
-
-[node name="Decor73" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24, 0, -2)
-script = ExtResource("decor")
-kind = &"crate"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 155
-
-[node name="Decor74" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, 12)
-script = ExtResource("decor")
-kind = &"barrel"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 156
-
-[node name="Decor75" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 9, 0, -10)
-script = ExtResource("decor")
-kind = &"crate"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 157
-
-[node name="Decor76" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24, 0, -26)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 330
-
-[node name="Decor77" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24, 0, 20)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 331
-
-[node name="Decor78" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -6, 0, 28)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 332
-
-[node name="Decor79" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 34, 0, 0)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 333
-
-[node name="Decor80" type="StaticBody3D" parent="."]
+[node name="Decor3" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, -43.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -304
 
-[node name="Decor81" type="StaticBody3D" parent="."]
+[node name="Decor4" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, -40.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -283
 
-[node name="Decor82" type="StaticBody3D" parent="."]
+[node name="Decor5" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -37.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -262
 
-[node name="Decor83" type="StaticBody3D" parent="."]
+[node name="Decor6" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, -34.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -241
 
-[node name="Decor84" type="StaticBody3D" parent="."]
+[node name="Decor7" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, -31.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -220
 
-[node name="Decor85" type="StaticBody3D" parent="."]
+[node name="Decor8" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, -28.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -199
 
-[node name="Decor86" type="StaticBody3D" parent="."]
+[node name="Decor9" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, -25.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -178
 
-[node name="Decor87" type="StaticBody3D" parent="."]
+[node name="Decor10" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, -22.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -157
 
-[node name="Decor88" type="StaticBody3D" parent="."]
+[node name="Decor11" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, -19.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -136
 
-[node name="Decor89" type="StaticBody3D" parent="."]
+[node name="Decor12" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -16.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -115
 
-[node name="Decor90" type="StaticBody3D" parent="."]
+[node name="Decor13" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, -13.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -94
 
-[node name="Decor91" type="StaticBody3D" parent="."]
+[node name="Decor14" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, -10.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -73
 
-[node name="Decor92" type="StaticBody3D" parent="."]
+[node name="Decor15" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 73
 
-[node name="Decor93" type="StaticBody3D" parent="."]
+[node name="Decor16" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, 13.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 94
 
-[node name="Decor94" type="StaticBody3D" parent="."]
+[node name="Decor17" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, 16.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 115
 
-[node name="Decor95" type="StaticBody3D" parent="."]
+[node name="Decor18" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, 19.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 136
 
-[node name="Decor96" type="StaticBody3D" parent="."]
+[node name="Decor19" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, 22.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 157
 
-[node name="Decor97" type="StaticBody3D" parent="."]
+[node name="Decor20" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, 25.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 178
 
-[node name="Decor98" type="StaticBody3D" parent="."]
+[node name="Decor21" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, 28.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 199
 
-[node name="Decor99" type="StaticBody3D" parent="."]
+[node name="Decor22" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 31.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 220
 
-[node name="Decor100" type="StaticBody3D" parent="."]
+[node name="Decor23" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, 34.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 241
 
-[node name="Decor101" type="StaticBody3D" parent="."]
+[node name="Decor24" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, 37.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 262
 
-[node name="Decor102" type="StaticBody3D" parent="."]
+[node name="Decor25" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, 40.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 283
 
-[node name="Decor103" type="StaticBody3D" parent="."]
+[node name="Decor26" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, 43.5, 0, -46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 304
 
-[node name="Decor104" type="StaticBody3D" parent="."]
+[node name="Decor27" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, -43.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -203
 
-[node name="Decor105" type="StaticBody3D" parent="."]
+[node name="Decor28" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, -40.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -182
 
-[node name="Decor106" type="StaticBody3D" parent="."]
+[node name="Decor29" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -37.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -161
 
-[node name="Decor107" type="StaticBody3D" parent="."]
+[node name="Decor30" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, -34.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -140
 
-[node name="Decor108" type="StaticBody3D" parent="."]
+[node name="Decor31" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, -31.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -119
 
-[node name="Decor109" type="StaticBody3D" parent="."]
+[node name="Decor32" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, -28.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -98
 
-[node name="Decor110" type="StaticBody3D" parent="."]
+[node name="Decor33" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, -25.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -77
 
-[node name="Decor111" type="StaticBody3D" parent="."]
+[node name="Decor34" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, -22.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -56
 
-[node name="Decor112" type="StaticBody3D" parent="."]
+[node name="Decor35" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, -19.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -35
 
-[node name="Decor113" type="StaticBody3D" parent="."]
+[node name="Decor36" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -16.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -14
 
-[node name="Decor114" type="StaticBody3D" parent="."]
+[node name="Decor37" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, -13.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 6
 
-[node name="Decor115" type="StaticBody3D" parent="."]
+[node name="Decor38" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, -10.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 27
 
-[node name="Decor116" type="StaticBody3D" parent="."]
+[node name="Decor39" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 174
 
-[node name="Decor117" type="StaticBody3D" parent="."]
+[node name="Decor40" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, 13.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 195
 
-[node name="Decor118" type="StaticBody3D" parent="."]
+[node name="Decor41" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, 16.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 216
 
-[node name="Decor119" type="StaticBody3D" parent="."]
+[node name="Decor42" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, 19.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 237
 
-[node name="Decor120" type="StaticBody3D" parent="."]
+[node name="Decor43" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, 22.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 258
 
-[node name="Decor121" type="StaticBody3D" parent="."]
+[node name="Decor44" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, -0, -0.017452, 0, 1, -0, 0.017452, 0, 0.99985, 25.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 279
 
-[node name="Decor122" type="StaticBody3D" parent="."]
+[node name="Decor45" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, -0, -0.052336, 0, 0.99863, 28.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 300
 
-[node name="Decor123" type="StaticBody3D" parent="."]
+[node name="Decor46" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 31.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 321
 
-[node name="Decor124" type="StaticBody3D" parent="."]
+[node name="Decor47" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99863, -0, -0.052336, 0, 1, -0, 0.052336, 0, 0.99863, 34.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 342
 
-[node name="Decor125" type="StaticBody3D" parent="."]
+[node name="Decor48" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99985, 0, 0.017452, 0, 1, -0, -0.017452, 0, 0.99985, 37.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 363
 
-[node name="Decor126" type="StaticBody3D" parent="."]
+[node name="Decor49" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, -0, -0.034899, 0, 1, -0, 0.034899, 0, 0.99939, 40.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 384
 
-[node name="Decor127" type="StaticBody3D" parent="."]
+[node name="Decor50" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99939, 0, 0.034899, 0, 1, -0, -0.034899, 0, 0.99939, 43.5, 0, 46)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 405
 
-[node name="Decor128" type="StaticBody3D" parent="."]
+[node name="Decor51" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, -46, 0, -43.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -102
 
-[node name="Decor129" type="StaticBody3D" parent="."]
+[node name="Decor52" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, -46, 0, -40.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -81
 
-[node name="Decor130" type="StaticBody3D" parent="."]
+[node name="Decor53" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, -37.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -60
 
-[node name="Decor131" type="StaticBody3D" parent="."]
+[node name="Decor54" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, -46, 0, -34.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -39
 
-[node name="Decor132" type="StaticBody3D" parent="."]
+[node name="Decor55" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, -46, 0, -31.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -18
 
-[node name="Decor133" type="StaticBody3D" parent="."]
+[node name="Decor56" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, -46, 0, -28.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 2
 
-[node name="Decor134" type="StaticBody3D" parent="."]
+[node name="Decor57" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, -46, 0, -25.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 23
 
-[node name="Decor135" type="StaticBody3D" parent="."]
+[node name="Decor58" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, -46, 0, -22.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 44
 
-[node name="Decor136" type="StaticBody3D" parent="."]
+[node name="Decor59" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, -46, 0, -19.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 65
 
-[node name="Decor137" type="StaticBody3D" parent="."]
+[node name="Decor60" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, -16.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 86
 
-[node name="Decor138" type="StaticBody3D" parent="."]
+[node name="Decor61" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, -46, 0, -13.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 107
 
-[node name="Decor139" type="StaticBody3D" parent="."]
+[node name="Decor62" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, -46, 0, -10.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 128
 
-[node name="Decor140" type="StaticBody3D" parent="."]
+[node name="Decor63" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, 10.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 275
 
-[node name="Decor141" type="StaticBody3D" parent="."]
+[node name="Decor64" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, -46, 0, 13.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 296
 
-[node name="Decor142" type="StaticBody3D" parent="."]
+[node name="Decor65" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, -46, 0, 16.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 317
 
-[node name="Decor143" type="StaticBody3D" parent="."]
+[node name="Decor66" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, -46, 0, 19.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 338
 
-[node name="Decor144" type="StaticBody3D" parent="."]
+[node name="Decor67" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, -46, 0, 22.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 359
 
-[node name="Decor145" type="StaticBody3D" parent="."]
+[node name="Decor68" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, -46, 0, 25.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 380
 
-[node name="Decor146" type="StaticBody3D" parent="."]
+[node name="Decor69" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, -46, 0, 28.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 401
 
-[node name="Decor147" type="StaticBody3D" parent="."]
+[node name="Decor70" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, 31.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 422
 
-[node name="Decor148" type="StaticBody3D" parent="."]
+[node name="Decor71" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, -46, 0, 34.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 443
 
-[node name="Decor149" type="StaticBody3D" parent="."]
+[node name="Decor72" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, -46, 0, 37.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 464
 
-[node name="Decor150" type="StaticBody3D" parent="."]
+[node name="Decor73" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, -46, 0, 40.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 485
 
-[node name="Decor151" type="StaticBody3D" parent="."]
+[node name="Decor74" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, -46, 0, 43.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 506
 
-[node name="Decor152" type="StaticBody3D" parent="."]
+[node name="Decor75" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, 46, 0, -43.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = -1
 
-[node name="Decor153" type="StaticBody3D" parent="."]
+[node name="Decor76" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, 46, 0, -40.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 19
 
-[node name="Decor154" type="StaticBody3D" parent="."]
+[node name="Decor77" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 46, 0, -37.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 40
 
-[node name="Decor155" type="StaticBody3D" parent="."]
+[node name="Decor78" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, 46, 0, -34.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 61
 
-[node name="Decor156" type="StaticBody3D" parent="."]
+[node name="Decor79" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, 46, 0, -31.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 82
 
-[node name="Decor157" type="StaticBody3D" parent="."]
+[node name="Decor80" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, 46, 0, -28.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 103
 
-[node name="Decor158" type="StaticBody3D" parent="."]
+[node name="Decor81" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, 46, 0, -25.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 124
 
-[node name="Decor159" type="StaticBody3D" parent="."]
+[node name="Decor82" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, 46, 0, -22.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 145
 
-[node name="Decor160" type="StaticBody3D" parent="."]
+[node name="Decor83" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, 46, 0, -19.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 166
 
-[node name="Decor161" type="StaticBody3D" parent="."]
+[node name="Decor84" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 46, 0, -16.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 187
 
-[node name="Decor162" type="StaticBody3D" parent="."]
+[node name="Decor85" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, 46, 0, -13.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 208
 
-[node name="Decor163" type="StaticBody3D" parent="."]
+[node name="Decor86" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, 46, 0, -10.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 229
 
-[node name="Decor164" type="StaticBody3D" parent="."]
+[node name="Decor87" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 46, 0, 10.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 376
 
-[node name="Decor165" type="StaticBody3D" parent="."]
+[node name="Decor88" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, 46, 0, 13.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 397
 
-[node name="Decor166" type="StaticBody3D" parent="."]
+[node name="Decor89" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, 46, 0, 16.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 418
 
-[node name="Decor167" type="StaticBody3D" parent="."]
+[node name="Decor90" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, 46, 0, 19.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 439
 
-[node name="Decor168" type="StaticBody3D" parent="."]
+[node name="Decor91" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, 46, 0, 22.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 460
 
-[node name="Decor169" type="StaticBody3D" parent="."]
+[node name="Decor92" type="StaticBody3D" parent="."]
 transform = Transform3D(0.017452, 0, 0.99985, 0, 1, -0, -0.99985, 0, 0.017452, 46, 0, 25.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 481
 
-[node name="Decor170" type="StaticBody3D" parent="."]
+[node name="Decor93" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.052336, 0, 0.99863, 0, 1, -0, -0.99863, -0, -0.052336, 46, 0, 28.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 502
 
-[node name="Decor171" type="StaticBody3D" parent="."]
+[node name="Decor94" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 46, 0, 31.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 523
 
-[node name="Decor172" type="StaticBody3D" parent="."]
+[node name="Decor95" type="StaticBody3D" parent="."]
 transform = Transform3D(0.052336, 0, 0.99863, 0, 1, -0, -0.99863, 0, 0.052336, 46, 0, 34.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 544
 
-[node name="Decor173" type="StaticBody3D" parent="."]
+[node name="Decor96" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.017452, 0, 0.99985, 0, 1, -0, -0.99985, -0, -0.017452, 46, 0, 37.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 565
 
-[node name="Decor174" type="StaticBody3D" parent="."]
+[node name="Decor97" type="StaticBody3D" parent="."]
 transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, 46, 0, 40.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 586
 
-[node name="Decor175" type="StaticBody3D" parent="."]
+[node name="Decor98" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, 46, 0, 43.5)
 script = ExtResource("decor")
 kind = &"palisade"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 607
 
-[node name="Prop176" type="StaticBody3D" parent="."]
-transform = Transform3D(0.087156, 0, 0.99619, 0, 1, -0, -0.99619, 0, 0.087156, -30, 0, -22)
+[node name="Prop99" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.93146, 0, 0.36384, 0, 1, -0, -0.36384, -0, -0.93146, 0.559744, 0, -20)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop100" type="StaticBody3D" parent="."]
+transform = Transform3D(0.8476, -0, -0.53064, 0, 1, -0, 0.53064, 0, 0.8476, -0.59101, 0, -15)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop101" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.86948, -0, -0.49397, 0, 1, -0, 0.49397, -0, -0.86948, 0.527123, 0, -10)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop102" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86412, 0, 0.50329, 0, 1, -0, -0.50329, 0, 0.86412, 0.205876, 0, -5)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop103" type="StaticBody3D" parent="."]
+transform = Transform3D(0.082782, 0, 0.99657, 0, 1, -0, -0.99657, 0, 0.082782, 0.319777, 0, 0)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop104" type="StaticBody3D" parent="."]
+transform = Transform3D(0.24121, -0, -0.97047, 0, 1, -0, 0.97047, 0, 0.24121, -0.563023, 0, 5)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop105" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.7147, -0, -0.69943, 0, 1, -0, 0.69943, -0, -0.7147, -0.184693, 0, 10)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop106" type="StaticBody3D" parent="."]
+transform = Transform3D(0.59511, 0, 0.80365, 0, 1, -0, -0.80365, 0, 0.59511, 0.138979, 0, 15)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop107" type="StaticBody3D" parent="."]
+transform = Transform3D(0.75255, 0, 0.65854, 0, 1, -0, -0.65854, 0, 0.75255, -0.380291, 0, 20)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop108" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.99654, 0, 0.083146, 0, 1, -0, -0.083146, -0, -0.99654, -0.582457, 0, 25)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop109" type="StaticBody3D" parent="."]
+transform = Transform3D(0.91884, 0, 0.39462, 0, 1, -0, -0.39462, 0, 0.91884, 0.557882, 0, 30)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop110" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.97713, 0, 0.21263, 0, 1, -0, -0.21263, -0, -0.97713, 0.0493058, 0, 35)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop111" type="StaticBody3D" parent="."]
+transform = Transform3D(0.84792, 0, 0.53013, 0, 1, -0, -0.53013, 0, 0.84792, 0.121756, 0, 40)
+script = ExtResource("prop")
+prop_id = &"floor_stone_tile"
+fallback_size = Vector3(4.2, 0.25, 4.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop112" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.12275, 0, 0.99244, 0, 1, -0, -0.99244, -0, -0.12275, -36, 0, 0.0790027)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop113" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.61472, -0, -0.78874, 0, 1, -0, 0.78874, -0, -0.61472, -30, 0, 0.0564326)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop114" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.61409, 0, 0.78923, 0, 1, -0, -0.78923, -0, -0.61409, -24, 0, -0.0189636)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop115" type="StaticBody3D" parent="."]
+transform = Transform3D(0.91401, -0, -0.40569, 0, 1, -0, 0.40569, 0, 0.91401, -18, 0, -0.250848)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop116" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.9821, -0, -0.18838, 0, 1, -0, 0.18838, -0, -0.9821, -12, 0, -0.046612)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop117" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.9987, -0, -0.050884, 0, 1, -0, 0.050884, -0, -0.9987, 12, 0, -0.4807)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop118" type="StaticBody3D" parent="."]
+transform = Transform3D(0.619, 0, 0.78539, 0, 1, -0, -0.78539, 0, 0.619, 18, 0, -0.49422)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop119" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.71746, 0, 0.6966, 0, 1, -0, -0.6966, -0, -0.71746, 24, 0, -0.0271731)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop120" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.85255, -0, -0.52265, 0, 1, -0, 0.52265, -0, -0.85255, 30, 0, -0.445825)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop121" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.93582, -0, -0.35248, 0, 1, -0, 0.35248, -0, -0.93582, 36, 0, -0.335997)
+script = ExtResource("prop")
+prop_id = &"floor_stepping_stones"
+fallback_size = Vector3(3.6, 0.25, 3.6)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop122" type="StaticBody3D" parent="."]
+transform = Transform3D(0.96361, -0, -0.26731, 0, 1, -0, 0.26731, 0, 0.96361, -1.42302, 0, -12)
+script = ExtResource("prop")
+prop_id = &"tile_mud"
+fallback_size = Vector3(4.87461416939245, 0.3, 3.656469957279662)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop123" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.16749, 0, 0.98587, 0, 1, -0, -0.98587, -0, -0.16749, -1.43509, 0, 8)
+script = ExtResource("prop")
+prop_id = &"tile_mud"
+fallback_size = Vector3(3.610785416575397, 0.3, 2.5593844363419427)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop124" type="StaticBody3D" parent="."]
+transform = Transform3D(0.9598, -0, -0.28069, 0, 1, -0, 0.28069, 0, 0.9598, 1.22605, 0, 22)
+script = ExtResource("prop")
+prop_id = &"tile_mud"
+fallback_size = Vector3(3.3546860705565082, 0.3, 2.7318557720661847)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop125" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.75501, 0, 0.65572, 0, 1, -0, -0.65572, -0, -0.75501, -1.38179, 0, 34)
+script = ExtResource("prop")
+prop_id = &"tile_mud"
+fallback_size = Vector3(4.667778588302464, 0.3, 2.561594209407711)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop126" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.13217, 0, 0.99123, 0, 1, -0, -0.99123, -0, -0.13217, -6.40502, 0, -18.4756)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop127" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.13254, 0, 0.99118, 0, 1, -0, -0.99118, -0, -0.13254, -6.4825, 0, -13.4927)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop128" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.13146, 0, 0.99132, 0, 1, -0, -0.99132, -0, -0.13146, -6.66864, 0, -8.85312)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop129" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.86495, 0, 0.50186, 0, 1, -0, -0.50186, -0, -0.86495, -4.2, 0, -8.02012)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop130" type="StaticBody3D" parent="."]
+transform = Transform3D(0.16549, 0, 0.98621, 0, 1, -0, -0.98621, 0, 0.16549, -6.76346, 0, 5.5)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop131" type="StaticBody3D" parent="."]
+transform = Transform3D(0.10225, 0, 0.99476, 0, 1, -0, -0.99476, 0, 0.10225, -6.69006, 0, 10.0768)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop132" type="StaticBody3D" parent="."]
+transform = Transform3D(0.36778, -0, -0.92991, 0, 1, -0, 0.92991, 0, 0.36778, -4.2, 0, 10.6848)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop133" type="StaticBody3D" parent="."]
+transform = Transform3D(0.096472, 0, 0.99534, 0, 1, -0, -0.99534, 0, 0.096472, -6.74479, 0, 14.434)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop134" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.94438, 0, 0.32884, 0, 1, -0, -0.32884, -0, -0.94438, -4.2, 0, 15.3147)
+script = ExtResource("prop")
+prop_id = &"camp_bench_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop135" type="StaticBody3D" parent="."]
+transform = Transform3D(0.18831, 0, 0.98211, 0, 1, -0, -0.98211, 0, 0.18831, -6.43715, 0, 18.7048)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop136" type="StaticBody3D" parent="."]
+transform = Transform3D(0.47967, -0, -0.87745, 0, 1, -0, 0.87745, 0, 0.47967, -4.2, 0, 17.8629)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop137" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.20726, 0, 0.97829, 0, 1, -0, -0.97829, -0, -0.20726, -6.76338, 0, 23.6976)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop138" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.14878, 0, 0.98887, 0, 1, -0, -0.98887, -0, -0.14878, -6.55099, 0, 28.3584)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop139" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12758, 0, 0.99183, 0, 1, -0, -0.99183, 0, 0.12758, -6.26078, 0, 33.5079)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop140" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.12432, 0, 0.99224, 0, 1, -0, -0.99224, -0, -0.12432, -6.3418, 0, 38.1675)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop141" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12398, 0, 0.99228, 0, 1, -0, -0.99228, 0, 0.12398, -13.2715, 0, -17.6655)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop142" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 0.002593, 0, 1, -0, -0.002593, -0, -1, -10.7, 0, -17.5625)
+script = ExtResource("prop")
+prop_id = &"camp_bench_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop143" type="StaticBody3D" parent="."]
+transform = Transform3D(0.15398, 0, 0.98807, 0, 1, -0, -0.98807, 0, 0.15398, -12.9003, 0, -12.0922)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop144" type="StaticBody3D" parent="."]
+transform = Transform3D(0.073119, 0, 0.99732, 0, 1, -0, -0.99732, 0, 0.073119, -12.7418, 0, -6.36682)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop145" type="StaticBody3D" parent="."]
+transform = Transform3D(0.049672, -0, -0.99877, 0, 1, -0, 0.99877, 0, 0.049672, -10.7, 0, -5.95198)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop146" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12228, 0, 0.9925, 0, 1, -0, -0.9925, 0, 0.12228, -12.9132, 0, 5.5)
+script = ExtResource("prop")
+prop_id = &"camp_expedition"
+fallback_size = Vector3(3.4, 2.3, 3.0)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop147" type="StaticBody3D" parent="."]
+transform = Transform3D(0.092003, 0, 0.99576, 0, 1, -0, -0.99576, 0, 0.092003, -13.2491, 0, 10.9747)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop148" type="StaticBody3D" parent="."]
+transform = Transform3D(0.28042, 0, 0.95988, 0, 1, -0, -0.95988, 0, 0.28042, -13.271, 0, 16.0792)
+script = ExtResource("prop")
+prop_id = &"camp_shelter_tattered"
+fallback_size = Vector3(3.4, 2.3, 3.0)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop149" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.9179, -0, -0.39682, 0, 1, -0, 0.39682, -0, -0.9179, -10.7, 0, 15.7794)
+script = ExtResource("prop")
+prop_id = &"camp_bench_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop150" type="StaticBody3D" parent="."]
+transform = Transform3D(0.084744, 0, 0.9964, 0, 1, -0, -0.9964, 0, 0.084744, -12.8645, 0, 21.405)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop151" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0066312, 0, 0.99998, 0, 1, -0, -0.99998, 0, 0.0066312, -12.786, 0, 26.6034)
+script = ExtResource("prop")
+prop_id = &"camp_expedition"
+fallback_size = Vector3(3.4, 2.3, 3.0)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop152" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.14271, 0, 0.98976, 0, 1, -0, -0.98976, -0, -0.14271, -12.8791, 0, 31.4058)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop153" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.038319, 0, 0.99927, 0, 1, -0, -0.99927, -0, -0.038319, -12.7943, 0, 36.3914)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop154" type="StaticBody3D" parent="."]
+transform = Transform3D(0.02849, -0, -0.99959, 0, 1, -0, 0.99959, 0, 0.02849, 6.79772, 0, -18.7465)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop155" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12351, -0, -0.99234, 0, 1, -0, 0.99234, 0, 0.12351, 6.21698, 0, -14.0721)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop156" type="StaticBody3D" parent="."]
+transform = Transform3D(0.1952, -0, -0.98076, 0, 1, -0, 0.98076, 0, 0.1952, 6.21615, 0, -9.07274)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop157" type="StaticBody3D" parent="."]
+transform = Transform3D(0.16485, -0, -0.98632, 0, 1, -0, 0.98632, 0, 0.16485, 6.73294, 0, 5.5)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop158" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.087996, -0, -0.99612, 0, 1, -0, 0.99612, -0, -0.087996, 6.65177, 0, 10.0489)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop159" type="StaticBody3D" parent="."]
+transform = Transform3D(0.18803, -0, -0.98216, 0, 1, -0, 0.98216, 0, 0.18803, 6.53771, 0, 14.832)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop160" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.17812, -0, -0.98401, 0, 1, -0, 0.98401, -0, -0.17812, 6.64974, 0, 19.5411)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop161" type="StaticBody3D" parent="."]
+transform = Transform3D(0.17253, -0, -0.985, 0, 1, -0, 0.985, 0, 0.17253, 6.50616, 0, 23.9451)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop162" type="StaticBody3D" parent="."]
+transform = Transform3D(0.034564, -0, -0.9994, 0, 1, -0, 0.9994, 0, 0.034564, 6.51636, 0, 28.2301)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop163" type="StaticBody3D" parent="."]
+transform = Transform3D(0.65144, 0, 0.7587, 0, 1, -0, -0.7587, 0, 0.65144, 4.2, 0, 27.5015)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop164" type="StaticBody3D" parent="."]
+transform = Transform3D(0.20409, -0, -0.97895, 0, 1, -0, 0.97895, 0, 0.20409, 6.22241, 0, 32.4585)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop165" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0065565, -0, -0.99998, 0, 1, -0, 0.99998, 0, 0.0065565, 6.7944, 0, 37.3251)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop166" type="StaticBody3D" parent="."]
+transform = Transform3D(0.082877, -0, -0.99656, 0, 1, -0, 0.99656, 0, 0.082877, 12.8831, 0, -18.8965)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop167" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12989, -0, -0.99153, 0, 1, -0, 0.99153, 0, 0.12989, 13.0919, 0, -13.8769)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop168" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.00024461, -0, -1, 0, 1, -0, 1, -0, -0.00024461, 12.7975, 0, -8.74581)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop169" type="StaticBody3D" parent="."]
+transform = Transform3D(0.30835, -0, -0.95127, 0, 1, -0, 0.95127, 0, 0.30835, 12.7164, 0, 5.5)
+script = ExtResource("prop")
+prop_id = &"camp_shelter"
+fallback_size = Vector3(3.4, 2.3, 3.0)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop170" type="StaticBody3D" parent="."]
+transform = Transform3D(0.027882, -0, -0.99961, 0, 1, -0, 0.99961, 0, 0.027882, 10.7, 0, 6.74208)
+script = ExtResource("prop")
+prop_id = &"camp_crate_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop171" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.15481, -0, -0.98794, 0, 1, -0, 0.98794, -0, -0.15481, 13.2033, 0, 10.9913)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop172" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.19113, -0, -0.98156, 0, 1, -0, 0.98156, -0, -0.19113, 13.2065, 0, 16.3575)
+script = ExtResource("prop")
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop173" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.44912, -0, -0.89347, 0, 1, -0, 0.89347, -0, -0.44912, 10.7, 0, 17.1462)
+script = ExtResource("prop")
+prop_id = &"camp_bench_broken"
+fallback_size = Vector3(1.0, 0.8, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop174" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.11372, -0, -0.99351, 0, 1, -0, 0.99351, -0, -0.11372, 12.7425, 0, 22.0438)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop175" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.050334, -0, -0.99873, 0, 1, -0, 0.99873, -0, -0.050334, 13.1134, 0, 27.19)
+script = ExtResource("prop")
+prop_id = &"camp_tent_hide"
+fallback_size = Vector3(3.2, 2.6, 3.2)
+fallback_color = Color(0.35, 0.5, 0.45, 1)
+
+[node name="Prop176" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.086531, -0, -0.99625, 0, 1, -0, 0.99625, -0, -0.086531, 12.7481, 0, 32.0425)
+script = ExtResource("prop")
+prop_id = &"camp_tent_dome"
+fallback_size = Vector3(3.4, 2.6, 3.4)
 fallback_color = Color(0.35, 0.5, 0.45, 1)
 
 [node name="Prop177" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.069756, -0, -0.99756, 0, 1, -0, 0.99756, -0, -0.069756, 30, 0, -22)
+transform = Transform3D(0.080784, -0, -0.99673, 0, 1, -0, 0.99673, 0, 0.080784, 13.0905, 0, 36.9904)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
+prop_id = &"camp_tent_ragged"
+fallback_size = Vector3(3.0, 2.2, 3.4)
 fallback_color = Color(0.35, 0.5, 0.45, 1)
 
 [node name="Prop178" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.034899, 0, 0.99939, 0, 1, -0, -0.99939, -0, -0.034899, -30, 0, -8)
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -24, 0, 20)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_cabin"
+fallback_size = Vector3(5.0, 4.2, 4.6)
+fallback_color = Color(0.45, 0.42, 0.48, 1)
 
 [node name="Prop179" type="StaticBody3D" parent="."]
-transform = Transform3D(0.017452, -0, -0.99985, 0, 1, -0, 0.99985, 0, 0.017452, 30, 0, -8)
+transform = Transform3D(6.1232e-17, -0, -1, 0, 1, -0, 1, 0, 6.1232e-17, 24, 0, 8)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_cabin"
+fallback_size = Vector3(5.0, 4.2, 4.6)
+fallback_color = Color(0.45, 0.42, 0.48, 1)
 
 [node name="Prop180" type="StaticBody3D" parent="."]
-transform = Transform3D(0.034899, 0, 0.99939, 0, 1, -0, -0.99939, 0, 0.034899, -30, 0, 6)
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -24, 0, -8)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_cabin"
+fallback_size = Vector3(5.0, 4.2, 4.6)
+fallback_color = Color(0.45, 0.42, 0.48, 1)
 
 [node name="Prop181" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.052336, -0, -0.99863, 0, 1, -0, 0.99863, -0, -0.052336, 30, 0, 6)
+transform = Transform3D(-0.62086, 0, 0.78392, 0, 1, -0, -0.78392, -0, -0.62086, -22, 0, 32)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_scrap_sheets"
+fallback_size = Vector3(3.4, 2.0, 3.0)
+fallback_color = Color(0.5, 0.35, 0.25, 1)
 
 [node name="Prop182" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.087156, 0, 0.99619, 0, 1, -0, -0.99619, -0, -0.087156, -30, 0, 20)
+transform = Transform3D(-0.69099, 0, 0.72287, 0, 1, -0, -0.72287, -0, -0.69099, 23, 0, 26)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_scrap_sheets"
+fallback_size = Vector3(3.4, 2.0, 3.0)
+fallback_color = Color(0.5, 0.35, 0.25, 1)
 
 [node name="Prop183" type="StaticBody3D" parent="."]
-transform = Transform3D(0.034899, -0, -0.99939, 0, 1, -0, 0.99939, 0, 0.034899, 30, 0, 20)
+transform = Transform3D(0.4593, 0, 0.88828, 0, 1, -0, -0.88828, 0, 0.4593, 22, 0, -16)
 script = ExtResource("prop")
-prop_id = &"bld_refugee_tent"
-fallback_size = Vector3(6, 3, 5)
-fallback_color = Color(0.35, 0.5, 0.45, 1)
+prop_id = &"camp_scrap_sheets"
+fallback_size = Vector3(3.4, 2.0, 3.0)
+fallback_color = Color(0.5, 0.35, 0.25, 1)
 
-[node name="Decor184" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24, 0, -15)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 300
+[node name="Prop184" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.64021, -0, -0.7682, 0, 1, -0, 0.7682, -0, -0.64021, -21, 0, -18)
+script = ExtResource("prop")
+prop_id = &"camp_scrap_sheets"
+fallback_size = Vector3(3.4, 2.0, 3.0)
+fallback_color = Color(0.5, 0.35, 0.25, 1)
 
 [node name="Decor185" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24, 0, -13)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 310
-
-[node name="Decor186" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24, 0, 13)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 301
-
-[node name="Decor187" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24, 0, 15)
-script = ExtResource("decor")
-kind = &"junk"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 311
-
-[node name="Prop188" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -16, 0, -28)
-script = ExtResource("prop")
-prop_id = &"prop_market_stall"
-fallback_size = Vector3(3.7, 3.2, 1.8)
-fallback_color = Color(0.45, 0.32, 0.22, 1)
-
-[node name="Prop189" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -7, 0, -28)
-script = ExtResource("prop")
-prop_id = &"prop_market_stall"
-fallback_size = Vector3(3.7, 3.2, 1.8)
-fallback_color = Color(0.45, 0.32, 0.22, 1)
-
-[node name="Prop190" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 7, 0, -28)
-script = ExtResource("prop")
-prop_id = &"prop_market_stall"
-fallback_size = Vector3(3.7, 3.2, 1.8)
-fallback_color = Color(0.45, 0.32, 0.22, 1)
-
-[node name="Prop191" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 16, 0, -28)
-script = ExtResource("prop")
-prop_id = &"prop_market_stall"
-fallback_size = Vector3(3.7, 3.2, 1.8)
-fallback_color = Color(0.45, 0.32, 0.22, 1)
-
-[node name="B192" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.5, -38)
-script = ExtResource("gb")
-size = Vector3(3.2, 1.0, 3.2)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Prop193" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 0, 1, -38)
-script = ExtResource("prop")
-prop_id = &"statue_starblade"
-fallback_size = Vector3(1.2, 3.0, 1.2)
-fallback_color = Color(0.55, 0.53, 0.5, 1)
-
-[node name="Decor194" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
 script = ExtResource("decor")
 kind = &"campfire"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 1
 
-[node name="Decor195" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 16, 0, 14)
+[node name="Prop186" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.93969, -0, -0.34202, 0, 1, -0, 0.34202, -0, -0.93969, 3.6, 0, -2.8)
+script = ExtResource("prop")
+prop_id = &"camp_cookfire"
+fallback_size = Vector3(2.4, 2.0, 2.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop187" type="StaticBody3D" parent="."]
+transform = Transform3D(0.38942, 0, 0.92106, 0, 1, -0, -0.92106, 0, 0.38942, 4.23688, 0, 1.79132)
+script = ExtResource("prop")
+prop_id = &"ruin_log_1"
+fallback_size = Vector3(2.4, 0.7, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop188" type="StaticBody3D" parent="."]
+transform = Transform3D(0.92106, -0, -0.38942, 0, 1, -0, 0.38942, 0, 0.92106, -1.79132, 0, 4.23688)
+script = ExtResource("prop")
+prop_id = &"ruin_log_1"
+fallback_size = Vector3(2.4, 0.7, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop189" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.38942, -0, -0.92106, 0, 1, -0, 0.92106, -0, -0.38942, -4.23688, 0, -1.79132)
+script = ExtResource("prop")
+prop_id = &"ruin_log_1"
+fallback_size = Vector3(2.4, 0.7, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop190" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.92106, 0, 0.38942, 0, 1, -0, -0.38942, -0, -0.92106, 1.79132, 0, -4.23688)
+script = ExtResource("prop")
+prop_id = &"ruin_log_1"
+fallback_size = Vector3(2.4, 0.7, 1.0)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop191" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -16, 0, -28)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop192" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -8, 0, -28)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop193" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 8, 0, -28)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="Prop194" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 16, 0, -28)
+script = ExtResource("prop")
+prop_id = &"prop_market_stall"
+fallback_size = Vector3(3.7, 3.2, 1.8)
+fallback_color = Color(0.45, 0.32, 0.22, 1)
+
+[node name="B195" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.5, -38)
+script = ExtResource("gb")
+size = Vector3(3.2, 1.0, 3.2)
+color = Color(0.55, 0.53, 0.5, 1)
+solid = true
+
+[node name="Prop196" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 0, 1, -38)
+script = ExtResource("prop")
+prop_id = &"statue_starblade"
+fallback_size = Vector3(1.2, 3.0, 1.2)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Decor197" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 28, 0, -26)
 script = ExtResource("decor")
 kind = &"water_tank"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 7
 
-[node name="Decor196" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, -18)
+[node name="Prop198" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, -0, -0.5, 0, 0.86603, 28, 0, -23)
+script = ExtResource("prop")
+prop_id = &"tile_mud"
+fallback_size = Vector3(5, 0.3, 4)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Decor199" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, -21)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 60
 
-[node name="Decor197" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, -18)
+[node name="Decor200" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, -21)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 61
 
-[node name="Decor198" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, 18)
+[node name="Decor201" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -4, 0, 4.5)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 62
 
-[node name="Decor199" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, 18)
+[node name="Decor202" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 4, 0, -4.5)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 63
 
-[node name="Decor200" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, -36)
+[node name="Decor203" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -6, 0, 26)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 64
 
-[node name="Decor201" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20, 0, -36)
+[node name="Decor204" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 6, 0, 12)
 script = ExtResource("decor")
 kind = &"lantern"
 tint = Color(1, 0.7, 0.4, 1)
 seed_value = 65
 
-[node name="Decor202" type="StaticBody3D" parent="."]
+[node name="Decor205" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, 36)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.7, 0.4, 1)
+seed_value = 66
+
+[node name="Decor206" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 20, 0, 38)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.7, 0.4, 1)
+seed_value = 67
+
+[node name="Decor207" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -5.5, 0, -46)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor203" type="StaticBody3D" parent="."]
+[node name="Decor208" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 5.5, 0, -46)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor204" type="StaticBody3D" parent="."]
+[node name="Decor209" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, -5.5, 0, 46)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor205" type="StaticBody3D" parent="."]
+[node name="Decor210" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 5.5, 0, 46)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor206" type="StaticBody3D" parent="."]
+[node name="Decor211" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, -5.5)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor207" type="StaticBody3D" parent="."]
+[node name="Decor212" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -46, 0, 5.5)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor208" type="StaticBody3D" parent="."]
+[node name="Decor213" type="StaticBody3D" parent="."]
 transform = Transform3D(-1.837e-16, -0, -1, 0, 1, -0, 1, -0, -1.837e-16, 46, 0, -5.5)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Decor209" type="StaticBody3D" parent="."]
+[node name="Decor214" type="StaticBody3D" parent="."]
 transform = Transform3D(-1.837e-16, -0, -1, 0, 1, -0, 1, -0, -1.837e-16, 46, 0, 5.5)
 script = ExtResource("decor")
 kind = &"banner"
 tint = Color(0.25, 0.55, 0.85, 1)
 seed_value = 1
 
-[node name="Waystone210" parent="." instance=ExtResource("waystone")]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -36, 0, 36)
+[node name="Tree215" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, -38)
+script = ExtResource("tree")
+kind = &"ruin"
+height = 11.00
+seed_value = 9000
+snowy = false
+
+[node name="Prop216" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, -38)
+script = ExtResource("prop")
+prop_id = &"tile_roots_grass"
+fallback_size = Vector3(6, 0.9, 6)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Tree217" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0, -38)
+script = ExtResource("tree")
+kind = &"ruin"
+height = 12.00
+seed_value = 9001
+snowy = false
+
+[node name="Prop218" type="StaticBody3D" parent="."]
+transform = Transform3D(0.682, 0, 0.73135, 0, 1, -0, -0.73135, 0, 0.682, 40, 0, -38)
+script = ExtResource("prop")
+prop_id = &"tile_roots_grass"
+fallback_size = Vector3(6, 0.9, 6)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Tree219" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, 40)
+script = ExtResource("tree")
+kind = &"ruin"
+height = 10.50
+seed_value = 9002
+snowy = false
+
+[node name="Prop220" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.069756, 0, 0.99756, 0, 1, -0, -0.99756, -0, -0.069756, -40, 0, 40)
+script = ExtResource("prop")
+prop_id = &"tile_roots_grass"
+fallback_size = Vector3(6, 0.9, 6)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Tree221" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -41, 0, 6)
+script = ExtResource("tree")
+kind = &"ruin"
+height = 10.00
+seed_value = 9003
+snowy = false
+
+[node name="Prop222" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.77715, 0, 0.62932, 0, 1, -0, -0.62932, -0, -0.77715, -41, 0, 6)
+script = ExtResource("prop")
+prop_id = &"tile_roots_grass"
+fallback_size = Vector3(6, 0.9, 6)
+fallback_color = Color(0.38, 0.29, 0.2, 1)
+
+[node name="Prop223" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -38, 0, -24)
+script = ExtResource("prop")
+prop_id = &"rock_boulders"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop224" type="StaticBody3D" parent="."]
+transform = Transform3D(0.39073, 0, 0.9205, 0, 1, -0, -0.9205, 0, 0.39073, 38, 0, -10)
+script = ExtResource("prop")
+prop_id = &"rubble_heap"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop225" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.69466, 0, 0.71934, 0, 1, -0, -0.71934, -0, -0.69466, -38, 0, 22)
+script = ExtResource("prop")
+prop_id = &"rubble_urban"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop226" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.93358, -0, -0.35837, 0, 1, -0, 0.35837, -0, -0.93358, 36, 0, 22)
+script = ExtResource("prop")
+prop_id = &"rock_large"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop227" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.034899, -0, -0.99939, 0, 1, -0, 0.99939, -0, -0.034899, -30, 0, 41)
+script = ExtResource("prop")
+prop_id = &"rock_rune"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop228" type="StaticBody3D" parent="."]
+transform = Transform3D(0.90631, -0, -0.42262, 0, 1, -0, 0.42262, 0, 0.90631, -41, 0, -12)
+script = ExtResource("prop")
+prop_id = &"rubble_heap"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Prop229" type="StaticBody3D" parent="."]
+transform = Transform3D(0.74314, 0, 0.66913, 0, 1, -0, -0.66913, 0, 0.74314, 41, 0, 38)
+script = ExtResource("prop")
+prop_id = &"rock_boulders"
+fallback_size = Vector3(3.2, 2.0, 3.0)
+fallback_color = Color(0.55, 0.53, 0.5, 1)
+
+[node name="Grass230" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, 30)
+script = ExtResource("grass")
+area = Vector2(6, 12)
+blades = 900
+color = Color(0.26, 0.42, 0.24, 1)
+seed_value = 200
+
+[node name="Grass231" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0, -26)
+script = ExtResource("grass")
+area = Vector2(6, 10)
+blades = 900
+color = Color(0.26, 0.42, 0.24, 1)
+seed_value = 201
+
+[node name="Grass232" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30, 0, -40)
+script = ExtResource("grass")
+area = Vector2(12, 4)
+blades = 900
+color = Color(0.26, 0.42, 0.24, 1)
+seed_value = 202
+
+[node name="Grass233" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30, 0, 42)
+script = ExtResource("grass")
+area = Vector2(12, 4)
+blades = 900
+color = Color(0.26, 0.42, 0.24, 1)
+seed_value = 203
+
+[node name="B234" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.15, 29)
+script = ExtResource("gb")
+size = Vector3(9, 0.3, 1.1)
+color = Color(0.38, 0.29, 0.2, 1)
+solid = true
+
+[node name="Grass235" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.3, 29)
+script = ExtResource("grass")
+area = Vector2(8, 0.8)
+blades = 200
+color = Color(0.3, 0.55, 0.22, 1)
+seed_value = 300
+
+[node name="B236" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.15, 32)
+script = ExtResource("gb")
+size = Vector3(9, 0.3, 1.1)
+color = Color(0.38, 0.29, 0.2, 1)
+solid = true
+
+[node name="Grass237" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.3, 32)
+script = ExtResource("grass")
+area = Vector2(8, 0.8)
+blades = 200
+color = Color(0.3, 0.55, 0.22, 1)
+seed_value = 301
+
+[node name="B238" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.15, 35)
+script = ExtResource("gb")
+size = Vector3(9, 0.3, 1.1)
+color = Color(0.38, 0.29, 0.2, 1)
+solid = true
+
+[node name="Grass239" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 33, 0.3, 35)
+script = ExtResource("grass")
+area = Vector2(8, 0.8)
+blades = 200
+color = Color(0.3, 0.55, 0.22, 1)
+seed_value = 302
+
+[node name="Decor240" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28, 0, 29)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 113
+
+[node name="Decor241" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28, 0, 32)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 116
+
+[node name="Decor242" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 28, 0, 35)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 119
+
+[node name="Decor243" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 38, 0, 29)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 143
+
+[node name="Decor244" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 38, 0, 32)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 146
+
+[node name="Decor245" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 38, 0, 35)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 149
+
+[node name="Waystone246" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -34, 0, 34)
 waystone_id = &"r1_camp"
 
-[node name="Decor211" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -41, 0, 31)
+[node name="Decor247" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -39, 0, 30)
 script = ExtResource("decor")
 kind = &"debris"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 700
 
-[node name="Decor212" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -30, 0, 41)
+[node name="Decor248" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -29, 0, 39)
 script = ExtResource("decor")
 kind = &"debris"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 701
 
-[node name="Decor213" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -42, 0, 40)
+[node name="Decor249" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -38, 0, 38)
 script = ExtResource("decor")
 kind = &"debris"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 702
-
-[node name="Decor214" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -31, 0, 30)
-script = ExtResource("decor")
-kind = &"debris"
-tint = Color(1, 0.75, 0.4, 1)
-seed_value = 703
 
 [node name="Npc_bread_seller" parent="." instance=ExtResource("npc")]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -12, 0, -25)
@@ -1550,22 +1779,22 @@ transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 12, 0, -25)
 data = ExtResource("d_appraiser")
 
 [node name="Npc_quartermaster" parent="." instance=ExtResource("npc")]
-transform = Transform3D(0.93969, 0, 0.34202, 0, 1, -0, -0.34202, 0, 0.93969, -5, 0, -35)
+transform = Transform3D(0.93969, 0, 0.34202, 0, 1, -0, -0.34202, 0, 0.93969, -4, 0, -34)
 data = ExtResource("d_quartermaster")
 
 [node name="Npc_camp_kid" parent="." instance=ExtResource("npc")]
-transform = Transform3D(-0.76604, -0, -0.64279, 0, 1, -0, 0.64279, -0, -0.76604, 5, 0, 5)
+transform = Transform3D(-0.76604, -0, -0.64279, 0, 1, -0, 0.64279, -0, -0.76604, 2, 0, 4)
 data = ExtResource("d_camp_kid")
 
-[node name="Sign215" parent="." instance=ExtResource("sign")]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 0, 32)
+[node name="Sign250" parent="." instance=ExtResource("sign")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28, 0, 30)
 text_key = &"HINT_SM_R1_01_6"
 hint_secret = &"SM-R1-01:3"
 
-[node name="Dummy216" parent="." instance=ExtResource("dummy")]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20, 0, 24)
+[node name="Dummy251" parent="." instance=ExtResource("dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -32, 0, -28)
 
-[node name="Label217" type="Label3D" parent="."]
+[node name="Label252" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 9, -40)
 billboard = 1
 text = "REFUGEE CAMP"
@@ -1573,266 +1802,266 @@ font_size = 64
 outline_size = 10
 pixel_size = 0.01
 
-[node name="B218" type="StaticBody3D" parent="."]
+[node name="B253" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, -56)
 script = ExtResource("gb")
 size = Vector3(121.0, 0.12, 12.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B219" type="StaticBody3D" parent="."]
+[node name="B254" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, -63.5)
 script = ExtResource("gb")
 size = Vector3(112, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B220" type="StaticBody3D" parent="."]
+[node name="B255" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, -48.5)
 script = ExtResource("gb")
 size = Vector3(112, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Prop221" type="StaticBody3D" parent="."]
+[node name="Prop256" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.19509, -0, -0.98079, 0, 1, -0, 0.98079, -0, -0.19509, 44.017, 0, -60.563)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(3.821378142882641, 0.5, 3.8932167328019913)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
-[node name="B222" type="StaticBody3D" parent="."]
+[node name="B257" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, 56)
 script = ExtResource("gb")
 size = Vector3(121.0, 0.12, 12.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B223" type="StaticBody3D" parent="."]
+[node name="B258" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, 48.5)
 script = ExtResource("gb")
 size = Vector3(112, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B224" type="StaticBody3D" parent="."]
+[node name="B259" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, 63.5)
 script = ExtResource("gb")
 size = Vector3(112, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Prop225" type="StaticBody3D" parent="."]
+[node name="Prop260" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.48454, 0, 0.87477, 0, 1, -0, -0.87477, -0, -0.48454, -7.74633, 0, 59.6953)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(3.6348739580759593, 0.5, 3.412750058320748)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
-[node name="B226" type="StaticBody3D" parent="."]
+[node name="B261" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -56, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(12.0, 0.12, 121.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B227" type="StaticBody3D" parent="."]
+[node name="B262" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -63.5, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 112)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B228" type="StaticBody3D" parent="."]
+[node name="B263" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -48.5, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 112)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Prop229" type="StaticBody3D" parent="."]
+[node name="Prop264" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.76308, 0, 0.6463, 0, 1, -0, -0.6463, -0, -0.76308, -60.7794, 0, 1.47244)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(2.902528009467751, 0.5, 3.226735269220615)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
-[node name="Prop230" type="StaticBody3D" parent="."]
+[node name="Prop265" type="StaticBody3D" parent="."]
 transform = Transform3D(0.79396, -0, -0.60797, 0, 1, -0, 0.60797, 0, 0.79396, -60.4189, 0, 42.4175)
 script = ExtResource("prop")
 prop_id = &"tile_roots_grass"
 fallback_size = Vector3(3.163627660790599, 0.5, 3.4827143405239847)
 fallback_color = Color(0.38, 0.29, 0.2, 1)
 
-[node name="B231" type="StaticBody3D" parent="."]
+[node name="B266" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 56, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(12.0, 0.12, 121.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B232" type="StaticBody3D" parent="."]
+[node name="B267" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 48.5, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 112)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B233" type="StaticBody3D" parent="."]
+[node name="B268" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 63.5, 0.06, 0)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 112)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B234" type="StaticBody3D" parent="."]
+[node name="B269" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, -60)
 script = ExtResource("gb")
 size = Vector3(12.0, 0.12, 17.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B235" type="StaticBody3D" parent="."]
+[node name="B270" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7.5, 0.06, -60)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 8.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B236" type="StaticBody3D" parent="."]
+[node name="B271" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7.5, 0.06, -60)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 8.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Decor237" type="StaticBody3D" parent="."]
+[node name="Decor272" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 8.5, 0.12, -64)
 script = ExtResource("decor")
 kind = &"streetlight"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 76554
 
-[node name="B238" type="StaticBody3D" parent="."]
+[node name="B273" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.06, 60)
 script = ExtResource("gb")
 size = Vector3(12.0, 0.12, 17.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B239" type="StaticBody3D" parent="."]
+[node name="B274" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7.5, 0.06, 60)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 8.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B240" type="StaticBody3D" parent="."]
+[node name="B275" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7.5, 0.06, 60)
 script = ExtResource("gb")
 size = Vector3(3.0, 0.12, 8.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Decor241" type="StaticBody3D" parent="."]
+[node name="Decor276" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, 1.2246e-16, 0, 1, -0, -1.2246e-16, -0, -1, 8.5, 0.12, 64)
 script = ExtResource("decor")
 kind = &"streetlight"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 26593
 
-[node name="B242" type="StaticBody3D" parent="."]
+[node name="B277" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -60, 0.06, 56)
 script = ExtResource("gb")
 size = Vector3(17.0, 0.12, 12.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B243" type="StaticBody3D" parent="."]
+[node name="B278" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -60, 0.06, 48.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B244" type="StaticBody3D" parent="."]
+[node name="B279" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -60, 0.06, 63.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B245" type="StaticBody3D" parent="."]
+[node name="B280" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, 56)
 script = ExtResource("gb")
 size = Vector3(17.0, 0.12, 12.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B246" type="StaticBody3D" parent="."]
+[node name="B281" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, 48.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B247" type="StaticBody3D" parent="."]
+[node name="B282" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, 63.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B248" type="StaticBody3D" parent="."]
+[node name="B283" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, -56)
 script = ExtResource("gb")
 size = Vector3(17.0, 0.12, 12.0)
 color = Color(0.32, 0.33, 0.36, 1)
 solid = true
 
-[node name="B249" type="StaticBody3D" parent="."]
+[node name="B284" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, -63.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="B250" type="StaticBody3D" parent="."]
+[node name="B285" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 60, 0.06, -48.5)
 script = ExtResource("gb")
 size = Vector3(8.0, 0.12, 3.0)
 color = Color(0.51, 0.49, 0.47, 1)
 solid = true
 
-[node name="Decor251" type="StaticBody3D" parent="."]
+[node name="Decor286" type="StaticBody3D" parent="."]
 transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 64, 0.12, -47.5)
 script = ExtResource("decor")
 kind = &"streetlight"
 tint = Color(1, 0.75, 0.4, 1)
 seed_value = 19496
 
-[node name="Prop252" type="StaticBody3D" parent="."]
+[node name="Prop287" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.16254, -0, -0.9867, 0, 1, -0, 0.9867, -0, -0.16254, -6.16273, 0, -57.8487)
 script = ExtResource("prop")
 prop_id = &"prop_car_rusted"
 fallback_size = Vector3(4, 1.45, 2.0)
 fallback_color = Color(0.5, 0.35, 0.25, 1)
 
-[node name="Prop253" type="StaticBody3D" parent="."]
+[node name="Prop288" type="StaticBody3D" parent="."]
 transform = Transform3D(0.029016, 0, 0.99958, 0, 1, -0, -0.99958, 0, 0.029016, -1.05632, 0, 57.5955)
 script = ExtResource("prop")
 prop_id = &"prop_post_car"
 fallback_size = Vector3(4, 1.45, 2.0)
 fallback_color = Color(0.5, 0.35, 0.25, 1)
 
-[node name="Prop254" type="StaticBody3D" parent="."]
+[node name="Prop289" type="StaticBody3D" parent="."]
 transform = Transform3D(0.23215, -0, -0.97268, 0, 1, -0, 0.97268, 0, 0.23215, 16.1367, 0, 57.894)
 script = ExtResource("prop")
 prop_id = &"prop_post_car"
 fallback_size = Vector3(4, 1.45, 2.0)
 fallback_color = Color(0.5, 0.35, 0.25, 1)
 
-[node name="Prop255" type="StaticBody3D" parent="."]
+[node name="Prop290" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99567, -0, -0.09301, 0, 1, -0, 0.09301, -0, -0.99567, 56.6255, 0, 20.7402)
 script = ExtResource("prop")
 prop_id = &"prop_post_car"
@@ -1844,4 +2073,4 @@ script = ExtResource("terrain")
 style = &"ashfall"
 amplitude = 1.2
 seed_value = 101
-flatten = PackedVector3Array(0, 0, 50, 4.6053, 1.94709, 2.44, -1.94709, 4.6053, 2.44, -4.6053, -1.94709, 2.44, 1.94709, -4.6053, 2.44, -40, 40, 2.44, 40, -42, 2.44, -22, 42, 2.44, 22, 29.5, 7.73019, 22, 32.5, 7.73019, 22, 35.5, 7.73019, 22, 38.5, 7.73019, 15.5, 29.5, 1.5, 15.5, 32.5, 1.5, 15.5, 35.5, 1.5, 15.5, 38.5, 1.5, 28.5, 29.5, 1.5, 28.5, 32.5, 1.5, 28.5, 35.5, 1.5, 28.5, 38.5, 1.5, 17.5, 27.5, 1.5, 20.5, 27.5, 1.5, 23.5, 27.5, 1.5, 26.5, 27.5, 1.5, -21, -31, 1.5, -20, -33, 1.5, 21, -31, 1.5, 20, -33.5, 1.5, -24, 2, 1.5, 24, -2, 1.5, -8, 12, 1.5, 9, -10, 1.5, -24, -26, 1.5, 24, 20, 1.5, -6, 28, 1.5, 34, 0, 1.5, -43.5, -46, 1.5, -40.5, -46, 1.5, -37.5, -46, 1.5, -34.5, -46, 1.5, -31.5, -46, 1.5, -28.5, -46, 1.5, -25.5, -46, 1.5, -22.5, -46, 1.5, -19.5, -46, 1.5, -16.5, -46, 1.5, -13.5, -46, 1.5, -10.5, -46, 1.5, 10.5, -46, 1.5, 13.5, -46, 1.5, 16.5, -46, 1.5, 19.5, -46, 1.5, 22.5, -46, 1.5, 25.5, -46, 1.5, 28.5, -46, 1.5, 31.5, -46, 1.5, 34.5, -46, 1.5, 37.5, -46, 1.5, 40.5, -46, 1.5, 43.5, -46, 1.5, -43.5, 46, 1.5, -40.5, 46, 1.5, -37.5, 46, 1.5, -34.5, 46, 1.5, -31.5, 46, 1.5, -28.5, 46, 1.5, -25.5, 46, 1.5, -22.5, 46, 1.5, -19.5, 46, 1.5, -16.5, 46, 1.5, -13.5, 46, 1.5, -10.5, 46, 1.5, 10.5, 46, 1.5, 13.5, 46, 1.5, 16.5, 46, 1.5, 19.5, 46, 1.5, 22.5, 46, 1.5, 25.5, 46, 1.5, 28.5, 46, 1.5, 31.5, 46, 1.5, 34.5, 46, 1.5, 37.5, 46, 1.5, 40.5, 46, 1.5, 43.5, 46, 1.5, -46, -43.5, 1.5, -46, -40.5, 1.5, -46, -37.5, 1.5, -46, -34.5, 1.5, -46, -31.5, 1.5, -46, -28.5, 1.5, -46, -25.5, 1.5, -46, -22.5, 1.5, -46, -19.5, 1.5, -46, -16.5, 1.5, -46, -13.5, 1.5, -46, -10.5, 1.5, -46, 10.5, 1.5, -46, 13.5, 1.5, -46, 16.5, 1.5, -46, 19.5, 1.5, -46, 22.5, 1.5, -46, 25.5, 1.5, -46, 28.5, 1.5, -46, 31.5, 1.5, -46, 34.5, 1.5, -46, 37.5, 1.5, -46, 40.5, 1.5, -46, 43.5, 1.5, 46, -43.5, 1.5, 46, -40.5, 1.5, 46, -37.5, 1.5, 46, -34.5, 1.5, 46, -31.5, 1.5, 46, -28.5, 1.5, 46, -25.5, 1.5, 46, -22.5, 1.5, 46, -19.5, 1.5, 46, -16.5, 1.5, 46, -13.5, 1.5, 46, -10.5, 1.5, 46, 10.5, 1.5, 46, 13.5, 1.5, 46, 16.5, 1.5, 46, 19.5, 1.5, 46, 22.5, 1.5, 46, 25.5, 1.5, 46, 28.5, 1.5, 46, 31.5, 1.5, 46, 34.5, 1.5, 46, 37.5, 1.5, 46, 40.5, 1.5, 46, 43.5, 1.5, -30, -22, 4.6, 30, -22, 4.6, -30, -8, 4.6, 30, -8, 4.6, -30, 6, 4.6, 30, 6, 4.6, -30, 20, 4.6, 30, 20, 4.6, -24, -15, 1.5, 24, -13, 1.5, -24, 13, 1.5, 24, 15, 1.5, -16, -28, 3.22, -7, -28, 3.22, 7, -28, 3.22, 16, -28, 3.22, 0, -38, 3.21529, 0, -38, 1.72, 0, 0, 1.5, 16, 14, 1.5, -12, -18, 1.5, 12, -18, 1.5, -12, 18, 1.5, 12, 18, 1.5, -20, -36, 1.5, 20, -36, 1.5, -5.5, -46, 1.5, 5.5, -46, 1.5, -5.5, 46, 1.5, 5.5, 46, 1.5, -46, -5.5, 1.5, -46, 5.5, 1.5, 46, -5.5, 1.5, 46, 5.5, 1.5, -36, 36, 4, -41, 31, 1.5, -30, 41, 1.5, -42, 40, 1.5, -31, 30, 1.5, -12, -25, 4, 12, -25, 4, -5, -35, 4, 5, 5, 4, -28, 32, 4, -20, 24, 4, -56, -56, 12, -45.8182, -56, 12, -35.6364, -56, 12, -25.4545, -56, 12, -15.2727, -56, 12, -5.09091, -56, 12, 5.09091, -56, 12, 15.2727, -56, 12, 25.4545, -56, 12, 35.6364, -56, 12, 45.8182, -56, 12, 56, -56, 12, -56, 56, 12, -45.8182, 56, 12, -35.6364, 56, 12, -25.4545, 56, 12, -15.2727, 56, 12, -5.09091, 56, 12, 5.09091, 56, 12, 15.2727, 56, 12, 25.4545, 56, 12, 35.6364, 56, 12, 45.8182, 56, 12, 56, 56, 12, -56, -56, 12, -56, -45.8182, 12, -56, -35.6364, 12, -56, -25.4545, 12, -56, -15.2727, 12, -56, -5.09091, 12, -56, 5.09091, 12, -56, 15.2727, 12, -56, 25.4545, 12, -56, 35.6364, 12, -56, 45.8182, 12, -56, 56, 12, 56, -56, 12, 56, -45.8182, 12, 56, -35.6364, 12, 56, -25.4545, 12, 56, -15.2727, 12, 56, -5.09091, 12, 56, 5.09091, 12, 56, 15.2727, 12, 56, 25.4545, 12, 56, 35.6364, 12, 56, 45.8182, 12, 56, 56, 12, 0, -60, 12.9852, -7.5, -60, 5.6264, 7.5, -60, 5.6264, 0, -64, 12, 0, -56, 12, 8.5, -64, 1.5, 0, 60, 12.9852, -7.5, 60, 5.6264, 7.5, 60, 5.6264, 0, 56, 12, 0, 64, 12, 8.5, 64, 1.5, -60, 56, 12.9852, -60, 48.5, 5.6264, -60, 63.5, 5.6264, -64, 56, 12, -56, 56, 12, 60, 56, 12.9852, 60, 48.5, 5.6264, 60, 63.5, 5.6264, 56, 56, 12, 64, 56, 12, 60, -56, 12.9852, 60, -63.5, 5.6264, 60, -48.5, 5.6264, 56, -56, 12, 64, -56, 12, 64, -47.5, 1.5, -6.16273, -57.8487, 3.4, -1.05632, 57.5955, 3.4, 16.1367, 57.894, 3.4, 56.6255, 20.7402, 3.4, -81.5066, -74.637, 12.2725, -84.3333, 56, 12, -74.1667, 56, 12, -64, 56, 12, -71.727, -44.0547, 12.2816, -71.4971, -30.3978, 7.35655, -72.205, -18.3359, 8.82351, -72.0935, -3.78996, 10.1516, -71.8314, 10.8037, 8.88084, -72.4661, 23.0828, 10.3574, -72.3792, 33.8748, 8.41503, -77.0852, 71.6423, 7.64141, -64.7373, 71.9612, 10.8453, 0, -90, 37.8015, -7.5, -90, 31.7519, 7.5, -90, 31.7519, 0, -84.8, 12, 0, -74.4, 12, 0, -64, 12, 8.5, -64, 1.5, -44.3704, -71.2569, 8.74591, -29.6676, -71.5148, 10.4174, 24.053, -71.5355, 10.2021, 25.3571, -63.0468, 1.5, 29.3873, -64.662, 1.5, 38.0601, -72.1565, 12.0236, 54.2104, -72.9661, 13.2738, -63.7406, -73.938, 8.03441, -16.5403, -73.7437, 10.0801, 0, 64, 12, 0, 74.1667, 12, 0, 84.3333, 12, 8.5, 64, 1.5, -45.5353, 71.3204, 11.3617, -29.6439, 72.7184, 12.9088, -16.0716, 73.0666, 9.23997, 25.0052, 72.8728, 12.4264, 25.0052, 72.8728, 8.04141, 37.9681, 71.5537, 9.4538, 48.8247, 71.3839, 7.31112, 59.503, 73.1074, 10.746, 64.0959, 64.6645, 1.5, 61.106, 64.1988, 1.5, 57.9599, 62.3587, 1.5, 61.0221, 63.0106, 1.5, 15.3843, 86.7698, 10.6298, 100, -77, 22.7, 92.5, -77, 16.2035, 79.6748, -73.0379, 10.8065, 64, 56, 12, 74, 56, 12, 84, 56, 12, 64, -56, 12, 74, -56, 12, 84, -56, 12, 64, -47.5, 1.5, 72.2722, -31.5272, 8.28666, 72.2367, -19.7444, 10.9508, 72.8545, -4.79045, 10.932, 72.6071, 9.0206, 10.3527, 71.6974, 23.0252, 11.1642, 78.3905, 38.922, 11.0413, 74.197, 72.2468, 10.6081, 86.2503, 72.6983, 10.9435)
+flatten = PackedVector3Array(0, 0, 50, -43.5, -46, 1.5, -40.5, -46, 1.5, -37.5, -46, 1.5, -34.5, -46, 1.5, -31.5, -46, 1.5, -28.5, -46, 1.5, -25.5, -46, 1.5, -22.5, -46, 1.5, -19.5, -46, 1.5, -16.5, -46, 1.5, -13.5, -46, 1.5, -10.5, -46, 1.5, 10.5, -46, 1.5, 13.5, -46, 1.5, 16.5, -46, 1.5, 19.5, -46, 1.5, 22.5, -46, 1.5, 25.5, -46, 1.5, 28.5, -46, 1.5, 31.5, -46, 1.5, 34.5, -46, 1.5, 37.5, -46, 1.5, 40.5, -46, 1.5, 43.5, -46, 1.5, -43.5, 46, 1.5, -40.5, 46, 1.5, -37.5, 46, 1.5, -34.5, 46, 1.5, -31.5, 46, 1.5, -28.5, 46, 1.5, -25.5, 46, 1.5, -22.5, 46, 1.5, -19.5, 46, 1.5, -16.5, 46, 1.5, -13.5, 46, 1.5, -10.5, 46, 1.5, 10.5, 46, 1.5, 13.5, 46, 1.5, 16.5, 46, 1.5, 19.5, 46, 1.5, 22.5, 46, 1.5, 25.5, 46, 1.5, 28.5, 46, 1.5, 31.5, 46, 1.5, 34.5, 46, 1.5, 37.5, 46, 1.5, 40.5, 46, 1.5, 43.5, 46, 1.5, -46, -43.5, 1.5, -46, -40.5, 1.5, -46, -37.5, 1.5, -46, -34.5, 1.5, -46, -31.5, 1.5, -46, -28.5, 1.5, -46, -25.5, 1.5, -46, -22.5, 1.5, -46, -19.5, 1.5, -46, -16.5, 1.5, -46, -13.5, 1.5, -46, -10.5, 1.5, -46, 10.5, 1.5, -46, 13.5, 1.5, -46, 16.5, 1.5, -46, 19.5, 1.5, -46, 22.5, 1.5, -46, 25.5, 1.5, -46, 28.5, 1.5, -46, 31.5, 1.5, -46, 34.5, 1.5, -46, 37.5, 1.5, -46, 40.5, 1.5, -46, 43.5, 1.5, 46, -43.5, 1.5, 46, -40.5, 1.5, 46, -37.5, 1.5, 46, -34.5, 1.5, 46, -31.5, 1.5, 46, -28.5, 1.5, 46, -25.5, 1.5, 46, -22.5, 1.5, 46, -19.5, 1.5, 46, -16.5, 1.5, 46, -13.5, 1.5, 46, -10.5, 1.5, 46, 10.5, 1.5, 46, 13.5, 1.5, 46, 16.5, 1.5, 46, 19.5, 1.5, 46, 22.5, 1.5, 46, 25.5, 1.5, 46, 28.5, 1.5, 46, 31.5, 1.5, 46, 34.5, 1.5, 46, 37.5, 1.5, 46, 40.5, 1.5, 46, 43.5, 1.5, -6.40502, -18.4756, 3.04, -6.4825, -13.4927, 3.04, -6.66864, -8.85312, 2.92, -4.2, -8.02012, 1.6, -6.76346, 5.5, 3.04, -6.69006, 10.0768, 3.04, -4.2, 10.6848, 1.6, -6.74479, 14.434, 2.92, -4.2, 15.3147, 1.6, -6.43715, 18.7048, 3.04, -4.2, 17.8629, 1.6, -6.76338, 23.6976, 3.04, -6.55099, 28.3584, 2.92, -6.26078, 33.5079, 3.04, -6.3418, 38.1675, 3.04, -13.2715, -17.6655, 2.92, -10.7, -17.5625, 1.6, -12.9003, -12.0922, 3.04, -12.7418, -6.36682, 3.04, -10.7, -5.95198, 1.6, -12.9132, 5.5, 3.04, -13.2491, 10.9747, 2.92, -13.271, 16.0792, 3.04, -10.7, 15.7794, 1.6, -12.8645, 21.405, 3.04, -12.786, 26.6034, 3.04, -12.8791, 31.4058, 3.04, -12.7943, 36.3914, 2.92, 6.79772, -18.7465, 3.04, 6.21698, -14.0721, 3.04, 6.21615, -9.07274, 2.92, 6.73294, 5.5, 3.04, 6.65177, 10.0489, 3.04, 6.53771, 14.832, 2.92, 6.64974, 19.5411, 3.04, 6.50616, 23.9451, 3.04, 6.51636, 28.2301, 2.92, 4.2, 27.5015, 1.6, 6.22241, 32.4585, 3.04, 6.7944, 37.3251, 3.04, 12.8831, -18.8965, 2.92, 13.0919, -13.8769, 3.04, 12.7975, -8.74581, 3.04, 12.7164, 5.5, 3.04, 10.7, 6.74208, 1.6, 13.2033, 10.9913, 2.92, 13.2065, 16.3575, 3.04, 10.7, 17.1462, 1.6, 12.7425, 22.0438, 3.04, 13.1134, 27.19, 2.92, 12.7481, 32.0425, 3.04, 13.0905, 36.9904, 3.04, -24, 20, 4, 24, 8, 4, -24, -8, 4, -22, 32, 3.04, 23, 26, 3.04, 22, -16, 3.04, -21, -18, 3.04, 0, 0, 1.5, 3.6, -2.8, 2.44, 4.23688, 1.79132, 2.44, -1.79132, 4.23688, 2.44, -4.23688, -1.79132, 2.44, 1.79132, -4.23688, 2.44, -16, -28, 3.22, -8, -28, 3.22, 8, -28, 3.22, 16, -28, 3.22, 0, -38, 3.21529, 0, -38, 1.72, 28, -26, 1.5, -12, -21, 1.5, 12, -21, 1.5, -4, 4.5, 1.5, 4, -4.5, 1.5, -6, 26, 1.5, 6, 12, 1.5, -20, 36, 1.5, 20, 38, 1.5, -5.5, -46, 1.5, 5.5, -46, 1.5, -5.5, 46, 1.5, 5.5, 46, 1.5, -46, -5.5, 1.5, -46, 5.5, 1.5, 46, -5.5, 1.5, 46, 5.5, 1.5, -38, -24, 2.92, 38, -10, 2.92, -38, 22, 2.92, 36, 22, 2.92, -30, 41, 2.92, -41, -12, 2.92, 41, 38, 2.92, 33, 29, 5.94018, 33, 32, 5.94018, 33, 35, 5.94018, 28, 29, 1.5, 28, 32, 1.5, 28, 35, 1.5, 38, 29, 1.5, 38, 32, 1.5, 38, 35, 1.5, -34, 34, 4, -39, 30, 1.5, -29, 39, 1.5, -38, 38, 1.5, -12, -25, 4, 12, -25, 4, -4, -34, 4, 2, 4, 4, -28, 30, 4, -32, -28, 4, -56, -56, 12, -45.8182, -56, 12, -35.6364, -56, 12, -25.4545, -56, 12, -15.2727, -56, 12, -5.09091, -56, 12, 5.09091, -56, 12, 15.2727, -56, 12, 25.4545, -56, 12, 35.6364, -56, 12, 45.8182, -56, 12, 56, -56, 12, -56, 56, 12, -45.8182, 56, 12, -35.6364, 56, 12, -25.4545, 56, 12, -15.2727, 56, 12, -5.09091, 56, 12, 5.09091, 56, 12, 15.2727, 56, 12, 25.4545, 56, 12, 35.6364, 56, 12, 45.8182, 56, 12, 56, 56, 12, -56, -56, 12, -56, -45.8182, 12, -56, -35.6364, 12, -56, -25.4545, 12, -56, -15.2727, 12, -56, -5.09091, 12, -56, 5.09091, 12, -56, 15.2727, 12, -56, 25.4545, 12, -56, 35.6364, 12, -56, 45.8182, 12, -56, 56, 12, 56, -56, 12, 56, -45.8182, 12, 56, -35.6364, 12, 56, -25.4545, 12, 56, -15.2727, 12, 56, -5.09091, 12, 56, 5.09091, 12, 56, 15.2727, 12, 56, 25.4545, 12, 56, 35.6364, 12, 56, 45.8182, 12, 56, 56, 12, 0, -60, 12.9852, -7.5, -60, 5.6264, 7.5, -60, 5.6264, 0, -64, 12, 0, -56, 12, 8.5, -64, 1.5, 0, 60, 12.9852, -7.5, 60, 5.6264, 7.5, 60, 5.6264, 0, 56, 12, 0, 64, 12, 8.5, 64, 1.5, -60, 56, 12.9852, -60, 48.5, 5.6264, -60, 63.5, 5.6264, -64, 56, 12, -56, 56, 12, 60, 56, 12.9852, 60, 48.5, 5.6264, 60, 63.5, 5.6264, 56, 56, 12, 64, 56, 12, 60, -56, 12.9852, 60, -63.5, 5.6264, 60, -48.5, 5.6264, 56, -56, 12, 64, -56, 12, 64, -47.5, 1.5, -6.16273, -57.8487, 3.4, -1.05632, 57.5955, 3.4, 16.1367, 57.894, 3.4, 56.6255, 20.7402, 3.4, -81.5066, -74.637, 12.2725, -84.3333, 56, 12, -74.1667, 56, 12, -64, 56, 12, -71.727, -44.0547, 12.2816, -71.4971, -30.3978, 7.35655, -72.205, -18.3359, 8.82351, -72.0935, -3.78996, 10.1516, -71.8314, 10.8037, 8.88084, -72.4661, 23.0828, 10.3574, -72.3792, 33.8748, 8.41503, -77.0852, 71.6423, 7.64141, -64.7373, 71.9612, 10.8453, 0, -90, 37.8015, -7.5, -90, 31.7519, 7.5, -90, 31.7519, 0, -84.8, 12, 0, -74.4, 12, 0, -64, 12, 8.5, -64, 1.5, -44.3704, -71.2569, 8.74591, -29.6676, -71.5148, 10.4174, 24.053, -71.5355, 10.2021, 25.3571, -63.0468, 1.5, 29.3873, -64.662, 1.5, 38.0601, -72.1565, 12.0236, 54.2104, -72.9661, 13.2738, -63.7406, -73.938, 8.03441, -16.5403, -73.7437, 10.0801, 0, 64, 12, 0, 74.1667, 12, 0, 84.3333, 12, 8.5, 64, 1.5, -45.5353, 71.3204, 11.3617, -29.6439, 72.7184, 12.9088, -16.0716, 73.0666, 9.23997, 25.0052, 72.8728, 12.4264, 25.0052, 72.8728, 8.04141, 37.9681, 71.5537, 9.4538, 48.8247, 71.3839, 7.31112, 59.503, 73.1074, 10.746, 64.0959, 64.6645, 1.5, 61.106, 64.1988, 1.5, 57.9599, 62.3587, 1.5, 61.0221, 63.0106, 1.5, 15.3843, 86.7698, 10.6298, 100, -77, 22.7, 92.5, -77, 16.2035, 79.6748, -73.0379, 10.8065, 64, 56, 12, 74, 56, 12, 84, 56, 12, 64, -56, 12, 74, -56, 12, 84, -56, 12, 64, -47.5, 1.5, 72.2722, -31.5272, 8.28666, 72.2367, -19.7444, 10.9508, 72.8545, -4.79045, 10.932, 72.6071, 9.0206, 10.3527, 71.6974, 23.0252, 11.1642, 78.3905, 38.922, 11.0413, 74.197, 72.2468, 10.6081, 86.2503, 72.6983, 10.9435)

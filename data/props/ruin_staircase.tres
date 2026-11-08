@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_lxvev"]
+
+[resource]
+script = ExtResource("1_lxvev")
+id = &"ruin_staircase"
+mesh_path = "res://assets/props/ruin_staircase/ruin_staircase.res"
+albedo_path = "res://assets/props/ruin_staircase/ruin_staircase_albedo.jpg"
+size = Vector3(5.0394497, 4, 4.7899194)
+collision = 2

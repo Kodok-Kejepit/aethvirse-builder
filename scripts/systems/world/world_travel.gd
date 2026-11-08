@@ -54,5 +54,5 @@ static func go(tree: SceneTree, region: RegionData, target: Vector3) -> bool:
 	GameState.current_region = region.id
 	SaveManager.autosave()
 	tree.paused = false
-	tree.change_scene_to_file.call_deferred(region.scene_path)
+	LoadingScreen.go(tree, region.scene_path)
 	return true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_cn744"]
+
+[resource]
+script = ExtResource("1_cn744")
+id = &"rubble_urban"
+mesh_path = "res://assets/props/rubble_urban/rubble_urban.res"
+albedo_path = "res://assets/props/rubble_urban/rubble_urban_albedo.jpg"
+size = Vector3(4.4488406, 1.9999999, 3.2567976)
+collision = 2

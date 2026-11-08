@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_w06vw"]
+
+[resource]
+script = ExtResource("1_w06vw")
+id = &"camp_shelter_tattered"
+mesh_path = "res://assets/props/camp_shelter_tattered/camp_shelter_tattered.res"
+albedo_path = "res://assets/props/camp_shelter_tattered/camp_shelter_tattered_albedo.jpg"
+size = Vector3(3.7819254, 2.2, 3.652125)
+collision = 0

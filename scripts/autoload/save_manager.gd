@@ -126,7 +126,7 @@ func load_slot(slot: String) -> Error:
 	get_tree().paused = false
 	apply_save(data)
 	_autosave_timer = 0.0
-	get_tree().change_scene_to_file(region_scene(GameState.current_region))
+	LoadingScreen.go(get_tree(), region_scene(GameState.current_region))
 	loaded.emit(slot)
 	return OK
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_bk7gf"]
+
+[resource]
+script = ExtResource("1_bk7gf")
+id = &"rubble_heap"
+mesh_path = "res://assets/props/rubble_heap/rubble_heap.res"
+albedo_path = "res://assets/props/rubble_heap/rubble_heap_albedo.jpg"
+size = Vector3(3.557233, 1.6, 3.4315147)
+collision = 2

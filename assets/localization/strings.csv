@@ -493,3 +493,8 @@ ACT_USE_POTION,Use potion,Pakai ramuan
 ACT_CODEX,Codex,Codex
 ACT_INVENTORY,Inventory,Inventaris
 STATUS_PREVIEW,Preview the skill,Lihat preview skill
+LOAD_TIP_1,Tap dash at the last moment before a hit: a Perfect Dodge slows time.,Dash tepat sebelum kena serangan: Perfect Dodge memperlambat waktu.
+LOAD_TIP_2,The Codex never tells you everything. Read item descriptions carefully.,Codex tidak pernah memberi tahu semuanya. Baca deskripsi item baik-baik.
+LOAD_TIP_3,Gates left open too long break — and their monsters walk out.,Gate yang dibiarkan terlalu lama akan pecah — dan monsternya keluar.
+LOAD_TIP_4,Waystones let you travel between regions in an instant.,Waystone memungkinkanmu berpindah antar-region seketika.
+LOAD_TIP_5,"Some doors only appear at night, or in the rain.","Beberapa pintu hanya muncul di malam hari, atau saat hujan."

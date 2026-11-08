@@ -100,7 +100,7 @@ func _enter(player: Player) -> void:
 	session.world_gate_uid = world_gate_uid
 	GameState.gate_session = session
 	SaveManager.autosave()
-	get_tree().change_scene_to_file.call_deferred(DUNGEON_SCENE)
+	LoadingScreen.go(get_tree(), DUNGEON_SCENE)
 
 
 ## Dungeon Break look: the ring turns red and spins faster.

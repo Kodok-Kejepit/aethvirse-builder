@@ -31,7 +31,7 @@ func _enter_double(_player: Player) -> void:
 	var day: int = GameState.clock.day() if GameState.clock != null else 1
 	GameState.gate_session = GateLayout.double_session(outer, day)
 	EventBus.secret_area_entered.emit(&"double_gate")
-	get_tree().change_scene_to_file.call_deferred(GateDungeon.SCENE)
+	LoadingScreen.go(get_tree(), GateDungeon.SCENE)
 
 
 func _process(delta: float) -> void:
@@ -45,4 +45,4 @@ func _leave(_player: Player) -> void:
 		target = session.return_scene if session.return_scene != "" else SaveManager.region_scene(GameState.current_region)
 		GameState.pending_player_position = session.return_position
 	GameState.gate_session = null
-	get_tree().change_scene_to_file.call_deferred(target)
+	LoadingScreen.go(get_tree(), target)

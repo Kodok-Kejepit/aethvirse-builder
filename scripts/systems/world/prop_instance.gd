@@ -39,7 +39,7 @@ func _ready() -> void:
 			_box(data.size * size_scale)
 		PropData.Collision.CONVEX:
 			var cs: CollisionShape3D = CollisionShape3D.new()
-			cs.shape = mi.mesh.create_convex_shape(true, true)
+			cs.shape = WorldStreamer.convex_for(prop_id, mi.mesh)
 			cs.scale = mi.scale
 			add_child(cs)
 

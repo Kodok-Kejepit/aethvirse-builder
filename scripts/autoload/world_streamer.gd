@@ -131,6 +131,7 @@ static func _top_for(c: Color) -> Color:
 
 
 func _exit_tree() -> void:
+	_convex.clear()
 	_materials.clear()
 	_styled.clear()
 
@@ -155,6 +156,26 @@ func get_loaded_chunk_count() -> int:
 
 func is_active() -> bool:
 	return _root != null and is_instance_valid(_root)
+
+
+## True once the player's own chunk is in and nothing near it is still loading.
+func is_ready_around_player() -> bool:
+	if not is_active():
+		return true
+	var player: Node3D = GameState.player
+	if player == null or not is_instance_valid(player):
+		return false
+	return _loaded_chunks.has(ChunkMath.chunk_of(player.global_position)) and _loading.is_empty()
+
+
+## Collision hull per prop model, built once and shared by every copy.
+var _convex: Dictionary[StringName, Shape3D] = {}
+
+
+func convex_for(prop_id: StringName, mesh: Mesh) -> Shape3D:
+	if not _convex.has(prop_id):
+		_convex[prop_id] = mesh.create_convex_shape(true, true)
+	return _convex[prop_id]
 
 
 

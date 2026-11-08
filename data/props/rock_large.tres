@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_2eekq"]
+
+[resource]
+script = ExtResource("1_2eekq")
+id = &"rock_large"
+mesh_path = "res://assets/props/rock_large/rock_large.res"
+albedo_path = "res://assets/props/rock_large/rock_large_albedo.jpg"
+size = Vector3(3.6314678, 2.2000003, 3.6021543)
+collision = 2

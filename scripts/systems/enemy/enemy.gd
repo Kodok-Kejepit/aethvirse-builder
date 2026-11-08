@@ -104,6 +104,7 @@ func _physics_process(delta: float) -> void:
 		return
 	attack_cooldown = maxf(attack_cooldown - delta, 0.0)
 	if creature != null:
+		creature.set_state(state_machine.get_state_name())
 		creature.drive(Vector2(velocity.x, velocity.z).length(), state_machine.get_state_name() == &"Attack", delta)
 	_watch_world_boss()
 	_since_hit += delta
@@ -310,7 +311,8 @@ func _setup_visuals() -> void:
 	var element: int = data.stats.element if data.stats != null else 0
 	var eye: Color = Element.COLORS.get(element as Element.Type, Color(1, 0.3, 0.2)) if element != 0 else Color(1, 0.3, 0.2)
 	var size: float = TIER_SIZE[clampi(data.tier, 0, 2)]
-	if not creature.build_model(StringName("mob_" + String(data.id)), CreatureBody.shape_for(data.id), size):
+	if not creature.build_rigged(data.id, CreatureBody.shape_for(data.id), size) \
+			and not creature.build_model(StringName("mob_" + String(data.id)), CreatureBody.shape_for(data.id), size):
 		creature.build(CreatureBody.shape_for(data.id), data.body_color, eye, size)
 	creature.set_overlay(_flash_material)
 	body_mesh.visible = false

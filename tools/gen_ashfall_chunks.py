@@ -247,103 +247,108 @@ def edges(c, x, z):
         c.block((128, 6, 1), (0, 3, 64), CONCRETE)
 
 
+CAMP_TENTS = ["camp_tent_dome", "camp_tent_ragged", "camp_tent_hide", "camp_tent_ragged", "camp_tent_dome", "camp_tent_hide"]
+CAMP_TENT_SIZE = {"camp_tent_dome": (3.4, 2.6, 3.4), "camp_tent_ragged": (3.0, 2.2, 3.4), "camp_tent_hide": (3.2, 2.6, 3.2),
+                  "camp_tent_frontier": (3.8, 2.8, 3.6)}
+
+
 def camp(c):
-    """Refugee camp inside the old city plaza (ring road around it, avenue to the north).
-    A palisade of planks and sheet metal closes the plaza (gates face the four streets);
-    two tent rows face each other with scrap heaps between them; the market lane runs up
-    to the statue; the campfire is the heart; water comes from a rusty tank; the waystone
-    shrine sits half hidden among rubble in the south-west corner. NPCs stand at the thing
-    they run. Safe zone: no monsters inside."""
+    """Refugee camp in the old plaza, laid out like the owner's trailer: a muddy lane
+    runs north-south between two tight rows of tents (a second row behind, packed with
+    shelters, scrap and a cabin); the lane crosses an east-west lane at the fire square;
+    the market lane and the statue close the north end; trees only in the corners.
+    Safe zone: no monsters inside the palisade."""
+    import random
+    rng = random.Random(1234)
     ground(c)
-    # Earth floor (the paving is long gone), grass and puddles mixed in by the ground shader.
     c.block((94, 0.1, 94), (0, 0.05, 0), city.DIRT)
-    c.point((0, 0, 0), 50)  # the plaza slab is too big for an automatic flatten disc
-    _camp_greenery(c)
+    c.point((0, 0, 0), 50)
     _camp_palisade(c)
-    for i, z in enumerate((-22, -8, 6, 20)):
-        c.prop("bld_refugee_tent", (-30, 0, z), (6, 3, 5), TENT, rot_y=90 + (i * 7) % 11 - 5)
-        c.prop("bld_refugee_tent", (30, 0, z), (6, 3, 5), TENT, rot_y=-90 + (i * 5) % 9 - 4)
-    for i, z in enumerate((-15, 13)):
-        c.decor("junk", (-24, 0, z), seed=300 + i)
-        c.decor("junk", (24, 0, z + 2), seed=310 + i)
-    for i, x in enumerate((-16, -7, 7, 16)):
+    # Lanes: stepping stones and stone tiles, mud puddles between them.
+    for z in range(-20, 42, 5):
+        c.prop("floor_stepping_stones" if (z // 5) % 2 else "floor_stone_tile", (rng.uniform(-0.6, 0.6), 0, z), (4.2, 0.25, 4.2), city.CONCRETE, rot_y=rng.uniform(0, 360))
+        c.points.pop()
+    for x in range(-36, 40, 6):
+        if abs(x) > 6:
+            c.prop("floor_stepping_stones", (x, 0, rng.uniform(-0.5, 0.5)), (3.6, 0.25, 3.6), city.CONCRETE, rot_y=rng.uniform(0, 360))
+            c.points.pop()
+    for i, z in enumerate((-12, 8, 22, 34)):
+        c.prop("tile_mud", (rng.uniform(-2, 2), 0, z), (rng.uniform(3, 5), 0.3, rng.uniform(2.5, 4)), city.DIRT, rot_y=rng.uniform(0, 360))
+        c.points.pop()
+    # Tent rows: front row faces the lane (x = +-6.5), back row behind it (x = +-13).
+    k = 0
+    for side in (-1, 1):
+        for row_x, step in ((6.5, 4.6), (13.0, 5.2)):
+            z = -19.0 + rng.uniform(0, 1.5)
+            while z < 41:
+                if abs(z) < 5.5:  # the east-west lane / fire square
+                    z = 5.5
+                    continue
+                facing = 90 if side < 0 else -90
+                if row_x > 10 and rng.random() < 0.35:
+                    filler = rng.choice(["camp_shelter", "camp_shelter_tattered", "camp_scrap_sheets", "camp_expedition"])
+                    c.prop(filler, (side * (row_x + rng.uniform(-0.4, 0.4)), 0, z), (3.4, 2.3, 3.0), TENT, rot_y=facing + rng.uniform(-20, 20))
+                else:
+                    tent = CAMP_TENTS[k % len(CAMP_TENTS)]
+                    k += 1
+                    c.prop(tent, (side * (row_x + rng.uniform(-0.3, 0.3)), 0, z), CAMP_TENT_SIZE[tent], TENT, rot_y=facing + rng.uniform(-12, 12))
+                if rng.random() < 0.3:
+                    c.prop(rng.choice(["camp_crate_broken", "camp_bench_broken"]), (side * (row_x - 2.3), 0, z + rng.uniform(-1.5, 1.5)), (1.0, 0.8, 1.0), city.DIRT, rot_y=rng.uniform(0, 360))
+                z += step + rng.uniform(-0.4, 0.6)
+    # Third ring: a cabin and scrap shacks on the far sides.
+    for i, (x, z, r) in enumerate([(-24, 20, 90), (24, 8, -90), (-24, -8, 90)]):
+        c.prop("camp_cabin", (x, 0, z), (5.0, 4.2, 4.6), BUILDING, rot_y=r)
+    for i, (x, z) in enumerate([(-22, 32), (23, 26), (22, -16), (-21, -18)]):
+        c.prop("camp_scrap_sheets", (x, 0, z), (3.4, 2.0, 3.0), city.RUST, rot_y=rng.uniform(0, 360))
+    # Fire square at the crossing.
+    c.decor("campfire", (0, 0, 0))
+    c.prop("camp_cookfire", (3.6, 0, -2.8), (2.4, 2.0, 2.0), city.DIRT, rot_y=200)
+    for i in range(4):
+        a = i / 4 * math.tau + 0.4
+        c.prop("ruin_log_1", (math.cos(a) * 4.6, 0, math.sin(a) * 4.6), (2.4, 0.7, 1.0), city.DIRT, rot_y=math.degrees(-a) + 90)
+    # Market lane and statue (north end).
+    for x in (-16, -8, 8, 16):
         c.prop("prop_market_stall", (x, 0, -28), (3.7, 3.2, 1.8), "Color(0.45, 0.32, 0.22, 1)", rot_y=180)
     c.block((3.2, 1.0, 3.2), (0, 0.5, -38), CONCRETE)
     c.prop("statue_starblade", (0, 1.0, -38), (1.2, 3.0, 1.2), CONCRETE, rot_y=180)
-    c.decor("campfire", (0, 0, 0))
-    c.decor("water_tank", (16, 0, 14), seed=7)
-    for i, (x, z) in enumerate([(-12, -18), (12, -18), (-12, 18), (12, 18), (-20, -36), (20, -36)]):
+    c.decor("water_tank", (28, 0, -26), seed=7)
+    c.prop("tile_mud", (28, 0, -23), (5, 0.3, 4), city.DIRT, rot_y=30)
+    c.points.pop()
+    for i, (x, z) in enumerate([(-12, -21), (12, -21), (-4, 4.5), (4, -4.5), (-6, 26), (6, 12), (-20, 36), (20, 38)]):
         c.decor("lantern", (x, 0, z), "Color(1, 0.7, 0.4, 1)", seed=60 + i)
     for i, (x, z, r) in enumerate([(0, -46, 0), (0, 46, 180), (-46, 0, 90), (46, 0, 270)]):
         for dx in (-5.5, 5.5):
             px, pz = (x + dx, z) if r in (0, 180) else (x, z + dx)
             c.decor("banner", (px, 0, pz), "Color(0.25, 0.55, 0.85, 1)", rot_y=r)
-    # Waystone shrine: tucked into the rubble of the south-west corner.
-    c.instance("waystone", (-36, 0, 36), 'waystone_id = &"r1_camp"\n')
-    for i, (x, z) in enumerate([(-41, 31), (-30, 41), (-42, 40), (-31, 30)]):
-        c.decor("debris", (x, 0, z), seed=700 + i)
-    c.npc("bread_seller", (-12, 0, -25), 0)
-    c.npc("appraiser", (12, 0, -25), 0)
-    c.npc("quartermaster", (-5, 0, -35), 20)
-    c.npc("camp_kid", (5, 0, 5), 220)
-    c.instance("sign", (-28, 0, 32), 'text_key = &"HINT_SM_R1_01_6"\nhint_secret = &"SM-R1-01:3"\n')
-    c.instance("dummy", (-20, 0, 24))
-    c.label("REFUGEE CAMP", (0, 9, -40), 64)
-
-
-def _camp_greenery(c):
-    """The camp grew into the old plaza: big mossy trees the survivors camp under, roots
-    and grass where the paving broke, remnant asphalt slabs, mud by the water tank, a fenced
-    vegetable garden, and the clutter of people living here. Layout by area:
-      NW / NE corners: tent rows sheltered under old trees (shade, roots, moss)
-      centre: campfire on a remnant asphalt slab, logs to sit on
-      SE: vegetable garden, SW: waystone shrine in rubble, N: market lane to the statue."""
-    import random
-    rng = random.Random(91)
-    # Old trees: behind each tent row and along the market lane, never on paths.
-    for i, (x, z, h) in enumerate([(-41, -30, 12), (-42, -5, 10.5), (-41, 22, 11.5), (41, -28, 11), (42, 2, 12.5),
-                                   (-24, -40, 9), (24, -40, 9.5), (-12, 36, 10)]):
+    # Corners: old trees, rocks, rubble against the palisade, the vegetable garden (SE).
+    for i, (x, z, h) in enumerate([(-40, -38, 11), (40, -38, 12), (-40, 40, 10.5), (-41, 6, 10)]):
         c.tree("ruin", (x, 0, z), h, 9000 + i)
         c.prop("tile_roots_grass", (x, 0, z), (6, 0.9, 6), city.DIRT, rot_y=i * 47)
         c.points.pop()
-    for i, (x, z) in enumerate([(-36, 32), (37, 30), (-28, -42), (30, 40)]):
-        c.tree("ruin_bush", (x, 0, z), 2.8, 9100 + i)
-    for i, (x, z) in enumerate([(-33, -18), (35, -14), (14, 28)]):
-        c.tree("ruin_stump", (x, 0, z), 1.8, 9200 + i)
-    # Remnants of the old plaza paving, broken into slabs, earth between them.
-    for i, (x, z, w, d) in enumerate([(0, 0, 9, 9), (-6, -24, 7, 5), (8, -22, 6, 5), (-10, 10, 5, 4),
-                                      (12, 8, 6, 4), (0, -34, 8, 5)]):
-        c.prop("tile_asphalt_broken", (x, 0, z), (w, 0.5, d), city.ASPHALT, rot_y=rng.uniform(0, 360))
-        c.points.pop()
-    # Logs and stumps around the fire to sit on.
-    for i in range(4):
-        a = i / 4 * math.tau + 0.4
-        c.prop("ruin_log_1", (math.cos(a) * 5.0, 0, math.sin(a) * 5.0), (2.4, 0.7, 1.0), city.DIRT, rot_y=math.degrees(-a) + 90)
-    # Mud where water spills under the tank.
-    c.prop("tile_mud", (16, 0, 14), (6, 0.35, 5), city.DIRT, rot_y=20)
-    c.points.pop()
-    # Moss and grass in the shady corners and along the palisade.
-    for i, (x, z, w, d) in enumerate([(-38, 10, 8, 14), (38, 12, 8, 14), (-18, 30, 10, 8), (30, -38, 10, 6),
-                                      (-30, -38, 10, 6), (0, 42, 18, 4), (-42, -18, 4, 14), (42, -18, 4, 14)]):
-        c.grass(city.MOSS, 1100, 200 + i, (w, d), (x, 0, z))
-    for i, (x, z) in enumerate([(-40, 40), (40, -42), (-22, 42)]):
-        c.prop("ruin_rock_%d" % (1 + i % 2), (x, 0, z), (2.4, 1.6, 2.2), city.CONCRETE, rot_y=i * 80)
-    # Vegetable garden: four raised beds with crops, a plank fence around it.
-    gx, gz = 22, 34
-    for k in range(4):
-        z = gz - 4.5 + k * 3.0
-        c.block((12, 0.3, 1.1), (gx, 0.15, z), city.DIRT)
-        c.grass("Color(0.3, 0.55, 0.22, 1)", 260, 300 + k, (11, 0.8), (gx, 0.3, z))
-    for x in (gx - 6.5, gx + 6.5):
-        for z in (gz - 4.5, gz - 1.5, gz + 1.5, gz + 4.5):
-            c.decor("fence", (x, 0, z), rot_y=90.0, seed=int(x * 3 + z))
-    for x in (gx - 4.5, gx - 1.5, gx + 1.5, gx + 4.5):
-        c.decor("fence", (x, 0, gz - 6.5), seed=int(x * 5))
-    # Life around the stalls and tents.
-    for i, (x, z) in enumerate([(-21, -31), (-20, -33), (21, -31), (20, -33.5), (-24, 2), (24, -2), (-8, 12), (9, -10)]):
-        c.decor("crate" if i % 3 else "barrel", (x, 0, z), seed=150 + i)
-    for i, (x, z) in enumerate([(-24, -26), (24, 20), (-6, 28), (34, 0)]):
-        c.decor("junk", (x, 0, z), seed=330 + i)
+    for i, (x, z, pid) in enumerate([(-38, -24, "rock_boulders"), (38, -10, "rubble_heap"), (-38, 22, "rubble_urban"),
+                                     (36, 22, "rock_large"), (-30, 41, "rock_rune"), (-41, -12, "rubble_heap"), (41, 38, "rock_boulders")]):
+        c.prop(pid, (x, 0, z), (3.2, 2.0, 3.0), city.CONCRETE, rot_y=i * 67)
+    for i, (x, z, w, d) in enumerate([(-40, 30, 6, 12), (40, -26, 6, 10), (-30, -40, 12, 4), (30, 42, 12, 4)]):
+        c.grass(city.MOSS, 900, 200 + i, (w, d), (x, 0, z))
+    gx, gz = 33, 32
+    for kk in range(3):
+        zz = gz - 3 + kk * 3.0
+        c.block((9, 0.3, 1.1), (gx, 0.15, zz), city.DIRT)
+        c.grass("Color(0.3, 0.55, 0.22, 1)", 200, 300 + kk, (8, 0.8), (gx, 0.3, zz))
+    for x in (gx - 5.0, gx + 5.0):
+        for zz in (gz - 3.0, gz, gz + 3.0):
+            c.decor("fence", (x, 0, zz), rot_y=90.0, seed=int(x * 3 + zz))
+    # Waystone shrine half hidden in the south-west rubble.
+    c.instance("waystone", (-34, 0, 34), 'waystone_id = &"r1_camp"\n')
+    for i, (x, z) in enumerate([(-39, 30), (-29, 39), (-38, 38)]):
+        c.decor("debris", (x, 0, z), seed=700 + i)
+    c.npc("bread_seller", (-12, 0, -25), 0)
+    c.npc("appraiser", (12, 0, -25), 0)
+    c.npc("quartermaster", (-4, 0, -34), 20)
+    c.npc("camp_kid", (2, 0, 4), 220)
+    c.instance("sign", (-28, 0, 30), 'text_key = &"HINT_SM_R1_01_6"\nhint_secret = &"SM-R1-01:3"\n')
+    c.instance("dummy", (-32, 0, -28))
+    c.label("REFUGEE CAMP", (0, 9, -40), 64)
 
 
 def _camp_palisade(c):

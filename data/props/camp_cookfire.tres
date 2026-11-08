@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_nqbur"]
+
+[resource]
+script = ExtResource("1_nqbur")
+id = &"camp_cookfire"
+mesh_path = "res://assets/props/camp_cookfire/camp_cookfire.res"
+albedo_path = "res://assets/props/camp_cookfire/camp_cookfire_albedo.jpg"
+size = Vector3(3.118214, 2, 2.9665577)
+collision = 0

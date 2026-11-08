@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_jh0kk"]
+
+[resource]
+script = ExtResource("1_jh0kk")
+id = &"rock_monolith_moss"
+mesh_path = "res://assets/props/rock_monolith_moss/rock_monolith_moss.res"
+albedo_path = "res://assets/props/rock_monolith_moss/rock_monolith_moss_albedo.jpg"
+size = Vector3(2.516325, 3.6000001, 2.5999098)
+collision = 2

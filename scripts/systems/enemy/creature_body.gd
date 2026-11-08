@@ -29,6 +29,22 @@ var _dark: StandardMaterial3D
 var _eye: StandardMaterial3D
 ## Imported model root (null = primitive body).
 var _model: Node3D = null
+## Rigged monster (assets/creatures/<id>/<id>.glb from Meshy rig + animate): clips play
+## by AI state instead of the procedural motion.
+var _anim: AnimationPlayer = null
+var _state: StringName = &"Idle"
+var _clip: StringName = &""
+## AI state -> clip name inside the rigged GLB (Meshy library names).
+const RIG_CLIPS: Dictionary[StringName, Array] = {
+	&"idle": [&"Idle_3", &"Idle", &"Idle_1"],
+	&"walk": [&"Slow_Orc_Walk_inplace", &"Walking", &"Walk"],
+	&"attack": [&"Heavy_Hammer_Swing", &"Attack"],
+	&"hurt": [&"Hit_Reaction"],
+	&"dead": [&"dying_backwards", &"Dead"],
+}
+const RIG_BLEND_S: float = 0.18
+const RIG_WALK_SPEED: float = 1.6
+const RIG_PATH: String = "res://assets/creatures/%s/%s.glb"
 
 
 static func shape_for(id: StringName) -> Shape:
@@ -60,6 +76,75 @@ func build(body_shape: Shape, color: Color, eye_color: Color, size: float) -> vo
 			_serpent()
 		_:
 			_humanoid(1.0, 1.0, 1.0, false)
+
+
+## Rigged + animated model for this enemy id, if one was imported (kept at its own height).
+func build_rigged(enemy_id: StringName, body_shape: Shape, size: float) -> bool:
+	var path: String = RIG_PATH % [enemy_id, enemy_id]
+	if not ResourceLoader.exists(path):
+		return false
+	shape = body_shape
+	scale = Vector3.ONE * size
+	var model: Node3D = (load(path) as PackedScene).instantiate() as Node3D
+	# Meshy rigs face +Z; the game faces -Z.
+	model.rotation.y = PI
+	_model = Node3D.new()
+	_model.name = "Rigged"
+	add_child(_model)
+	_model.add_child(model)
+	var players: Array[Node] = model.find_children("*", "AnimationPlayer", true, false)
+	if players.is_empty():
+		return true
+	_anim = players[0] as AnimationPlayer
+	for list_name: StringName in [&"idle", &"walk"]:
+		var clip: StringName = _find_clip(list_name)
+		if clip != &"":
+			_anim.get_animation(clip).loop_mode = Animation.LOOP_LINEAR
+	for mi: Node in model.find_children("*", "MeshInstance3D", true, false):
+		parts.append(mi as MeshInstance3D)
+		(mi as MeshInstance3D).extra_cull_margin = 2.0
+	_play(&"idle")
+	return true
+
+
+func set_state(state: StringName) -> void:
+	_state = state
+
+
+func _find_clip(kind: StringName) -> StringName:
+	for c: StringName in RIG_CLIPS[kind]:
+		if _anim.has_animation(c):
+			return c
+	return &""
+
+
+func _play(kind: StringName, rate: float = 1.0) -> void:
+	var clip: StringName = _find_clip(kind)
+	if clip == &"":
+		return
+	_anim.speed_scale = rate
+	if clip != _clip:
+		_clip = clip
+		_anim.play(clip, RIG_BLEND_S)
+
+
+func _drive_rigged(speed: float, attacking: bool) -> void:
+	match _state:
+		&"Dead":
+			_play(&"dead")
+		&"Hurt":
+			_play(&"hurt")
+		_:
+			if attacking:
+				_play(&"attack")
+			elif speed > 0.3:
+				_play(&"walk", clampf(speed / RIG_WALK_SPEED, 0.7, 2.2))
+			else:
+				_play(&"idle")
+
+
+func is_rigged() -> bool:
+	return _anim != null
 
 
 ## Uses the imported model `model_id` instead of primitives. Returns false if missing.
@@ -97,6 +182,9 @@ func drive(speed: float, attacking: bool, delta: float) -> void:
 	_attack = lerpf(_attack, 1.0 if attacking else 0.0, 1.0 - exp(-12.0 * delta))
 	var s: float = sin(_phase)
 	var moving: float = clampf(speed / 3.0, 0.0, 1.0)
+	if _anim != null:
+		_drive_rigged(speed, attacking)
+		return
 	if _model != null:
 		_drive_model(s, moving)
 		return

@@ -187,7 +187,7 @@ func _fade_then(next: Callable) -> void:
 
 func _start_new() -> void:
 	GameState.progression = null
-	get_tree().change_scene_to_file(NEXT_SCENE)
+	LoadingScreen.go(get_tree(), NEXT_SCENE)
 
 
 func _continue(slot: String) -> void:

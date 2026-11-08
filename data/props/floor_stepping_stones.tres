@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_qqivj"]
+
+[resource]
+script = ExtResource("1_qqivj")
+id = &"floor_stepping_stones"
+mesh_path = "res://assets/props/floor_stepping_stones/floor_stepping_stones.res"
+albedo_path = "res://assets/props/floor_stepping_stones/floor_stepping_stones_albedo.jpg"
+size = Vector3(4.8097086, 0.24999999, 4.77141)
+collision = 0
