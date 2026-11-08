@@ -184,3 +184,7 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 ## Respawn at the last altar (2026-11-08)
 - Owner: respawn at the last waystone touched, anywhere, "biar ga semudah itu". Dying in a Gate counts as failing it: you are carried out to that altar (assumption; easy to change to "stay in the dungeon" in WorldTravel.respawn_at_altar).
 
+## Dungeon v2 replaces teleport doors (2026-11-08)
+- Superseded "doors teleport instead of corridors": the owner wants a walkable cave map. The imported door models are single meshes, so doors open by sinking into the floor (shudder + 1.4 s slide) instead of swinging. Door models face -Z in their files; DungeonDoor turns them.
+- Rooms are placed on a 64 m grid so tunnels are 25–40 m of real cave between rooms.
+

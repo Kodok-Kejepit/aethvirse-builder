@@ -1,19 +1,19 @@
 class_name GateDungeon
 extends Node3D
-## Builds a Gate instance from GameState.gate_session: a seeded, branching set of
-## irregular roofed rooms (DungeonPlan + DungeonRoomBuilder) joined by doors, ending in a
-## boss hall. Side branches hold treasure, cracked walls hide caches, and some runs have
-## a sealed Double Gate door (needs a Gate Key). Size and enemy levels scale with the
-## player (GateLayout). Handles door travel, rules, rewards and the exit.
+## Builds a Gate instance from GameState.gate_session as one connected cave map: abstract
+## rooms joined by winding tunnels (DungeonPlan -> DungeonField -> DungeonMesher), some
+## through doors you push open, some open, some a wide breach. A room seals its mouths
+## with red wards while it fights. Side rooms hold treasure, cracked walls hide caches,
+## and some runs have the winged Double Gate door (needs a Gate Key). Size and enemy
+## levels scale with the player (GateLayout). Handles rules, rewards and the exit.
 
-## Rooms sit far apart: doors move the player between them (fade to black).
-const ROOM_SPACING_M: float = 110.0
-const DOOR_SHOVE_S: float = 0.4
-const FADE_S: float = 0.35
-const DARK_HOLD_S: float = 0.6
-const FADE_LAYER: int = 110
 const SCENE: String = "res://scenes/world/gates/gate_dungeon.tscn"
 const EXIT_PORTAL_SCENE: String = "res://scenes/world/gates/exit_portal.tscn"
+const DOUBLE_DOOR_MODEL: StringName = &"door_winged"
+const VISIBILITY_TICK_S: float = 0.25
+## Red Gates: harder monsters, triple gold (no way out but forward).
+const RED_LEVEL_BONUS: int = 5
+const RED_REWARD_MULT: int = 3
 
 @export var fallback_gate: GateData
 
@@ -21,12 +21,14 @@ const EXIT_PORTAL_SCENE: String = "res://scenes/world/gates/exit_portal.tscn"
 
 var session: GateSession
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var plan: DungeonPlan
+var field: DungeonField
 var _theme: GateTheme
 var _rooms: Array[GateRoom] = []
-var _room_doors: Array[Array] = []
-var _current: int = 0
-var _busy: bool = false
-var _fade: ColorRect = null
+## Per room: everything drawn for it (meshes, lights, props), shown near the player.
+var _groups: Array[Node3D] = []
+var _current: int = -1
+var _tick: float = 0.0
 
 
 func _ready() -> void:
@@ -47,11 +49,6 @@ func _ready() -> void:
 		Codex.notify(tr(StringName("GATE_RULE_" + String(rule).to_upper())), &"anomaly")
 
 
-## Red Gates: harder monsters, triple gold (no way out but forward).
-const RED_LEVEL_BONUS: int = 5
-const RED_REWARD_MULT: int = 3
-
-
 func _build() -> void:
 	var gate: GateData = session.gate
 	var level: int = GameState.progression.level if GameState.progression != null else 1
@@ -63,45 +60,112 @@ func _build() -> void:
 	var double_at: int = -1
 	if session.force_double or GateLayout.has_double_gate(gate, day):
 		double_at = GateLayout.double_gate_room(main_rooms, day)
-	var plan: DungeonPlan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at)
-	var builder: DungeonRoomBuilder = DungeonRoomBuilder.new(_theme, _theme.door_models)
-	builder.level = level
-	builder.chest_prefix = "%s_%d" % [gate.id, day]
-	var boss: EnemyData = _scaled(gate.boss, level)
+	plan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at)
+	field = DungeonField.build(plan, rng.randi())
 	for i: int in plan.rooms.size():
-		var spec: DungeonPlan.Room = plan.rooms[i]
-		var room: GateRoom = BossRoom.new() if spec.kind == DungeonPlan.Kind.BOSS else GateRoom.new()
-		room.position = Vector3(float(i) * ROOM_SPACING_M, 0.0, 0.0)
-		add_child(room)
-		var doors: Array[DungeonDoor] = builder.build(room, spec, i)
-		for d: int in doors.size():
-			var door: DungeonDoor = doors[d]
-			if door == null:
-				continue
-			room.doors.append(door)
-			door.used.connect(_on_door_used)
-			if d < spec.doors.size():
-				var to: int = spec.doors[d]["to"]
-				door.target_room = to
-				door.target_door = plan.door_back(i, door.target_room)
-		if spec.kind == DungeonPlan.Kind.BOSS:
-			room.enemies.append(boss)
-			room.cleared.connect(_on_boss_cleared)
-			_hook_boss(room as BossRoom, boss, gate, level)
-		else:
-			for e: int in spec.enemy_count:
-				room.enemies.append(_scaled(gate.enemy_pool[rng.randi() % gate.enemy_pool.size()], level))
-		room.setup_trigger()
-		_rooms.append(room)
-		_room_doors.append(doors)
-	_show_room(0)
-	var start: DungeonPlan.Room = plan.rooms[0]
-	player.global_position = Vector3(0.0, 0.2, start.radius * 0.45)
-	# Falling in battle sends you back to the start room (it must be drawn again).
+		var group: Node3D = Node3D.new()
+		group.name = "Room%d" % i
+		add_child(group)
+		_groups.append(group)
+	var mesher: DungeonMesher = DungeonMesher.new(_theme)
+	mesher.build(field, _groups)
+	var dresser: DungeonDresser = DungeonDresser.new(_theme, field, plan)
+	dresser.level = level
+	dresser.chest_prefix = "%s_%d" % [gate.id, day]
+	for i: int in plan.rooms.size():
+		dresser.dress(i, _groups[i], mesher.wall_material)
+		_rooms.append(_make_room(i, gate, level))
+	for t: Dictionary in field.tunnels:
+		var a: int = t["a"]
+		dresser.dress_tunnel(_groups[a], t)
+		_link_pieces(t, mesher.wall_material)
+	for e: Dictionary in field.dead_ends:
+		_double_door(e, mesher.wall_material)
+	var start: Vector2 = plan.center(0)
+	player.global_position = Vector3(start.x, 0.3, start.y)
+	# Falling in battle without an altar sends you back to the start room.
 	player.spawn_point = player.global_position
 	player.last_safe_position = player.global_position
 	EventBus.player_respawned.connect(_on_player_respawned)
+	_update_visibility(true)
 	# No way back out of a Double Gate: the exit only opens when its boss falls.
+
+
+func _make_room(index: int, gate: GateData, level: int) -> GateRoom:
+	var spec: DungeonPlan.Room = plan.rooms[index]
+	var is_boss: bool = spec.kind == DungeonPlan.Kind.BOSS
+	var room: GateRoom = BossRoom.new() if is_boss else GateRoom.new()
+	var c: Vector2 = plan.center(index)
+	room.position = Vector3(c.x, 0.0, c.y)
+	room.size = Vector2.ONE * spec.radius * 2.4
+	add_child(room)
+	room.spawn_points = _spawn_points(index)
+	if is_boss:
+		var boss: EnemyData = _scaled(gate.boss, level)
+		room.enemies.append(boss)
+		room.cleared.connect(_on_boss_cleared)
+		_hook_boss(room as BossRoom, boss, gate, level)
+	else:
+		for _e: int in spec.enemy_count:
+			room.enemies.append(_scaled(gate.enemy_pool[rng.randi() % gate.enemy_pool.size()], level))
+	# The fight starts once the player is well inside (past the mouths and their wards).
+	room.setup_trigger(Vector2.ONE * (spec.radius + 4.0))
+	return room
+
+
+func _spawn_points(index: int) -> Array[Vector3]:
+	var out: Array[Vector3] = []
+	var c: Vector2 = plan.center(index)
+	var r: float = plan.rooms[index].radius
+	for _try: int in 60:
+		if out.size() >= 6:
+			break
+		var p: Vector2 = c + Vector2.from_angle(rng.randf() * TAU) * r * rng.randf_range(0.2, 0.7)
+		if field.room_value(index, p) > 0.25 and field.value_at(p) > 0.3:
+			out.append(Vector3(p.x - c.x, 0.3, p.y - c.y))
+	if out.is_empty():
+		out.append(Vector3(0.0, 0.3, 0.0))
+	return out
+
+
+## Wards at both mouths of a tunnel, and its door when the link is a door.
+func _link_pieces(t: Dictionary, wall_material: Material) -> void:
+	var kind: DungeonPlan.Link = t["kind"]
+	var width: float = t["width"]
+	for end: String in ["a", "b"]:
+		var room: int = t[end]
+		var mouth: Vector2 = t["mouth_" + end]
+		var dir: Vector2 = t["dir_" + end]
+		var ward: DungeonWard = DungeonWard.new()
+		ward.position = Vector3(mouth.x, 0.0, mouth.y)
+		ward.rotation.y = atan2(dir.x, dir.y)
+		add_child(ward)
+		ward.setup(width * 2.0 + 2.5, field.roof_near(mouth, width + 1.5) + 0.5)
+		_rooms[room].wards.append(ward)
+	if kind == DungeonPlan.Link.DOOR:
+		var mouth_b: Vector2 = t["mouth_b"]
+		var dir_b: Vector2 = t["dir_b"]
+		var door: DungeonDoor = DungeonDoor.new()
+		# A little into the tunnel, facing the way the player comes from.
+		var at: Vector2 = mouth_b + dir_b * 1.5
+		door.position = Vector3(at.x, 0.0, at.y)
+		door.rotation.y = atan2(dir_b.x, dir_b.y)
+		add_child(door)
+		door.setup(_theme.door_models[rng.randi() % _theme.door_models.size()], false)
+		door.build_frame(wall_material, field.roof_near(at, DungeonDoor.HALF_WIDTH_M + 1.0))
+		door.used.connect(_on_door_used)
+
+
+func _double_door(e: Dictionary, wall_material: Material) -> void:
+	var end_at: Vector2 = e["end"]
+	var dir: Vector2 = e["dir"]
+	var door: DungeonDoor = DungeonDoor.new()
+	door.position = Vector3(end_at.x, 0.0, end_at.y)
+	door.rotation.y = atan2(-dir.x, -dir.y)
+	add_child(door)
+	door.setup(DOUBLE_DOOR_MODEL, true)
+	door.build_frame(wall_material, field.roof_near(end_at, DungeonDoor.HALF_WIDTH_M + 1.0))
+	door.used.connect(_on_door_used)
 
 
 func _hook_boss(room: BossRoom, boss: EnemyData, gate: GateData, level: int) -> void:
@@ -124,119 +188,119 @@ func _scaled(data: EnemyData, player_level: int) -> EnemyData:
 	return copy
 
 
+func _on_door_used(door: DungeonDoor) -> void:
+	if door.is_double:
+		door.open()
+		Codex.anomaly(tr(&"CODEX_MSG_DOUBLE_HUM"), 0.1)
+		get_tree().create_timer(DungeonDoor.OPEN_S).timeout.connect(func() -> void: ExitPortal.enter_double(get_tree()))
+		return
+	door.open()
+
+
 func _on_player_respawned() -> void:
-	_show_room(0)
+	_update_visibility(true)
 	player.reset_physics_interpolation()
 	player.camera_rig.snap_to(player.visual.rotation.y)
 
 
-## Only the room the player is in is shown (lights, draw calls).
-func _show_room(index: int) -> void:
-	_current = index
-	for i: int in _rooms.size():
-		_rooms[i].visible = i == index
+func _process(delta: float) -> void:
+	_tick -= delta
+	if _tick <= 0.0:
+		_tick = VISIBILITY_TICK_S
+		_update_visibility(false)
 
 
-func _on_door_used(door: DungeonDoor) -> void:
-	if _busy:
+## Draws only the room the player is in and the rooms next to it.
+func _update_visibility(force: bool) -> void:
+	if field == null:
 		return
-	if door.is_double:
-		_busy = true
-		door.shove()
-		Codex.anomaly(tr(&"CODEX_MSG_DOUBLE_HUM"), 0.1)
-		ExitPortal.enter_double(get_tree())
+	var here: int = field.room_at(Vector2(player.global_position.x, player.global_position.z))
+	if here < 0 or (here == _current and not force):
 		return
-	if door.target_room < 0 or door.target_room >= _rooms.size():
-		return
-	_travel(door)
+	_current = here
+	var near: Array[int] = plan.neighbours(here)
+	for i: int in _groups.size():
+		_groups[i].visible = i == here or i in near
 
 
-## Shove the door, fade to black, move to the matching door of the next room, fade in.
-func _travel(door: DungeonDoor) -> void:
-	_busy = true
-	door.shove()
-	await get_tree().create_timer(DOOR_SHOVE_S).timeout
-	var fade_in: Tween = _fader().create_tween()
-	fade_in.tween_property(_fade, ^"color:a", 1.0, FADE_S)
-	await fade_in.finished
-	get_tree().paused = true
-	var to_room: int = door.target_room
-	_show_room(to_room)
-	var target: DungeonDoor = _room_doors[to_room][door.target_door] if door.target_door >= 0 else null
-	var facing: Vector3 = target.global_basis.z if target != null else Vector3.FORWARD
-	player.global_position = target.arrival_point() if target != null else _rooms[to_room].global_position + Vector3.UP * 0.2
-	player.velocity = Vector3.ZERO
-	player.last_safe_position = player.global_position
-	player.visual.rotation.y = MovementMath.yaw_for_direction(facing)
-	player.reset_physics_interpolation()
-	if player.camera_rig != null:
-		player.camera_rig.snap_to(MovementMath.yaw_for_direction(facing))
-	await get_tree().create_timer(DARK_HOLD_S).timeout
-	get_tree().paused = false
-	_rooms[to_room].start.call_deferred()
-	var fade_out: Tween = _fader().create_tween()
-	fade_out.tween_property(_fade, ^"color:a", 0.0, FADE_S)
-	await fade_out.finished
-	_busy = false
-
-
-func _fader() -> ColorRect:
-	if _fade == null:
-		var layer: CanvasLayer = CanvasLayer.new()
-		layer.layer = FADE_LAYER
-		layer.process_mode = Node.PROCESS_MODE_ALWAYS
-		add_child(layer)
-		_fade = ColorRect.new()
-		_fade.color = Color(0.0, 0.0, 0.0, 0.0)
-		_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		_fade.process_mode = Node.PROCESS_MODE_ALWAYS
-		layer.add_child(_fade)
-	return _fade
-
-
-## Debug: stand just inside the first door of a room (no fight starts).
+## Debug: stand in a room's centre (its fight starts as you arrive).
 func debug_goto(index: int) -> void:
 	if index < 0 or index >= _rooms.size():
 		return
-	_show_room(index)
-	var doors: Array[DungeonDoor] = []
-	doors.assign(_room_doors[index])
-	var door: DungeonDoor = doors[0] if not doors.is_empty() else null
-	var facing: Vector3 = door.global_basis.z if door != null else Vector3.FORWARD
-	player.global_position = door.arrival_point() if door != null else _rooms[index].global_position + Vector3.UP * 0.2
-	player.visual.rotation.y = MovementMath.yaw_for_direction(facing)
+	var c: Vector2 = plan.center(index)
+	player.global_position = Vector3(c.x, 0.3, c.y)
+	player.velocity = Vector3.ZERO
+	player.last_safe_position = player.global_position
 	player.reset_physics_interpolation()
-	player.camera_rig.snap_to(MovementMath.yaw_for_direction(facing))
+	player.camera_rig.snap_to(player.visual.rotation.y)
+	_update_visibility(true)
 
 
-## Debug: clear the current room and use its last door (normal travel, with the fade).
+## Debug: stand in the middle of a tunnel, looking along it towards room b.
+func debug_tunnel(index: int) -> void:
+	if index < 0 or index >= field.tunnels.size():
+		return
+	var points: PackedVector2Array = field.tunnels[index]["points"]
+	var k: int = floori(float(points.size()) / 2.0)
+	var at: Vector2 = points[k]
+	var ahead: Vector2 = points[mini(k + 1, points.size() - 1)] - at
+	player.global_position = Vector3(at.x, 0.3, at.y)
+	player.velocity = Vector3.ZERO
+	player.visual.rotation.y = MovementMath.yaw_for_direction(Vector3(ahead.x, 0.0, ahead.y))
+	player.reset_physics_interpolation()
+	player.camera_rig.snap_to(player.visual.rotation.y)
+	_update_visibility(true)
+
+
+## Debug: stand in front of the first door (tunnel side), looking at it.
+func debug_door() -> void:
+	for t: Dictionary in field.tunnels:
+		var kind: DungeonPlan.Link = t["kind"]
+		if kind != DungeonPlan.Link.DOOR:
+			continue
+		var mouth: Vector2 = t["mouth_b"]
+		var dir: Vector2 = t["dir_b"]
+		var at: Vector2 = mouth + dir * 7.0
+		player.global_position = Vector3(at.x, 0.3, at.y)
+		player.velocity = Vector3.ZERO
+		player.visual.rotation.y = MovementMath.yaw_for_direction(Vector3(-dir.x, 0.0, -dir.y))
+		player.reset_physics_interpolation()
+		player.camera_rig.snap_to(player.visual.rotation.y)
+		_update_visibility(true)
+		return
+
+
+## Debug: clear the current room and jump to the next one.
 func debug_next() -> void:
-	var doors: Array[DungeonDoor] = []
-	doors.assign(_room_doors[_current])
-	_rooms[_current].enemies.clear()
-	_rooms[_current].start()
-	if not doors.is_empty():
-		_on_door_used(doors[doors.size() - 1])
+	var here: int = maxi(_current, 0)
+	_rooms[here].enemies.clear()
+	_rooms[here].start()
+	for enemy: Node in get_children():
+		if enemy is Enemy:
+			enemy.queue_free()
+	debug_goto(mini(here + 1, _rooms.size() - 1))
 
 
-## Debug: every room laid out on a grid, roofs hidden, seen from straight above.
+## Debug: every room shown, roofs hidden, the whole map from straight above.
 func debug_overview() -> void:
-	var cols: int = ceili(sqrt(float(_rooms.size())))
-	var cell: float = 52.0
-	for i: int in _rooms.size():
-		_rooms[i].visible = true
-		_rooms[i].position = Vector3(float(i % cols) * cell, 0.0, float(floori(float(i) / float(cols))) * cell)
+	for g: Node3D in _groups:
+		g.visible = true
 	for node: Node in find_children("*", "StaticBody3D", true, false):
 		if node.has_meta(&"ceiling"):
 			(node as Node3D).visible = false
+	set_process(false)
+	var lo: Vector2 = field.origin
+	var hi: Vector2 = field.origin + Vector2(field.size) * DungeonField.CELL_M
 	var cam: Camera3D = Camera3D.new()
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	cam.size = cell * float(cols)
+	cam.size = maxf(hi.x - lo.x, hi.y - lo.y)
 	cam.far = 400.0
 	add_child(cam)
-	var mid: Vector3 = Vector3(cell * float(cols - 1) * 0.5, 120.0, cell * float(cols - 1) * 0.5)
-	cam.global_transform = Transform3D(Basis.from_euler(Vector3(-PI * 0.5, 0.0, 0.0)), mid)
+	var mid: Vector2 = (lo + hi) * 0.5
+	if get_meta(&"zoom", false):
+		mid = Vector2(player.global_position.x, player.global_position.z)
+		cam.size = 70.0
+	cam.global_transform = Transform3D(Basis.from_euler(Vector3(-PI * 0.5, 0.0, 0.0)), Vector3(mid.x, 120.0, mid.y))
 	cam.current = true
 	var sun: DirectionalLight3D = get_node_or_null(^"Light") as DirectionalLight3D
 	if sun != null:

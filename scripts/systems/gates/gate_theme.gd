@@ -35,6 +35,8 @@ var wall_material: StandardMaterial3D
 var pillar_model: StringName
 var tint: Color
 var door_models: Array[StringName] = []
+var floor_id: StringName
+var wall_id: StringName
 
 
 func _init(rank: int, red: bool) -> void:
@@ -42,8 +44,8 @@ func _init(rank: int, red: bool) -> void:
 	tint = GateData.RANK_COLORS.get(clampi(rank, 0, BY_RANK.size() - 1) as GateData.Rank, Color(0.5, 0.6, 0.8))
 	if red:
 		tint = Color(1.0, 0.25, 0.2)
-	var floor_id: StringName = row[0]
-	var wall_id: StringName = row[1]
+	floor_id = row[0]
+	wall_id = row[1]
 	floor_material = surface(floor_id, FLOOR_TILE_M, tint.darkened(0.55))
 	wall_material = surface(wall_id, WALL_TILE_M, tint.darkened(0.55))
 	pillar_model = row[2]

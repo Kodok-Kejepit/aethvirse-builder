@@ -43,7 +43,7 @@ static func register_core() -> void:
 	DebugConsole.register("droploot", _droploot, "droploot — drop one item of every rarity in front of you")
 	DebugConsole.register("trial", _trial, "trial <job_id> — start that job's Change trial now")
 	DebugConsole.register("gate", _gate, "gate [gate_id] [double] — enter a Gate (double = force the hidden Double Gate)")
-	DebugConsole.register("dungeonmap", _dungeonmap, "dungeonmap [room|next] — inside a Gate: all rooms from above (roofs off), jump to a room, or use the next door")
+	DebugConsole.register("dungeonmap", _dungeonmap, "dungeonmap [room|next|zoom|tunnel N] — inside a Gate: map from above (roofs off), jump to a room / tunnel")
 
 
 static func _player() -> Player:
@@ -339,6 +339,16 @@ static func _dungeonmap(args: PackedStringArray) -> String:
 	var dungeon: GateDungeon = tree.current_scene as GateDungeon
 	if dungeon == null:
 		return "not in a Gate"
+	if args.size() > 1 and args[0] == "tunnel":
+		dungeon.debug_tunnel(args[1].to_int())
+		return "tunnel %s" % args[1]
+	if not args.is_empty() and args[0] == "door":
+		dungeon.debug_door()
+		return "at a door"
+	if not args.is_empty() and args[0] == "zoom":
+		dungeon.set_meta(&"zoom", true)
+		dungeon.debug_overview()
+		return "zoomed overview"
 	if not args.is_empty() and args[0] == "next":
 		dungeon.debug_next()
 		return "through the next door"

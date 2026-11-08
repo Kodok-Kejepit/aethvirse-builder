@@ -48,3 +48,20 @@ func test_cleared_double_gate_is_gone() -> void:
 	for day: int in 40:
 		assert_false(GateLayout.has_double_gate(gate, day))
 	GameState.set_flag(flag, false)
+
+
+func test_leaving_the_gate_does_not_clear_a_room() -> void:
+	var gate_scene: Node3D = Node3D.new()
+	add_child(gate_scene)
+	var room: GateRoom = GateRoom.new()
+	room.enemies = [load("res://data/enemies/gate_husk.tres") as EnemyData]
+	room.spawn_points = [Vector3(0, 0.3, 0)]
+	gate_scene.add_child(room)
+	var cleared: Array[bool] = [false]
+	room.cleared.connect(func() -> void: cleared[0] = true)
+	room.start()
+	await wait_physics_frames(2)
+	# The whole Gate scene goes away at once (death, exit): enemies leave with it.
+	gate_scene.free()
+	await wait_physics_frames(2)
+	assert_false(cleared[0], "a boss left alive must not count as beaten")

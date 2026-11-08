@@ -356,3 +356,18 @@
 - **Camp altar:** region data still had the old waystone spot (6, 12); fast travel and the respawn now use (-34, 34). A test checks every waystone's data against the chunk scenes.
 - 330 tests.
 
+## Dungeon v2: one connected cave map (2026-11-08)
+- Owner: no more teleport doors; abstract rooms (not round / oval), cave tunnels between rooms, some through doors, some open, some straight through.
+- **Layout:** rooms on a 64 m grid (DungeonPlan), joined by links: **door** (tunnel with a door model — push it and it sinks into the floor), **open** tunnel, or **breach** (wide, short-wiggle opening). Side branches end in treasure rooms.
+- **Shape:** DungeonField builds a density grid (1.5 m): rooms are unions of random ellipses roughened by noise (caves very rough, halls nearly regular), tunnels wind (spline through jittered points), swell / narrow and lift / drop their roof away from the mouths. DungeonMesher traces walls with marching squares (smooth, no blocks); cave walls lean outward, hall / ruin walls stay upright masonry; roofs are one smoothed surface that slopes from tall rooms into low tunnels.
+- **Surfaces:** new dungeon shader: paving + cracked slate + mud + moss in world space, shiny wet patches; walls blend cave rock and theme masonry, moss climbs from the floor, root streaks hang from above. Reflective puddles.
+- **Fights:** entering a room past its mouths starts the fight; red wards close every mouth until it is cleared.
+- **Secrets:** cracked walls (heavy attack) close a lit niche with a chest; side rooms: chest + emerald relic + statue; Double Gate = winged door at the end of a dead-end tunnel (Gate Key).
+- Only the current room and its neighbours are drawn. Build time ~0.35 s.
+- Fix: leaving a Gate (death / exit) no longer counts a living boss as beaten (rooms notice vanished enemies each physics frame instead of on tree exit).
+- 333 tests.
+
+### How to test
+- `gate gate_r1_e_overpass double`, then `god` (inside the Gate), `dungeonmap` (whole map from above), `dungeonmap 2` (room), `dungeonmap tunnel 1`, `dungeonmap door`, `dungeonmap zoom`.
+- Check: tunnel feel, door push + sink, wards during fights, cracked wall niche, side room chest, winged door with / without a key.
+

@@ -82,6 +82,15 @@ jobs:
             ~/.local/share/godot/export_templates
           key: godot-${{ env.GODOT_VERSION }}-templates
 
+      # Gradle's download host times out now and then: keep the wrapper and deps.
+      - name: Gradle (cached)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/wrapper
+            ~/.gradle/caches
+          key: gradle-${{ env.GODOT_VERSION }}
+
       - name: Install Godot and export templates
         run: |
           mkdir -p ~/godot

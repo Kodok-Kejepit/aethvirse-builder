@@ -9,8 +9,8 @@ signal cleared
 
 var spawn_points: Array[Vector3] = []
 var exit_door: StaticBody3D = null
-## Doors of this room (dungeon rooms): sealed while enemies are alive.
-var doors: Array[DungeonDoor] = []
+## Red wards across this room's mouths: up while enemies are alive.
+var wards: Array[DungeonWard] = []
 var _alive: int = 0
 var _started: bool = false
 var _living: Array[Enemy] = []
@@ -21,13 +21,16 @@ const STRAY_CHECK_S: float = 1.0
 var _enemy_scene: PackedScene = preload("res://scenes/enemies/enemy.tscn")
 
 
-func setup_trigger() -> void:
+## The fight starts when the player enters a box around the room's centre: `extent`
+## (default: the whole room minus a margin).
+func setup_trigger(extent: Vector2 = Vector2.ZERO) -> void:
+	var s: Vector2 = extent if extent != Vector2.ZERO else size
 	var area: Area3D = Area3D.new()
 	area.collision_layer = 0
 	area.collision_mask = 2
 	var shape: CollisionShape3D = CollisionShape3D.new()
 	var box: BoxShape3D = BoxShape3D.new()
-	box.size = Vector3(size.x - 4.0, 4.0, size.y - 4.0)
+	box.size = Vector3(s.x - 4.0, 4.0, s.y - 4.0)
 	shape.shape = box
 	shape.position = Vector3(0, 2, 0)
 	area.add_child(shape)
@@ -53,9 +56,10 @@ func start() -> void:
 		get_parent().add_child(enemy)
 		_alive += 1
 		_living.append(enemy)
-		# Dying or disappearing any other way (falling out, despawn) both count, once.
+		# Dying counts at once; vanishing any other way (falling out, despawn) is noticed
+		# on the next physics frame. Not via tree_exiting: when the whole Gate scene goes
+		# away, a boss left alive would count as beaten.
 		enemy.health.died.connect(_on_enemy_gone.bind(enemy), CONNECT_ONE_SHOT)
-		enemy.tree_exiting.connect(_on_enemy_gone.bind(enemy), CONNECT_ONE_SHOT)
 		_on_spawned(enemy)
 
 
@@ -75,6 +79,13 @@ func _on_enemy_gone(enemy: Enemy) -> void:
 
 func _physics_process(delta: float) -> void:
 	if _living.is_empty():
+		return
+	for i: int in range(_living.size() - 1, -1, -1):
+		if not is_instance_valid(_living[i]) or not _living[i].is_inside_tree():
+			_living.remove_at(i)
+			_alive -= 1
+	if _alive <= 0:
+		_on_cleared()
 		return
 	_check -= delta
 	if _check > 0.0:
@@ -96,8 +107,8 @@ func _on_cleared() -> void:
 
 
 func _set_door_locked(locked: bool) -> void:
-	for door: DungeonDoor in doors:
-		door.set_locked(locked)
+	for ward: DungeonWard in wards:
+		ward.set_active(locked)
 	if exit_door == null:
 		return
 	exit_door.visible = locked

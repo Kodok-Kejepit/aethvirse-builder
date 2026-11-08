@@ -73,21 +73,17 @@ func test_dungeon_has_a_winged_door_that_wants_a_key() -> void:
 	add_child_autofree(dungeon)
 	await wait_physics_frames(3)
 	var double_door: DungeonDoor = null
-	var linked: int = 0
 	for node: Node in dungeon.find_children("*", "StaticBody3D", true, false):
 		var door: DungeonDoor = node as DungeonDoor
 		if door == null:
 			continue
+		var at: Vector2 = Vector2(door.global_position.x, door.global_position.z)
+		assert_gt(dungeon.field.value_at(at), 0.0, "door stands in an open tunnel")
 		if door.is_double:
 			double_door = door
-		else:
-			assert_gt(door.target_door, -1, "every door leads somewhere and back")
-			linked += 1
-	assert_gt(linked, 2)
 	assert_not_null(double_door, "forced Double Gate door exists")
 	double_door.used.disconnect(dungeon._on_door_used)
 	watch_signals(double_door)
-	double_door.set_locked(false)
 	GameState.inventory.remove(DungeonDoor.KEY_ITEM, GameState.inventory.count_of(DungeonDoor.KEY_ITEM))
 	double_door._on_use(null)
 	assert_signal_not_emitted(double_door, "used", "no key, no way in")
@@ -102,15 +98,17 @@ func test_dying_in_a_later_room_respawns_in_the_shown_start_room() -> void:
 	var session: GateSession = GateSession.new()
 	session.gate = gate
 	GameState.gate_session = session
+	GameState.respawn_waystone = &""
 	var dungeon: GateDungeon = (load(GateDungeon.SCENE) as PackedScene).instantiate() as GateDungeon
 	add_child_autofree(dungeon)
 	await wait_physics_frames(3)
-	dungeon.debug_goto(2)
-	assert_false(dungeon._rooms[0].visible, "start room hidden while away")
+	var far: int = dungeon.plan.boss_index
+	dungeon.debug_goto(far)
+	assert_false(dungeon._groups[0].visible, "start room hidden while away")
 	dungeon.player.respawn()
 	await wait_physics_frames(2)
-	assert_true(dungeon._rooms[0].visible, "start room shown again")
-	assert_false(dungeon._rooms[2].visible)
+	assert_true(dungeon._groups[0].visible, "start room shown again")
+	assert_false(dungeon._groups[far].visible)
 	var start: Vector3 = dungeon._rooms[0].global_position
 	assert_lt(Vector2(dungeon.player.global_position.x - start.x, dungeon.player.global_position.z - start.z).length(), 15.0, "back in the start room")
 	GameState.gate_session = null
