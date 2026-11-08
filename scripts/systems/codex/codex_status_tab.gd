@@ -28,8 +28,13 @@ func _init() -> void:
 	add_theme_constant_override(&"separation", CodexTheme.px(20))
 	_left = VBoxContainer.new()
 	_left.custom_minimum_size = Vector2(CodexTheme.px(480), 0)
+	_left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_left.add_theme_constant_override(&"separation", CodexTheme.px(12))
-	add_child(_left)
+	var left_scroll: ScrollContainer = PausingPanel.wrap_scroll(_left)
+	left_scroll.custom_minimum_size.x = CodexTheme.px(500)
+	left_scroll.size_flags_horizontal = Control.SIZE_FILL
+	left_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(left_scroll)
 	_header = VBoxContainer.new()
 	_left.add_child(_card(_header))
 	_stats_box = GridContainer.new()
@@ -46,12 +51,16 @@ func _init() -> void:
 	_stage = HeroStage.new()
 	_stage.custom_minimum_size = Vector2(CodexTheme.px(400), CodexTheme.px(560))
 	_stage.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_stage.size_flags_stretch_ratio = 0.8
 	add_child(_stage)
-	_stage.set_framing(9.0, 0.9)
+	_stage.set_framing(5.6, 0.95)
 	_skills_box = VBoxContainer.new()
 	_skills_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_skills_box.add_theme_constant_override(&"separation", CodexTheme.px(8))
-	add_child(_skills_box)
+	var skills_scroll: ScrollContainer = PausingPanel.wrap_scroll(_skills_box)
+	skills_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	skills_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(skills_scroll)
 
 
 static func _card(content: Control) -> PanelContainer:

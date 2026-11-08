@@ -28,6 +28,15 @@ func _ready() -> void:
 	_on_combo(0, ComboTracker.Rank.NONE)
 	_notice.modulate.a = 0.0
 	_refresh_level.call_deferred()
+	_add_frame.call_deferred()
+
+
+## Portrait frame behind the HP / MP bars (drawn first, so the bars sit on top).
+func _add_frame() -> void:
+	var frame: PlayerFrame = PlayerFrame.new()
+	frame.name = "PlayerFrame"
+	get_parent().add_child(frame)
+	get_parent().move_child(frame, 0)
 
 
 func _refresh_level() -> void:

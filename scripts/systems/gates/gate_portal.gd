@@ -31,18 +31,18 @@ func _ready() -> void:
 	ring.material_override = material
 	label.text = "%s  [%s]%s" % [tr(gate.display_name), GateData.Rank.keys()[gate.rank], "  RED" if gate.has_rule(&"red") else ""]
 	_add_swirl(color)
-	_add_frame()
+	# A rift in space, no stone frame: the glowing ring mesh is hidden too.
+	ring.visible = false
 	_refresh()
 	EventBus.weather_changed.connect(func(_w: StringName) -> void: _refresh())
 
 
-const SWIRL_SHADER: Shader = preload("res://assets/shaders/gate_swirl.gdshader")
+const SWIRL_SHADER: Shader = preload("res://assets/shaders/gate_rift.gdshader")
 var _swirl: MeshInstance3D = null
 
 
 func _add_swirl(c: Color) -> void:
-	var torus: TorusMesh = ring.mesh as TorusMesh
-	var r: float = torus.inner_radius if torus != null else 1.2
+	var r: float = RIFT_RADIUS_M
 	_swirl = MeshInstance3D.new()
 	var quad: QuadMesh = QuadMesh.new()
 	quad.size = Vector2(r, r) * 2.0
@@ -51,11 +51,12 @@ func _add_swirl(c: Color) -> void:
 	m.set_shader_parameter(&"color", c)
 	quad.material = m
 	_swirl.mesh = quad
-	_swirl.transform = ring.transform
+	_swirl.position = Vector3(0.0, RIFT_RADIUS_M + 0.2, 0.0)
 	_swirl.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(_swirl)
 
 
+const RIFT_RADIUS_M: float = 2.4
 const FRAME_MODEL: StringName = &"gate_celestial_frame"
 const FRAME_HEIGHT: float = 5.4
 
@@ -69,8 +70,14 @@ func _add_frame() -> void:
 		holder.queue_free()
 
 
-func _process(delta: float) -> void:
-	ring.rotate_y(delta * 1.5)
+func _process(_delta: float) -> void:
+	# The rift always faces the camera, so it reads as a hole from every side.
+	var cam: Camera3D = get_viewport().get_camera_3d()
+	if cam != null and _swirl != null:
+		var to_cam: Vector3 = cam.global_position - _swirl.global_position
+		to_cam.y = 0.0
+		if to_cam.length_squared() > 0.01:
+			_swirl.global_basis = Basis.looking_at(-to_cam.normalized(), Vector3.UP)
 	if Engine.get_process_frames() % 30 == 0:
 		_refresh()
 

@@ -33,6 +33,9 @@ static func enemy_level(base_level: int, player_level: int, bonus: int = 0) -> i
 static func has_double_gate(gate: GateData, day: int) -> bool:
 	if gate.has_rule(&"double") or gate.has_rule(&"no_double"):
 		return false
+	# A Double Gate that was cleared is gone for good.
+	if GameState.has_flag(StringName("gate_cleared_" + String(gate.id) + "_double")):
+		return false
 	return _roll(String(gate.id) + ":" + str(day)) < DOUBLE_GATE_CHANCE
 
 

@@ -75,22 +75,21 @@ func _build_lights() -> void:
 	e.background_mode = Environment.BG_CLEAR_COLOR
 	e.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	e.ambient_light_color = Color(0.7, 0.75, 1.0)
-	e.ambient_light_energy = 0.3
-	e.glow_enabled = true
-	e.glow_intensity = 0.3
-	e.glow_hdr_threshold = 1.2
+	e.ambient_light_energy = 0.35
+	# No bloom on the stage: white hair / gowns washed out into a glowing blob.
+	e.glow_enabled = false
 	e.tonemap_mode = Environment.TONE_MAPPER_ACES
 	env.environment = e
 	_world.add_child(env)
 	var key: DirectionalLight3D = DirectionalLight3D.new()
 	key.rotation_degrees = Vector3(-35, 30, 0)
-	key.light_energy = 0.75
+	key.light_energy = 0.6
 	key.shadow_enabled = true
 	_world.add_child(key)
 	var rim: OmniLight3D = OmniLight3D.new()
 	rim.position = Vector3(-1.5, 2.6, 1.5)
 	rim.light_color = Color(0.55, 0.7, 1.0)
-	rim.light_energy = 0.9
+	rim.light_energy = 0.45
 	rim.omni_range = 6.0
 	_world.add_child(rim)
 

@@ -85,8 +85,7 @@ func _build() -> void:
 			phases.attach(enemy)
 	boss_room.set_meta(&"spawn_hook", hook)
 	player.global_position = Vector3(0, 0.2, ROOM_SIZE.y * 0.3)
-	if gate.has_rule(&"double"):
-		_spawn_portal(Vector3(0, 0, ROOM_SIZE.y * 0.3 + 3.0), false)
+	# No way back out of a Double Gate: the exit only opens when its boss falls.
 
 
 ## Gate enemies keep up with the player (never far below their level).

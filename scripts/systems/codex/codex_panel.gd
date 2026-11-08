@@ -106,6 +106,12 @@ func _build_content(body: VBoxContainer) -> void:
 
 
 func _add_tab(control: Control, key: StringName) -> void:
+	# The Status tab scrolls its own columns (the hero stage stays put in the middle).
+	if control is CodexStatusTab:
+		control.name = String(key)
+		_tabs.add_child(control)
+		_tabs.set_tab_title(_tabs.get_tab_count() - 1, tr(key))
+		return
 	var scroll: ScrollContainer = PausingPanel.wrap_scroll(control)
 	scroll.name = String(key)
 	_tabs.add_child(scroll)
