@@ -12,6 +12,7 @@ const METRO_GATE: String = "res://data/gates/gate_r1_d_metro.tres"
 const PAVEMENT: Shader = preload("res://assets/shaders/pavement.gdshader")
 const SURFACES: String = "res://assets/textures/surfaces/%s.jpg"
 const ENEMY_SCENE: String = "res://scenes/enemies/enemy.tscn"
+const HINT_SIGN_SCENE: String = "res://scenes/world/props/hint_sign.tscn"
 
 const HALF_X: float = 50.0
 const HALF_Z: float = 12.6
@@ -56,6 +57,7 @@ func _ready() -> void:
 	_dressing()
 	_monsters()
 	_gate()
+	_platform_zero()
 	player.global_position = Vector3(46.0, LANDING_Y + 0.3, 0.0)
 	player.visual.rotation.y = MovementMath.yaw_for_direction(Vector3.LEFT)
 	player.spawn_point = player.global_position
@@ -360,12 +362,14 @@ func _dressing() -> void:
 
 ## Lv 42-50: brutes and husks on the platform, hounds on the tracks, an elite at the Gate.
 func _monsters() -> void:
+	# Underground things (owner): vipers in the dark, rats on the tracks, a brute that
+	# wandered down, and the Gravewarden still guarding the tunnel mouth.
 	var packs: Array[Array] = [
-		[&"moss_brute", 44, Vector3(-30, PLATFORM_Y + 0.3, 1.5)], [&"moss_brute", 45, Vector3(-28, PLATFORM_Y + 0.3, -2.0)],
-		[&"ember_husk", 42, Vector3(0, PLATFORM_Y + 0.3, 2.0)], [&"ember_husk", 43, Vector3(4, PLATFORM_Y + 0.3, -2.5)],
-		[&"ember_husk", 42, Vector3(-2, PLATFORM_Y + 0.3, -1.0)],
-		[&"ash_hound_alpha", 47, Vector3(8, 0.3, TRACK_Z)], [&"ash_hound", 45, Vector3(11, 0.3, TRACK_Z - 1.5)],
-		[&"ash_hound", 45, Vector3(11, 0.3, TRACK_Z + 1.5)],
+		[&"tunnel_viper", 44, Vector3(-30, PLATFORM_Y + 0.3, 1.5)], [&"tunnel_viper", 45, Vector3(-27, PLATFORM_Y + 0.3, -2.0)],
+		[&"tunnel_viper", 43, Vector3(0, PLATFORM_Y + 0.3, 2.0)], [&"drowned_rat", 42, Vector3(4, PLATFORM_Y + 0.3, -2.5)],
+		[&"drowned_rat", 42, Vector3(-2, PLATFORM_Y + 0.3, -1.0)], [&"moss_brute", 46, Vector3(-14, PLATFORM_Y + 0.3, 0.5)],
+		[&"tunnel_viper", 46, Vector3(8, 0.3, TRACK_Z)], [&"drowned_rat", 44, Vector3(11, 0.3, TRACK_Z - 1.5)],
+		[&"tunnel_viper", 45, Vector3(11, 0.3, TRACK_Z + 1.5)],
 		[&"gravewarden", 49, Vector3(-HALF_X - 6.0, 0.3, -TRACK_Z)],
 	]
 	for pack: Array in packs:
@@ -414,3 +418,27 @@ func _leave(_player: Player) -> void:
 	if back is Vector3:
 		GameState.pending_player_position = back
 	LoadingScreen.go(get_tree(), SaveManager.region_scene(GameState.current_region))
+
+
+## Mystery Journal "Platform Zero" (SEC-R1-03): stand at the far end of the platform at
+## 00:xx. Clues: a torn ticket under a bench, the broken clock.
+func _platform_zero() -> void:
+	var area: SecretArea = SecretArea.new()
+	area.area_id = &"sec_r1_03_platform_zero"
+	var shape: CollisionShape3D = CollisionShape3D.new()
+	var box: BoxShape3D = BoxShape3D.new()
+	box.size = Vector3(5.0, 3.0, PLATFORM_HALF_Z * 2.0)
+	shape.shape = box
+	area.add_child(shape)
+	area.position = Vector3(-HALF_X + 3.5, PLATFORM_Y + 1.5, 0.0)
+	add_child(area)
+	var sign_scene: PackedScene = load(HINT_SIGN_SCENE) as PackedScene
+	for spec: Array in [[Vector3(-HALF_X + 7.0, PLATFORM_Y, 2.6), &"SIGN_METRO_CLOCK", &"HINT_SEC_R1_03_2"],
+			[Vector3(6.0, PLATFORM_Y, -2.6), &"SIGN_METRO_TICKET", &"HINT_SEC_R1_03_1"]]:
+		var hint: HintSign = sign_scene.instantiate() as HintSign
+		var at: Vector3 = spec[0]
+		hint.position = at
+		hint.text_key = spec[1]
+		hint.hint_secret = &"SEC-R1-03"
+		hint.hint_key = spec[2]
+		add_child(hint)

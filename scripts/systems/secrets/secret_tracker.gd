@@ -137,7 +137,18 @@ func _complete(secret: SecretData) -> void:
 		Codex.notify(tr(&"CODEX_MSG_SECRET_FOUND"), &"secret")
 	EventBus.secret_found.emit(secret.id)
 	EventBus.journal_updated.emit()
+	if _entry_just_resolved(secret):
+		SystemRewards.on_entry()
 	JournalCompletion.check(self, secret.region)
+
+
+## True when `secret` completed the last open part of its journal entry.
+func _entry_just_resolved(secret: SecretData) -> bool:
+	var key: StringName = secret.mission if secret.mission != &"" else secret.id
+	for entry: Dictionary in RegionJournal.entries(db, secret.region):
+		if entry["id"] == key:
+			return RegionJournal.is_resolved(entry, state().found)
+	return false
 
 
 func grant(reward: RewardData) -> void:

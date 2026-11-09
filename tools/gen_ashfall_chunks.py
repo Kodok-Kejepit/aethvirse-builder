@@ -16,6 +16,8 @@ RUST = "Color(0.5, 0.35, 0.25, 1)"
 TENT = "Color(0.35, 0.5, 0.45, 1)"
 WATER = "Color(0.2, 0.35, 0.5, 1)"
 BUILDING = "Color(0.45, 0.42, 0.48, 1)"
+STEEL = "Color(0.32, 0.34, 0.38, 1)"
+BRICK = "Color(0.42, 0.28, 0.24, 1)"
 
 EXT = {
     "gb": ("Script", "res://scripts/systems/world/graybox_block.gd"),
@@ -41,6 +43,9 @@ EXT = {
     "terrain": ("Script", "res://scripts/systems/world/terrain_patch.gd"),
     "chest": ("Script", "res://scripts/systems/world/loot_chest.gd"),
     "metro": ("Script", "res://scripts/systems/world/metro_entrance.gd"),
+    "puzzle": ("Script", "res://scripts/systems/secrets/sequence_puzzle.gd"),
+    "part": ("Script", "res://scripts/systems/secrets/puzzle_part.gd"),
+    "secret_chest": ("Script", "res://scripts/systems/secrets/secret_chest.gd"),
 }
 DATA = {
     "gate_husk": "res://data/enemies/gate_husk.tres",
@@ -112,6 +117,13 @@ class Chunk:
         n = name or self._id(key.capitalize())
         self.point(pos, 4.0)
         self.nodes.append(f'[node name="{n}" parent="." instance={self.ext(key)}]\ntransform = {self.tf(pos, rot_y)}\n{props}')
+        return n
+
+    def script_node(self, key, pos, props="", parent=".", node_type="Node3D", rot_y=0.0):
+        n = self._id(key.capitalize())
+        if parent == ".":
+            self.point(pos, 3.0)
+        self.nodes.append(f'[node name="{n}" type="{node_type}" parent="{parent}"]\ntransform = {self.tf(pos, rot_y)}\nscript = {self.ext(key)}\n{props}')
         return n
 
     def npc(self, data_key, pos, rot_y=0.0):
@@ -548,6 +560,68 @@ def river_reach(c):
         c.block((128, 0.8, 1.2), (0, 0.4, side * 8.6), CONCRETE)
 
 
+# --- Mystery Journal riddles of Ashfall (world positions, owner: "more journal entries") ---
+BILLBOARD_AT = (92.0, 88.0)
+BELL_TOWER_AT = (-92.0, 92.0)
+NEON_ALLEY_AT = (-92.0, -76.0)
+ECHO_SPOT_AT = (130.0, 40.0)
+LULLABY_SIGN_AT = (-4.0, 30.0)
+ECHO_SIGN_AT = (24.0, 44.0)
+NEON = [("sushi", "NEON_SUSHI", "Color(1, 0.35, 0.3, 1)"), ("noodle", "NEON_NOODLE", "Color(1, 0.8, 0.25, 1)"),
+        ("ramen", "NEON_RAMEN", "Color(1, 0.3, 0.7, 1)"), ("electro", "NEON_ELECTRO", "Color(0.3, 0.8, 1, 1)"),
+        ("ink", "NEON_INK", "Color(0.6, 0.4, 1, 1)")]
+BELLS = [("medium", "BELL_MEDIUM", 0.95), ("big", "BELL_BIG", 1.3), ("small", "BELL_SMALL", 0.6)]
+
+
+def mysteries(c, ox, oz):
+    """Places the journal riddles whose world position falls in this chunk."""
+    def here(at):
+        lx, lz = at[0] - ox, at[1] - oz
+        return (lx, lz) if abs(lx) <= 64 and abs(lz) <= 64 else None
+
+    p = here(BILLBOARD_AT)
+    if p:
+        bx, bz = p
+        for sx in (-4, 4):
+            c.block((0.6, 9.0, 0.6), (bx + sx, 4.5, bz), STEEL)
+        c.block((10.0, 4.5, 0.4), (bx, 9.6, bz), "Color(0.75, 0.3, 0.2, 1)")
+        c.block((10.0, 0.4, 2.4), (bx, 7.0, bz + 1.2), STEEL)
+        for i in range(1, 8):
+            c.block((1.6, float(i), 1.6), (bx + 5.0 + (8 - i) * 1.4, i * 0.5, bz + 1.2), "Color(0.45, 0.35, 0.22, 1)")
+        c.secret_area("sec_r1_04_billboard", (8.0, 2.5, 2.4), (bx, 8.4, bz + 1.2))
+        c.instance("sign", (bx - 6.0, 0, bz + 6.0), 'text_key = &"SIGN_BILLBOARD"\nhint_secret = &"SEC-R1-04"\nhint_key = &"HINT_SEC_R1_04_1"\n')
+    p = here(BELL_TOWER_AT)
+    if p:
+        tx, tz = p
+        for sx in (-3.5, 3.5):
+            for sz in (-3.5, 3.5):
+                c.block((0.8, 7.0, 0.8), (tx + sx, 3.5, tz + sz), CONCRETE)
+        c.block((8.6, 0.6, 8.6), (tx, 7.3, tz), "Color(0.35, 0.25, 0.2, 1)")
+        c.block((3.0, 2.2, 3.0), (tx, 8.7, tz), "Color(0.35, 0.25, 0.2, 1)")
+        puzzle = c.script_node("puzzle", (tx, 0, tz), 'answer = PackedStringArray("small", "big", "big", "medium")\nsolved_flag = &"pz_r1_02_solved"\n')
+        for k, (pid, key, size) in enumerate(BELLS):
+            c.script_node("part", (-2.2 + k * 2.2, 0, 0.8), f'part_id = "{pid}"\nlabel_key = &"{key}"\nstyle = &"bell"\nbell_size = {size}\n', parent=puzzle)
+        c.script_node("secret_chest", (tx, 0, tz - 2.2), 'secret_id = &"MC-R1-03"\nrequired_flag = &"pz_r1_02_solved"\n')
+    p = here(LULLABY_SIGN_AT)
+    if p:
+        c.instance("sign", (p[0], 0, p[1]), 'text_key = &"SIGN_LULLABY"\nhint_secret = &"PZ-R1-02"\nhint_key = &"HINT_PZ_R1_02_1"\n')
+    p = here(NEON_ALLEY_AT)
+    if p:
+        ax, az = p
+        for side in (-3.0, 3.0):
+            c.block((16.0, 4.5, 0.6), (ax, 2.25, az + side), BRICK)
+        puzzle = c.script_node("puzzle", (ax, 0, az), 'answer = PackedStringArray("ramen", "ink", "sushi", "electro", "noodle")\nsolved_flag = &"pz_r1_01_solved"\n')
+        for k, (pid, key, col) in enumerate(NEON):
+            c.script_node("part", (-6.0 + k * 3.0, 0, -2.2), f'part_id = "{pid}"\nlabel_key = &"{key}"\nstyle = &"neon"\ncolor = {col}\n', parent=puzzle)
+        c.instance("sign", (ax + 8.5, 0, az), 'text_key = &"SIGN_NEON_GRAFFITI"\nhint_secret = &"PZ-R1-01"\nhint_key = &"HINT_PZ_R1_01_1"\n')
+    p = here(ECHO_SPOT_AT)
+    if p:
+        c.secret_area("sec_r1_echo_spot", (9.0, 4.0, 9.0), (p[0], 2.0, p[1]))
+    p = here(ECHO_SIGN_AT)
+    if p:
+        c.instance("sign", (p[0], 0, p[1]), 'text_key = &"SIGN_ECHO_WALL"\nhint_secret = &"SM-R1-03:1"\nhint_key = &"HINT_SM_R1_03_1"\n')
+
+
 LAYOUT = {
     (0, 0): camp,
     (1, 0): overpass_and_culvert,
@@ -581,6 +655,7 @@ if __name__ == "__main__":
                 chunk.nodes.append(f'[node name="MetroEntrance" type="Node3D" parent="."]\ntransform = {chunk.tf((mx, 0, mz))}\nscript = {chunk.ext("metro")}\n')
             if (x, z) in ((1, 1), (1, -1)):
                 chunk.prop("landmark_overpass_cracked", (24, 0, -34 if z > 0 else 34), (30, 11, 8), CONCRETE, rot_y=90)
+            mysteries(chunk, x * 128.0, z * 128.0)
             city.dress_chunk(chunk, x * 128, z * 128, 900 + x * 31 + z * 17)
             built[(x, z)] = chunk
     finish_region(built, "r1", "ashfall", 1.2, 101)

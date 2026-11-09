@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/prop_data.gd" id="1_rnduv"]
+
+[resource]
+script = ExtResource("1_rnduv")
+id = &"weapon_dagger_venomfang"
+mesh_path = "res://assets/props/weapon_dagger_venomfang/weapon_dagger_venomfang.res"
+albedo_path = "res://assets/props/weapon_dagger_venomfang/weapon_dagger_venomfang_albedo.jpg"
+size = Vector3(0.13394128, 0.54999995, 0.08247292)
+collision = 0

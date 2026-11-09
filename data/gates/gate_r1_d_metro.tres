@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="GateData" format=3]
+[gd_resource type="Resource" script_class="GateData" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/resources/gate_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="2"]
-[ext_resource type="Resource" path="res://data/enemies/moss_brute.tres" id="e0"]
-[ext_resource type="Resource" path="res://data/enemies/ember_husk.tres" id="e1"]
-[ext_resource type="Resource" path="res://data/enemies/ash_hound.tres" id="e2"]
-[ext_resource type="Resource" path="res://data/enemies/gravewarden.tres" id="boss"]
-[ext_resource type="Resource" path="res://data/enemies/cinder_archer.tres" id="archer"]
+[ext_resource type="Resource" path="res://data/enemies/tunnel_viper.tres" id="e0"]
+[ext_resource type="Resource" path="res://data/enemies/drowned_rat.tres" id="e1"]
+[ext_resource type="Resource" path="res://data/enemies/venom_matriarch.tres" id="boss"]
 
 [resource]
 script = ExtResource("1")
@@ -15,11 +13,12 @@ display_name = &"GATE_R1_D_METRO"
 rank = 1
 seed_value = 4410
 room_count = 4
-enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e1"), ExtResource("e2"), ExtResource("archer")])
-enemies_per_room = 3
+enemy_pool = Array[ExtResource("2")]([ExtResource("e0"), ExtResource("e0"), ExtResource("e1")])
+enemies_per_room = 4
 level_floor = 44
 boss = ExtResource("boss")
 rules = Array[StringName]([])
 completes_secret = &""
-reward_gold = 900
-reward_items = Dictionary[StringName, int]({&"potion_large": 2, &"mystery_box": 1})
+reward_gold = 1500
+reward_items = Dictionary[StringName, int]({&"potion_large": 3, &"mystery_box": 1})
+first_clear_items = Dictionary[StringName, int]({&"dagger_venomfang": 1})

@@ -75,8 +75,8 @@ sense = 0.3
 [resource]
 script = ExtResource("e1")
 id = &"ranger"
-display_name = "Ranger"
-description = "Ranged hunter. Bows, traps and mobility."
+display_name = "Marksman"
+description = "Ranged. Bows, traps and mobility."
 magic_damage = false
 base_stats = SubResource("s4")
 growth = SubResource("s5")

@@ -14,6 +14,7 @@ var _log: RichTextLabel
 var _system: CodexSystemTab
 var _journal: CodexJournalTab
 var _quests: CodexQuestTab
+var _shop: CodexShopTab
 var _lore: CodexLoreTab
 var _shadows: CodexShadowTab
 var _map: CodexMapTab
@@ -60,6 +61,7 @@ func _on_open() -> void:
 	_system.refresh()
 	_journal.refresh()
 	_quests.refresh()
+	_shop.refresh()
 	_lore.refresh()
 	_map.refresh()
 	_refresh_shadow_tab()
@@ -103,6 +105,8 @@ func _build_content(body: VBoxContainer) -> void:
 	_add_tab(_inventory, &"CODEX_TAB_INVENTORY")
 	_quests = CodexQuestTab.new()
 	_add_tab(_quests, &"CODEX_TAB_QUESTS")
+	_shop = CodexShopTab.new()
+	_add_tab(_shop, &"CODEX_TAB_SHOP")
 	_journal = CodexJournalTab.new()
 	_add_tab(_journal, &"CODEX_TAB_JOURNAL")
 	_lore = CodexLoreTab.new()

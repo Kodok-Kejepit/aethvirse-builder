@@ -590,3 +590,66 @@ QUEST_R1_METRO,Echoes Underground,Gema di Bawah Tanah
 QUEST_R1_METRO_D,"Something hums under the old metro station, louder every night. The Quartermaster has heard it too. Go down the stairs northwest of the camp and close what opened there.","Ada yang berdengung di bawah stasiun metro tua, makin keras setiap malam. Quartermaster juga mendengarnya. Turuni tangga di barat laut kamp dan tutup apa yang terbuka di sana."
 QO_ASK_QM_METRO,Ask the Quartermaster about the hum,Tanya Quartermaster soal dengungan itu
 QO_CLEAR_METRO,Close the Gate in the metro station,Tutup Gate di stasiun metro
+PROFILE_NOTICE,SYSTEM NOTIFICATION,SYSTEM NOTIFICATION
+PROFILE_TITLE,CHARACTER PROFILE,CHARACTER PROFILE
+PROFILE_NAME,NAME: %s,NAMA: %s
+PROFILE_CLASS,CLASS: %s,CLASS: %s
+PROFILE_STATUS,STATUS: %s,STATUS: %s
+PROFILE_STATUS_VANGUARD,BLESSED,TERBERKATI
+PROFILE_STATUS_PHANTOM,HIDDEN,TERSEMBUNYI
+PROFILE_STATUS_ARCANIST,MANA SURGE,LONJAKAN MANA
+PROFILE_STATUS_RANGER,FOCUSED,FOKUS
+RATING_LOW,Low,Rendah
+RATING_MID,Medium,Sedang
+RATING_HIGH,High,Tinggi
+RATING_TOP,Very high,Sangat Tinggi
+MENU_HERO_SOON,coming soon,segera
+CODEX_MSG_SYSTEM_REWARD,"[ SYSTEM ] Recognition: +%d XP, +%d Gold.","[ SYSTEM ] Apresiasi: +%d XP, +%d Gold."
+CODEX_TAB_SHOP,Shop,Toko
+SHOP_TITLE,THE SYSTEM'S SHOP,TOKO SISTEM
+SHOP_NOTE,"Rare, legendary and mythic gear for your level. The stock changes every day; each piece is sold once.","Perlengkapan langka, legendaris dan mitos untuk levelmu. Stok berganti setiap hari; tiap barang hanya dijual sekali."
+SHOP_GOLD,Your gold: %d,Gold-mu: %d
+SHOP_BUY,Buy,Beli
+SHOP_SOLD,Sold,Terjual
+SHOP_BOUGHT,Bought: %s,Dibeli: %s
+SECRET_SEC_R1_03,Platform Zero,Peron Nol
+SECRET_SI_R1_04,The First Sigil,Sigil Pertama
+SECRET_SEC_R1_04,The Billboard Roof,Atap Papan Iklan
+SECRET_PZ_R1_01,The Flickering Neon,Lampu Neon yang Berkedip
+SECRET_PZ_R1_02,Three Bells,Lonceng Tiga Nada
+SECRET_MC_R1_03,The Refugees' Gift Box,Kotak Hadiah Pengungsi
+SECRET_SM_R1_03,03:33,03:33
+HINT_SEC_R1_03_1,"An old train ticket: ""Platform 0 — departs 00:00.""","Tiket kereta tua: ""Peron 0 — keberangkatan 00:00."""
+HINT_SEC_R1_03_2,The station clock is broken. Its hands always point at twelve.,Jam stasiun rusak. Jarumnya selalu menunjuk angka dua belas.
+HINT_SI_R1_04_1,Seven discs were cut from one stone. Only one sleeps under Ashfall.,Tujuh keping dipotong dari satu batu. Hanya satu yang tidur di bawah Ashfall.
+HINT_SEC_R1_04_1,"From the broken highway, something glints on top of the big billboard.","Dari jalan tol yang runtuh, ada kilauan di atas papan iklan raksasa."
+HINT_SEC_R1_04_2,The crows always land on that billboard. The crates below it make a crooked stair.,Gagak selalu hinggap di papan iklan itu. Peti-peti di bawahnya membentuk tangga yang miring.
+HINT_PZ_R1_01_1,"Graffiti at the end of the alley: ""What has fallen must _ _ _ _ _ again.""","Grafiti di ujung gang: ""Yang jatuh harus _ _ _ _ _ lagi."" (dalam bahasa mereka)"
+HINT_PZ_R1_01_2,Only one sign still blinks by itself: the one that starts with E.,Hanya satu papan yang masih berkedip sendiri: yang berawalan E.
+HINT_PZ_R1_02_1,"A lullaby the camp grandmother hums: ""The bird flies high, twice falls to the ground, then rests on the middle branch.""","Ninabobo yang disenandungkan nenek di kamp: ""Burung terbang tinggi, dua kali jatuh ke tanah, lalu pulang ke dahan tengah."""
+HINT_PZ_R1_02_2,"Small bells sing high, big bells sing low.","Lonceng kecil bernyanyi tinggi, lonceng besar bernyanyi rendah."
+HINT_MC_R1_03_1,"When the bells are right, the tower floor remembers what the refugees hid.","Saat lonceng benar, lantai menara ingat apa yang disembunyikan para pengungsi."
+HINT_SM_R1_03_1,"Scratched on a camp wall: ""All the chosen die at the same hour.""","Coretan di dinding kamp: ""Semua yang dipilih mati di jam yang sama."""
+HINT_SM_R1_03_2,"Where the white ring waits east of the overpass, three is the number that keeps returning.","Di tempat cincin putih menunggu, timur jalan layang, tiga adalah angka yang terus kembali."
+SIGN_METRO_CLOCK,A broken station clock. Both hands point straight up.,Jam stasiun yang rusak. Kedua jarumnya lurus ke atas.
+SIGN_METRO_TICKET,"A torn ticket under the bench: ""Platform 0 — 00:00"".","Tiket sobek di bawah bangku: ""Peron 0 — 00:00""."
+SIGN_BILLBOARD,Crows circle the giant billboard. Something up there catches the light.,Gagak berputar di atas papan iklan raksasa. Ada yang memantulkan cahaya di atas sana.
+SIGN_NEON_GRAFFITI,"Graffiti: ""What has fallen must _ _ _ _ _ again.""","Grafiti: ""Yang jatuh harus _ _ _ _ _ lagi."" — huruf pertama tiap toko?"
+SIGN_LULLABY,"A child's note: ""Grandma's song — high, then the ground twice, then the middle.""","Catatan anak: ""Lagu nenek — tinggi, lalu tanah dua kali, lalu tengah."""
+SIGN_ECHO_WALL,"Scratched into the wall: ""All the chosen die at the same hour.""","Goresan di dinding: ""Semua yang dipilih mati di jam yang sama."""
+NEON_RAMEN,Ramen,Ramen
+NEON_INK,Ink Tattoo,Ink Tattoo
+NEON_SUSHI,Sushi,Sushi
+NEON_ELECTRO,Electro,Electro
+NEON_NOODLE,Noodle,Noodle
+BELL_SMALL,Small bell,Lonceng kecil
+BELL_MEDIUM,Medium bell,Lonceng sedang
+BELL_BIG,Big bell,Lonceng besar
+PROMPT_RING,Ring,Bunyikan
+PROMPT_SWITCH,Switch on,Nyalakan
+PUZZLE_RESET,The pattern breaks. Everything goes dark again.,Polanya patah. Semuanya padam lagi.
+PUZZLE_SOLVED,[ SYSTEM ] Something old clicks into place.,[ SYSTEM ] Sesuatu yang tua kembali ke tempatnya.
+CODEX_MSG_PLATFORM_ZERO,The tunnel lights come on. A train with no driver passes without stopping — and leaves something behind.,Lampu terowongan menyala. Kereta tanpa masinis lewat tanpa berhenti — dan meninggalkan sesuatu.
+CODEX_MSG_BELLS,"Under the tower, a floor tile sinks.","Di bawah menara, satu ubin lantai amblas."
+CODEX_MSG_NOT_FIRST,You are not the first. Let you be the last.,Kamu bukan yang pertama. Semoga kamu yang terakhir.
+TITLE_THE_RETURNED,The Returned,Yang Kembali

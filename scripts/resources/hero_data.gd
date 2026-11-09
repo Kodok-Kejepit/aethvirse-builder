@@ -11,6 +11,8 @@ enum Hair { LONG, SHORT }
 @export var display_name: String = ""
 ## Translation key.
 @export var description: String = ""
+## Each hero is one class (owner: one character per class, no free class pick).
+@export var class_id: StringName = &"vanguard"
 @export_file("*.res") var mesh_hi: String = ""
 @export_file("*.res") var mesh_lo: String = ""
 @export_file("*.jpg", "*.png") var albedo_hi: String = ""
@@ -29,6 +31,16 @@ enum Hair { LONG, SHORT }
 
 const DEFAULT_ID: StringName = &"dragon_maiden"
 const IDS: Array[StringName] = [&"dragon_maiden", &"starblade"]
+## Every class in New Game order; classes whose hero is not made yet show as locked.
+const ROSTER: Array[StringName] = [&"vanguard", &"phantom", &"arcanist", &"ranger"]
+
+
+## The hero who plays this class, or &"" while the owner has not made one yet.
+static func hero_for_class(cls: StringName) -> StringName:
+	for hid: StringName in IDS:
+		if load_hero(hid).class_id == cls:
+			return hid
+	return &""
 
 
 static func path_for(hero_id: StringName) -> String:

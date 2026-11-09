@@ -147,12 +147,7 @@ func _sync_stage(player: Player) -> void:
 
 func _fill_header(stats: StatsComponent, prog: Progression) -> void:
 	_clear(_header)
-	var top: HBoxContainer = HBoxContainer.new()
-	var name_l: Label = _label(stats.class_data.display_name, 30, Color.WHITE)
-	name_l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	top.add_child(name_l)
-	top.add_child(_label("%s %d" % [tr(&"STATUS_LEVEL"), prog.level], 30, CodexTheme.ACCENT))
-	_header.add_child(top)
+	CodexProfileCard.build(_header, GameState.player as Player, stats, prog.level)
 	var bar: ProgressBar = ProgressBar.new()
 	bar.max_value = maxf(prog.xp_to_next(), 1.0)
 	bar.value = prog.xp

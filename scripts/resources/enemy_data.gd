@@ -41,6 +41,10 @@ extends Resource
 ## Heavy hitters throw the hero through the air (owner: "kena gebuk, mental jauh"):
 ## upward speed added to the knockback (0 = only a shove).
 @export var attack_launch: float = 0.0
+## Venomous bites (PoisonEffect): chance per hit, share of max HP per second, seconds.
+@export var attack_poison: float = 0.0
+@export var poison_share: float = 0.02
+@export var poison_s: float = 5.0
 
 @export_group("Ranged")
 ## Shoots instead of swinging: keeps its distance, aims with a red sight line during the

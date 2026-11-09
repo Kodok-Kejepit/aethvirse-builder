@@ -458,3 +458,13 @@
   heavy hitters throw you through the air; R1 enemies tougher.
 - **New quests:** Embers on the Rooftops → Moss Giants → Echoes Underground (metro Gate).
 - Debug: `clip`, `prologue`, `reveal_secrets` (finishes the page → travel), `spawn cinder_archer`.
+
+## Heroes = classes, profile card, System rewards, shop, metro serpents (2026-11-09)
+- New Game: pick **Ratu Naga — Paladin** or **Nokturna — Assassin** (Mage / Marksman locked).
+- Codex → Status: CHARACTER PROFILE card in the hero's colours.
+- Quests and journal entries pay extra XP + gold; finishing the Ashfall page brings you to Lv 51+.
+- Codex → **Shop** (Toko): daily rare → mythic gear, expensive.
+- Ashfall journal page: 16 entries (new: Platform Zero, Billboard Roof, Neon RISEN, Three Bells,
+  Gift Box, First Sigil, 03:33). Clues on signs in the camp, the alley, the tower, the metro.
+- Metro: vipers, rats, Venom Matriarch boss; poison; Venomfang dagger on the first clear.
+- Debug: `codex shop`, `spawn venom_matriarch`, `spawn tunnel_viper`, `gate gate_r1_d_metro`, `time 00:10`.

@@ -157,6 +157,7 @@ func _complete(q: QuestData) -> void:
 			tracker.grant(r)
 	if q.guild_points > 0:
 		GuildRank.add_points(q.guild_points)
+	SystemRewards.on_quest(q)
 	EventBus.quest_completed.emit(q.id)
 
 

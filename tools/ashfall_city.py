@@ -75,6 +75,9 @@ RESERVED = [
     (0, -128, 200, 12),        # river
     (-128, 128, 10, 10),       # road waystone to Region 2
     (130, 40, 6, 6),           # Hollow Gate spot
+    (92, 88, 16, 6),           # billboard + crate stair (journal riddle)
+    (-92, 92, 7, 7),           # bell tower (journal riddle)
+    (-92, -76, 10, 5),         # neon alley (journal riddle)
 ]
 
 

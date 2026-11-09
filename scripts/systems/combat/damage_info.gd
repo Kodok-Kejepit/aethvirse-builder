@@ -9,6 +9,10 @@ var element: Element.Type = Element.Type.PHYSICAL
 var knockback: Vector3 = Vector3.ZERO
 ## Upward speed on the target (heavy blows send the hero flying).
 var launch: float = 0.0
+## Venom (PoisonEffect): chance per hit, share of max HP per second, seconds.
+var poison_chance: float = 0.0
+var poison_share: float = 0.02
+var poison_s: float = 5.0
 ## Poise damage; enough of it staggers the target.
 var stagger: float = 0.0
 var hit_stop_s: float = 0.0

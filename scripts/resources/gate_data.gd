@@ -28,6 +28,8 @@ const RANK_COLORS: Dictionary[Rank, Color] = {
 @export var completes_secret: StringName = &""
 @export var reward_gold: int = 0
 @export var reward_items: Dictionary[StringName, int] = {}
+## Given only on the first clear (unique boss drops such as Venomfang).
+@export var first_clear_items: Dictionary[StringName, int] = {}
 
 
 func has_rule(rule: StringName) -> bool:

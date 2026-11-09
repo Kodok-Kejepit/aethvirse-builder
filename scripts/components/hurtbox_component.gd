@@ -17,5 +17,7 @@ func _ready() -> void:
 
 func receive(info: DamageInfo) -> bool:
 	var applied: bool = health.take_damage(info) if health != null else false
+	if applied and info.poison_chance > 0.0:
+		PoisonEffect.try_apply(self, info.poison_chance, info.poison_share, info.poison_s)
 	hit_received.emit(info)
 	return applied

@@ -75,8 +75,8 @@ sense = 0.2
 [resource]
 script = ExtResource("e1")
 id = &"phantom"
-display_name = "Phantom"
-description = "Assassin. Fast daggers, crits, stealth."
+display_name = "Assassin"
+description = "Shadow assassin. Fast daggers, critical strikes, stealth."
 magic_damage = false
 base_stats = SubResource("s4")
 growth = SubResource("s5")

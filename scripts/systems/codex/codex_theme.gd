@@ -24,10 +24,11 @@ static func sync_hero() -> void:
 		TEXT = Color(0.94, 0.91, 0.82)
 		TRIM = Color(0.9, 0.76, 0.45)
 	else:
-		BG = Color(0.05, 0.03, 0.09, 0.94)
+		# Owner's assassin card: near-black violet glass, violet light, gold trim.
+		BG = Color(0.04, 0.025, 0.07, 0.95)
 		ACCENT = Color(0.74, 0.55, 1.0)
-		TEXT = Color(0.92, 0.9, 0.98)
-		TRIM = Color(0.82, 0.84, 0.92)
+		TEXT = Color(0.93, 0.9, 0.97)
+		TRIM = Color(0.86, 0.72, 0.48)
 ## Phones show the 1080p canvas on a ~3" tall screen: text and buttons need to be bigger.
 const TOUCH_SCALE: float = 1.45
 

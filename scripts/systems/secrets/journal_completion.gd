@@ -39,6 +39,7 @@ func _ready() -> void:
 	tween.tween_property(_bar, ^"value", 100.0, UPDATE_S)
 	await tween.finished
 	var next: StringName = RegionJournal.next_region(region_id)
+	SystemRewards.on_page(next)
 	if next == &"":
 		_line.text = tr(&"JOURNAL_ALL_DONE")
 		await get_tree().create_timer(NOTICE_DELAY_S).timeout

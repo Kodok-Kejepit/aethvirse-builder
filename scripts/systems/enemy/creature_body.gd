@@ -15,6 +15,7 @@ const KEYWORDS: Dictionary[String, Shape] = {
 	"brute": Shape.BRUTE, "yeti": Shape.BRUTE, "colossus": Shape.BRUTE, "elder": Shape.BRUTE, "warden": Shape.BRUTE,
 	"wraith": Shape.WRAITH, "ink": Shape.WRAITH, "wyvern": Shape.WYVERN,
 	"burrower": Shape.SERPENT, "devourer": Shape.SERPENT, "worm": Shape.SERPENT,
+	"viper": Shape.SERPENT, "matriarch": Shape.SERPENT,
 }
 
 var shape: Shape = Shape.HUMANOID

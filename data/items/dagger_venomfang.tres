@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"dagger_venomfang"
+display_name = "Venomfang"
+description = "Cut from the fang of the serpent that ruled the dead platforms. One cut in five leaves venom in the wound (20 % chance to poison: 2.5 % of max HP per second for 5 s)."
+kind = 2
+rarity = 4
+max_stack = 1
+sell_price = 1200
+slot = 1
+attack = 30.0
+attack_per_level = 6.0
+stat_bonuses = Dictionary[StringName, float]({&"agi": 10.0, &"crit": 0.06})
+on_hit_poison = 0.2
+visual_prop = &"weapon_dagger_venomfang"
+visual_joint = &"hand_r"
+visual_offset = Vector3(0, -0.04, -0.3)
+visual_rotation_deg = Vector3(90, 0, 0)

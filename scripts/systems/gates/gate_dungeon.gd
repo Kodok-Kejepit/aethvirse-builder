@@ -364,6 +364,13 @@ func _on_boss_cleared() -> void:
 		EventBus.gold_gained.emit(gate.reward_gold * (RED_REWARD_MULT if gate.has_rule(&"red") else 1))
 	for item_id: StringName in gate.reward_items:
 		GameState.inventory.add(item_id, gate.reward_items[item_id])
+	var first_flag: StringName = StringName("gate_first_clear_" + String(gate.id))
+	if not gate.first_clear_items.is_empty() and not GameState.has_flag(first_flag):
+		GameState.set_flag(first_flag)
+		for item_id: StringName in gate.first_clear_items:
+			GameState.inventory.add(item_id, gate.first_clear_items[item_id])
+			var item: ItemData = GameState.items.get_item(item_id)
+			Codex.notify(tr(&"CODEX_MSG_RECEIVED") % [item.display_name if item != null else String(item_id), gate.first_clear_items[item_id]], &"reward")
 	Codex.notify(tr(&"CODEX_MSG_GATE_CLEARED"), &"reward")
 	_spawn_exit()
 

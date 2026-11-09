@@ -1,13 +1,13 @@
 class_name CharacterSelect
 extends Control
-## New Game: pick a class and a character on one screen. The chosen character stands on a
+## New Game: pick a hero — each hero is one class (owner: Paladin = Dragon Sovereign,
+## Assassin = Nocturne; Mage and Marksman show locked until their heroes exist). The chosen character stands on a
 ## lit stage in 3D, slowly turning, cycling through idle / attack / skill poses with the
 ## class weapon in hand (sword classes show the Mythic Starfall). Dragon heroes call their
 ## spirit dragon on the skill pose.
 
 signal confirmed(class_id: StringName, hero_id: StringName)
 
-const CLASSES: Array[StringName] = [&"vanguard", &"phantom", &"arcanist", &"ranger"]
 const POSES: Array[StringName] = [&"idle", &"slash", &"victory", &"cast", &"run"]
 const POSE_S: float = 2.6
 
@@ -17,7 +17,6 @@ var hero_id: StringName = HeroData.DEFAULT_ID
 var _stage: HeroStage
 var _pose_i: int = 0
 var _pose_t: float = 0.0
-var _class_buttons: Dictionary[StringName, Button] = {}
 var _hero_buttons: Dictionary[StringName, Button] = {}
 var _info: Label
 var _weapon_label: Label
@@ -36,7 +35,7 @@ func _ready() -> void:
 		_weapon_label.text = "%s — %s" % [item.display_name, tr(&"RARITY_5")] if item != null else "")
 	add_child(_stage)
 	_build_ui()
-	_select_class(class_id)
+	_select_hero(hero_id)
 
 
 func _process(delta: float) -> void:
@@ -76,18 +75,18 @@ func _build_ui() -> void:
 	title.offset_right = 400
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(title)
-	var left: VBoxContainer = _column(Control.PRESET_LEFT_WIDE, 40, &"MENU_PICK_CLASS")
-	for id: StringName in CLASSES:
-		var data: ClassData = load("res://data/classes/%s.tres" % id) as ClassData
-		var b: Button = _card_button(left, data.display_name)
-		b.pressed.connect(_select_class.bind(id))
-		_class_buttons[id] = b
-	var right: VBoxContainer = _column(Control.PRESET_RIGHT_WIDE, -40, &"MENU_PICK_HERO")
-	for id: StringName in HeroData.IDS:
-		var hero: HeroData = HeroData.load_hero(id)
-		var b2: Button = _card_button(right, tr(hero.display_name))
-		b2.pressed.connect(_select_hero.bind(id))
-		_hero_buttons[id] = b2
+	var left: VBoxContainer = _column(Control.PRESET_LEFT_WIDE, 40, &"MENU_PICK_HERO")
+	for cls: StringName in HeroData.ROSTER:
+		var data: ClassData = load("res://data/classes/%s.tres" % cls) as ClassData
+		var hid: StringName = HeroData.hero_for_class(cls)
+		if hid == &"":
+			var locked: Button = _card_button(left, "%s — %s" % [data.display_name, tr(&"MENU_HERO_SOON")])
+			locked.disabled = true
+			continue
+		var hero: HeroData = HeroData.load_hero(hid)
+		var b: Button = _card_button(left, "%s — %s" % [tr(hero.display_name), data.display_name])
+		b.pressed.connect(_select_hero.bind(hid))
+		_hero_buttons[hid] = b
 	_info = Label.new()
 	_info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_info.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -154,15 +153,9 @@ func _card_button(parent: Control, text: String) -> Button:
 	return b
 
 
-func _select_class(id: StringName) -> void:
-	class_id = id
-	for k: StringName in _class_buttons:
-		_class_buttons[k].button_pressed = k == id
-	_refresh()
-
-
 func _select_hero(id: StringName) -> void:
 	hero_id = id
+	class_id = HeroData.load_hero(id).class_id
 	_refresh()
 
 

@@ -43,6 +43,8 @@ var _last_attack: AttackData = null
 var _chain_timer: float = 0.0
 var _counter_timer: float = 0.0
 var _dodge_started_at: float = -INF
+const WEAPON_POISON_SHARE: float = 0.025
+const WEAPON_POISON_S: float = 5.0
 
 
 func _ready() -> void:
@@ -218,7 +220,17 @@ func build_damage_for(target: HurtboxComponent, attack: AttackData, skill: Skill
 	var push: Vector3 = target.global_position - player.global_position
 	push.y = 0.0
 	info.knockback = push.normalized() * attack.knockback
+	_apply_weapon_venom(info)
 	return info
+
+
+## Venom weapons (ItemData.on_hit_poison) poison what they cut.
+func _apply_weapon_venom(info: DamageInfo) -> void:
+	var weapon: ItemData = GameState.inventory.get_equipped_item(ItemData.Slot.WEAPON) if GameState.inventory != null else null
+	if weapon != null and weapon.on_hit_poison > 0.0:
+		info.poison_chance = weapon.on_hit_poison
+		info.poison_share = WEAPON_POISON_SHARE
+		info.poison_s = WEAPON_POISON_S
 
 
 func fire_projectile(attack: AttackData, direction: Vector3) -> void:

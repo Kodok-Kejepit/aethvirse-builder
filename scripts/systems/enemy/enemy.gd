@@ -267,6 +267,9 @@ func _build_damage(target: HurtboxComponent) -> DamageInfo:
 	push.y = 0.0
 	info.knockback = push.normalized() * data.attack_knockback
 	info.launch = data.attack_launch
+	info.poison_chance = data.attack_poison
+	info.poison_share = data.poison_share
+	info.poison_s = data.poison_s
 	return info
 
 

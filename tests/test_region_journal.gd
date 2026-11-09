@@ -26,7 +26,7 @@ func _resolve_all_but(region: StringName, keep: StringName) -> void:
 
 func test_r1_page_lists_real_entries() -> void:
 	var p: Vector2i = RegionJournal.progress(tracker.db, &"r1_ashfall", GameState.secrets)
-	assert_eq(p, Vector2i(0, 9), "7 secrets + 2 sealed missions")
+	assert_eq(p, Vector2i(0, 16), "13 secrets + 3 sealed missions")
 	assert_eq(RegionJournal.current_page(), &"r1_ashfall")
 
 

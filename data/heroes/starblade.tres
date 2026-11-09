@@ -6,6 +6,7 @@
 script = ExtResource("1")
 id = &"starblade"
 display_name = "HERO_STARBLADE"
+class_id = &"phantom"
 description = "HERO_STARBLADE_DESC"
 mesh_hi = "res://assets/characters/starblade/starblade_hi.res"
 mesh_lo = "res://assets/characters/starblade/starblade_lo.res"

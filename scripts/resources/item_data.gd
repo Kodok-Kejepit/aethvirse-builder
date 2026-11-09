@@ -33,6 +33,8 @@ const RARITY_COLORS: Dictionary[Rarity, Color] = {
 @export var is_drop_base: bool = false
 ## Generated drops: defense per item level.
 @export var defense_per_level: float = 0.0
+## Weapons: chance per hit to poison the target (PoisonEffect), e.g. 0.2 = 20 %.
+@export var on_hit_poison: float = 0.0
 
 @export_group("Visual")
 ## Model shown on the character (owner costumes / unique gear): .glb, .gltf or .tscn.

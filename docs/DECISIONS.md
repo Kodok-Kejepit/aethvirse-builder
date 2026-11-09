@@ -247,3 +247,41 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
   heavy-attack armour. R1 enemies hit ~15–20 % harder and recover faster.
 - Three more R1 quests in a clear chain (archers → brutes → metro Gate), each with a named
   NPC to report to.
+
+## One hero per class (owner, 2026-11-09)
+- New Game picks a hero, and the hero is the class: Dragon Sovereign = **Paladin** (class id
+  `vanguard`), Nocturne = **Assassin** (`phantom`). Mage (`arcanist`) and Marksman (`ranger`)
+  show as locked "coming soon" until the owner's heroes for them exist (HeroData.class_id,
+  HeroData.ROSTER). Old saves keep whatever pair they had.
+- Codex Status opens with the owner's "SYSTEM NOTIFICATION / CHARACTER PROFILE" card: name,
+  level, HP / MP bars, STR / AGI / INT as words (Low … Very high, relative to the hero's best
+  stat), class, and a class status (Blessed / Hidden / Mana Surge / Focused). The assassin
+  palette is near-black violet with gold trim like the reference.
+
+## The System pays (owner, 2026-11-09)
+- Every finished quest: +35 % of the XP still needed for the next level (dailies 12 %) and
+  40 gold × level. Every resolved journal entry: +80 % and 120 gold × level. A finished
+  journal page lifts the hero to at least the next region's minimum level + 1 (Ashfall →
+  Lv 51) and pays 6000 gold (SystemRewards).
+- Codex → Shop: the System's daily stock of 8 pieces at the hero's level (3 Rare, 2 Epic,
+  2 Legendary, 1 Mythic), priced 70 / 200 / 650 / 2200 gold per item level, each sold once
+  a day (CodexShop).
+
+## Ashfall journal page complete with the bible (2026-11-09)
+- Seven more entries, now 13 secrets + 3 sealed missions as MYSTERY_BIBLE planned: Platform
+  Zero (metro, 00:xx) → the First Sigil, the Billboard Roof (crate stair), the Flickering Neon
+  (RISEN), the Three Bells (small–big–big–medium) → the Refugees' Gift Box, and 03:33 at the
+  white ring. Riddles use SequencePuzzle / PuzzlePart (reusable in every region); chests that
+  appear on a flag use SecretChest.
+
+## Underground metro (owner, 2026-11-09)
+- Metro Gate and station: Tunnel Vipers (venomous bites), rats, one brute; boss **Venom
+  Matriarch** (coiled giant serpent, long-reach strike that throws and poisons). Models from
+  Meshy, rigged in Blender by `tools/blender/rig_serpent.py`: the centre line is found by
+  walking the mesh surface tail → head, a 14-bone chain follows it whatever the shape, weights
+  are computed (Meshy meshes defeat automatic weights); clips Idle / Walk (travelling wave) /
+  Attack / Hit / Dead.
+- Poison (PoisonEffect): share of max HP per second, never kills on its own, refreshes
+  instead of stacking. Venomfang (Legendary dagger, first metro clear) poisons on 20 % of hits.
+- Not done yet: more maps (Ashfall districts beyond the current 3 × 3 chunks) and a skill /
+  motion pass inspired by classic action RPGs (Zenonia feel, original names and effects).

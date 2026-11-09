@@ -80,3 +80,5 @@ Dragon Maiden (Meshy auto-rig or Mixamo) and send the FBX — `tools/import_rigg
 
 ## Generated for the game (Meshy, owner subscription)
 - `mob_cinder_archer` — charred hooded archer with a bone bow (2026-11-09, 10 credits), reduced with `--rebake` to 20 k, imported at 10 k + LODs.
+- `tunnel_viper`, `venom_matriarch` — Meshy serpents (2026-11-09), rigged by `tools/blender/rig_serpent.py` into `assets/creatures/<id>/<id>.glb`.
+- `weapon_dagger_venomfang` — Meshy dagger (item Venomfang, Legendary).

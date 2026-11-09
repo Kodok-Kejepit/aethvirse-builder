@@ -75,7 +75,7 @@ sense = 0.15
 [resource]
 script = ExtResource("e1")
 id = &"arcanist"
-display_name = "Arcanist"
+display_name = "Mage"
 description = "Caster. Elemental bolts and area spells, uses magic attack."
 magic_damage = true
 base_stats = SubResource("s4")
