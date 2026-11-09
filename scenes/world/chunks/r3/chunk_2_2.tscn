@@ -1,0 +1,178 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
+[ext_resource type="Resource" path="res://data/enemies/dune_scuttler.tres" id="d_dune_scuttler"]
+[ext_resource type="Resource" path="res://data/enemies/sand_wraith.tres" id="d_sand_wraith"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+
+
+[node name="Chunk_2_2" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.42, 0.3, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.82833, 0, 0.56024, 0, 1, -0, -0.56024, 0, 0.82833, -49.8016, 1.48451, 40.6546)
+script = ExtResource("gb")
+size = Vector3(17.172059567608503, 2.9690161296424464, 13.874770092550836)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.48277, 0, 0.87574, 0, 1, -0, -0.87574, 0, 0.48277, 16.9366, 0.999624, 33.2066)
+script = ExtResource("gb")
+size = Vector3(18.902269758638003, 1.9992485208680635, 11.069848985309017)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.94671, 0, 0.3221, 0, 1, -0, -0.3221, 0, 0.94671, 29.4503, 1.73467, -21.1578)
+script = ExtResource("gb")
+size = Vector3(15.925024284666716, 3.4693467192336804, 8.048421321676738)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.72055, 0, 0.69341, 0, 1, -0, -0.69341, 0, 0.72055, -0.57725, 1.71387, 31.2002)
+script = ExtResource("gb")
+size = Vector3(16.36367661534483, 3.4277371866866195, 9.724817350928312)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.41122, 0, 0.91154, 0, 1, -0, -0.91154, 0, 0.41122, 16.1839, 1.78565, 35.4474)
+script = ExtResource("gb")
+size = Vector3(11.695535967351848, 3.57130980040939, 13.070916978465602)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.71321, 0, 0.70095, 0, 1, -0, -0.70095, 0, 0.71321, -4.33873, 0.833559, 48.0922)
+script = ExtResource("gb")
+size = Vector3(11.727124447192523, 1.667118506653624, 16.33598777405384)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.22053, 0, 0.97538, 0, 1, -0, -0.97538, 0, 0.22053, -6.20181, 0.93299, 15.1653)
+script = ExtResource("gb")
+size = Vector3(16.45406940163894, 1.865979590636877, 11.313325680067738)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.28724, 0, 0.95786, 0, 1, -0, -0.95786, 0, 0.28724, -17.2593, 1.54143, 9.86184)
+script = ExtResource("gb")
+size = Vector3(8.166436714428853, 3.082856718270964, 12.447878609560222)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(0.55919, 0, 0.82904, 0, 1, -0, -0.82904, 0, 0.55919, -27.6427, 1.39651, 31.1574)
+script = ExtResource("gb")
+size = Vector3(13.558975213055376, 2.793021042391082, 8.713371581309497)
+color = Color(0.78, 0.5, 0.35, 1)
+solid = true
+
+[node name="Spawn11" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -17.0787, 0.3, -16.7969)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+level = 135
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8.31882, 0.3, 37.2441)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+level = 144
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 15.0361, 0.3, -2.13718)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_dune_scuttler")
+respawn_s = 20.0
+level = 140
+
+[node name="Tree14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -31.309, 0, -6.34324)
+script = ExtResource("tree")
+kind = &"dead"
+height = 6.65
+seed_value = 28800
+snowy = false
+
+[node name="Tree15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 51.0069, 0, -24.8329)
+script = ExtResource("tree")
+kind = &"dead"
+height = 4.54
+seed_value = 28801
+snowy = false
+
+[node name="Tree16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 43.2754, 0, -28.2353)
+script = ExtResource("tree")
+kind = &"dead"
+height = 5.52
+seed_value = 28802
+snowy = false
+
+[node name="Spawn17" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 21.1471, 0.3, 7.00852)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_sand_wraith")
+respawn_s = 20.0
+level = 142
+
+[node name="Chest18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -0.62615, 0, -29.881)
+script = ExtResource("chest")
+chest_id = &"r3_wild_2_2"
+kind = &"supply"
+level = 138
+
+[node name="B19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="B20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.62, 0.52, 0.45, 1)
+solid = true
+
+[node name="Outcrop21" type="StaticBody3D" parent="."]
+transform = Transform3D(0.86839, 0, 0.49589, 0, 1, -0, -0.49589, 0, 0.86839, -46.9415, -5.0931, -2.36296)
+script = ExtResource("prop")
+prop_id = &"ground_r3"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.637
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"dunes"
+amplitude = 5.0
+seed_value = 303
+flatten = PackedVector3Array(-49.8016, 40.6546, 13.7461, 16.9366, 33.2066, 13.6431, 29.4503, -21.1578, 11.206, -0.57725, 31.2002, 11.9212, 16.1839, 35.4474, 11.0237, -4.33873, 48.0922, 12.5657, -6.20181, 15.1653, 12.4809, -17.2593, 9.86184, 9.43255, -27.6427, 31.1574, 10.1704, -83.1168, -31.6415, 11.8042, 0, -128, 78, -42, -86, 30, 42, -86, 30, 13.2978, -77.8471, 7.95499, 13.2978, -77.8471, 0.754558, -20.7826, -79.2026, 9.39404, -34.5, -68, 31.1059, 34.5, -68, 31.1059, -60, -68, 1.85765, -44, -68, 1.85765, -28, -68, 1.85765, -12, -68, 1.85765, 20, -68, 1.85765, 36, -68, 1.85765, 52, -68, 1.85765, -9.8, -68, 2.02735, -9.8, -70, 1.5, -9.8, -69.2, 1.5, 9.8, -68, 2.02735, 9.8, -70, 1.5, 9.8, -69.2, 1.5, 60, -98, 36.505, 60, -76, 1.85765, -60, -93.5, 31.1059, -60, -76, 1.85765, -46.9415, -2.36296, 14.7353)

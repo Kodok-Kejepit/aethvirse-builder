@@ -19,6 +19,8 @@ extends Resource
 @export_file("*.tscn") var scene_path: String = ""
 ## Where a new arrival without a waystone target appears.
 @export var spawn: Vector3 = Vector3.ZERO
+## Chunks from the centre to the edge: 1 = 3x3 (384 m), 2 = 5x5 (640 m). The map covers it.
+@export var chunk_radius: int = 1
 ## Waystone id -> position (the Waystone nodes in the chunks use the same ids).
 @export var waystones: Dictionary[StringName, Vector3] = {}
 
@@ -33,6 +35,11 @@ extends Resource
 
 const IDS: Array[StringName] = [&"r1_ashfall", &"r2_verdant", &"r3_dunes", &"r4_frostveil", &"r5_archive",
 	&"r6_fracture", &"r7_hollow_throne"]
+
+
+## Half the width of the playable square, in metres.
+func half_extent_m() -> float:
+	return (float(chunk_radius) + 0.5) * ChunkMath.CHUNK_SIZE_M
 
 
 static func load_region(region_id: StringName) -> RegionData:

@@ -1,0 +1,153 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
+[ext_resource type="Resource" path="res://data/enemies/drowned_scribe.tres" id="d_drowned_scribe"]
+[ext_resource type="Resource" path="res://data/enemies/ink_wraith.tres" id="d_ink_wraith"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+
+
+[node name="Chunk_-1_2" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.57633, 0, 0.81722, 0, 1, -0, -0.81722, 0, 0.57633, -43.4507, 3.42406, -47.4495)
+script = ExtResource("gb")
+size = Vector3(7.178237289643572, 6.848118435316254, 5.8879268287310484)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.978, 0, 0.20861, 0, 1, -0, -0.20861, 0, 0.978, -39.8021, 1.6674, 0.544996)
+script = ExtResource("gb")
+size = Vector3(6.1039451278261385, 3.334807674075405, 8.076702896441116)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.78664, 0, 0.61741, 0, 1, -0, -0.61741, 0, 0.78664, 33.8704, 3.32986, 30.6742)
+script = ExtResource("gb")
+size = Vector3(5.523854581367241, 6.659727465818017, 8.582123925225389)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.51859, 0, 0.85503, 0, 1, -0, -0.85503, 0, 0.51859, 30.6063, 1.29589, -45.0175)
+script = ExtResource("gb")
+size = Vector3(9.045358449941471, 2.591783335343339, 9.399131835001779)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.74022, 0, 0.67236, 0, 1, -0, -0.67236, 0, 0.74022, -25.2137, 1.97203, 37.0519)
+script = ExtResource("gb")
+size = Vector3(6.7570148955378055, 3.9440615232225493, 9.483643060034902)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.78159, 0, 0.62379, 0, 1, -0, -0.62379, 0, 0.78159, -13.7018, 1.75392, -41.831)
+script = ExtResource("gb")
+size = Vector3(7.985191915470322, 3.5078487320122775, 8.574977606385236)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.42752, 0, 0.90401, 0, 1, -0, -0.90401, 0, 0.42752, -38.2147, 3.08027, -12.6379)
+script = ExtResource("gb")
+size = Vector3(4.3812127590887116, 6.160543824230441, 7.919666044196898)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.88101, 0, 0.4731, 0, 1, -0, -0.4731, 0, 0.88101, -39.718, 2.66512, -13.8557)
+script = ExtResource("gb")
+size = Vector3(9.121087035419581, 5.330235052065901, 6.944897739795453)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(0.036159, 0, 0.99935, 0, 1, -0, -0.99935, 0, 0.036159, -36.5464, 1.50549, 28.1969)
+script = ExtResource("gb")
+size = Vector3(6.800438085731653, 3.010970472966701, 9.231157263793982)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B11" type="StaticBody3D" parent="."]
+transform = Transform3D(0.012263, 0, 0.99992, 0, 1, -0, -0.99992, 0, 0.012263, 16.7493, 2.4815, 17.8472)
+script = ExtResource("gb")
+size = Vector3(6.699363847809788, 4.962999282724327, 9.557931915449132)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10.8046, 0.3, 29.5675)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ink_wraith")
+respawn_s = 20.0
+level = 235
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 23.6649, 0.3, -38.7741)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ink_wraith")
+respawn_s = 20.0
+level = 224
+
+[node name="Spawn14" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -1.49477, 0.3, 16.5763)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ink_wraith")
+respawn_s = 20.0
+level = 234
+
+[node name="Spawn15" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 2.3765, 0.3, 24.6416)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_drowned_scribe")
+respawn_s = 20.0
+level = 235
+
+[node name="Chest16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -11.1207, 0, -25.0677)
+script = ExtResource("chest")
+chest_id = &"r5_wild_-1_2"
+kind = &"supply"
+level = 232
+
+[node name="B17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="Outcrop18" type="StaticBody3D" parent="."]
+transform = Transform3D(0.57871, -0, -0.81554, 0, 1, -0, 0.81554, 0, 0.57871, 8.11464, -5.05042, -25.4842)
+script = ExtResource("prop")
+prop_id = &"ground_r1"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.443
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"archive"
+amplitude = 2.0
+seed_value = 505
+flatten = PackedVector3Array(-43.4507, -47.4495, 6.07047, -39.8021, 0.544996, 6.57428, 33.8704, 30.6742, 6.6237, 30.6063, -45.0175, 8.32677, -25.2137, 37.0519, 7.48676, -13.7018, -41.831, 7.53034, -38.2147, -12.6379, 5.93045, -39.718, -13.8557, 7.37847, -36.5464, 28.1969, 7.37937, 16.7493, 17.8472, 7.5032, -81.1673, 26.3439, 6.47384, -77.7882, -25.2389, 4.74536, -26.0003, -80.907, 5.15594, 50.171, -79.1836, 7.53867, 128, 0, 78, 86, -42, 30, 86, 42, 30, 78.9355, -22.2224, 8.20786, 78.7923, 15.8752, 9.55876, 93.5, -60, 31.1059, 68, -60, 1.85765, 98, 60, 36.505, 68, 60, 1.85765, 68, -34.5, 31.1059, 68, 34.5, 31.1059, 68, -60, 1.85765, 68, -44, 1.85765, 68, -28, 1.85765, 68, -12, 1.85765, 68, 20, 1.85765, 68, 36, 1.85765, 68, 52, 1.85765, 68, -9.8, 2.02735, 70, -9.8, 1.5, 69.2, -9.8, 1.5, 68, 9.8, 2.02735, 70, 9.8, 1.5, 69.2, 9.8, 1.5, 8.11464, -25.4842, 12.9867)

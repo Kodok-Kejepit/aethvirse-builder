@@ -120,36 +120,13 @@ height = 6.61
 seed_value = 1452
 snowy = false
 
-[node name="B16" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B17" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop18" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.19635, -0, -0.98053, 0, 1, -0, 0.98053, -0, -0.19635, 38.824, -6.07429, 39.2625)
+[node name="Outcrop16" type="StaticBody3D" parent="."]
+transform = Transform3D(0.72005, 0, 0.69392, 0, 1, -0, -0.69392, 0, 0.72005, -42.4165, -6.8463, 41.7206)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
 fallback_size = Vector3(12, 6, 12)
 fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.822
-fit_height = false
-
-[node name="Outcrop19" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.61137, 0, 0.79134, 0, 1, -0, -0.79134, -0, -0.61137, 43.2853, -5.6647, -45.5324)
-script = ExtResource("prop")
-prop_id = &"ground_r3"
-fallback_size = Vector3(12, 6, 12)
-fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.600
+size_scale = 1.841
 fit_height = false
 
 [node name="Terrain" type="StaticBody3D" parent="."]
@@ -157,4 +134,4 @@ script = ExtResource("terrain")
 style = &"dunes"
 amplitude = 5.0
 seed_value = 303
-flatten = PackedVector3Array(-21.1403, 1.0345, 14.462, -5.52967, -27.5192, 10.0643, -8.03831, 23.0454, 15.5991, 29.2718, 6.26065, 10.3083, -28.0144, -8.92455, 13.3515, 8.70935, 14.516, 13.8231, 43.763, -13.2763, 11.2682, 15.9375, -17.898, 15.4545, 38.824, 39.2625, 16.3952, 43.2853, -45.5324, 14.3977)
+flatten = PackedVector3Array(-21.1403, 1.0345, 14.462, -5.52967, -27.5192, 10.0643, -8.03831, 23.0454, 15.5991, 29.2718, 6.26065, 10.3083, -28.0144, -8.92455, 13.3515, 8.70935, 14.516, 13.8231, 43.763, -13.2763, 11.2682, 15.9375, -17.898, 15.4545, 20.5497, 86.2328, 14.6715, 128, 0, 78, 86, -42, 30, 86, 42, 30, 78.9793, -20.6777, 9.92563, 79.2233, 15.1769, 9.63259, 93.5, -60, 31.1059, 68, -60, 1.85765, 93.5, 60, 31.1059, 68, 60, 1.85765, 68, -34.5, 31.1059, 68, 34.5, 31.1059, 68, -60, 1.85765, 68, -44, 1.85765, 68, -28, 1.85765, 68, -12, 1.85765, 68, 20, 1.85765, 68, 36, 1.85765, 68, 52, 1.85765, 68, -9.8, 2.02735, 70, -9.8, 1.5, 69.2, -9.8, 1.5, 68, 9.8, 2.02735, 70, 9.8, 1.5, 69.2, 9.8, 1.5, -42.4165, 41.7206, 16.5712)

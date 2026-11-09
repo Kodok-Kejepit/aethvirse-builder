@@ -43,7 +43,7 @@ static func register_core() -> void:
 	DebugConsole.register("equip", _equip, "equip <item_id> — give and wear an item (costumes too)")
 	DebugConsole.register("droploot", _droploot, "droploot — drop one item of every rarity in front of you")
 	DebugConsole.register("trial", _trial, "trial <job_id> — start that job's Change trial now")
-	DebugConsole.register("gate", _gate, "gate [gate_id] [double] — enter a Gate (double = force the hidden Double Gate)")
+	DebugConsole.register("gate", _gate, "gate [gate_id] [double] [kind=<place>] [shape=<layout>] — enter a Gate (double = force the hidden Double Gate; kind: warrens/halls/ruins/grotto/crypt/rootdeep/ember/sandtomb/frost/sunken/void; shape: winding/spiral/loop/fork/hub)")
 	DebugConsole.register("touchedit", _touchedit, "touchedit — open the touch button layout editor")
 	DebugConsole.register("metro", _metro, "metro — go down into the Region 1 metro station")
 	DebugConsole.register("dungeonmap", _dungeonmap, "dungeonmap [room|next|zoom|tunnel N] — inside a Gate: map from above (roofs off), jump to a room / tunnel")
@@ -389,7 +389,7 @@ static func _dungeonmap(args: PackedStringArray) -> String:
 
 
 static func _gate(args: PackedStringArray) -> String:
-	var gate_id: String = args[0] if not args.is_empty() and args[0] != "double" else "gate_r1_e_overpass"
+	var gate_id: String = args[0] if not args.is_empty() and args[0] != "double" and not "=" in args[0] else "gate_r1_e_overpass"
 	var path: String = "res://data/gates/%s.tres" % gate_id
 	if not ResourceLoader.exists(path):
 		return "unknown gate"
@@ -397,6 +397,11 @@ static func _gate(args: PackedStringArray) -> String:
 	var session: GateSession = GateSession.new()
 	session.gate = load(path) as GateData
 	session.force_double = "double" in args
+	for arg: String in args:
+		if arg.begins_with("kind=") and DungeonArchetype.ALL.has(StringName(arg.trim_prefix("kind="))):
+			session.force_kind = StringName(arg.trim_prefix("kind="))
+		elif arg.begins_with("shape=") and StringName(arg.trim_prefix("shape=")) in DungeonPlan.LAYOUTS:
+			session.force_layout = StringName(arg.trim_prefix("shape="))
 	var p: Player = _player()
 	var in_gate: bool = GameState.gate_session != null
 	session.return_scene = GameState.gate_session.return_scene if in_gate else tree.current_scene.scene_file_path

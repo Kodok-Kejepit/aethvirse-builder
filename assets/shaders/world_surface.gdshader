@@ -18,6 +18,8 @@ uniform float lit_share : hint_range(0.0, 1.0) = 0.15;
 // Real moss (owner's baked tile) for facades and ledges; without it a flat tint is used.
 uniform sampler2D tex_moss : source_color, filter_linear_mipmap, repeat_enable;
 uniform bool has_moss = false;
+// Facades: how much moss creeps up the walls / covers the ledges (0 = none, desert towns).
+uniform float moss_amount = 1.0;
 
 varying vec3 world_pos;
 varying vec3 world_normal;
@@ -72,12 +74,14 @@ void fragment() {
 			* (1.0 - smoothstep(0.5, 5.0 + noise(world_pos * 0.2) * 3.0, world_pos.y));
 		float streak = smoothstep(0.78, 0.9, noise(vec3(world_pos.x * 1.7, world_pos.y * 0.15, world_pos.z * 1.7)) + (edge - 0.5) * 0.2);
 		vec3 moss = has_moss ? texture(tex_moss, wall * 0.35).rgb : vec3(0.2, 0.31, 0.15);
-		col = mix(col, moss, clamp(creep * 0.85 + streak * 0.25, 0.0, 0.85));
-		col *= 1.0 - streak * 0.25;
+		col = mix(col, moss, clamp(creep * 0.85 + streak * 0.25, 0.0, 0.85) * moss_amount);
+		col *= 1.0 - streak * 0.25 * moss_amount;
 	} else if (style == 1) {
 		// Roofs / ledges of facade blocks: moss beds.
 		vec3 bed = has_moss ? texture(tex_moss, world_pos.xz * 0.35).rgb : vec3(0.24, 0.36, 0.17);
-		col = mix(col, bed, smoothstep(0.35, 0.7, noise(world_pos * 0.4 + vec3(5.0)) + (noise(world_pos * 3.0) - 0.5) * 0.3) * 0.85);
+		col = mix(col, bed, smoothstep(0.35, 0.7, noise(world_pos * 0.4 + vec3(5.0)) + (noise(world_pos * 3.0) - 0.5) * 0.3) * 0.85 * moss_amount);
+		// Roof colour (snow, sand) where the ledge faces up.
+		col = mix(col, top_color.rgb, up * top_amount * (1.0 - moss_amount));
 	} else if (style == 2) {
 		float crack = smoothstep(0.012, 0.0, abs(noise(world_pos * 3.2) - 0.5))
 			* smoothstep(0.55, 0.7, noise(world_pos * 0.4 + vec3(11.0))) * 0.22;

@@ -10,6 +10,9 @@ var cleared: bool = false
 var enemy_level_bonus: int = 0
 ## Test hook / cheat: force the hidden Double Gate to appear in this run.
 var force_double: bool = false
+## Cheat: force today's kind of place / map shape (DungeonArchetype / DungeonPlan.LAYOUTS).
+var force_kind: StringName = &""
+var force_layout: StringName = &""
 ## Dynamic world Gate this run came from (-1 = a fixed portal); cleared runs close it.
 var world_gate_uid: int = -1
 ## Job Change trial: the job granted when this Gate's boss falls.

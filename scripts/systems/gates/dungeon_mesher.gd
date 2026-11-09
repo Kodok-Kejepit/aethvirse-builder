@@ -32,6 +32,14 @@ func _init(theme: GateTheme, archetype: StringName = &"ruins") -> void:
 	for m: ShaderMaterial in [floor_material, wall_material, ceiling_material]:
 		m.set_shader_parameter(&"moss", spec["moss"])
 		m.set_shader_parameter(&"wetness", spec["wet"])
+		m.set_shader_parameter(&"frost", spec.get("frost", 0.0))
+		m.set_shader_parameter(&"sand", spec.get("sand", 0.0))
+		var glow: Array = spec.get("glow", [])
+		if not glow.is_empty():
+			var glow_color: Color = glow[0]
+			var glow_amount: float = glow[1]
+			m.set_shader_parameter(&"glow_color", glow_color)
+			m.set_shader_parameter(&"glow", glow_amount)
 
 
 static func _material(base: StringName, surface: int, tile_m: float, theme: GateTheme) -> ShaderMaterial:

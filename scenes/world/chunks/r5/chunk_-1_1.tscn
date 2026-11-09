@@ -102,21 +102,7 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_drowned_scribe")
 respawn_s = 20.0
 
-[node name="B14" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B15" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop16" type="StaticBody3D" parent="."]
+[node name="Outcrop14" type="StaticBody3D" parent="."]
 transform = Transform3D(0.78521, 0, 0.61923, 0, 1, -0, -0.61923, 0, 0.78521, 44.7647, -6.02763, -23.2582)
 script = ExtResource("prop")
 prop_id = &"ground_r1"
@@ -130,4 +116,4 @@ script = ExtResource("terrain")
 style = &"archive"
 amplitude = 2.0
 seed_value = 505
-flatten = PackedVector3Array(-30.5658, 32.5854, 6.82027, -26.0003, 47.093, 5.15594, -22.5037, 18.1963, 7.16737, 50.171, 48.8164, 7.53867, -20.5025, -13.9209, 6.7711, 8.79281, 35.7831, 5.60785, 33.0702, 16.4207, 6.21323, 10.5357, -40.2568, 5.26206, -33.4401, -39.5738, 6.16982, -47.5971, -76.2536, 6.67447, 44.7647, -23.2582, 13.3011)
+flatten = PackedVector3Array(-30.5658, 32.5854, 6.82027, -26.0003, 47.093, 5.15594, -22.5037, 18.1963, 7.16737, 50.171, 48.8164, 7.53867, -20.5025, -13.9209, 6.7711, 8.79281, 35.7831, 5.60785, 33.0702, 16.4207, 6.21323, 10.5357, -40.2568, 5.26206, -33.4401, -39.5738, 6.16982, -79.1694, 40.5496, 6.31039, -47.5971, -76.2536, 6.67447, -43.4507, 80.5505, 6.07047, 30.6063, 82.9825, 8.32677, 128, 128, 78, 86, 86, 30, 93.5, 68, 31.1059, 68, 68, 1.85765, 68, 93.5, 31.1059, 68, 68, 1.85765, 44.7647, -23.2582, 13.3011)

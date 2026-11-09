@@ -247,8 +247,10 @@ func _fire() -> CPUParticles3D:
 	return p
 
 
+## Random plank / scrap tints snap to a coarse palette so a town shares a handful of
+## materials (ChunkBatcher merges per material).
 func _mat(c: Color) -> Material:
-	return WorldStreamer.shared_material(c)
+	return WorldStreamer.shared_material(Color(snappedf(c.r, 0.04), snappedf(c.g, 0.04), snappedf(c.b, 0.04)))
 
 
 static func _glow_mat(c: Color) -> StandardMaterial3D:
@@ -261,6 +263,13 @@ static func _glow_mat(c: Color) -> StandardMaterial3D:
 
 
 func _mesh(mesh: PrimitiveMesh, mat: Material, pos: Vector3) -> MeshInstance3D:
+	# Small props: the default 64-sided cylinders / tori are far more than they need.
+	if mesh is CylinderMesh:
+		(mesh as CylinderMesh).radial_segments = 12
+		(mesh as CylinderMesh).rings = 1
+	elif mesh is TorusMesh:
+		(mesh as TorusMesh).rings = 14
+		(mesh as TorusMesh).ring_segments = 6
 	mesh.material = mat
 	var mi: MeshInstance3D = MeshInstance3D.new()
 	mi.mesh = mesh

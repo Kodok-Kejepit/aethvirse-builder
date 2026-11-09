@@ -177,14 +177,7 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_moss_brute")
 respawn_s = 20.0
 
-[node name="B22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop23" type="StaticBody3D" parent="."]
+[node name="Outcrop22" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99072, -0, -0.13595, 0, 1, -0, 0.13595, -0, -0.99072, 22.2126, -6.22625, -33.6495)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -193,7 +186,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 2.184
 fit_height = false
 
-[node name="Outcrop24" type="StaticBody3D" parent="."]
+[node name="Outcrop23" type="StaticBody3D" parent="."]
 transform = Transform3D(0.98057, 0, 0.19617, 0, 1, -0, -0.19617, 0, 0.98057, 18.5256, -8.02666, 38.0379)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -202,7 +195,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 2.075
 fit_height = false
 
-[node name="Outcrop25" type="StaticBody3D" parent="."]
+[node name="Outcrop24" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.12629, -0, -0.99199, 0, 1, -0, 0.99199, -0, -0.12629, -31.6813, -6.98207, 11.3911)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -216,4 +209,4 @@ script = ExtResource("terrain")
 style = &"verdant"
 amplitude = 6.0
 seed_value = 202
-flatten = PackedVector3Array(22.2126, -33.6495, 19.6531, 18.5256, 38.0379, 18.6777, -31.6813, 11.3911, 17.0919)
+flatten = PackedVector3Array(128, 128, 70, 86, 86, 30, 22.2126, -33.6495, 19.6531, 18.5256, 38.0379, 18.6777, -31.6813, 11.3911, 17.0919)

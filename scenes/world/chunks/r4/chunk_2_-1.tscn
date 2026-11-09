@@ -1,0 +1,252 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
+[ext_resource type="Resource" path="res://data/enemies/frost_yeti.tres" id="d_frost_yeti"]
+[ext_resource type="Resource" path="res://data/enemies/ice_wyvernling.tres" id="d_ice_wyvernling"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+
+
+[node name="Chunk_2_-1" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.77, 0.85, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.6515, 0, 0.75865, 0, 1, -0, -0.75865, 0, 0.6515, 43.6626, 1.98317, -36.0467)
+script = ExtResource("gb")
+size = Vector3(5.546762005957662, 3.9663352725583962, 8.489780349060805)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99782, 0, 0.066044, 0, 1, -0, -0.066044, 0, 0.99782, -38.8396, 3.29953, -48.3866)
+script = ExtResource("gb")
+size = Vector3(10.021944360895212, 6.599064742878483, 4.155550649246612)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.91945, 0, 0.3932, 0, 1, -0, -0.3932, 0, 0.91945, 9.95648, 1.87485, 37.8123)
+script = ExtResource("gb")
+size = Vector3(9.413200905909207, 3.7496974506434864, 6.60897508842815)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.51827, 0, 0.85522, 0, 1, -0, -0.85522, 0, 0.51827, 26.6169, 3.91422, 19.7338)
+script = ExtResource("gb")
+size = Vector3(6.584863015870466, 7.828441130304368, 9.074711389640054)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.12724, 0, 0.99187, 0, 1, -0, -0.99187, 0, 0.12724, 23.3382, 2.36388, -37.1504)
+script = ExtResource("gb")
+size = Vector3(5.790130870132432, 4.727762587147264, 6.550626644892746)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.20589, 0, 0.97858, 0, 1, -0, -0.97858, 0, 0.20589, 33.9164, 3.77801, -31.7068)
+script = ExtResource("gb")
+size = Vector3(6.435552766073339, 7.556024599198015, 5.988416914716896)
+color = Color(0.55, 0.75, 0.92, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.94592, 0, 0.32439, 0, 1, -0, -0.32439, 0, 0.94592, -40.0928, 2.30815, -23.6891)
+script = ExtResource("gb")
+size = Vector3(9.726186591607988, 4.616302210575435, 5.7661571466245825)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.57981, 0, 0.81475, 0, 1, -0, -0.81475, 0, 0.57981, 50.8198, 3.54254, 46.0535)
+script = ExtResource("gb")
+size = Vector3(9.347824890844711, 7.085086074486799, 10.159771652092644)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(0.90548, 0, 0.42439, 0, 1, -0, -0.42439, 0, 0.90548, 14.6618, 3.56948, 3.31667)
+script = ExtResource("gb")
+size = Vector3(11.750980883741331, 7.138957674795354, 7.976113918441842)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="B11" type="StaticBody3D" parent="."]
+transform = Transform3D(0.40587, 0, 0.91393, 0, 1, -0, -0.91393, 0, 0.40587, 43.7984, 3.60283, -7.09855)
+script = ExtResource("gb")
+size = Vector3(11.002326653048094, 7.205652521121353, 9.392757538356026)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 25.8576, 0.3, -15.8489)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ice_wyvernling")
+respawn_s = 20.0
+level = 186
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -31.4079, 0.3, -9.1974)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ice_wyvernling")
+respawn_s = 20.0
+level = 177
+
+[node name="Spawn14" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20.7775, 0.3, -13.3775)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ice_wyvernling")
+respawn_s = 20.0
+level = 179
+
+[node name="Tree15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 39.9624, 0, 7.59067)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.99
+seed_value = 38850
+snowy = true
+
+[node name="Tree16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -27.6249, 0, -38.9753)
+script = ExtResource("tree")
+kind = &"pine"
+height = 12.36
+seed_value = 38851
+snowy = true
+
+[node name="Tree17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 51.5328, 0, -57.9669)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.70
+seed_value = 38852
+snowy = true
+
+[node name="Tree18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 49.6745, 0, -42.8935)
+script = ExtResource("tree")
+kind = &"pine"
+height = 13.57
+seed_value = 38853
+snowy = true
+
+[node name="Tree19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 48.201, 0, 57.9237)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.98
+seed_value = 38854
+snowy = true
+
+[node name="Tree20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 37.44, 0, 36.0674)
+script = ExtResource("tree")
+kind = &"pine"
+height = 13.20
+seed_value = 38855
+snowy = true
+
+[node name="Tree21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40.7033, 0, 19.0297)
+script = ExtResource("tree")
+kind = &"pine"
+height = 9.58
+seed_value = 38856
+snowy = true
+
+[node name="Tree22" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 32.9716, 0, -3.05888)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.53
+seed_value = 38857
+snowy = true
+
+[node name="Tree23" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -9.31274, 0, 48.3711)
+script = ExtResource("tree")
+kind = &"pine"
+height = 12.88
+seed_value = 38858
+snowy = true
+
+[node name="Tree24" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 27.518, 0, 24.1497)
+script = ExtResource("tree")
+kind = &"pine"
+height = 13.01
+seed_value = 38859
+snowy = true
+
+[node name="Spawn25" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -24.5324, 0.3, -27.1155)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_frost_yeti")
+respawn_s = 20.0
+level = 179
+
+[node name="Chest26" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 3.67335, 0, 25.1899)
+script = ExtResource("chest")
+chest_id = &"r4_wild_2_-1"
+kind = &"supply"
+level = 182
+
+[node name="B27" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="Outcrop28" type="StaticBody3D" parent="."]
+transform = Transform3D(0.46944, 0, 0.88297, 0, 1, -0, -0.88297, 0, 0.46944, -6.71841, -6.74515, -45.7596)
+script = ExtResource("prop")
+prop_id = &"ground_r4"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.834
+fit_height = false
+
+[node name="Outcrop29" type="StaticBody3D" parent="."]
+transform = Transform3D(0.83696, -0, -0.54726, 0, 1, -0, 0.54726, 0, 0.83696, -8.33274, -4.65637, 19.1079)
+script = ExtResource("prop")
+prop_id = &"ground_r4"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.392
+fit_height = false
+
+[node name="Outcrop30" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.78486, -0, -0.61968, 0, 1, -0, 0.61968, -0, -0.78486, -41.2365, -5.21539, 23.1654)
+script = ExtResource("prop")
+prop_id = &"ground_r4"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.503
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"frost"
+amplitude = 7.0
+seed_value = 404
+flatten = PackedVector3Array(43.6626, -36.0467, 6.58469, -38.8396, -48.3866, 7.0096, 9.95648, 37.8123, 7.40096, 26.6169, 19.7338, 7.22725, 23.3382, -37.1504, 5.74567, 33.9164, -31.7068, 5.77446, -40.0928, -23.6891, 7.28417, 50.8198, 46.0535, 8.78354, 14.6618, 3.31667, 9.02135, 43.7984, -7.09855, 9.17981, -80.5547, -25.6354, 9.09753, 47.9781, -84.1348, 7.85264, 0, 128, 70, -42, 86, 30, 42, 86, 30, -48.4, 78, 1.5, -45.3, 78, 1.5, -42.2, 78, 1.5, -39.1, 78, 1.5, -36, 78, 1.5, -32.9, 78, 1.5, -29.8, 78, 1.5, -26.7, 78, 1.5, -23.6, 78, 1.5, -20.5, 78, 1.5, -17.4, 78, 1.5, -14.3, 78, 1.5, -11.2, 78, 1.5, -8.1, 78, 1.5, 7.4, 78, 1.5, 10.5, 78, 1.5, 13.6, 78, 1.5, 16.7, 78, 1.5, 19.8, 78, 1.5, 22.9, 78, 1.5, 26, 78, 1.5, 29.1, 78, 1.5, 32.2, 78, 1.5, 35.3, 78, 1.5, 38.4, 78, 1.5, 41.5, 78, 1.5, 44.6, 78, 1.5, 47.7, 78, 1.5, -7, 78, 1.5, 7, 78, 1.5, -6.71841, -45.7596, 16.5068, -8.33274, 19.1079, 12.5312, -41.2365, 23.1654, 13.5306)

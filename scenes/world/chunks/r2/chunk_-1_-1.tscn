@@ -169,21 +169,7 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_thorn_stalker")
 respawn_s = 20.0
 
-[node name="B21" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop23" type="StaticBody3D" parent="."]
+[node name="Outcrop21" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.81332, -0, -0.58182, 0, 1, -0, 0.58182, -0, -0.81332, -33.0306, -6.30115, -17.6105)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -192,7 +178,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.622
 fit_height = false
 
-[node name="Outcrop24" type="StaticBody3D" parent="."]
+[node name="Outcrop22" type="StaticBody3D" parent="."]
 transform = Transform3D(0.80565, -0, -0.59239, 0, 1, -0, 0.59239, 0, 0.80565, -1.98236, -7.49263, 20.4258)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -201,7 +187,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.945
 fit_height = false
 
-[node name="Outcrop25" type="StaticBody3D" parent="."]
+[node name="Outcrop23" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.26759, -0, -0.96353, 0, 1, -0, 0.96353, -0, -0.26759, 35.2174, -7.01783, 42.0744)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -215,4 +201,4 @@ script = ExtResource("terrain")
 style = &"verdant"
 amplitude = 6.0
 seed_value = 202
-flatten = PackedVector3Array(86, 34, 12.4, 86, 86, 11.8, -33.0306, -17.6105, 14.5996, -1.98236, 20.4258, 17.5043, 35.2174, 42.0744, 16.054)
+flatten = PackedVector3Array(-128, 128, 78, -86, 86, 30, -93.5, 68, 31.1059, -76, 68, 1.85765, -68, 93.5, 31.1059, -68, 68, 1.85765, 86, 34, 12.4, 86, 86, 11.8, -33.0306, -17.6105, 14.5996, -1.98236, 20.4258, 17.5043, 35.2174, 42.0744, 16.054)

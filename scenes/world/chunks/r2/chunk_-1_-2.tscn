@@ -1,0 +1,231 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/enemies/moss_brute.tres" id="d_moss_brute"]
+[ext_resource type="Resource" path="res://data/enemies/thorn_stalker.tres" id="d_thorn_stalker"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/grass_field.gd" id="grass"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+
+
+[node name="Chunk_-1_-2" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.22, 0.38, 0.22, 1)
+solid = true
+visible = false
+
+[node name="Grass2" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
+script = ExtResource("grass")
+area = Vector2(124, 124)
+blades = 40000
+color = Color(0.26, 0.5, 0.26, 1)
+seed_value = 4733
+
+[node name="Tree3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 47.1206, 0, 26.2141)
+script = ExtResource("tree")
+kind = &"oak"
+height = 9.68
+seed_value = 498933052
+snowy = false
+
+[node name="Tree4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 24.9037, 0, -36.9539)
+script = ExtResource("tree")
+kind = &"oak"
+height = 13.22
+seed_value = 286963835
+snowy = false
+
+[node name="Tree5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -3.70321, 0, -41.9712)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.38
+seed_value = 360833737
+snowy = false
+
+[node name="Tree6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28.876, 0, -6.1631)
+script = ExtResource("tree")
+kind = &"oak"
+height = 13.01
+seed_value = 979972282
+snowy = false
+
+[node name="Tree7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -50.2244, 0, -15.6317)
+script = ExtResource("tree")
+kind = &"oak"
+height = 9.06
+seed_value = 759285068
+snowy = false
+
+[node name="Tree8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -4.8832, 0, 20.7933)
+script = ExtResource("tree")
+kind = &"oak"
+height = 13.65
+seed_value = 688877626
+snowy = false
+
+[node name="Tree9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 3.66015, 0, 46.557)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.14
+seed_value = 340857618
+snowy = false
+
+[node name="Tree10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40.2872, 0, 32.5858)
+script = ExtResource("tree")
+kind = &"oak"
+height = 7.63
+seed_value = 237687531
+snowy = false
+
+[node name="Tree11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 55.5491, 0, 51.115)
+script = ExtResource("tree")
+kind = &"oak"
+height = 9.75
+seed_value = 782576295
+snowy = false
+
+[node name="Tree12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -17.2223, 0, 37.7067)
+script = ExtResource("tree")
+kind = &"oak"
+height = 12.53
+seed_value = 687633242
+snowy = false
+
+[node name="Tree13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30.7914, 0, 41.4643)
+script = ExtResource("tree")
+kind = &"oak"
+height = 8.91
+seed_value = 269755828
+snowy = false
+
+[node name="Tree14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -33.4609, 0, -53.2687)
+script = ExtResource("tree")
+kind = &"oak"
+height = 13.44
+seed_value = 121775227
+snowy = false
+
+[node name="Tree15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -48.5033, 0, 10.0484)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.60
+seed_value = 246044484
+snowy = false
+
+[node name="Tree16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 52.7776, 0, -22.9219)
+script = ExtResource("tree")
+kind = &"oak"
+height = 10.68
+seed_value = 629960828
+snowy = false
+
+[node name="Tree17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 34.924, 0, 45.7543)
+script = ExtResource("tree")
+kind = &"oak"
+height = 11.66
+seed_value = 685526901
+snowy = false
+
+[node name="Tree18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 29.4222, 0, -14.5934)
+script = ExtResource("tree")
+kind = &"oak"
+height = 7.25
+seed_value = 779802967
+snowy = false
+
+[node name="Spawn19" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -34.2985, 0.3, 20.9493)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_moss_brute")
+respawn_s = 20.0
+level = 80
+
+[node name="Spawn20" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 36.7252, 0.3, -9.29839)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_moss_brute")
+respawn_s = 20.0
+level = 81
+
+[node name="Spawn21" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -25.6439, 0.3, -12.7224)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_moss_brute")
+respawn_s = 20.0
+level = 85
+
+[node name="Spawn22" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 32.497, 0.3, 18.0787)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_thorn_stalker")
+respawn_s = 20.0
+level = 77
+
+[node name="B23" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.4, 0.3, 0.22, 1)
+solid = true
+
+[node name="Outcrop24" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.36341, -0, -0.93163, 0, 1, -0, 0.93163, -0, -0.36341, 49.0513, -8.23256, 9.72468)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 2.123
+fit_height = false
+
+[node name="Outcrop25" type="StaticBody3D" parent="."]
+transform = Transform3D(0.89373, 0, 0.4486, 0, 1, -0, -0.4486, 0, 0.89373, 0.42156, -5.70551, -30.0942)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.768
+fit_height = false
+
+[node name="Outcrop26" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.65362, -0, -0.75682, 0, 1, -0, 0.75682, -0, -0.65362, 47.9383, -8.66549, -49.1105)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 2.279
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"verdant"
+amplitude = 6.0
+seed_value = 202
+flatten = PackedVector3Array(49.0513, 9.72468, 19.1078, 0.42156, -30.0942, 15.911, 47.9383, -49.1105, 20.5119)

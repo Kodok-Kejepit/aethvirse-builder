@@ -646,18 +646,12 @@ region = &"{region}"
     for sid, row in SECRETS.items():
         folder = "r2" if row[0] == "r2_verdant" else "r3"
         write(f"data/secrets/{folder}/{sid}.tres", secret_tres(sid, row))
-    for rid, r in REGIONS.items():
-        write(f"data/regions/{rid}.tres", region_tres(rid, r))
+    # Region data (.tres) is hand-tuned since 2026-11-08 (levels) and its chunks are 5x5
+    # since 2026-11-10: both come from tools/gen_region_towns.py now.
     write("scenes/world/regions/verdant.tscn", region_scene("Verdant", "r2_verdant", "res://scenes/world/chunks/r2",
           "Color(0.25, 0.4, 0.35, 1)", "Color(0.55, 0.65, 0.55, 1)", 0.012, "Color(0.95, 1, 0.85, 1)", REGIONS["r2_verdant"]["spawn"]))
     write("scenes/world/regions/dunes.tscn", region_scene("Dunes", "r3_dunes", "res://scenes/world/chunks/r3",
           "Color(0.45, 0.35, 0.4, 1)", "Color(0.85, 0.6, 0.45, 1)", 0.005, "Color(1, 0.88, 0.75, 1)", REGIONS["r3_dunes"]["spawn"]))
-    region_chunks("r2", {(0, 0): glade, (1, 0): root_shrine, (0, -1): fog_lake},
-                  lambda c, x, z: forest_filler(c, x * 13 + z * 5 + 3, "thorn_stalker" if (x + z) % 2 == 0 else "moss_brute",
-                                                "r3_oasis" if (x, z) == (1, -1) else None))
-    region_chunks("r3", {(0, 0): oasis, (1, 0): colonnade, (0, -1): storm_dune},
-                  lambda c, x, z: desert_filler(c, x * 17 + z * 3 + 9, "dune_scuttler" if (x + z) % 2 == 0 else "sand_wraith",
-                                                "r4_lodge" if (x, z) == (1, -1) else None))
     print("m9 world written")
 
 

@@ -221,14 +221,7 @@ font_size = 64
 outline_size = 10
 pixel_size = 0.01
 
-[node name="B32" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop33" type="StaticBody3D" parent="."]
+[node name="Outcrop32" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.16728, 0, 0.98591, 0, 1, -0, -0.98591, -0, -0.16728, -38.0342, -5.06583, -41.5308)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -237,7 +230,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.502
 fit_height = false
 
-[node name="Outcrop34" type="StaticBody3D" parent="."]
+[node name="Outcrop33" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.30063, -0, -0.95374, 0, 1, -0, 0.95374, -0, -0.30063, 16.7289, -6.06445, 49.0787)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -251,4 +244,4 @@ script = ExtResource("terrain")
 style = &"dunes"
 amplitude = 5.0
 seed_value = 303
-flatten = PackedVector3Array(-28, -10, 2.2, -20, -10, 2.2, -12, -10, 2.2, -4, -10, 2.2, 4, -10, 2.2, 12, -10, 2.2, 20, -10, 2.2, 28, -10, 2.2, -28, 10, 2.2, -20, 10, 2.2, -12, 10, 2.2, -4, 10, 2.2, 4, 10, 2.2, 12, 10, 2.2, 20, 10, 2.2, 28, 10, 2.2, 0, -43, 11.306, -5.25, -29, 5.01438, 5.25, -29, 5.01438, 9, -36, 8.90771, -9, -36, 8.90771, 0, -29, 4, 0, -38, 4, 6, -24, 4, 0, 14, 4, 26, 22, 4, -38.0342, -41.5308, 13.5206, 16.7289, 49.0787, 18.0274)
+flatten = PackedVector3Array(-28, -10, 2.2, -20, -10, 2.2, -12, -10, 2.2, -4, -10, 2.2, 4, -10, 2.2, 12, -10, 2.2, 20, -10, 2.2, 28, -10, 2.2, -28, 10, 2.2, -20, 10, 2.2, -12, 10, 2.2, -4, 10, 2.2, 4, 10, 2.2, 12, 10, 2.2, 20, 10, 2.2, 28, 10, 2.2, 0, -43, 11.306, -5.25, -29, 5.01438, 5.25, -29, 5.01438, 9, -36, 8.90771, -9, -36, 8.90771, 0, -29, 4, 0, -38, 4, 6, -24, 4, 0, 14, 4, 26, 22, 4, 128, 128, 78, 86, 86, 30, 93.5, 68, 31.1059, 68, 68, 1.85765, 68, 93.5, 31.1059, 68, 68, 1.85765, -38.0342, -41.5308, 13.5206, 16.7289, 49.0787, 18.0274)

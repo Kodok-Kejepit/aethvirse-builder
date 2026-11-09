@@ -169,14 +169,7 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_moss_brute")
 respawn_s = 20.0
 
-[node name="B21" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop22" type="StaticBody3D" parent="."]
+[node name="Outcrop21" type="StaticBody3D" parent="."]
 transform = Transform3D(0.9969, 0, 0.078647, 0, 1, -0, -0.078647, 0, 0.9969, 14.2316, -6.34624, -9.02172)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -185,7 +178,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.859
 fit_height = false
 
-[node name="Outcrop23" type="StaticBody3D" parent="."]
+[node name="Outcrop22" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99603, 0, 0.088987, 0, 1, -0, -0.088987, -0, -0.99603, -11.2761, -6.16483, 48.7893)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -194,13 +187,13 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.717
 fit_height = false
 
-[node name="Outcrop24" type="StaticBody3D" parent="."]
-transform = Transform3D(0.96552, 0, 0.26033, 0, 1, -0, -0.26033, 0, 0.96552, -30.998, -4.23175, -21.4214)
+[node name="Outcrop23" type="StaticBody3D" parent="."]
+transform = Transform3D(0.53163, -0, -0.84697, 0, 1, -0, 0.84697, 0, 0.53163, -19.044, -5.69854, -45.8084)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
 fallback_size = Vector3(12, 6, 12)
 fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.337
+size_scale = 1.362
 fit_height = false
 
 [node name="Terrain" type="StaticBody3D" parent="."]
@@ -208,4 +201,4 @@ script = ExtResource("terrain")
 style = &"verdant"
 amplitude = 6.0
 seed_value = 202
-flatten = PackedVector3Array(86, -42, 11.8, 14.2316, -9.02172, 16.7315, -11.2761, 48.7893, 15.4493, -30.998, -21.4214, 12.0359)
+flatten = PackedVector3Array(-128, 0, 78, -86, -42, 30, -86, 42, 30, -79.21, -23.1428, 7.6167, -78.4493, 22.8819, 8.22371, -78.4493, 22.8819, 5.00057, -78.6117, 48.8152, 7.72182, -79.0858, 13.3413, 7.58898, -93.5, -60, 31.1059, -76, -60, 1.85765, -93.5, 60, 31.1059, -76, 60, 1.85765, -68, -34.5, 31.1059, -68, 34.5, 31.1059, -68, -60, 1.85765, -68, -44, 1.85765, -68, -28, 1.85765, -68, -12, 1.85765, -68, 20, 1.85765, -68, 36, 1.85765, -68, 52, 1.85765, -68, -9.8, 2.02735, -70, -9.8, 1.5, -69.2, -9.8, 1.5, -68, 9.8, 2.02735, -70, 9.8, 1.5, -69.2, 9.8, 1.5, 86, -42, 11.8, 14.2316, -9.02172, 16.7315, -11.2761, 48.7893, 15.4493, -19.044, -45.8084, 12.2578)

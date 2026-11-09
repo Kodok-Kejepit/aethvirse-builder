@@ -477,3 +477,38 @@
 - Codex colours per hero (jade / violet / midnight blue).
 - Known: in wide stances the cloak hem near the boots can fold for a moment (playtest).
 
+
+## Bigger regions, towns, dungeon shapes, lighter frames (2026-11-10)
+- **Regions 2-6 are 5x5 chunks (640 m, was 384 m).** The old 3x3 core is unchanged; the new
+  outer ring of each region holds:
+  - a walled **modern city** with a street grid, rows of buildings in the region's own look,
+    a plaza with a waystone, well, market stalls, lamps and two townsfolk:
+    Greenreach (overgrown, R2), Sandmere (sandstone, R3), Whitehold (snowy roofs, R4),
+    Lowmarket (canals and footbridges, R5), Shardhaven (pieces of buildings floating, R6);
+  - a **village** behind a palisade: Thornfield (cottages, fields), Dustwell (adobe houses,
+    market), Pinecrest (snowy cottages, smithy), Saltreed (stilt houses over the water),
+    Last Lantern (rift camp of tents and lanterns);
+  - a **landmark** with a strong pack and a treasure chest: Elder Canopy, Sunscar Plateau,
+    Frozen Spire, Drowned Belltower, Drifting Isle (light gravity);
+  - wilds whose monsters climb to the region's top level (e.g. Verdant Lv 65 → 98); supply
+    chests; three more dynamic Gate spots (up to 3 Gates open per region).
+  - Every new town has a waystone (fast travel) and a name on the map; 20 new townsfolk with
+    two lines each (EN + ID).
+  - The map covers the bigger region and is painted as chunks stream in; explored fog from an
+    old save is carried over.
+- **Dungeon maps:** five shapes — winding path, spiral, ring (two ways round, the boss off the far
+  side), fork (two routes that meet before the boss) and hub (a great hall with three spokes:
+  boss behind one, treasure at the end of the others). Each kind of place builds in its own shapes.
+- **Five new kinds of place**, one per region and likely in its Gates: Ember Forge (glowing lava
+  cracks, Ashfall), Sand-choked Tomb (drifts of sand, Dunes), Frost Hollow (ice coat, blue veins,
+  Frostveil), Sunken Sanctum (flooded, mossy, Archive), Void Breach (violet light, Fracture).
+  Rootdeep stays Verdant's. The Codex names the shape when you enter.
+- **Lighter frames:** blocks, town dressing and procedural trees are merged per chunk (one mesh per
+  material and 64 m cell): Ashfall camp 1812 → 455 draw calls by day, 1507 → 444 at night;
+  Verdant 340 → 171 surfaces in view. Chunks that stream in load their models on worker
+  threads first (no more 0.1-1 s freezes when walking into a new chunk; worst frame while
+  crossing Verdant 19 ms headless). Far monsters are not drawn.
+- Debug: `gate <id> kind=frost shape=loop`, `perf draw`, `perf hitch 10`, `stream 1`,
+  `travel r2_greenreach` / `r3_sandmere` / `r4_whitehold` / `r5_lowmarket` / `r6_shardhaven`
+  (villages: `r2_thornfield`, `r3_dustwell`, `r4_pinecrest`, `r5_saltreed`, `r6_lantern`).
+- Not changed: Ashfall (Region 1) keeps its size (the dense city with the journal riddles).

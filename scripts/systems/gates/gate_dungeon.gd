@@ -66,8 +66,10 @@ func _build() -> void:
 	var double_at: int = -1
 	if session.force_double or GateLayout.has_double_gate(gate, day):
 		double_at = GateLayout.double_gate_room(main_rooms, day)
-	archetype = DungeonArchetype.pick(gate.rank, gate.seed_value + day * 31)
-	plan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at, archetype)
+	archetype = DungeonArchetype.pick(gate.rank, gate.seed_value + day * 31, String(gate.id))
+	if session.force_kind != &"":
+		archetype = session.force_kind
+	plan = DungeonPlan.make(main_rooms, per_room, rng.randi(), double_at, archetype, session.force_layout)
 	field = DungeonField.build(plan, rng.randi())
 	_apply_archetype_look()
 	_challenges = DungeonChallenges.new(self)
@@ -133,6 +135,8 @@ func _apply_archetype_look() -> void:
 		env.environment.fog_light_color = spec["fog"]
 	var kind_name: StringName = spec["name"]
 	Codex.notify(tr(&"CODEX_MSG_DUNGEON_KIND") % tr(kind_name), &"info")
+	if plan != null and plan.layout != &"winding":
+		Codex.notify(tr(StringName("DUNGEON_LAYOUT_" + String(plan.layout).to_upper())), &"info")
 
 
 func _spawn_points(index: int) -> Array[Vector3]:

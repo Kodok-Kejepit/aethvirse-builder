@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="NpcData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/resources/condition_data.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_effect.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_choice.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/resources/dialog_entry.gd" id="5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("5")
+id = &"default"
+conditions = Array[ExtResource("2")]([])
+lines = Array[StringName]([&"DLG_GREENREACH_WARDEN_1", &"DLG_GREENREACH_WARDEN_2"])
+daily_variants = Array[StringName]([])
+on_show = Array[ExtResource("3")]([])
+choices = Array[ExtResource("4")]([])
+
+[resource]
+script = ExtResource("1")
+id = &"greenreach_warden"
+display_name = &"NPC_GREENREACH_WARDEN"
+body_color = Color(0.3, 0.5, 0.35, 1)
+entries = Array[ExtResource("5")]([SubResource("s1")])
+attacked_flag = &""
+hidden_when_flag = &""

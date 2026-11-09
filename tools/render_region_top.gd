@@ -2,8 +2,9 @@ extends SceneTree
 ## Dev tool: orthographic top-down picture of a region's chunks (layout check).
 ##   xvfb-run godot --display-driver x11 --audio-driver Dummy --path . \
 ##     -s tools/render_region_top.gd -- res://scenes/world/chunks/r1 out.png 200 1600
-## Args: <chunk_dir> <out.png> <half_extent_m> [pixels]. View-distance culling is switched
-## off so small pieces show too.
+## Args: <chunk_dir> <out.png> <half_extent_m> [pixels] [centre_x centre_z] [tilt_deg].
+## A tilt (e.g. 50) looks down at an angle from the south so buildings show their height.
+## View-distance culling is switched off so small pieces show too.
 
 var _vp: SubViewport
 var _frames: int = 0
@@ -21,7 +22,10 @@ func _initialize() -> void:
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
 	cam.size = float(_args[2]) * 2.0
 	cam.far = 500.0
-	cam.transform = Transform3D(Basis.IDENTITY, Vector3(0, 120, 0)).looking_at(Vector3.ZERO, Vector3.FORWARD)
+	var centre: Vector3 = Vector3(float(_args[4]), 0.0, float(_args[5])) if _args.size() > 5 else Vector3.ZERO
+	var tilt: float = deg_to_rad(float(_args[6])) if _args.size() > 6 else 0.0
+	var eye: Vector3 = centre + Vector3(0.0, 120.0 * cos(tilt), 120.0 * sin(tilt))
+	cam.transform = Transform3D(Basis.IDENTITY, eye).looking_at(centre, Vector3.FORWARD if tilt == 0.0 else Vector3.UP)
 	_vp.add_child(cam)
 	cam.current = true
 	var sun: DirectionalLight3D = DirectionalLight3D.new()

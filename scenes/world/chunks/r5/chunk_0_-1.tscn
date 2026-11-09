@@ -106,14 +106,7 @@ font_size = 64
 outline_size = 10
 pixel_size = 0.01
 
-[node name="B15" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop16" type="StaticBody3D" parent="."]
+[node name="Outcrop15" type="StaticBody3D" parent="."]
 transform = Transform3D(0.98783, -0, -0.15551, 0, 1, -0, 0.15551, 0, 0.98783, -32.2327, -5.49209, 11.0947)
 script = ExtResource("prop")
 prop_id = &"ground_r1"
@@ -127,4 +120,4 @@ script = ExtResource("terrain")
 style = &"archive"
 amplitude = 2.0
 seed_value = 505
-flatten = PackedVector3Array(0, -21, 12.5054, -5.75, -3, 5.61269, 5.75, -3, 5.61269, 10, -12, 11.306, -10, -12, 11.306, 0, -16, 4, 5, 4, 4, 30, 30, 13.0284, -81.7511, 39.7072, 6.52056, -78.3144, -40.3598, 4.71989, -77.3248, -7.6178, 5.75582, 0, 80, 21.4, -32.2327, 11.0947, 13.3832)
+flatten = PackedVector3Array(0, -21, 12.5054, -5.75, -3, 5.61269, 5.75, -3, 5.61269, 10, -12, 11.306, -10, -12, 11.306, 0, -16, 4, 5, 4, 4, 30, 30, 13.0284, -81.7511, 39.7072, 6.52056, -78.3144, -40.3598, 4.71989, -77.3248, -7.6178, 5.75582, 18.6073, -78.3287, 6.13814, 0, 80, 21.4, -32.2327, 11.0947, 13.3832)

@@ -655,3 +655,82 @@ CODEX_MSG_PLATFORM_ZERO,The tunnel lights come on. A train with no driver passes
 CODEX_MSG_BELLS,"Under the tower, a floor tile sinks.","Di bawah menara, satu ubin lantai amblas."
 CODEX_MSG_NOT_FIRST,You are not the first. Let you be the last.,Kamu bukan yang pertama. Semoga kamu yang terakhir.
 TITLE_THE_RETURNED,The Returned,Yang Kembali
+WAYSTONE_R2_GREENREACH,Greenreach,Kota Greenreach
+WAYSTONE_R2_THORNFIELD,Thornfield,Desa Thornfield
+WAYSTONE_R3_SANDMERE,Sandmere,Kota Sandmere
+WAYSTONE_R3_DUSTWELL,Dustwell,Desa Dustwell
+WAYSTONE_R4_WHITEHOLD,Whitehold,Kota Whitehold
+WAYSTONE_R4_PINECREST,Pinecrest,Desa Pinecrest
+WAYSTONE_R5_LOWMARKET,Lowmarket,Kota Lowmarket
+WAYSTONE_R5_SALTREED,Saltreed,Desa Saltreed
+WAYSTONE_R6_SHARDHAVEN,Shardhaven,Kota Shardhaven
+WAYSTONE_R6_LANTERN,Last Lantern,Pos Lentera Terakhir
+NPC_GREENREACH_WARDEN,Gate Warden Ilsa,Penjaga Gerbang Ilsa
+NPC_GREENREACH_GROCER,Grocer Benno,Pedagang Benno
+NPC_THORNFIELD_FARMER,Farmer Odo,Petani Odo
+NPC_THORNFIELD_HERBALIST,Herbalist Wen,Peramu Wen
+NPC_SANDMERE_CAPTAIN,Captain Rasha,Kapten Rasha
+NPC_SANDMERE_MERCHANT,Merchant Tavi,Saudagar Tavi
+NPC_DUSTWELL_KEEPER,Well Keeper Imran,Penjaga Sumur Imran
+NPC_DUSTWELL_CHILD,Little Sefa,Sefa Kecil
+NPC_WHITEHOLD_SENTRY,Sentry Brann,Penjaga Brann
+NPC_WHITEHOLD_SMITH,Smith Halvard,Pandai Besi Halvard
+NPC_PINECREST_TRAPPER,Trapper Mila,Pemasang Jerat Mila
+NPC_PINECREST_ELDER,Elder Yorun,Tetua Yorun
+NPC_LOWMARKET_FERRYMAN,Ferryman Coll,Tukang Perahu Coll
+NPC_LOWMARKET_SCRIBE,Scribe Annet,Juru Tulis Annet
+NPC_SALTREED_NETMENDER,Netmender Pia,Penambal Jaring Pia
+NPC_SALTREED_DIVER,Diver Toma,Penyelam Toma
+NPC_SHARDHAVEN_WATCHER,Watcher Noor,Pengamat Noor
+NPC_SHARDHAVEN_TINKER,Tinker Vos,Tukang Vos
+NPC_LANTERN_KEEPER,Lantern Keeper Ade,Penjaga Lentera Ade
+NPC_LANTERN_SCOUT,Scout Riv,Pengintai Riv
+DLG_GREENREACH_WARDEN_1,Greenreach stood empty for years. Then the forest came in and the people came back with it.,"Greenreach kosong bertahun-tahun. Lalu hutan masuk, dan orang-orang ikut kembali bersamanya."
+DLG_GREENREACH_WARDEN_2,Past the walls the beasts grow stronger the farther you go. Hunters say the old border is where the easy part ends.,"Di luar tembok, makin jauh kau pergi makin kuat binatangnya. Kata para hunter, perbatasan lama adalah akhir dari bagian yang mudah."
+DLG_GREENREACH_GROCER_1,"Roof gardens, rain barrels, mushrooms from the basements. We eat better than Ashfall ever did.","Kebun di atap, tong air hujan, jamur dari ruang bawah tanah. Makan kami lebih enak daripada Ashfall dulu."
+DLG_GREENREACH_GROCER_2,"A Vanguard, here? Then the stalls stay open late tonight.","Seorang Vanguard, di sini? Kalau begitu lapak-lapak buka sampai larut malam ini."
+DLG_THORNFIELD_FARMER_1,"The fields don't care about Gates. They want water, sun and someone to keep the brutes off them.","Ladang tidak peduli soal Gate. Mereka cuma butuh air, matahari, dan seseorang yang mengusir para brute."
+DLG_THORNFIELD_FARMER_2,"If a Gate opens near the road, ring the bell twice. Three times means it broke.","Kalau ada Gate terbuka dekat jalan, bunyikan lonceng dua kali. Tiga kali artinya Gate itu pecah."
+DLG_THORNFIELD_HERBALIST_1,Moss from the shrine roots heals faster than any potion. Don't tell the Guild I said that.,Lumut dari akar kuil menyembuhkan lebih cepat dari ramuan mana pun. Jangan bilang Guild aku yang bilang.
+DLG_THORNFIELD_HERBALIST_2,The canopy in the north-east hums at night. Something up there is very old and very awake.,Kanopi di timur laut berdengung tiap malam. Ada sesuatu di atas sana yang sangat tua dan sangat terjaga.
+DLG_SANDMERE_CAPTAIN_1,Sandmere keeps its gates open by day and shut by dusk. The dunes walk at night.,Sandmere membuka gerbangnya di siang hari dan menutupnya saat senja. Bukit pasir berjalan di malam hari.
+DLG_SANDMERE_CAPTAIN_2,South of here lies the Sunscar Plateau. Whatever guards that altar has never lost a fight.,Di selatan sini ada Dataran Sunscar. Apa pun yang menjaga altar itu belum pernah kalah bertarung.
+DLG_SANDMERE_MERCHANT_1,"Glass from the dunes, copper from the old towers, water from Dustwell. Everything has a price here.","Kaca dari bukit pasir, tembaga dari menara tua, air dari Dustwell. Di sini semua ada harganya."
+DLG_SANDMERE_MERCHANT_2,The Codex in your hand is worth more than this whole bazaar. Keep it close.,Codex di tanganmu lebih berharga dari seluruh pasar ini. Simpan baik-baik.
+DLG_DUSTWELL_KEEPER_1,The well never runs dry. My grandmother said the water comes from somewhere the sand can't reach.,"Sumur ini tak pernah kering. Kata nenekku, airnya datang dari tempat yang tak bisa dijangkau pasir."
+DLG_DUSTWELL_KEEPER_2,"Drink, rest, then go. Monsters smell a crowd.","Minum, istirahat, lalu pergi. Monster bisa mencium keramaian."
+DLG_DUSTWELL_CHILD_1,Are you the one the sky picked? You look tired.,"Kakak yang dipilih langit, ya? Kakak kelihatan capek."
+DLG_DUSTWELL_CHILD_2,I counted the stars on the gate stones. One is missing every night.,Aku menghitung bintang di batu gerbang. Tiap malam ada satu yang hilang.
+DLG_WHITEHOLD_SENTRY_1,Whitehold's walls held through three winters and two Dungeon Breaks. They'll hold for you too.,Tembok Whitehold bertahan melewati tiga musim dingin dan dua Dungeon Break. Tembok itu juga akan bertahan untukmu.
+DLG_WHITEHOLD_SENTRY_2,"The Frozen Spire south-west cracks louder every night. Go armed, or don't go.","Menara Beku di barat daya retak makin keras tiap malam. Pergilah bersenjata, atau jangan pergi sama sekali."
+DLG_WHITEHOLD_SMITH_1,Cold steel rings truer. Bring me yeti bone and I'll show you.,Baja dingin berdenting lebih jernih. Bawakan aku tulang yeti dan akan kutunjukkan.
+DLG_WHITEHOLD_SMITH_2,Your blade has seen a Gate or two. It still has a few left in it.,Senjatamu sudah melihat satu-dua Gate. Masih sanggup menghadapi beberapa lagi.
+DLG_PINECREST_TRAPPER_1,Wyvernlings nest on the ridges east of here. Never set a trap under a nest.,Wyvernling bersarang di punggung bukit timur sini. Jangan pernah memasang jerat di bawah sarang.
+DLG_PINECREST_TRAPPER_2,Tracks in the snow fade in an hour. Read them fast.,Jejak di salju hilang dalam satu jam. Baca dengan cepat.
+DLG_PINECREST_ELDER_1,We were miners before the System. Now we dig only for the dead.,Kami penambang sebelum ada System. Sekarang kami menggali hanya untuk yang sudah mati.
+DLG_PINECREST_ELDER_2,The mountain remembers names. Tell it yours and it may let you pass.,"Gunung mengingat nama. Sebutkan namamu, mungkin ia membiarkanmu lewat."
+DLG_LOWMARKET_FERRYMAN_1,"Canals rise with the tide, same as the library. Mind your step at noon.","Kanal naik bersama pasang, sama seperti perpustakaan. Hati-hati melangkah saat siang."
+DLG_LOWMARKET_FERRYMAN_2,The drowned belltower rings once before a storm. I've stopped counting the times it rang with no storm.,Menara lonceng yang tenggelam berbunyi sekali sebelum badai. Aku berhenti menghitung berapa kali ia berbunyi tanpa badai.
+DLG_LOWMARKET_SCRIBE_1,"Every page the tide takes, I copy twice. Ink is cheaper than forgetting.","Setiap halaman yang dibawa pasang, kusalin dua kali. Tinta lebih murah daripada lupa."
+DLG_LOWMARKET_SCRIBE_2,Your Codex writes itself? Then it remembers what you will not.,Codex-mu menulis sendiri? Berarti ia mengingat apa yang tidak akan kau ingat.
+DLG_SALTREED_NETMENDER_1,"Nets pull up fish, boots, and sometimes pages. The pages bite.","Jaring menarik ikan, sepatu bot, kadang halaman buku. Halamannya menggigit."
+DLG_SALTREED_NETMENDER_2,Stay on the planks. The water here is deeper than it looks.,Tetap di atas papan. Air di sini lebih dalam dari kelihatannya.
+DLG_SALTREED_DIVER_1,There are streets under the lake. Lamps still burn down there.,Ada jalan-jalan di bawah danau. Lampu-lampunya masih menyala di bawah sana.
+DLG_SALTREED_DIVER_2,I don't dive after dark anymore. Something down there started diving back.,Aku tak lagi menyelam setelah gelap. Ada sesuatu di bawah sana yang mulai menyelam balik.
+DLG_SHARDHAVEN_WATCHER_1,The city fell apart and kept floating. We live in the pieces that stayed down.,Kota ini hancur dan terus melayang. Kami tinggal di potongan yang tetap di bawah.
+DLG_SHARDHAVEN_WATCHER_2,"Near the drifting isle the ground lets go of you. Jump, and you'll know what I mean.","Dekat pulau melayang, tanah melepaskanmu. Melompatlah, kau akan paham maksudku."
+DLG_SHARDHAVEN_TINKER_1,"Rift glass, cable, a lamp that hums the right note. That's how we keep the void out of the houses.","Kaca rift, kabel, lampu yang berdengung di nada yang tepat. Begitulah kami menjaga void tetap di luar rumah."
+DLG_SHARDHAVEN_TINKER_2,Bring me anything that glows and doesn't scream. I'll make it useful.,Bawakan apa saja yang menyala dan tidak menjerit. Akan kubuat berguna.
+DLG_LANTERN_KEEPER_1,"As long as one lantern burns, the Fracture doesn't take this camp.","Selama satu lentera masih menyala, Fracture tak akan merebut pos ini."
+DLG_LANTERN_KEEPER_2,Past the camp there are no more roads. Only directions.,Di luar pos ini tak ada lagi jalan. Hanya arah.
+DLG_LANTERN_SCOUT_1,I mapped the rifts for a year. They move when nobody is looking.,Setahun aku memetakan rift. Mereka bergeser saat tak ada yang melihat.
+DLG_LANTERN_SCOUT_2,"If the sky starts to crack above you, run toward the lanterns, not away.","Kalau langit mulai retak di atasmu, larilah ke arah lentera, bukan menjauh."
+DUNGEON_EMBER,the Ember Forge,Tempa Bara
+DUNGEON_SANDTOMB,a Sand-choked Tomb,Makam Tertimbun Pasir
+DUNGEON_FROST,the Frost Hollow,Lubang Beku
+DUNGEON_SUNKEN,the Sunken Sanctum,Tempat Suci Tenggelam
+DUNGEON_VOID,a Void Breach,Celah Hampa
+DUNGEON_LAYOUT_SPIRAL,The halls wind inward like a shell. The boss waits at the outer turn.,Lorong-lorongnya melingkar seperti cangkang. Boss menunggu di putaran terluar.
+DUNGEON_LAYOUT_LOOP,The chambers form a ring: two ways round. Something waits beyond the far side.,Ruangan-ruangannya membentuk cincin: ada dua jalan memutar. Sesuatu menunggu di balik sisi terjauh.
+DUNGEON_LAYOUT_FORK,The way splits in two. Both roads meet before the boss.,Jalannya bercabang dua. Keduanya bertemu sebelum boss.
+DUNGEON_LAYOUT_HUB,A great hall with three passages. Only one leads to the boss.,Sebuah aula besar dengan tiga lorong. Hanya satu yang menuju boss.

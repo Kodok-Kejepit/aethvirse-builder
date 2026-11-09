@@ -99,7 +99,8 @@ func _ready() -> void:
 				blob.radial_segments = 10
 				blob.rings = 6
 				var off: Vector3 = Vector3(rng.randf_range(-0.2, 0.2), rng.randf_range(0.55, 0.8), rng.randf_range(-0.2, 0.2)) * height
-				_leaf(blob, off, LEAF.lerp(Color(0.35, 0.55, 0.2), rng.randf()), height * 0.8)
+				# Four shades only, so a forest shares a few materials (chunk batching).
+				_leaf(blob, off, LEAF.lerp(Color(0.35, 0.55, 0.2), floorf(rng.randf() * 4.0) / 3.0), height * 0.8)
 
 
 func _trunk(r: float, h: float, lean_deg: float) -> void:

@@ -177,21 +177,7 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_thorn_stalker")
 respawn_s = 20.0
 
-[node name="B22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B23" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop24" type="StaticBody3D" parent="."]
+[node name="Outcrop22" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.82472, 0, 0.56554, 0, 1, -0, -0.56554, -0, -0.82472, -22.6968, -5.38916, -34.0382)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -200,7 +186,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.877
 fit_height = false
 
-[node name="Outcrop25" type="StaticBody3D" parent="."]
+[node name="Outcrop23" type="StaticBody3D" parent="."]
 transform = Transform3D(0.28448, -0, -0.95868, 0, 1, -0, 0.95868, 0, 0.28448, 44.5744, -7.17957, 46.3853)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -209,7 +195,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 2.186
 fit_height = false
 
-[node name="Outcrop26" type="StaticBody3D" parent="."]
+[node name="Outcrop24" type="StaticBody3D" parent="."]
 transform = Transform3D(0.9999, -0, -0.014274, 0, 1, -0, 0.014274, 0, 0.9999, -7.66691, -5.76473, 15.5002)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -223,4 +209,4 @@ script = ExtResource("terrain")
 style = &"verdant"
 amplitude = 6.0
 seed_value = 202
-flatten = PackedVector3Array(-22.6968, -34.0382, 16.8962, 44.5744, 46.3853, 19.6705, -7.66691, 15.5002, 16.4145)
+flatten = PackedVector3Array(-128, -128, 78, -86, -86, 30, -78.6117, -79.1848, 7.72182, -93.5, -68, 31.1059, -76, -68, 1.85765, -68, -93.5, 31.1059, -68, -76, 1.85765, -22.6968, -34.0382, 16.8962, 44.5744, 46.3853, 19.6705, -7.66691, 15.5002, 16.4145)

@@ -229,14 +229,7 @@ font_size = 64
 outline_size = 10
 pixel_size = 0.01
 
-[node name="B32" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop33" type="StaticBody3D" parent="."]
+[node name="Outcrop32" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.48465, -0, -0.87471, 0, 1, -0, 0.87471, -0, -0.48465, 24.9353, -6.6445, 47.4649)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -245,7 +238,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.738
 fit_height = false
 
-[node name="Outcrop34" type="StaticBody3D" parent="."]
+[node name="Outcrop33" type="StaticBody3D" parent="."]
 transform = Transform3D(0.86968, -0, -0.49362, 0, 1, -0, 0.49362, 0, 0.86968, -43.9557, -6.24681, 35.0462)
 script = ExtResource("prop")
 prop_id = &"ground_r2"

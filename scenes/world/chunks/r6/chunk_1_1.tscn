@@ -142,21 +142,7 @@ height = 3.59
 seed_value = 1925
 snowy = false
 
-[node name="B19" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B20" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop21" type="StaticBody3D" parent="."]
+[node name="Outcrop19" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.59508, 0, 0.80367, 0, 1, -0, -0.80367, -0, -0.59508, 41.1598, -4.97083, 9.7142)
 script = ExtResource("prop")
 prop_id = &"ground_r7"
@@ -165,7 +151,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.471
 fit_height = false
 
-[node name="Outcrop22" type="StaticBody3D" parent="."]
+[node name="Outcrop20" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99998, -0, -0.0055812, 0, 1, -0, 0.0055812, 0, 0.99998, 25.381, -5.93313, -45.3202)
 script = ExtResource("prop")
 prop_id = &"ground_r7"
@@ -179,4 +165,4 @@ script = ExtResource("terrain")
 style = &"fracture"
 amplitude = 3.0
 seed_value = 606
-flatten = PackedVector3Array(-20.566, -31.9573, 7.11389, 15.5289, 1.20644, 7.0052, -0.115841, -38.6008, 4.62699, -23.7208, 45.3209, 7.02631, -10.2179, 29.3821, 4.694, -39.8898, -36.7219, 5.92077, 29.2845, 40.1891, 6.78406, -25.0898, -31.952, 6.75754, -35.8641, 33.9806, 6.65946, -11.2582, 16.1764, 7.62941, 41.1598, 9.7142, 13.2418, 25.381, -45.3202, 14.4548)
+flatten = PackedVector3Array(-20.566, -31.9573, 7.11389, 15.5289, 1.20644, 7.0052, -0.115841, -38.6008, 4.62699, -23.7208, 45.3209, 7.02631, -10.2179, 29.3821, 4.694, -39.8898, -36.7219, 5.92077, 29.2845, 40.1891, 6.78406, -25.0898, -31.952, 6.75754, -35.8641, 33.9806, 6.65946, -11.2582, 16.1764, 7.62941, -9.78955, 83.2521, 6.50816, 0.591915, 80.0494, 7.88001, 84.3705, -79.3116, 6.68757, 82.2713, 17.3607, 5.81494, 78.774, -33.0372, 7.42557, 78.1183, -25.5847, 6.15733, 41.1598, 9.7142, 13.2418, 25.381, -45.3202, 14.4548)

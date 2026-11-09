@@ -18,6 +18,13 @@ uniform float tile_m = 3.0;
 uniform float moss = 0.3;
 uniform float wetness = 0.25;
 uniform vec3 tint : source_color = vec3(1.0);
+// Region kinds of place: glowing cracks (lava, void light), an ice coat, drifted sand.
+uniform vec3 glow_color : source_color = vec3(1.0, 0.4, 0.1);
+uniform float glow = 0.0;
+uniform float frost = 0.0;
+uniform float sand = 0.0;
+const vec3 ICE = vec3(0.6, 0.72, 0.84);
+const vec3 SAND = vec3(0.78, 0.66, 0.46);
 
 varying vec3 world_pos;
 varying vec3 world_normal;
@@ -55,6 +62,7 @@ vec3 tri(sampler2D t, vec3 p, vec3 n) {
 void fragment() {
 	vec3 col;
 	float rough = 0.9;
+	vec3 emit = vec3(0.0);
 	if (surface == 0) {
 		vec2 p = world_pos.xz;
 		col = tile(tex_base, p);
@@ -67,6 +75,15 @@ void fragment() {
 		float wet = smoothstep(1.0 - wetness, 1.0 - wetness + 0.08, fbm(p * 0.07 + vec2(31.0)));
 		col *= mix(1.0, 0.55, wet);
 		rough = mix(0.92, 0.12, wet);
+		float drift = smoothstep(1.0 - sand, 1.0 - sand + 0.25, fbm(p * 0.05 + vec2(23.0)) * 0.6 + fbm(p * 0.6) * 0.4) * step(0.01, sand);
+		col = mix(col, SAND * (0.85 + 0.3 * noise(p * 3.0)), drift);
+		rough = mix(rough, 0.95, drift);
+		float ice = smoothstep(1.0 - frost, 1.0 - frost + 0.2, fbm(p * 0.08 + vec2(41.0))) * step(0.01, frost);
+		col = mix(col, ICE * (0.85 + 0.25 * noise(p * 1.7)), ice * 0.65);
+		rough = mix(rough, 0.08, ice);
+		float vein = smoothstep(0.012, 0.0, abs(fbm(p * 0.22 + vec2(51.0)) - 0.5)) * smoothstep(0.35, 0.6, fbm(p * 0.05 + vec2(3.0)));
+		col = mix(col, col * 0.35, vein * min(glow, 1.0));
+		emit = glow_color * vein * glow * (0.75 + 0.25 * sin(TIME * 1.7 + p.x * 0.3 + p.y * 0.2));
 	} else {
 		vec3 n = normalize(world_normal);
 		col = mix(tri(tex_rock, world_pos * 0.8, n), tri(tex_base, world_pos, n), smoothstep(0.15, 0.85, masonry));
@@ -83,7 +100,17 @@ void fragment() {
 		float damp = 1.0 - smoothstep(0.0, 1.2, world_pos.y);
 		col *= mix(1.0, 0.7, damp * wetness * 2.0);
 		rough = mix(0.95, 0.4, damp * wetness);
+		float ice_w = smoothstep(1.0 - frost, 1.0 - frost + 0.25, fbm(q * 0.2 + vec2(19.0))) * step(0.01, frost);
+		col = mix(col, ICE, ice_w * 0.6);
+		rough = mix(rough, 0.15, ice_w);
+		float heap = (1.0 - smoothstep(0.0, 1.0 + fbm(q * 0.3) * 1.6, world_pos.y)) * sand;
+		col = mix(col, SAND, clamp(heap * 1.4, 0.0, 1.0));
+		float vein_w = smoothstep(0.01, 0.0, abs(fbm(vec2(q.x * 0.5, q.y * 0.15) + vec2(8.0)) - 0.5))
+			* smoothstep(0.4, 0.62, fbm(q * 0.08 + vec2(6.0)));
+		col = mix(col, col * 0.4, vein_w * min(glow, 1.0));
+		emit = glow_color * vein_w * glow * 0.8 * (0.75 + 0.25 * sin(TIME * 1.3 + q.x * 0.4));
 	}
 	ALBEDO = col * tint;
 	ROUGHNESS = rough;
+	EMISSION = emit;
 }

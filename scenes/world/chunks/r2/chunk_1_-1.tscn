@@ -174,21 +174,7 @@ respawn_s = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
 road_to = &"r3_oasis"
 
-[node name="B22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B23" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop24" type="StaticBody3D" parent="."]
+[node name="Outcrop22" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.36021, -0, -0.93287, 0, 1, -0, 0.93287, -0, -0.36021, -39.3381, -4.22435, 41.7483)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -197,7 +183,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.382
 fit_height = false
 
-[node name="Outcrop25" type="StaticBody3D" parent="."]
+[node name="Outcrop23" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99997, -0, -0.0077575, 0, 1, -0, 0.0077575, -0, -0.99997, 7.05399, -6.71802, 26.6495)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
@@ -206,7 +192,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.860
 fit_height = false
 
-[node name="Outcrop26" type="StaticBody3D" parent="."]
+[node name="Outcrop24" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.87074, 0, 0.49174, 0, 1, -0, -0.49174, -0, -0.87074, -47.2164, -6.23017, -43.1879)
 script = ExtResource("prop")
 prop_id = &"ground_r2"

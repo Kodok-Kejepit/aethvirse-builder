@@ -100,21 +100,7 @@ respawn_s = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
 road_to = &"r6_edge"
 
-[node name="B14" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B15" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop16" type="StaticBody3D" parent="."]
+[node name="Outcrop14" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.80662, -0, -0.59107, 0, 1, -0, 0.59107, -0, -0.80662, 12.5156, -6.43934, 48.5657)
 script = ExtResource("prop")
 prop_id = &"ground_r1"

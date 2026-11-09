@@ -75,3 +75,65 @@ func test_next_wave_comes_after_the_first_falls() -> void:
 	await wait_seconds(GateRoom.WAVE_DELAY_S + 0.5)
 	assert_signal_not_emitted(room, "cleared", "not cleared while waves remain")
 	assert_gt(room._living.size(), 0, "the next wave arrived")
+
+
+func test_every_map_shape_is_whole_and_walkable() -> void:
+	for shape: StringName in DungeonPlan.LAYOUTS:
+		for s: int in 12:
+			var plan: DungeonPlan = DungeonPlan.make(4 + s % 7, 2, s * 53 + 1, 2, &"ruins", shape)
+			var tag: String = "%s seed %d" % [shape, s]
+			assert_true(plan.all_reachable(), tag)
+			assert_eq(plan.rooms[0].kind, DungeonPlan.Kind.START, tag)
+			assert_eq(plan.rooms[plan.boss_index].kind, DungeonPlan.Kind.BOSS, tag)
+			var cells: Dictionary = {}
+			for room: DungeonPlan.Room in plan.rooms:
+				assert_false(cells.has(room.cell), "%s: one room per cell" % tag)
+				cells[room.cell] = true
+			for link: Dictionary in plan.links:
+				var a: int = link["a"]
+				var b: int = link["b"]
+				var d: Vector2i = plan.rooms[a].cell - plan.rooms[b].cell
+				assert_eq(absi(d.x) + absi(d.y), 1, "%s: tunnels join neighbouring cells" % tag)
+			assert_eq(plan.neighbours(plan.boss_index).size(), 1, "%s: one way into the boss hall" % tag)
+
+
+func test_loop_and_fork_offer_two_ways() -> void:
+	var loop: DungeonPlan = DungeonPlan.make(8, 2, 9, -1, &"ruins", &"loop")
+	assert_eq(loop.layout, &"loop")
+	assert_eq(loop.neighbours(0).size(), 2, "the start room opens both ways round the ring")
+	var fork: DungeonPlan = DungeonPlan.make(8, 2, 9, -1, &"ruins", &"fork")
+	assert_eq(fork.layout, &"fork")
+	assert_gte(fork.neighbours(0).size(), 2, "two routes leave the start")
+	var hub: DungeonPlan = DungeonPlan.make(8, 2, 9, -1, &"halls", &"hub")
+	assert_eq(hub.neighbours(1).size(), 4, "the great hall: start + three spokes")
+	assert_eq(DungeonPlan.make(3, 2, 9, -1, &"ruins", &"fork").layout, &"winding", "too short to fork")
+
+
+func test_kinds_choose_their_own_shapes() -> void:
+	var seen: Dictionary = {}
+	for s: int in 60:
+		seen[DungeonPlan.make(8, 2, s, -1, &"crypt").layout] = true
+	assert_gt(seen.size(), 1, "a kind of place is built in several shapes")
+	for id: StringName in DungeonArchetype.ALL:
+		for shape: StringName in DungeonArchetype.spec(id).get("layouts", []):
+			assert_true(shape in DungeonPlan.LAYOUTS, "%s uses a known shape" % id)
+
+
+func test_region_gates_open_into_their_own_kind() -> void:
+	assert_eq(DungeonArchetype.region_of("gate_r3_c_mirage"), "r3")
+	assert_eq(DungeonArchetype.region_of("hidden_gate_r1"), "r1")
+	assert_eq(DungeonArchetype.region_of("trial_tier_1"), "")
+	for region: String in ["gate_r3_b_tomb", "gate_r4_a_mirror", "gate_r5_a_tidal", "gate_r6_s_fracture"]:
+		var own: StringName = DungeonArchetype.BY_REGION[StringName(DungeonArchetype.region_of(region))]
+		var hits: int = 0
+		for s: int in 60:
+			if DungeonArchetype.pick(3, s * 13 + 1, region) == own:
+				hits += 1
+		assert_gt(hits, 10, "%s often opens into %s" % [region, own])
+	for id: StringName in DungeonArchetype.ALL:
+		var name_key: StringName = DungeonArchetype.spec(id)["name"]
+		assert_ne(tr(name_key), String(name_key), "%s has a name" % id)
+	for shape: StringName in DungeonPlan.LAYOUTS:
+		if shape != &"winding":
+			var key: String = "DUNGEON_LAYOUT_" + String(shape).to_upper()
+			assert_ne(tr(key), key, "%s is described" % shape)

@@ -9,13 +9,19 @@ const OUTLINE: Color = Color(0.0, 0.0, 0.0, 0.35)
 static func paint(root: Node, world_rect: Rect2, px: int) -> Image:
 	var img: Image = Image.create(px, px, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0.05, 0.07, 0.1))
+	paint_into(img, root, world_rect)
+	return img
+
+
+## Adds the blocks under `root` to an existing map image (a chunk streamed in later).
+static func paint_into(img: Image, root: Node, world_rect: Rect2) -> void:
+	var px: int = img.get_width()
 	var blocks: Array[GrayboxBlock] = []
 	_gather(root, blocks)
 	blocks.sort_custom(func(a: GrayboxBlock, b: GrayboxBlock) -> bool:
 		return _top(a) < _top(b))
 	for b: GrayboxBlock in blocks:
 		_draw_block(img, b, world_rect, px)
-	return img
 
 
 static func _gather(node: Node, out: Array[GrayboxBlock]) -> void:

@@ -112,14 +112,7 @@ height = 5.16
 seed_value = 602
 snowy = false
 
-[node name="B15" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop16" type="StaticBody3D" parent="."]
+[node name="Outcrop15" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.96574, -0, -0.25951, 0, 1, -0, 0.25951, -0, -0.96574, 47.5837, -7.25041, -6.07212)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -128,7 +121,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.762
 fit_height = false
 
-[node name="Outcrop17" type="StaticBody3D" parent="."]
+[node name="Outcrop16" type="StaticBody3D" parent="."]
 transform = Transform3D(0.96462, -0, -0.26365, 0, 1, -0, 0.26365, 0, 0.96462, 9.66442, -4.6294, 27.0636)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -142,4 +135,4 @@ script = ExtResource("terrain")
 style = &"dunes"
 amplitude = 5.0
 seed_value = 303
-flatten = PackedVector3Array(-35.74, -48.914, 13.135, -33.7733, 40.5973, 12.9466, -16.3, -9.53857, 14.9699, 0.892592, -40.9022, 12.9111, -36.493, -18.7459, 14.5184, -32.8786, 31.5698, 8.40286, -11.5419, -46.9506, 11.8518, -14.3655, -13.6871, 15.6713, -83.755, 23.9899, 14.5354, -81.8522, 3.92235, 14.2242, -81.3436, 39.3742, 12.1135, 47.5837, -6.07212, 15.861, 9.66442, 27.0636, 12.1778)
+flatten = PackedVector3Array(-35.74, -48.914, 13.135, -33.7733, 40.5973, 12.9466, -16.3, -9.53857, 14.9699, 0.892592, -40.9022, 12.9111, -36.493, -18.7459, 14.5184, -32.8786, 31.5698, 8.40286, -11.5419, -46.9506, 11.8518, -14.3655, -13.6871, 15.6713, -83.755, 23.9899, 14.5354, -81.8522, 3.92235, 14.2242, -81.3436, 39.3742, 12.1135, 30.9628, 86.0236, 11.4495, -47.8758, 89.1763, 13.0959, -38.9579, 85.1833, 13.9328, 47.5837, -6.07212, 15.861, 9.66442, 27.0636, 12.1778)

@@ -125,21 +125,7 @@ snowy = false
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
 road_to = &"r4_lodge"
 
-[node name="B17" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B18" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop19" type="StaticBody3D" parent="."]
+[node name="Outcrop17" type="StaticBody3D" parent="."]
 transform = Transform3D(0.80694, -0, -0.59063, 0, 1, -0, 0.59063, 0, 0.80694, 37.2928, -5.34079, 45.6783)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -148,7 +134,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.398
 fit_height = false
 
-[node name="Outcrop20" type="StaticBody3D" parent="."]
+[node name="Outcrop18" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.049707, -0, -0.99876, 0, 1, -0, 0.99876, -0, -0.049707, 22.4882, -6.00523, -45.9567)
 script = ExtResource("prop")
 prop_id = &"ground_r3"
@@ -162,4 +148,4 @@ script = ExtResource("terrain")
 style = &"dunes"
 amplitude = 5.0
 seed_value = 303
-flatten = PackedVector3Array(-41.6449, 9.20272, 16.5412, -5.54264, -27.8961, 11.1051, 28.3102, 8.91235, 11.8544, 25.9787, -13.1316, 12.3698, -2.59336, 21.7914, 11.4846, -32.146, -17.6588, 10.584, -46.1067, -22.4436, 8.80081, -21.1516, -19.5213, 13.5519, 0, 0, 4, -83.2979, 15.6123, 15.2783, -92, -34, 20.2, 0, 85, 11.306, 37.2928, 45.6783, 12.5865, 22.4882, -45.9567, 13.2507)
+flatten = PackedVector3Array(-41.6449, 9.20272, 16.5412, -5.54264, -27.8961, 11.1051, 28.3102, 8.91235, 11.8544, 25.9787, -13.1316, 12.3698, -2.59336, 21.7914, 11.4846, -32.146, -17.6588, 10.584, -46.1067, -22.4436, 8.80081, -21.1516, -19.5213, 13.5519, 0, 0, 4, -83.2979, 15.6123, 15.2783, -92, -34, 20.2, 0, 85, 11.306, 79.9444, -37.3457, 13.1363, 90.495, -17.3878, 13.2452, 89.4493, -22.778, 12.3279, 37.2928, 45.6783, 12.5865, 22.4882, -45.9567, 13.2507)

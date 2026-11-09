@@ -303,3 +303,40 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
 - The model already came rigged and animated from the owner's Meshy account, so no Meshy credits
   were spent on it.
 
+
+## Bigger regions with cities and villages (owner, 2026-11-10)
+- Owner: "perluas lagi di setiap region ... jadi terdapat berbagai kota" + earlier direction
+  "every region needs a city and villages with clear borders".
+- Regions 2-6 grow to 5x5 chunks; the 3x3 core is rebuilt by the same builders, so its places
+  stay where they were (only the old border walls moved out). Ashfall (R1) is not resized: it
+  is already a full city whose journal riddles depend on its layout.
+- `tools/gen_region_towns.py` now owns the R2-R6 chunks and patches the region data (adds
+  waystones, Gate spots, `chunk_radius = 2`) without touching the hand-tuned levels;
+  gen_m9_world.py / gen_m11_world.py no longer write region data or those chunks.
+- Outer-ring level: region start + 15 at the old border, rising to top − 2 at the far corners
+  (core keeps its level bonus). Towns have no spawners; their walls / palisades have gates only
+  on the sides facing the region.
+- City facades are new palette colours on the facade style; `BUILDING_LOOKS` gives each one its
+  moss amount, lit-window share (inhabited towns light ~40-55 % of windows, dead Ashfall 15 %)
+  and roof colour (snow, sand).
+- Map: the fog grid stays 32x32 (cells are 20 m on a 640 m map); an old 3x3 save's explored
+  cells are copied into the new grid (saved under `<region>@2`).
+
+## Chunk batching and model prefetch (2026-11-10)
+- Measured first (`perf draw`): in Ashfall camp ~650 of ~975 surfaces in view were primitive
+  town dressing (lamps, palisades, junk, debris), the rest mostly graybox blocks — one draw call
+  each, twice with shadows. Now merged per chunk into one mesh per material and 64 m cell
+  (cells keep distance fading). Collision and nodes stay, so map painting, saves and tests
+  are unaffected. Leaves blocks keep their own mesh; merged tree crowns sway as one piece.
+- Random plank / leaf tints snap to a coarse palette (a few shared materials per town).
+- Prop models used to load in `_ready` on the main thread when a chunk streamed in (0.1-1 s
+  freeze per new model). The streamer now reads the chunk's stored properties
+  (`AssetPrefetch`), loads those models on worker threads and adds the chunk once they are in.
+- Batching runs one frame after the chunk enters (trees settle on the terrain first).
+
+## Dungeon shapes and region kinds (owner, 2026-11-10)
+- Owner: "buat berbagai map untuk dungeon dungeonnya". Shapes (spiral, ring, fork, hub) are
+  rolled with their own dice per kind of place, so a winding run is the same dungeon as before
+  for the same Gate and day. Too-short runs fall back to the winding path.
+- Each region adds its own kind of place twice to every rank's list (about 1 in 3 Gates there).
+  The new looks are shader-only (glowing cracks, ice, sand) — no new assets.

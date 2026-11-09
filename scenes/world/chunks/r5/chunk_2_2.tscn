@@ -1,0 +1,160 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/world/loot_chest.gd" id="chest"]
+[ext_resource type="Resource" path="res://data/enemies/drowned_scribe.tres" id="d_drowned_scribe"]
+[ext_resource type="Resource" path="res://data/enemies/ink_wraith.tres" id="d_ink_wraith"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="enemy"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/enemy/enemy_spawner.gd" id="spawner"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+
+
+[node name="Chunk_2_2" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.1432, 0, 0.98969, 0, 1, -0, -0.98969, 0, 0.1432, -51.7937, 2.76282, 42.2808)
+script = ExtResource("gb")
+size = Vector3(8.586029783804252, 5.525638711141871, 6.937385046275418)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.32728, 0, 0.94493, 0, 1, -0, -0.94493, 0, 0.32728, 34.5348, 1.76746, 18.6429)
+script = ExtResource("gb")
+size = Vector3(5.198196450083353, 3.5349244926545085, 8.016193172295553)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.97462, 0, 0.22386, 0, 1, -0, -0.22386, 0, 0.97462, -30.2872, 3.38351, 20.4852)
+script = ExtResource("gb")
+size = Vector3(4.024210660838369, 6.767016121791019, 5.730530169033992)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.50655, 0, 0.86221, 0, 1, -0, -0.86221, 0, 0.50655, -19.972, 3.43601, 34.1665)
+script = ExtResource("gb")
+size = Vector3(6.965364992416715, 6.872012730255003, 6.926685414992262)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.029963, 0, 0.99955, 0, 1, -0, -0.99955, 0, 0.029963, -45.0479, 3.19063, 20.2452)
+script = ExtResource("gb")
+size = Vector3(9.1268453770142, 6.381251205576072, 5.8635622235962614)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.22053, 0, 0.97538, 0, 1, -0, -0.97538, 0, 0.22053, -23.2845, 3.11352, -6.44988)
+script = ExtResource("gb")
+size = Vector3(6.966889756750797, 6.22703470081947, 4.878351017528505)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.74673, 0, 0.66513, 0, 1, -0, -0.66513, 0, 0.74673, -17.9497, 2.89943, 10.2563)
+script = ExtResource("gb")
+size = Vector3(4.0832183572144265, 5.798856123850313, 6.223939304780111)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="B9" type="StaticBody3D" parent="."]
+transform = Transform3D(0.898, 0, 0.43999, 0, 1, -0, -0.43999, 0, 0.898, 32.4037, 1.17834, 12.7114)
+script = ExtResource("gb")
+size = Vector3(7.1032505017385965, 2.3566857906547485, 5.341437709780308)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B10" type="StaticBody3D" parent="."]
+transform = Transform3D(0.18384, 0, 0.98296, 0, 1, -0, -0.98296, 0, 0.18384, -2.77834, 3.89665, -29.0726)
+script = ExtResource("gb")
+size = Vector3(6.376088707841314, 7.79330886063694, 8.127706894452412)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B11" type="StaticBody3D" parent="."]
+transform = Transform3D(0.63829, 0, 0.76979, 0, 1, -0, -0.76979, 0, 0.63829, 40.1843, 1.83483, -26.2185)
+script = ExtResource("gb")
+size = Vector3(9.732514730876645, 3.6696664482131585, 5.084074697261056)
+color = Color(0.35, 0.42, 0.48, 1)
+solid = true
+
+[node name="Spawn12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 1.71113, 0.3, -36.6623)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_drowned_scribe")
+respawn_s = 20.0
+level = 237
+
+[node name="Spawn13" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26.1184, 0.3, -16.4489)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_drowned_scribe")
+respawn_s = 20.0
+level = 241
+
+[node name="Spawn14" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -2.01178, 0.3, -8.75082)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_drowned_scribe")
+respawn_s = 20.0
+level = 238
+
+[node name="Spawn15" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 21.1471, 0.3, 7.00852)
+script = ExtResource("spawner")
+enemy_scene = ExtResource("enemy")
+enemy_data = ExtResource("d_ink_wraith")
+respawn_s = 20.0
+level = 242
+
+[node name="Chest16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -0.62615, 0, -29.881)
+script = ExtResource("chest")
+chest_id = &"r5_wild_2_2"
+kind = &"supply"
+level = 238
+
+[node name="B17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="B18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
+script = ExtResource("gb")
+size = Vector3(128, 6, 1)
+color = Color(0.42, 0.3, 0.22, 1)
+solid = true
+
+[node name="Outcrop19" type="StaticBody3D" parent="."]
+transform = Transform3D(0.98218, 0, 0.18796, 0, 1, -0, -0.18796, 0, 0.98218, -37.1228, -4.72443, -45.5333)
+script = ExtResource("prop")
+prop_id = &"ground_r1"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.728
+fit_height = false
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"archive"
+amplitude = 2.0
+seed_value = 505
+flatten = PackedVector3Array(-51.7937, 42.2808, 7.12307, 34.5348, 18.6429, 6.23245, -30.2872, 20.4852, 4.70142, -19.972, 34.1665, 6.39392, -45.0479, 20.2452, 7.00884, -23.2845, -6.44988, 5.60303, -17.9497, 10.2563, 4.96628, 32.4037, 12.7114, 5.83248, -2.77834, -29.0726, 6.69815, 40.1843, -26.2185, 7.08825, -76.07, -82.2835, 7.05224, -82.1026, 21.3717, 7.55564, -37.1228, -45.5333, 15.5494)

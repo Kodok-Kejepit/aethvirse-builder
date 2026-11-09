@@ -169,45 +169,31 @@ enemy_scene = ExtResource("enemy")
 enemy_data = ExtResource("d_thorn_stalker")
 respawn_s = 20.0
 
-[node name="B21" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
+[node name="Outcrop21" type="StaticBody3D" parent="."]
+transform = Transform3D(0.048318, 0, 0.99883, 0, 1, -0, -0.99883, 0, 0.048318, -29.1147, -5.4535, 15.1756)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 1.629
+fit_height = false
 
-[node name="B22" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, 64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
+[node name="Outcrop22" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.84193, -0, -0.53958, 0, 1, -0, 0.53958, -0, -0.84193, 26.041, -7.78347, 19.5722)
+script = ExtResource("prop")
+prop_id = &"ground_r2"
+fallback_size = Vector3(12, 6, 12)
+fallback_color = Color(0.4, 0.4, 0.38, 1)
+size_scale = 2.076
+fit_height = false
 
 [node name="Outcrop23" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.57883, -0, -0.81545, 0, 1, -0, 0.81545, -0, -0.57883, -43.0108, -5.44199, 39.9566)
+transform = Transform3D(-0.88642, 0, 0.46288, 0, 1, -0, -0.46288, -0, -0.88642, -27.8179, -8.26735, -37.273)
 script = ExtResource("prop")
 prop_id = &"ground_r2"
 fallback_size = Vector3(12, 6, 12)
 fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.806
-fit_height = false
-
-[node name="Outcrop24" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.33447, -0, -0.94241, 0, 1, -0, 0.94241, -0, -0.33447, -17.0588, -5.92341, -6.87235)
-script = ExtResource("prop")
-prop_id = &"ground_r2"
-fallback_size = Vector3(12, 6, 12)
-fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.542
-fit_height = false
-
-[node name="Outcrop25" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.86993, -0, -0.49318, 0, 1, -0, 0.49318, -0, -0.86993, 27.5972, -5.46512, 19.9542)
-script = ExtResource("prop")
-prop_id = &"ground_r2"
-fallback_size = Vector3(12, 6, 12)
-fallback_color = Color(0.4, 0.4, 0.38, 1)
-size_scale = 1.891
+size_scale = 1.984
 fit_height = false
 
 [node name="Terrain" type="StaticBody3D" parent="."]
@@ -215,4 +201,4 @@ script = ExtResource("terrain")
 style = &"verdant"
 amplitude = 6.0
 seed_value = 202
-flatten = PackedVector3Array(-43.0108, 39.9566, 16.254, -17.0588, -6.87235, 13.8808, 27.5972, 19.9542, 17.0164)
+flatten = PackedVector3Array(0, 128, 70, -42, 86, 30, 42, 86, 30, -48.4, 78, 1.5, -45.3, 78, 1.5, -42.2, 78, 1.5, -39.1, 78, 1.5, -36, 78, 1.5, -32.9, 78, 1.5, -29.8, 78, 1.5, -26.7, 78, 1.5, -23.6, 78, 1.5, -20.5, 78, 1.5, -17.4, 78, 1.5, -14.3, 78, 1.5, -11.2, 78, 1.5, -8.1, 78, 1.5, 7.4, 78, 1.5, 10.5, 78, 1.5, 13.6, 78, 1.5, 16.7, 78, 1.5, 19.8, 78, 1.5, 22.9, 78, 1.5, 26, 78, 1.5, 29.1, 78, 1.5, 32.2, 78, 1.5, 35.3, 78, 1.5, 38.4, 78, 1.5, 41.5, 78, 1.5, 44.6, 78, 1.5, 47.7, 78, 1.5, -7, 78, 1.5, 7, 78, 1.5, -29.1147, 15.1756, 14.6647, 26.041, 19.5722, 18.6838, -27.8179, -37.273, 17.8573)

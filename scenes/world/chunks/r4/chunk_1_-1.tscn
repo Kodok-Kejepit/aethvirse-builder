@@ -181,21 +181,7 @@ snowy = true
 transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 0)
 road_to = &"r5_village"
 
-[node name="B24" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
-script = ExtResource("gb")
-size = Vector3(1, 6, 128)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="B25" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 3, -64)
-script = ExtResource("gb")
-size = Vector3(128, 6, 1)
-color = Color(0.55, 0.53, 0.5, 1)
-solid = true
-
-[node name="Outcrop26" type="StaticBody3D" parent="."]
+[node name="Outcrop24" type="StaticBody3D" parent="."]
 transform = Transform3D(-0.99911, -0, -0.042223, 0, 1, -0, 0.042223, -0, -0.99911, -39.2988, -4.9362, 21.0534)
 script = ExtResource("prop")
 prop_id = &"ground_r4"
@@ -204,7 +190,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.320
 fit_height = false
 
-[node name="Outcrop27" type="StaticBody3D" parent="."]
+[node name="Outcrop25" type="StaticBody3D" parent="."]
 transform = Transform3D(0.67033, 0, 0.74206, 0, 1, -0, -0.74206, 0, 0.67033, -4.98948, -5.12802, 41.4269)
 script = ExtResource("prop")
 prop_id = &"ground_r4"
@@ -213,7 +199,7 @@ fallback_color = Color(0.4, 0.4, 0.38, 1)
 size_scale = 1.369
 fit_height = false
 
-[node name="Outcrop28" type="StaticBody3D" parent="."]
+[node name="Outcrop26" type="StaticBody3D" parent="."]
 transform = Transform3D(0.056912, 0, 0.99838, 0, 1, -0, -0.99838, 0, 0.056912, 36.8953, -5.61667, 47.6508)
 script = ExtResource("prop")
 prop_id = &"ground_r4"
@@ -227,4 +213,4 @@ script = ExtResource("terrain")
 style = &"frost"
 amplitude = 7.0
 seed_value = 404
-flatten = PackedVector3Array(-50.9466, -20.5875, 8.28207, 47.4453, -25.6354, 9.09753, 13.1819, -21.1925, 7.74516, -7.99518, 14.8743, 5.95946, 30.1944, 2.43076, 7.40881, 20.7257, 23.6998, 5.21977, 30.7568, -4.75629, 7.17513, -18.785, 1.15673, 7.0989, 0, 0, 4, 0, 81, 16.1042, 13, 94, 16.1042, -13, 94, 16.1042, -39.2988, 21.0534, 11.8767, -4.98948, 41.4269, 12.3218, 36.8953, 47.6508, 12.9507)
+flatten = PackedVector3Array(-50.9466, -20.5875, 8.28207, 47.4453, -25.6354, 9.09753, 13.1819, -21.1925, 7.74516, -7.99518, 14.8743, 5.95946, 30.1944, 2.43076, 7.40881, 20.7257, 23.6998, 5.21977, 30.7568, -4.75629, 7.17513, -18.785, 1.15673, 7.0989, 0, 0, 4, 0, 81, 16.1042, 13, 94, 16.1042, -13, 94, 16.1042, 128, 128, 70, 86, 86, 30, -39.2988, 21.0534, 11.8767, -4.98948, 41.4269, 12.3218, 36.8953, 47.6508, 12.9507)

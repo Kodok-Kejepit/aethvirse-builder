@@ -451,8 +451,7 @@ region = &"{region}"
     for sid, row in SECRETS.items():
         folder = row[0][:2]
         w.write(f"data/secrets/{folder}/{sid}.tres", secret_tres(sid, row))
-    for rid, r in REGIONS.items():
-        w.write(f"data/regions/{rid}.tres", w.region_tres(rid, r))
+    # Region data and the R4-R6 chunks: tools/gen_region_towns.py (5x5 since 2026-11-10).
     for ch, flag, boss in CHAPTERS:
         w.write(f"data/quests/q_main_ch{ch}.tres", quest_tres(ch, flag, boss))
     scenes = [
@@ -464,14 +463,6 @@ region = &"{region}"
     for fname, node, rid, folder, top, hor, fog, sun in scenes:
         w.write(f"scenes/world/regions/{fname}", w.region_scene(node, rid, f"res://scenes/world/chunks/{folder}", top, hor, fog, sun, REGIONS[rid]["spawn"]))
         os.makedirs(f"scenes/world/chunks/{folder}", exist_ok=True)
-    w.region_chunks("r4", {(0, 0): lodge, (1, 0): mirror_temple, (0, -1): summit},
-                    lambda c, x, z: snow_filler(c, x * 19 + z * 7 + 4, "frost_yeti" if (x + z) % 2 == 0 else "ice_wyvernling",
-                                                "r5_village" if (x, z) == (1, -1) else None))
-    w.region_chunks("r5", {(0, 0): village, (1, 0): library, (0, -1): forbidden_archive},
-                    lambda c, x, z: water_filler(c, x * 23 + z * 11 + 2, "drowned_scribe" if (x + z) % 2 == 0 else "ink_wraith",
-                                                 "r6_edge" if (x, z) == (1, -1) else None))
-    w.region_chunks("r6", {(0, 0): rift_edge, (1, 0): inverted_tower, (0, -1): erased_city},
-                    lambda c, x, z: rift_filler(c, x * 29 + z * 13 + 6, "void_hollow" if (x + z) % 2 == 0 else "rift_stalker"))
     w.region_chunks("r7", {(0, 0): throne}, lambda c, x, z: void_filler(c))
     print("m11 world written")
 

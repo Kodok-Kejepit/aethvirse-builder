@@ -1,0 +1,1351 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://data/dialogs/pinecrest_elder.tres" id="d_pinecrest_elder"]
+[ext_resource type="Resource" path="res://data/dialogs/pinecrest_trapper.tres" id="d_pinecrest_trapper"]
+[ext_resource type="Script" path="res://scripts/systems/world/decor_prop.gd" id="decor"]
+[ext_resource type="Script" path="res://scripts/systems/world/graybox_block.gd" id="gb"]
+[ext_resource type="PackedScene" path="res://scenes/npc/npc.tscn" id="npc"]
+[ext_resource type="Script" path="res://scripts/systems/world/prop_instance.gd" id="prop"]
+[ext_resource type="Script" path="res://scripts/systems/world/terrain_patch.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/systems/world/tree_prop.gd" id="tree"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/waystone.tscn" id="waystone"]
+
+
+[node name="Chunk_2_0" type="Node3D"]
+
+[node name="B1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, -0.5, 0)
+script = ExtResource("gb")
+size = Vector3(128, 1, 128)
+color = Color(0.72, 0.77, 0.85, 1)
+solid = true
+visible = false
+
+[node name="B2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.03, 0)
+script = ExtResource("gb")
+size = Vector3(96, 0.06, 4.5)
+color = Color(0.38, 0.29, 0.2, 1)
+solid = true
+
+[node name="B3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0.03, 0)
+script = ExtResource("gb")
+size = Vector3(4.5, 0.06, 96)
+color = Color(0.38, 0.29, 0.2, 1)
+solid = true
+
+[node name="Prop4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99925, -0, -0.038663, 0, 1, -0, 0.038663, 0, 0.99925, -34, 0, -14)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_slate"
+fallback_size = Vector3(10.2, 6.5, 7.1)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Decor5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -28.5, 0, -11)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 260
+
+[node name="Prop6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99977, -0, -0.021244, 0, 1, -0, 0.021244, 0, 0.99977, -14, 0, -15)
+script = ExtResource("prop")
+prop_id = &"bld_smithy"
+fallback_size = Vector3(8.2, 9.0, 10.0)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99621, 0, 0.087021, 0, 1, -0, -0.087021, 0, 0.99621, 16, 0, -15)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_tile"
+fallback_size = Vector3(9.8, 7.5, 9.9)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.99575, 0, 0.092059, 0, 1, -0, -0.092059, 0, 0.99575, 34, 0, -14)
+script = ExtResource("prop")
+prop_id = &"bld_forge_shed"
+fallback_size = Vector3(7.9, 4.5, 7.9)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Decor9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 39.5, 0, -11)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 263
+
+[node name="Prop10" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.99988, 0, 0.015262, 0, 1, -0, -0.015262, -0, -0.99988, -34, 0, 15)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_slate"
+fallback_size = Vector3(10.2, 6.5, 7.1)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop11" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.99919, -0, -0.040134, 0, 1, -0, 0.040134, -0, -0.99919, -14, 0, 16)
+script = ExtResource("prop")
+prop_id = &"bld_house_large"
+fallback_size = Vector3(16.0, 9.0, 16.0)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop12" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.99501, 0, 0.099746, 0, 1, -0, -0.099746, -0, -0.99501, 16, 0, 16)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_slate"
+fallback_size = Vector3(10.2, 6.5, 7.1)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Decor13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 21.5, 0, 13)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 266
+
+[node name="Prop14" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.99978, 0, 0.020737, 0, 1, -0, -0.020737, -0, -0.99978, 34, 0, 15)
+script = ExtResource("prop")
+prop_id = &"bld_smithy"
+fallback_size = Vector3(8.2, 9.0, 10.0)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop15" type="StaticBody3D" parent="."]
+transform = Transform3D(0.078357, 0, 0.99693, 0, 1, -0, -0.99693, 0, 0.078357, -13, 0, -35)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_tile"
+fallback_size = Vector3(9.8, 7.5, 9.9)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop16" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.037162, 0, 0.99931, 0, 1, -0, -0.99931, -0, -0.037162, -13, 0, 32)
+script = ExtResource("prop")
+prop_id = &"bld_forge_shed"
+fallback_size = Vector3(7.9, 4.5, 7.9)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Decor17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7.5, 0, 29)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 269
+
+[node name="Prop18" type="StaticBody3D" parent="."]
+transform = Transform3D(0.099007, -0, -0.99509, 0, 1, -0, 0.99509, 0, 0.099007, 13, 0, -35)
+script = ExtResource("prop")
+prop_id = &"bld_cottage_blue_slate"
+fallback_size = Vector3(10.2, 6.5, 7.1)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop19" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.011587, -0, -0.99993, 0, 1, -0, 0.99993, -0, -0.011587, 14, 0, 33)
+script = ExtResource("prop")
+prop_id = &"bld_house_large"
+fallback_size = Vector3(16.0, 9.0, 16.0)
+fallback_color = Color(0.25, 0.35, 0.6, 1)
+
+[node name="Prop20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, -7)
+script = ExtResource("prop")
+prop_id = &"prop_well"
+fallback_size = Vector3(2.9, 3.2, 2.5)
+fallback_color = Color(0.62, 0.52, 0.45, 1)
+
+[node name="Decor21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 6, 0, -4)
+script = ExtResource("decor")
+kind = &"campfire"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 1
+
+[node name="Decor22" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, 6)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 200
+
+[node name="Decor23" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 8, 0, 6)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 201
+
+[node name="Decor24" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8, 0, -12)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 202
+
+[node name="Decor25" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 8, 0, -12)
+script = ExtResource("decor")
+kind = &"lantern"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 203
+
+[node name="Decor26" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14, 0, -6)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 220
+
+[node name="Decor27" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -13, 0, -7.5)
+script = ExtResource("decor")
+kind = &"barrel"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 221
+
+[node name="Decor28" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 14, 0, 10)
+script = ExtResource("decor")
+kind = &"crate"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 222
+
+[node name="Waystone29" parent="." instance=ExtResource("waystone")]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 0, 6)
+waystone_id = &"r4_pinecrest"
+
+[node name="Npc_pinecrest_trapper" parent="." instance=ExtResource("npc")]
+transform = Transform3D(-0.93969, -0, -0.34202, 0, 1, -0, 0.34202, -0, -0.93969, -4, 0, 2)
+data = ExtResource("d_pinecrest_trapper")
+
+[node name="Npc_pinecrest_elder" parent="." instance=ExtResource("npc")]
+transform = Transform3D(-0.86603, 0, 0.5, 0, 1, -0, -0.5, -0, -0.86603, 5, 0, -3)
+data = ExtResource("d_pinecrest_elder")
+
+[node name="B30" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0.35, 36)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B31" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0.35, 39)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B32" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0.35, 42)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B33" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0.35, 45)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B34" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0.35, 48)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="Decor35" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -46, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 240
+
+[node name="Decor36" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -43, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 241
+
+[node name="Decor37" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -40, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 242
+
+[node name="Decor38" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -37, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 243
+
+[node name="Decor39" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -34, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 244
+
+[node name="B40" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0.35, 36)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B41" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0.35, 39)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B42" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0.35, 42)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B43" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0.35, 45)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="B44" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0.35, 48)
+script = ExtResource("gb")
+size = Vector3(14, 0.7, 1.2)
+color = Color(0.35, 0.5, 0.3, 1)
+solid = false
+
+[node name="Decor45" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 34, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 260
+
+[node name="Decor46" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 37, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 261
+
+[node name="Decor47" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 262
+
+[node name="Decor48" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 43, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 263
+
+[node name="Decor49" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 46, 0, 31)
+script = ExtResource("decor")
+kind = &"fence"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 264
+
+[node name="Tree50" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -54.6674, 0, 9.85668)
+script = ExtResource("tree")
+kind = &"pine"
+height = 7.46
+seed_value = 14098
+snowy = true
+
+[node name="Tree51" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 2.35442, 0, 55.312)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.30
+seed_value = 14099
+snowy = true
+
+[node name="Tree52" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -51.4064, 0, 28.1615)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.40
+seed_value = 14100
+snowy = true
+
+[node name="Tree53" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 51.285, 0, 28.1896)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.22
+seed_value = 14101
+snowy = true
+
+[node name="Tree54" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -21.3323, 0, -52.7263)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.92
+seed_value = 14102
+snowy = true
+
+[node name="Tree55" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -9.58901, 0, 58.2406)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.19
+seed_value = 14103
+snowy = true
+
+[node name="Tree56" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 53.8118, 0, -19.011)
+script = ExtResource("tree")
+kind = &"pine"
+height = 7.99
+seed_value = 14104
+snowy = true
+
+[node name="Tree57" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 44.3718, 0, 36.2312)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.23
+seed_value = 14105
+snowy = true
+
+[node name="Tree58" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -38.1906, 0, -40.9835)
+script = ExtResource("tree")
+kind = &"pine"
+height = 7.74
+seed_value = 14106
+snowy = true
+
+[node name="Tree59" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 30.2621, 0, 46.2214)
+script = ExtResource("tree")
+kind = &"pine"
+height = 8.78
+seed_value = 14107
+snowy = true
+
+[node name="Tree60" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 53.7856, 0, 24.0136)
+script = ExtResource("tree")
+kind = &"pine"
+height = 10.40
+seed_value = 14108
+snowy = true
+
+[node name="Tree61" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -17.3842, 0, -56.6653)
+script = ExtResource("tree")
+kind = &"pine"
+height = 7.38
+seed_value = 14109
+snowy = true
+
+[node name="Tree62" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 14.9794, 0, -53.0934)
+script = ExtResource("tree")
+kind = &"pine"
+height = 7.83
+seed_value = 14110
+snowy = true
+
+[node name="Tree63" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 40.5799, 0, -42.8258)
+script = ExtResource("tree")
+kind = &"pine"
+height = 11.14
+seed_value = 14111
+snowy = true
+
+[node name="Decor64" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -48.4, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 51618
+
+[node name="Decor65" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -45.3, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 93440
+
+[node name="Decor66" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -42.2, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 5429
+
+[node name="Decor67" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -39.1, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 88928
+
+[node name="Decor68" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -36, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 56799
+
+[node name="Decor69" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -32.9, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 30120
+
+[node name="Decor70" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -29.8, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 51476
+
+[node name="Decor71" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -26.7, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 72867
+
+[node name="Decor72" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -23.6, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 52963
+
+[node name="Decor73" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20.5, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 62093
+
+[node name="Decor74" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -17.4, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 18389
+
+[node name="Decor75" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14.3, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 50701
+
+[node name="Decor76" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -11.2, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 33087
+
+[node name="Decor77" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8.1, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 60996
+
+[node name="Decor78" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7.4, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 46528
+
+[node name="Decor79" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10.5, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 14740
+
+[node name="Decor80" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13.6, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 47756
+
+[node name="Decor81" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 16.7, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 45704
+
+[node name="Decor82" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 19.8, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 4732
+
+[node name="Decor83" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22.9, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 89446
+
+[node name="Decor84" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 20204
+
+[node name="Decor85" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 29.1, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 35945
+
+[node name="Decor86" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 32.2, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 46869
+
+[node name="Decor87" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 35.3, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 33749
+
+[node name="Decor88" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 38.4, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61162
+
+[node name="Decor89" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 41.5, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61438
+
+[node name="Decor90" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 44.6, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 59966
+
+[node name="Decor91" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 47.7, 0, -50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 83635
+
+[node name="Decor92" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7, 0, -50)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Decor93" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7, 0, -50)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Decor94" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -48.4, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 46066
+
+[node name="Decor95" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -45.3, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 2390
+
+[node name="Decor96" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -42.2, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61597
+
+[node name="Decor97" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -39.1, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 39960
+
+[node name="Decor98" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -36, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 73454
+
+[node name="Decor99" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -32.9, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 92180
+
+[node name="Decor100" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -29.8, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 81621
+
+[node name="Decor101" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -26.7, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 51051
+
+[node name="Decor102" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -23.6, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 11341
+
+[node name="Decor103" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -20.5, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 22399
+
+[node name="Decor104" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -17.4, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 6797
+
+[node name="Decor105" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -14.3, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 54303
+
+[node name="Decor106" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -11.2, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 48608
+
+[node name="Decor107" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -8.1, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 3133
+
+[node name="Decor108" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7.4, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 99979
+
+[node name="Decor109" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 10.5, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 96576
+
+[node name="Decor110" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 13.6, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 56537
+
+[node name="Decor111" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 16.7, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 34925
+
+[node name="Decor112" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 19.8, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 18883
+
+[node name="Decor113" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 22.9, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 68278
+
+[node name="Decor114" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 26, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 14411
+
+[node name="Decor115" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 29.1, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 22932
+
+[node name="Decor116" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 32.2, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 49087
+
+[node name="Decor117" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 35.3, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 19795
+
+[node name="Decor118" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 38.4, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 9059
+
+[node name="Decor119" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 41.5, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 57583
+
+[node name="Decor120" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 44.6, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 86496
+
+[node name="Decor121" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 47.7, 0, 50)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 33760
+
+[node name="Decor122" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -7, 0, 50)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Decor123" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 7, 0, 50)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Decor124" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -48.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 94948
+
+[node name="Decor125" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -45.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 18084
+
+[node name="Decor126" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -42.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 27625
+
+[node name="Decor127" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -39.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 8926
+
+[node name="Decor128" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -36)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 37700
+
+[node name="Decor129" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -32.9)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 37460
+
+[node name="Decor130" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -29.8)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 43455
+
+[node name="Decor131" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -26.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 28392
+
+[node name="Decor132" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -23.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 1479
+
+[node name="Decor133" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -20.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 14441
+
+[node name="Decor134" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -17.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 66356
+
+[node name="Decor135" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -14.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 41269
+
+[node name="Decor136" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -11.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 73502
+
+[node name="Decor137" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -8.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 96356
+
+[node name="Decor138" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 17236
+
+[node name="Decor139" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, -1.9)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 39415
+
+[node name="Decor140" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 1.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 32969
+
+[node name="Decor141" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 4.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 13661
+
+[node name="Decor142" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 7.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 88779
+
+[node name="Decor143" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 10.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 91519
+
+[node name="Decor144" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 13.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 23741
+
+[node name="Decor145" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 16.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 5014
+
+[node name="Decor146" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 19.8)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 32530
+
+[node name="Decor147" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 22.9)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 36566
+
+[node name="Decor148" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 26)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 44084
+
+[node name="Decor149" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 29.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 35821
+
+[node name="Decor150" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 32.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 35829
+
+[node name="Decor151" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 35.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 18578
+
+[node name="Decor152" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 38.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 23539
+
+[node name="Decor153" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 41.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 91824
+
+[node name="Decor154" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 44.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 83948
+
+[node name="Decor155" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, 50, 0, 47.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 31374
+
+[node name="Decor156" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -48.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 58966
+
+[node name="Decor157" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -45.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 40336
+
+[node name="Decor158" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -42.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 40476
+
+[node name="Decor159" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -39.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 15560
+
+[node name="Decor160" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -36)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 52551
+
+[node name="Decor161" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -32.9)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61195
+
+[node name="Decor162" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -29.8)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 44692
+
+[node name="Decor163" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -26.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 1042
+
+[node name="Decor164" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -23.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 90939
+
+[node name="Decor165" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -20.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 88593
+
+[node name="Decor166" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -17.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 40158
+
+[node name="Decor167" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -14.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 45257
+
+[node name="Decor168" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -11.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 99349
+
+[node name="Decor169" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, -8.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 74698
+
+[node name="Decor170" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 7.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61450
+
+[node name="Decor171" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 10.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 92181
+
+[node name="Decor172" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 13.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 61970
+
+[node name="Decor173" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 16.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 19429
+
+[node name="Decor174" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 19.8)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 84421
+
+[node name="Decor175" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 22.9)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 2251
+
+[node name="Decor176" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 26)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 71861
+
+[node name="Decor177" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 29.1)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 12970
+
+[node name="Decor178" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 32.2)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 57149
+
+[node name="Decor179" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 35.3)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 19466
+
+[node name="Decor180" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 38.4)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 69924
+
+[node name="Decor181" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 41.5)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 35111
+
+[node name="Decor182" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 44.6)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 45420
+
+[node name="Decor183" type="StaticBody3D" parent="."]
+transform = Transform3D(6.1232e-17, 0, 1, 0, 1, -0, -1, 0, 6.1232e-17, -50, 0, 47.7)
+script = ExtResource("decor")
+kind = &"palisade"
+tint = Color(1, 0.75, 0.4, 1)
+seed_value = 40665
+
+[node name="Decor184" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -50, 0, -7)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Decor185" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, -50, 0, 7)
+script = ExtResource("decor")
+kind = &"banner"
+tint = Color(1, 0.82, 0.55, 1)
+seed_value = 1
+
+[node name="Label186" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 0, 11, -16)
+billboard = 1
+text = "PINECREST"
+font_size = 64
+outline_size = 10
+pixel_size = 0.01
+
+[node name="B187" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0, -0, 0, 1, 64, 3, 0)
+script = ExtResource("gb")
+size = Vector3(1, 6, 128)
+color = Color(0.45, 0.48, 0.55, 1)
+solid = true
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("terrain")
+style = &"frost"
+amplitude = 7.0
+seed_value = 404
+flatten = PackedVector3Array(0, 0, 70, -42, -42, 30, -42, 42, 30, 42, -42, 30, 42, 42, 30, -34, -14, 7.12, -28.5, -11, 1.5, -14, -15, 7, 16, -15, 6.94, 34, -14, 5.74, 39.5, -11, 1.5, -34, 15, 7.12, -14, 16, 10.6, 16, 16, 7.12, 21.5, 13, 1.5, 34, 15, 7, -13, -35, 6.94, -13, 32, 5.74, -7.5, 29, 1.5, 13, -35, 7.12, 14, 33, 10.6, 0, -7, 2.74, 6, -4, 1.5, -8, 6, 1.5, 8, 6, 1.5, -8, -12, 1.5, 8, -12, 1.5, -14, -6, 1.5, -13, -7.5, 1.5, 14, 10, 1.5, 0, 6, 4, -4, 2, 4, 5, -3, 4, -40, 36, 8.9308, -40, 39, 8.9308, -40, 42, 8.9308, -40, 45, 8.9308, -40, 48, 8.9308, -46, 31, 1.5, -43, 31, 1.5, -40, 31, 1.5, -37, 31, 1.5, -34, 31, 1.5, 40, 36, 8.9308, 40, 39, 8.9308, 40, 42, 8.9308, 40, 45, 8.9308, 40, 48, 8.9308, 34, 31, 1.5, 37, 31, 1.5, 40, 31, 1.5, 43, 31, 1.5, 46, 31, 1.5, -48.4, -50, 1.5, -45.3, -50, 1.5, -42.2, -50, 1.5, -39.1, -50, 1.5, -36, -50, 1.5, -32.9, -50, 1.5, -29.8, -50, 1.5, -26.7, -50, 1.5, -23.6, -50, 1.5, -20.5, -50, 1.5, -17.4, -50, 1.5, -14.3, -50, 1.5, -11.2, -50, 1.5, -8.1, -50, 1.5, 7.4, -50, 1.5, 10.5, -50, 1.5, 13.6, -50, 1.5, 16.7, -50, 1.5, 19.8, -50, 1.5, 22.9, -50, 1.5, 26, -50, 1.5, 29.1, -50, 1.5, 32.2, -50, 1.5, 35.3, -50, 1.5, 38.4, -50, 1.5, 41.5, -50, 1.5, 44.6, -50, 1.5, 47.7, -50, 1.5, -7, -50, 1.5, 7, -50, 1.5, -48.4, 50, 1.5, -45.3, 50, 1.5, -42.2, 50, 1.5, -39.1, 50, 1.5, -36, 50, 1.5, -32.9, 50, 1.5, -29.8, 50, 1.5, -26.7, 50, 1.5, -23.6, 50, 1.5, -20.5, 50, 1.5, -17.4, 50, 1.5, -14.3, 50, 1.5, -11.2, 50, 1.5, -8.1, 50, 1.5, 7.4, 50, 1.5, 10.5, 50, 1.5, 13.6, 50, 1.5, 16.7, 50, 1.5, 19.8, 50, 1.5, 22.9, 50, 1.5, 26, 50, 1.5, 29.1, 50, 1.5, 32.2, 50, 1.5, 35.3, 50, 1.5, 38.4, 50, 1.5, 41.5, 50, 1.5, 44.6, 50, 1.5, 47.7, 50, 1.5, -7, 50, 1.5, 7, 50, 1.5, 50, -48.4, 1.5, 50, -45.3, 1.5, 50, -42.2, 1.5, 50, -39.1, 1.5, 50, -36, 1.5, 50, -32.9, 1.5, 50, -29.8, 1.5, 50, -26.7, 1.5, 50, -23.6, 1.5, 50, -20.5, 1.5, 50, -17.4, 1.5, 50, -14.3, 1.5, 50, -11.2, 1.5, 50, -8.1, 1.5, 50, -5, 1.5, 50, -1.9, 1.5, 50, 1.2, 1.5, 50, 4.3, 1.5, 50, 7.4, 1.5, 50, 10.5, 1.5, 50, 13.6, 1.5, 50, 16.7, 1.5, 50, 19.8, 1.5, 50, 22.9, 1.5, 50, 26, 1.5, 50, 29.1, 1.5, 50, 32.2, 1.5, 50, 35.3, 1.5, 50, 38.4, 1.5, 50, 41.5, 1.5, 50, 44.6, 1.5, 50, 47.7, 1.5, -50, -48.4, 1.5, -50, -45.3, 1.5, -50, -42.2, 1.5, -50, -39.1, 1.5, -50, -36, 1.5, -50, -32.9, 1.5, -50, -29.8, 1.5, -50, -26.7, 1.5, -50, -23.6, 1.5, -50, -20.5, 1.5, -50, -17.4, 1.5, -50, -14.3, 1.5, -50, -11.2, 1.5, -50, -8.1, 1.5, -50, 7.4, 1.5, -50, 10.5, 1.5, -50, 13.6, 1.5, -50, 16.7, 1.5, -50, 19.8, 1.5, -50, 22.9, 1.5, -50, 26, 1.5, -50, 29.1, 1.5, -50, 32.2, 1.5, -50, 35.3, 1.5, -50, 38.4, 1.5, -50, 41.5, 1.5, -50, 44.6, 1.5, -50, 47.7, 1.5, -50, -7, 1.5, -50, 7, 1.5, 50.8198, -81.9465, 8.78354, 12.4235, 80.4187, 4.89741)

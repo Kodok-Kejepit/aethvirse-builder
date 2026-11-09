@@ -5,14 +5,19 @@ extends Node
 ## NPCs, place names). Created by RegionController; UI reads it via RegionMap.current().
 
 const GROUP: StringName = &"region_map"
-const IMAGE_PX: int = 256
+const IMAGE_PX: int = 320
 const FOG_CELLS: int = 32
 const REVEAL_RADIUS_M: float = 44.0
 const REVEAL_EVERY_S: float = 0.5
 
 enum Marker { PLAYER, WAYSTONE, ROAD, GATE, RED_GATE, NPC, PLACE, HOLLOW }
 
-var region: RegionData
+var region: RegionData:
+	set(value):
+		region = value
+		if region != null:
+			var h: float = region.half_extent_m()
+			world_rect = Rect2(-h, -h, h * 2.0, h * 2.0)
 ## World rect covered by the map (x/z min, size).
 var world_rect: Rect2 = Rect2(-192, -192, 384, 384)
 var texture: ImageTexture = null
@@ -30,6 +35,14 @@ func setup(region_data: RegionData, chunks_root: Node3D) -> void:
 	name = "RegionMap"
 	add_to_group(GROUP)
 	_paint.call_deferred()
+	# Bigger regions stream in: each chunk is painted onto the map as it arrives.
+	if not WorldStreamer.chunk_loaded.is_connected(_on_chunk_loaded):
+		WorldStreamer.chunk_loaded.connect(_on_chunk_loaded)
+
+
+func _exit_tree() -> void:
+	if WorldStreamer.chunk_loaded.is_connected(_on_chunk_loaded):
+		WorldStreamer.chunk_loaded.disconnect(_on_chunk_loaded)
 
 
 func _process(delta: float) -> void:
@@ -44,14 +57,36 @@ func _process(delta: float) -> void:
 
 # --- fog ---------------------------------------------------------------------------------
 
+## Save key of this region's fog: 3x3 regions keep the old key; bigger ones get their own
+## (an old save's explored cells are carried over into the middle of the new grid).
+func fog_key() -> String:
+	return String(region.id) if region.chunk_radius <= 1 else "%s@%d" % [region.id, region.chunk_radius]
+
+
 func fog() -> PackedByteArray:
-	var key: String = String(region.id)
+	var key: String = fog_key()
 	var grid: PackedByteArray = GameState.map_fog.get(key, PackedByteArray())
 	if grid.size() != FOG_CELLS * FOG_CELLS:
 		grid = PackedByteArray()
 		grid.resize(FOG_CELLS * FOG_CELLS)
+		_carry_old_fog(grid)
 		GameState.map_fog[key] = grid
 	return grid
+
+
+## An explored cell of the old 384 m map stays explored on the bigger map.
+func _carry_old_fog(grid: PackedByteArray) -> void:
+	var old: PackedByteArray = GameState.map_fog.get(String(region.id), PackedByteArray())
+	if region.chunk_radius <= 1 or old.size() != FOG_CELLS * FOG_CELLS:
+		return
+	var old_cell: float = 384.0 / FOG_CELLS
+	for y: int in FOG_CELLS:
+		for x: int in FOG_CELLS:
+			if old[y * FOG_CELLS + x] == 0:
+				continue
+			var at: Vector3 = Vector3(-192.0 + (x + 0.5) * old_cell, 0.0, -192.0 + (y + 0.5) * old_cell)
+			var c: Vector2i = cell_of(at)
+			grid[c.y * FOG_CELLS + c.x] = 1
 
 
 func cell_of(world: Vector3) -> Vector2i:
@@ -75,7 +110,7 @@ func reveal(world: Vector3, radius: float) -> int:
 				grid[y * FOG_CELLS + x] = 1
 				opened += 1
 	if opened > 0:
-		GameState.map_fog[String(region.id)] = grid
+		GameState.map_fog[fog_key()] = grid
 		_fog_dirty = true
 	return opened
 
@@ -175,8 +210,18 @@ func _seen(world: Vector3) -> bool:
 
 # --- painting ----------------------------------------------------------------------------
 
+var _image: Image = null
+
+
 func _paint() -> void:
 	if _root == null:
 		return
-	var img: Image = MapPainter.paint(_root, world_rect, IMAGE_PX)
-	texture = ImageTexture.create_from_image(img)
+	_image = MapPainter.paint(_root, world_rect, IMAGE_PX)
+	texture = ImageTexture.create_from_image(_image)
+
+
+func _on_chunk_loaded(_coord: Vector2i, chunk: Node3D) -> void:
+	if _image == null or texture == null or not is_instance_valid(chunk):
+		return
+	MapPainter.paint_into(_image, chunk, world_rect)
+	texture.update(_image)

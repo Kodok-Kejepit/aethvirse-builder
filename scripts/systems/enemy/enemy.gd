@@ -342,6 +342,19 @@ func _setup_visuals() -> void:
 	var eye_node: Node3D = visual.get_node_or_null(^"Eye") as Node3D
 	if eye_node != null:
 		eye_node.visible = false
+	limit_draw_distance(self, data.tier)
+
+
+## Far monsters are not drawn (and cast no shadow): small ones from 35 % of the preset's
+## view distance (at least 70 m), bosses from twice that. They sleep beyond 60 m anyway.
+static func limit_draw_distance(root: Node, tier: int) -> void:
+	var view: float = Settings.profile.view_distance_m if Settings.profile != null else 400.0
+	var reach: float = maxf(70.0, view * 0.35) * (2.0 if tier == EnemyScaling.Tier.BOSS else 1.0)
+	for node: Node in root.find_children("*", "GeometryInstance3D", true, false):
+		var g: GeometryInstance3D = node as GeometryInstance3D
+		if g.visibility_range_end <= 0.0 or g.visibility_range_end > reach:
+			g.visibility_range_end = reach
+			g.visibility_range_end_margin = 8.0
 
 
 func _flash() -> void:
