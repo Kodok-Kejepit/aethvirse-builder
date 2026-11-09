@@ -11,6 +11,14 @@ const SWINGS: Array[Array] = [
 ]
 const SKILL_CAST: Array = [&"Cast", 0.2, 2.2]
 const ULTIMATE: Array = [&"Skill", 0.0, 1.6]
+## Dagger heroes (rig has DaggerCombo, Meshy dagger clips): each swing is one strike of a
+## combo clip, cut around the strike times measured from the arm speed.
+const DAGGER_CLIP: StringName = &"DaggerCombo"
+const DAGGER_SWINGS: Array[Array] = [
+	[&"DaggerCombo", 0.25, 1.0], [&"DaggerCombo", 1.05, 1.75], [&"BladeSpin", 0.4, 1.3], [&"DaggerThrust", 0.35, 1.05],
+]
+const DAGGER_CAST: Array = [&"DaggerCombo2", 0.7, 3.9]
+const DAGGER_ULTIMATE: Array = [&"BladeSpin", 0.4, 2.0]
 const BOW_SHOT: Array = [&"Archery", 0.8, 2.6]
 const STAFF_SHOT: Array = [&"Cast", 0.2, 1.3]
 ## Swing index CharacterModel passes for skill casts / ultimates.
@@ -264,13 +272,15 @@ func _select(pose: StringName, swing: int, progress: float, speed: float) -> voi
 
 ## Which clip (and part of it) shows an attack / cast.
 func _move_for(pose: StringName, swing: int) -> Array:
+	var dagger: bool = animation.has_animation(DAGGER_CLIP)
 	if pose == &"ultimate" or swing == SWING_ULTIMATE:
-		return ULTIMATE
+		return DAGGER_ULTIMATE if dagger else ULTIMATE
 	if pose == &"cast" or pose == &"summon" or pose == &"victory" or swing == SWING_CAST:
-		return SKILL_CAST
+		return DAGGER_CAST if dagger else SKILL_CAST
 	if pose == &"shoot":
 		return BOW_SHOT if weapon == CharacterRig.Weapon.BOW else STAFF_SHOT
-	return SWINGS[clampi(swing, 0, SWINGS.size() - 1)]
+	var table: Array[Array] = DAGGER_SWINGS if dagger else SWINGS
+	return table[clampi(swing, 0, table.size() - 1)]
 
 
 func _idle() -> void:

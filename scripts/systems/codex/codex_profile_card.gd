@@ -28,7 +28,7 @@ static func build(box: VBoxContainer, player: Player, stats: StatsComponent, lev
 	box.add_child(_label(tr_key(&"PROFILE_NAME") % tr_key(StringName(hero.display_name)).to_upper(), 22, Color.WHITE))
 	box.add_child(_label("Lv %d" % level, 20, CodexTheme.ACCENT))
 	box.add_child(_bar("HP", player.health.current, player.health.max_health, HP_COLOR))
-	var mp_color: Color = MP_LIGHT if CodexTheme.dragon_style else MP_SHADOW
+	var mp_color: Color = MP_SHADOW if hero.codex_style == &"violet" else MP_LIGHT
 	box.add_child(_bar("MP", roundi(player.mana.current), roundi(player.mana.max_mana), mp_color))
 	box.add_child(_ratings(stats))
 	box.add_child(HSeparator.new())

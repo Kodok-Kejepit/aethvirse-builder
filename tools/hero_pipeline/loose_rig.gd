@@ -25,6 +25,10 @@ const CLEARANCE: Dictionary = {
 	"UpLeg": 0.1, "Leg": 0.075, "Foot": 0.08, "ToeBase": 0.07,
 }
 
+## Long cloaks / coats brushing the boots: ASC_LEG_CLEARANCE (e.g. 0.6) narrows the leg
+## capsules so the hem joins the cloth chains instead of following the feet.
+const LEG_KEYS: Array[String] = ["UpLeg", "Leg", "Foot", "ToeBase"]
+
 var skel: Skeleton3D
 var mi: MeshInstance3D
 ## [{"names": PackedStringArray, "kind": "hair" | "cloth"}]
@@ -116,6 +120,11 @@ func _setup_space() -> void:
 	_hips_y = _g[_hips].y
 
 
+static func _leg_scale() -> float:
+	var v: String = OS.get_environment("ASC_LEG_CLEARANCE")
+	return v.to_float() if v.is_valid_float() else 1.0
+
+
 func _classify(wpos: PackedVector3Array) -> PackedFloat32Array:
 	var segs: Array[Array] = []
 	for i: int in skel.get_bone_count():
@@ -123,7 +132,10 @@ func _classify(wpos: PackedVector3Array) -> PackedFloat32Array:
 		var key: String = skel.get_bone_name(i).trim_prefix("mixamorig_").trim_prefix("Left").trim_prefix("Right")
 		if parent < 0 or not CLEARANCE.has(key):
 			continue
-		segs.append([_g[parent], _g[i], float(CLEARANCE[key])])
+		var clearance: float = float(CLEARANCE[key])
+		if LEG_KEYS.has(key):
+			clearance *= _leg_scale()
+		segs.append([_g[parent], _g[i], clearance])
 		if key == "Hand":
 			var dir: Vector3 = (_g[i] - _g[parent]).normalized()
 			segs.append([_g[i], _g[i] + dir * HAND_EXTENSION_M, float(CLEARANCE[key])])

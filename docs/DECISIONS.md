@@ -285,3 +285,21 @@ Log of technical/design decisions. Newest at the bottom. Format: date — decisi
   instead of stacking. Venomfang (Legendary dagger, first metro clear) poisons on 20 % of hits.
 - Not done yet: more maps (Ashfall districts beyond the current 3 × 3 chunks) and a skill /
   motion pass inspired by classic action RPGs (Zenonia feel, original names and effects).
+
+
+## Hero roster swap (2026-11-09)
+- Owner: the new cloaked character is the **Assassin**; Nocturne (short black hair) becomes the
+  **Marksman** (bow). Placeholder name for the new hero: **Senjakala** (Indonesian "dusk"),
+  easy to change in `strings.csv` (HERO_SENJAKALA).
+- Each hero now has its own Codex palette (`HeroData.codex_style`): jade/gold (Ratu Naga),
+  violet/gold (Senjakala), midnight blue/silver (Nokturna).
+- Dagger rigs (a `DaggerCombo` clip) use their own swing table: each light swing is one strike
+  of a Meshy dagger combo, cut around strike times measured from the arm's angular speed
+  (Weapon_Combo strikes at 0.67 / 1.43 / 2.30 / 2.83 s; Thrust_Slash 0.77; Double_Blade_Spin
+  0.90). Skills play the Weapon_Combo_2 flurry, the ultimate the double blade spin.
+- Missing clips (idle fidget, turns, cast, ultimate stance) are borrowed from the shared Meshy
+  clip set — the importer keeps rotations only, so they fit any hero on the Meshy skeleton.
+- Old saves whose hero changed class get the class's hero on load (`_match_hero_to_class`).
+- The model already came rigged and animated from the owner's Meshy account, so no Meshy credits
+  were spent on it.
+

@@ -6,7 +6,7 @@
 script = ExtResource("1")
 id = &"starblade"
 display_name = "HERO_STARBLADE"
-class_id = &"phantom"
+class_id = &"ranger"
 description = "HERO_STARBLADE_DESC"
 mesh_hi = "res://assets/characters/starblade/starblade_hi.res"
 mesh_lo = "res://assets/characters/starblade/starblade_lo.res"
@@ -18,3 +18,4 @@ has_dragon = false
 hair = 1
 hair_color = Color(0.72, 0.55, 0.95, 1)
 hair_tip_color = Color(0.45, 0.3, 0.8, 1)
+codex_style = &"midnight"

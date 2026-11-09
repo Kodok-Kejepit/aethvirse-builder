@@ -1,8 +1,9 @@
 class_name CodexTheme
 extends RefCounted
 ## Shared "System" look for Codex UI: an elegant card (owner's reference) themed by the
-## hero — jade glass with gold trim for dragon heroes, violet glass with silver trim for
-## shadow heroes. Titles use a serif face. Colours follow the current hero (sync_hero).
+## hero (STYLES): jade and gold for dragon heroes, violet and gold for the assassin,
+## midnight blue and silver for the marksman. Titles use a serif face. Colours follow the
+## current hero (sync_hero).
 
 static var BG: Color = Color(0.02, 0.08, 0.06, 0.94)
 static var ACCENT: Color = Color(0.52, 0.92, 0.74)
@@ -14,21 +15,29 @@ const SERIF: FontFile = preload("res://assets/ui/fonts/NotoSerif-SemiBold.ttf")
 const SERIF_REGULAR: FontFile = preload("res://assets/ui/fonts/NotoSerif-Regular.ttf")
 
 
+## Palette per hero (HeroData.codex_style): [BG, ACCENT, TEXT, TRIM].
+const STYLES: Dictionary[StringName, Array] = {
+	# Dragon heroes: jade glass, gold trim.
+	&"jade": [Color(0.02, 0.08, 0.06, 0.94), Color(0.52, 0.92, 0.74), Color(0.94, 0.91, 0.82), Color(0.9, 0.76, 0.45)],
+	# Owner's assassin card: near-black violet glass, violet light, gold trim.
+	&"violet": [Color(0.04, 0.025, 0.07, 0.95), Color(0.74, 0.55, 1.0), Color(0.93, 0.9, 0.97), Color(0.86, 0.72, 0.48)],
+	# Marksman: midnight-blue glass, ice-blue light, silver trim.
+	&"midnight": [Color(0.02, 0.035, 0.08, 0.95), Color(0.55, 0.8, 1.0), Color(0.9, 0.93, 0.97), Color(0.78, 0.82, 0.88)],
+}
+
+
 ## Picks the palette of the hero being played (call before building UI).
 static func sync_hero() -> void:
 	var hero: HeroData = HeroData.load_hero(GameState.hero_id)
 	dragon_style = hero == null or hero.has_dragon
-	if dragon_style:
-		BG = Color(0.02, 0.08, 0.06, 0.94)
-		ACCENT = Color(0.52, 0.92, 0.74)
-		TEXT = Color(0.94, 0.91, 0.82)
-		TRIM = Color(0.9, 0.76, 0.45)
-	else:
-		# Owner's assassin card: near-black violet glass, violet light, gold trim.
-		BG = Color(0.04, 0.025, 0.07, 0.95)
-		ACCENT = Color(0.74, 0.55, 1.0)
-		TEXT = Color(0.93, 0.9, 0.97)
-		TRIM = Color(0.86, 0.72, 0.48)
+	var style: StringName = &"jade" if hero == null else hero.codex_style
+	var colors: Array = STYLES.get(style, STYLES[&"jade"])
+	BG = colors[0]
+	ACCENT = colors[1]
+	TEXT = colors[2]
+	TRIM = colors[3]
+
+
 ## Phones show the 1080p canvas on a ~3" tall screen: text and buttons need to be bigger.
 const TOUCH_SCALE: float = 1.45
 

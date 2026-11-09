@@ -273,7 +273,9 @@ MENU_PICK_HERO,Choose your character,Pilih karaktermu
 HERO_DRAGON_MAIDEN,Dragon Sovereign,Ratu Naga
 HERO_DRAGON_MAIDEN_DESC,Long silver hair. A white spirit dragon answers every skill.,Rambut perak panjang. Naga roh putih muncul di setiap skill.
 HERO_STARBLADE,Nocturne,Nokturna
-HERO_STARBLADE_DESC,Short black hair. A swift assassin in a night gown — no dragon.,Rambut hitam pendek. Pembunuh senyap bergaun malam — tanpa naga.
+HERO_STARBLADE_DESC,"Short black hair. A marksman in a night-blue gown whose arrows never miss.","Rambut hitam pendek. Pemanah bergaun biru malam yang panahnya tak pernah meleset."
+HERO_SENJAKALA,Senjakala,Senjakala
+HERO_SENJAKALA_DESC,"Black hair, violet eyes. A cloaked assassin who strikes with twin daggers.","Rambut hitam, mata ungu. Pembunuh berjubah yang menyerang dengan dua belati."
 PROMPT_WAYSTONE,Waystone,Waystone
 PROMPT_TRAVEL,Travel to,Pergi ke
 TRAVEL_TITLE,Fast Travel,Perjalanan Cepat

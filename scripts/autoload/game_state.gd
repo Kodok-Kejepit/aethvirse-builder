@@ -155,6 +155,7 @@ func load_dict(data: Dictionary, tuning: StatTuning) -> void:
 	respawn_waystone = StringName(altar)
 	var hero: String = data.get("hero_id", String(HeroData.DEFAULT_ID))
 	hero_id = StringName(hero)
+	_match_hero_to_class()
 	var army: Dictionary = data.get("shadows", {})
 	shadows.load_dict(army)
 	var levels: Dictionary = data.get("skill_levels", {})
@@ -252,3 +253,13 @@ func set_flag(flag: StringName, value: bool = true) -> void:
 
 func has_flag(flag: StringName) -> bool:
 	return world_flags.get(flag, false)
+
+
+## Each class has its own hero: saves made before a hero changed class get the hero who
+## plays that class now (Nocturne moved from Assassin to Marksman).
+func _match_hero_to_class() -> void:
+	if HeroData.load_hero(hero_id).class_id == class_id:
+		return
+	var hero: StringName = HeroData.hero_for_class(class_id)
+	if hero != &"":
+		hero_id = hero

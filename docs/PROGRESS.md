@@ -468,3 +468,12 @@
   Gift Box, First Sigil, 03:33). Clues on signs in the camp, the alley, the tower, the metro.
 - Metro: vipers, rats, Venom Matriarch boss; poison; Venomfang dagger on the first clear.
 - Debug: `codex shop`, `spawn venom_matriarch`, `spawn tunnel_viper`, `gate gate_r1_d_metro`, `time 00:10`.
+
+## Hero roster: Senjakala (Assassin), Nokturna → Marksman (2026-11-09)
+- New Game: **Ratu Naga — Paladin**, **Senjakala — Assassin**, **Nokturna — Marksman**
+  (Mage locked until the owner's design arrives).
+- Senjakala: animated Meshy rig with dagger combos, thrust, double blade spin, spin dodge; the
+  cloak sways on spring chains.
+- Codex colours per hero (jade / violet / midnight blue).
+- Known: in wide stances the cloak hem near the boots can fold for a moment (playtest).
+

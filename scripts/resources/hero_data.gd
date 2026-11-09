@@ -27,10 +27,12 @@ enum Hair { LONG, SHORT }
 @export var hair: Hair = Hair.LONG
 @export var hair_color: Color = Color(0.14, 0.11, 0.1)
 @export var hair_tip_color: Color = Color(0.22, 0.18, 0.16)
+## Codex palette (CodexTheme.STYLES): each hero's System looks different.
+@export var codex_style: StringName = &"jade"
 
 
 const DEFAULT_ID: StringName = &"dragon_maiden"
-const IDS: Array[StringName] = [&"dragon_maiden", &"starblade"]
+const IDS: Array[StringName] = [&"dragon_maiden", &"senjakala", &"starblade"]
 ## Every class in New Game order; classes whose hero is not made yet show as locked.
 const ROSTER: Array[StringName] = [&"vanguard", &"phantom", &"arcanist", &"ranger"]
 

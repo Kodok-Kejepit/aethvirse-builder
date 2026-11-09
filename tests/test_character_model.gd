@@ -104,9 +104,12 @@ func test_short_hair_hero_never_summons_dragon() -> void:
 
 
 func test_hero_id_survives_save_round_trip() -> void:
+	var cls: StringName = GameState.class_id
+	GameState.class_id = &"ranger"
 	GameState.hero_id = &"starblade"
 	var data: Dictionary = GameState.to_dict()
 	GameState.hero_id = &"dragon_maiden"
 	GameState.load_dict(data, _player.stats.tuning)
 	assert_eq(GameState.hero_id, &"starblade")
 	GameState.hero_id = HeroData.DEFAULT_ID
+	GameState.class_id = cls

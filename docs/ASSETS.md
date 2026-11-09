@@ -35,6 +35,14 @@ Huge Meshy files (millions of triangles) are shrunk first with
 `landmark_overpass_cracked`, `weapon_sword_mythos` (item **Starfall, Eye of the Void**, Mythic),
 `statue_starblade` (camp plaza).
 
+## Heroes (animated rigs, `tools/import_hero_glb.gd`)
+| Hero | Class | Rig | Source |
+|---|---|---|---|
+| Ratu Naga (`dragon_maiden`) | Paladin | `assets/characters/noble/rig/` | owner's Meshy model + Mixamo / Meshy clips |
+| Senjakala (`senjakala`) | Assassin | `assets/characters/senjakala/rig/` | owner's Meshy "cloaked" model (2026-11-09), 10 k tris, imported with `ASC_LEG_CLEARANCE=0.6` so the cloak hem sways |
+| Nokturna (`starblade`) | Marksman | `assets/characters/shade/rig/` | owner's Meshy model; has the Archery clip |
+| Mage | — | waiting for the owner's reference | |
+
 ## Ids the game already uses (priority order)
 
 | Id | Where | Notes |
